@@ -648,6 +648,13 @@ footer{
 }
 .btn-ejemplos:hover{background:rgba(168,85,247,.1);border-color:var(--purple-lt);}
 .btn-ejemplos i{margin-right:.4rem;}
+/* ── CONTRATAR MODAL PAYMENT OPTIONS ── */
+.pago-opt{display:flex;align-items:center;gap:.5rem;color:var(--txt);cursor:pointer;font-size:.9rem;padding:.4rem .6rem;border-radius:8px;transition:background .2s;}
+.pago-opt:hover{background:rgba(168,85,247,.1);}
+.pago-opt input[type="radio"]{accent-color:var(--purple-lt);width:16px;height:16px;}
+.mes-opt{display:flex;align-items:center;gap:.4rem;color:var(--txt);cursor:pointer;font-size:.88rem;padding:.35rem .7rem;border:1px solid rgba(168,85,247,.3);border-radius:20px;transition:all .2s;}
+.mes-opt:hover{background:rgba(168,85,247,.15);border-color:var(--purple-lt);}
+.mes-opt input[type="radio"]{accent-color:var(--purple-lt);}
 </style>
 </head>
 <body>
@@ -659,7 +666,7 @@ footer{
 <a href="https://wa.me/527531627539" class="wa-float" target="_blank" aria-label="WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
-<a href="mailto:alemoltru9497@gmail.com" class="email-float" aria-label="Correo electrónico">
+<a href="mailto:orion.creative.studio1.0@gmail.com" class="email-float" aria-label="Correo electrónico">
   <i class="fas fa-envelope"></i>
 </a>
 
@@ -760,9 +767,9 @@ footer{
           <li><i class="fas fa-times-circle" style="color:#f87171"></i> No incluye modificaciones</li>
         </ul>
         <div class="price">$29 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
-        <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20el%20Logo%20de%20Nombre%20B%C3%A1sico%20%2429" target="_blank" class="cta-btn cta-purple">
+        <button onclick="openContratarModal('Logo de Nombre Básico','$29 USD')" class="cta-btn cta-purple" style="border:none;cursor:pointer;">
           <i class="fas fa-shopping-cart"></i> Contratar
-        </a>
+        </button>
         <button class="btn-ejemplos" onclick="openGallery('logo-nombre-basico')"><i class="fas fa-eye"></i> Ver Ejemplos</button>
       </div>
 
@@ -795,9 +802,9 @@ footer{
             <div class="price">$79 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
           </div>
         </div>
-        <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20el%20Logo%20de%20Nombre%20Premium%20%2479" target="_blank" class="cta-btn cta-gold">
+        <button onclick="openContratarModal('Logo de Nombre Premium','$79 USD')" class="cta-btn cta-gold" style="border:none;cursor:pointer;">
           <i class="fas fa-crown"></i> Contratar
-        </a>
+        </button>
         <button id="lnp-buy-btn" onclick="openOfferModalLNP()" style="display:none;width:100%;margin-top:.6rem;padding:.75rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(239,68,68,.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(239,68,68,.55)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(239,68,68,.4)'">
           🔥 ¡Comprar Ahora — $64!
         </button>
@@ -818,9 +825,9 @@ footer{
         </ul>
         <div class="price">$79 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
         <div class="price-note">+ Vector SVG por $40 adicionales</div>
-        <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20el%20Logo%20para%20Negocio%20B%C3%A1sico%20%2479" target="_blank" class="cta-btn cta-purple">
+        <button onclick="openContratarModal('Logo para Negocio Pro','$79 USD')" class="cta-btn cta-purple" style="border:none;cursor:pointer;">
           <i class="fas fa-shopping-cart"></i> Contratar
-        </a>
+        </button>
         <button class="btn-ejemplos" onclick="openGallery('logo-negocio-basico')"><i class="fas fa-eye"></i> Ver Ejemplos</button>
       </div>
 
@@ -855,9 +862,9 @@ footer{
             <div class="price">$299 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
           </div>
         </div>
-        <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20el%20Logo%20para%20Negocio%20Premium%20%24159" target="_blank" class="cta-btn cta-gold">
+        <button onclick="openContratarModal('Logo para Negocio Premium','$159 USD')" class="cta-btn cta-gold" style="border:none;cursor:pointer;">
           <i class="fas fa-crown"></i> Contratar
-        </a>
+        </button>
         <button id="pnp-buy-btn" onclick="openOfferModal()" style="display:none;width:100%;margin-top:.6rem;padding:.75rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(239,68,68,.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(239,68,68,.55)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(239,68,68,.4)'">
           🔥 ¡Comprar Ahora — $159!
         </button>
@@ -881,9 +888,9 @@ footer{
           <li><i class="fas fa-check-circle"></i> Archivos editables y en PDF</li>
         </ul>
         <div class="price">Desde $30 <span style="font-size:.85rem;color:var(--txt3)">USD</span></div>
-        <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Publicidad%20General" target="_blank" class="cta-btn cta-purple">
+        <button onclick="openContratarModal('Publicidad General','Desde $30 USD')" class="cta-btn cta-purple" style="border:none;cursor:pointer;">
           <i class="fas fa-shopping-cart"></i> Contratar
-        </a>
+        </button>
         <button class="btn-ejemplos" onclick="openGallery('publicidad-general')"><i class="fas fa-eye"></i> Ver Ejemplos</button>
       </div>
 
@@ -896,9 +903,9 @@ footer{
           <li><i class="fas fa-check-circle"></i> Entrega en 24 horas</li>
         </ul>
         <div class="price">$20 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
-        <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20la%20Animaci%C3%B3n%20de%20Logo%20%2420" target="_blank" class="cta-btn cta-purple">
+        <button onclick="openContratarModal('Animación de Logo','$20 USD')" class="cta-btn cta-purple" style="border:none;cursor:pointer;">
           <i class="fas fa-play-circle"></i> Contratar
-        </a>
+        </button>
       </div>
 
       <div class="card reveal reveal-d3">
@@ -912,9 +919,9 @@ footer{
           <li><i class="fas fa-check-circle"></i> Listas para publicar</li>
         </ul>
         <div class="price">$50 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
-        <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20la%20Sesi%C3%B3n%20de%20Fotos%20de%20Productos%20%2450" target="_blank" class="cta-btn cta-purple">
+        <button onclick="openContratarModal('Sesión de Fotos de Productos','$50 USD')" class="cta-btn cta-purple" style="border:none;cursor:pointer;">
           <i class="fas fa-camera"></i> Contratar
-        </a>
+        </button>
       </div>
 
       <div class="card gold-card reveal reveal-d4">
@@ -929,9 +936,9 @@ footer{
           <li><i class="fas fa-check-circle"></i> Integración con redes sociales</li>
         </ul>
         <div class="price">$150 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
-        <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20P%C3%A1gina%20Web%20%24150" target="_blank" class="cta-btn cta-gold">
+        <button onclick="openContratarModal('Página Web Profesional','$150 USD')" class="cta-btn cta-gold" style="border:none;cursor:pointer;">
           <i class="fas fa-globe"></i> Contratar
-        </a>
+        </button>
       </div>
 
     </div>
@@ -971,9 +978,9 @@ footer{
         <li><i class="fas fa-check"></i> Tarjeta de presentación</li>
         <li><i class="fas fa-check"></i> Asesoría de redes sociales usando inteligencia artificial como herramienta</li>
       </ul>
-      <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20el%20Paquete%20B%C3%A1sico%20Emprendedor%20%2499" target="_blank" class="pkg-cta cta-purple">
+      <button onclick="openContratarModal('Paquete Básico Emprendedor','$99 USD')" class="pkg-cta cta-purple" style="border:none;cursor:pointer;">
         <i class="fas fa-rocket"></i> Contratar Paquete
-      </a>
+      </button>
       <button onclick="openOfferModalPBE()" style="width:100%;margin-top:.8rem;padding:.75rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(239,68,68,.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(239,68,68,.55)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(239,68,68,.4)'">
         🔥 ¡Comprar Ahora — $99!
       </button>
@@ -990,9 +997,9 @@ footer{
         <li><i class="fas fa-check"></i> Animación de Logo</li>
         <li><i class="fas fa-check"></i> Entrega en 5-7 días hábiles</li>
       </ul>
-      <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20el%20Paquete%20Completo%20%24299" target="_blank" class="pkg-cta cta-purple">
+      <button onclick="openContratarModal('Paquete Completo','$299 USD')" class="pkg-cta cta-purple" style="border:none;cursor:pointer;">
         <i class="fas fa-rocket"></i> Contratar Paquete
-      </a>
+      </button>
     </div>
 
     <div class="pkg featured reveal">
@@ -1011,9 +1018,9 @@ footer{
         <li><i class="fas fa-check"></i> Edición de video publicitario de productos o servicios</li>
         <li><i class="fas fa-check"></i> Soporte prioritario directo</li>
       </ul>
-      <a href="https://wa.me/527531627539?text=Hola%2C%20me%20interesa%20el%20Paquete%20Completo%20TOP%20%241299" target="_blank" class="pkg-cta cta-gold">
+      <button onclick="openContratarModal('Paquete Completo TOP','$1,299 USD')" class="pkg-cta cta-gold" style="border:none;cursor:pointer;">
         <i class="fas fa-crown"></i> Quiero el Paquete TOP
-      </a>
+      </button>
     </div>
 
   </div>
@@ -1152,16 +1159,6 @@ footer{
             placeholder="Colores que no te gustan, estilos que no van con tu marca, elementos que definitivamente no quieres, referencias de lo que odias..."></textarea>
         </div>
 
-        <div class="fg full">
-          <label class="lbl">Imágenes de Referencia (opcional)</label>
-          <div class="upload-zone">
-            <input type="file" name="Fotos_referencia" accept="image/*,.pdf" multiple id="mainFileInput">
-            <div class="upload-icon">📁</div>
-            <div class="upload-txt" id="mainFileText">Arrastra imágenes o haz clic para seleccionar</div>
-            <div class="upload-hint">Logos que te gustan, colores, estilos — PNG, JPG, PDF hasta 10 MB c/u</div>
-          </div>
-        </div>
-
         <div class="fg">
           <label class="lbl">Presupuesto Aproximado</label>
           <select name="Presupuesto" class="sel">
@@ -1241,6 +1238,105 @@ footer{
   </div>
 </div>
 </div><!-- /page -->
+
+<!-- ── MODAL CONTRATAR / COMPRAR ── -->
+<div id="contratarModal" class="modal-overlay" style="z-index:3000;" onclick="if(event.target===this)closeContratarModal()">
+  <div class="modal-box" style="max-width:640px;">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="cModal-title">Contratar Servicio</div>
+        <div style="font-size:.82rem;color:var(--glow);font-weight:600;margin-top:.15rem;" id="cModal-precio"></div>
+      </div>
+      <button class="modal-close" onclick="closeContratarModal()">✕</button>
+    </div>
+    <div style="overflow-y:auto;max-height:calc(90vh - 80px);padding:1.4rem 1.6rem;">
+      <div class="form-grid" style="margin-bottom:.9rem;">
+        <div class="fg">
+          <label class="lbl">Nombre Completo *</label>
+          <input type="text" id="cm-nombre" class="inp" placeholder="Tu nombre completo">
+        </div>
+        <div class="fg">
+          <label class="lbl">WhatsApp / Teléfono *</label>
+          <input type="tel" id="cm-tel" class="inp" placeholder="+52 000 000 0000">
+        </div>
+        <div class="fg">
+          <label class="lbl">Correo Electrónico</label>
+          <input type="email" id="cm-email" class="inp" placeholder="tu@correo.com">
+        </div>
+        <div class="fg">
+          <label class="lbl">Servicio solicitado</label>
+          <input type="text" id="cm-servicio" class="inp" readonly style="opacity:.75;">
+        </div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label class="lbl">Detalles de tu proyecto</label>
+        <textarea id="cm-detalles" class="ta" style="min-height:90px;" placeholder="Cuéntanos tu idea, colores favoritos, estilo, referencias..."></textarea>
+      </div>
+
+      <!-- PAGO -->
+      <div style="background:rgba(168,85,247,.07);border:1px solid rgba(168,85,247,.22);border-radius:16px;padding:1.1rem 1.2rem;margin-bottom:1.2rem;">
+        <div style="font-weight:700;color:var(--glow);font-size:.95rem;margin-bottom:.8rem;"><i class="fas fa-credit-card"></i> &nbsp;Método de Pago</div>
+        <div style="margin-bottom:.8rem;">
+          <label class="lbl">¿Desde dónde realizas el pago?</label>
+          <select id="cm-region" class="sel" onchange="mostrarPagos(this.value)">
+            <option value="">Selecciona tu región...</option>
+            <option value="mx">🇲🇽 México</option>
+            <option value="us">🇺🇸 Estados Unidos</option>
+            <option value="mundo">🌍 Resto del mundo</option>
+          </select>
+        </div>
+
+        <div id="pagos-mx" style="display:none;">
+          <label class="lbl" style="margin-bottom:.5rem;">Selecciona tu forma de pago:</label>
+          <div style="display:flex;flex-direction:column;gap:.4rem;">
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Depósito bancario"> Depósito bancario</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Transferencia bancaria"> Transferencia bancaria</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Tarjeta de crédito/débito"> Tarjeta de crédito / débito</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Tarjeta — meses sin intereses" id="radio-msi"> Tarjeta con meses sin intereses</label>
+          </div>
+          <div id="meses-block" style="display:none;margin-top:.8rem;">
+            <label class="lbl" style="margin-bottom:.5rem;">¿Cuántos meses sin intereses?</label>
+            <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+              <label class="mes-opt"><input type="radio" name="meses" value="3"> 3 MSI</label>
+              <label class="mes-opt"><input type="radio" name="meses" value="6"> 6 MSI</label>
+              <label class="mes-opt"><input type="radio" name="meses" value="9"> 9 MSI</label>
+              <label class="mes-opt"><input type="radio" name="meses" value="12"> 12 MSI</label>
+              <label class="mes-opt"><input type="radio" name="meses" value="24"> 24 MSI</label>
+            </div>
+          </div>
+        </div>
+
+        <div id="pagos-us" style="display:none;">
+          <label class="lbl" style="margin-bottom:.5rem;">Selecciona tu forma de pago:</label>
+          <div style="display:flex;flex-direction:column;gap:.4rem;">
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="WhatsApp Pay (FELIX PAGO)"> WhatsApp Pay (FELIX PAGO)</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Remitly"> Remitly</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Xoom"> Xoom</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Western Union"> Western Union</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="MoneyGram"> MoneyGram</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Remesa"> Remesa</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Depósito / Transferencia a cuenta banco México"> Depósito / Transferencia banco México</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="PayPal (aplica comisión)"> PayPal (aplica comisión)</label>
+          </div>
+        </div>
+
+        <div id="pagos-mundo" style="display:none;">
+          <label class="lbl" style="margin-bottom:.5rem;">Selecciona tu forma de pago:</label>
+          <div style="display:flex;flex-direction:column;gap:.4rem;">
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="Western Union"> Western Union</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="MoneyGram"> MoneyGram</label>
+            <label class="pago-opt"><input type="radio" name="metodoPago" value="PayPal (aplica comisión)"> PayPal (aplica comisión)</label>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="continuarCompra()" style="width:100%;padding:1rem 1.5rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:1.05rem;cursor:pointer;letter-spacing:.5px;display:flex;align-items:center;justify-content:center;gap:.6rem;box-shadow:0 6px 24px rgba(37,211,102,.35);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(37,211,102,.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(37,211,102,.35)'">
+        <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i> Continuar con la compra
+      </button>
+      <p style="text-align:center;font-size:.78rem;color:var(--txt2);margin-top:.6rem;">Te llevamos directo a WhatsApp para confirmar tu pedido</p>
+    </div>
+  </div>
+</div>
 
 <!-- ================================================================
      SCRIPTS
@@ -1332,17 +1428,6 @@ const ro = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-/* ── FILE UPLOAD FEEDBACK ── */
-const fi = document.getElementById('mainFileInput');
-const ft = document.getElementById('mainFileText');
-if (fi) fi.addEventListener('change', e => {
-  const files = [...e.target.files];
-  if (files.length) {
-    ft.textContent = `${files.length} archivo(s): ${files.map(f => f.name).join(', ')}`;
-    ft.style.color = 'var(--glow)';
-  }
-});
 
 /* ── FILE UPLOAD FEEDBACK — MODALES DE OFERTA ── */
 function bindFileUpload(inputId, textId) {
@@ -1813,6 +1898,62 @@ function openOfferModalLNP(){
 function closeOfferModalLNP(){
   document.getElementById('offerModalLNP').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+/* ── CONTRATAR MODAL ── */
+function openContratarModal(servicio, precio) {
+  document.getElementById('cModal-title').textContent = servicio;
+  document.getElementById('cModal-precio').textContent = precio || '';
+  document.getElementById('cm-servicio').value = servicio;
+  document.getElementById('cm-nombre').value = '';
+  document.getElementById('cm-tel').value = '';
+  document.getElementById('cm-email').value = '';
+  document.getElementById('cm-detalles').value = '';
+  document.getElementById('cm-region').value = '';
+  document.querySelectorAll('[name="metodoPago"],[name="meses"]').forEach(r => r.checked = false);
+  ['pagos-mx','pagos-us','pagos-mundo','meses-block'].forEach(function(id){ document.getElementById(id).style.display='none'; });
+  document.getElementById('contratarModal').classList.add('open');
+}
+function closeContratarModal() {
+  document.getElementById('contratarModal').classList.remove('open');
+}
+function mostrarPagos(region) {
+  ['pagos-mx','pagos-us','pagos-mundo'].forEach(function(id){ document.getElementById(id).style.display='none'; });
+  document.querySelectorAll('[name="metodoPago"],[name="meses"]').forEach(r => r.checked = false);
+  document.getElementById('meses-block').style.display='none';
+  if(region) document.getElementById('pagos-'+region).style.display='block';
+}
+document.addEventListener('change', function(e){
+  if(e.target.name==='metodoPago'){
+    var msi = e.target.value === 'Tarjeta — meses sin intereses';
+    document.getElementById('meses-block').style.display = msi ? 'block' : 'none';
+    if(!msi) document.querySelectorAll('[name="meses"]').forEach(r=>r.checked=false);
+  }
+});
+function continuarCompra() {
+  var nombre = document.getElementById('cm-nombre').value.trim();
+  var tel = document.getElementById('cm-tel').value.trim();
+  var email = document.getElementById('cm-email').value.trim();
+  var servicio = document.getElementById('cm-servicio').value.trim();
+  var precio = document.getElementById('cModal-precio').textContent.trim();
+  var detalles = document.getElementById('cm-detalles').value.trim();
+  var regionSel = document.getElementById('cm-region');
+  var region = regionSel.options[regionSel.selectedIndex] ? regionSel.options[regionSel.selectedIndex].text : '';
+  var metodo = document.querySelector('[name="metodoPago"]:checked') ? document.querySelector('[name="metodoPago"]:checked').value : '';
+  var meses = document.querySelector('[name="meses"]:checked') ? document.querySelector('[name="meses"]:checked').value : '';
+  if(!nombre || !tel){ alert('Por favor ingresa tu nombre y WhatsApp para continuar.'); return; }
+  var msg = '¡Hola ORION Creative Studio! 🌟 Quiero contratar un servicio.\n\n';
+  msg += '📋 *INFORMACIÓN DEL PEDIDO*\n';
+  msg += '👤 Nombre: ' + nombre + '\n';
+  msg += '📱 WhatsApp: ' + tel + '\n';
+  if(email) msg += '📧 Email: ' + email + '\n';
+  msg += '🎨 Servicio: ' + servicio + (precio ? ' — ' + precio : '') + '\n';
+  if(detalles) msg += '📝 Detalles: ' + detalles + '\n';
+  msg += '\n💳 *MÉTODO DE PAGO*\n';
+  if(region && region !== 'Selecciona tu región...') msg += '📍 Región: ' + region + '\n';
+  if(metodo){ msg += '💰 Forma de pago: ' + metodo; if(meses) msg += ' — ' + meses + ' meses sin intereses'; msg += '\n'; }
+  msg += '\nPor favor confírmame los detalles para continuar. ✅';
+  window.open('https://wa.me/527531627539?text=' + encodeURIComponent(msg), '_blank');
 }
 
 </script>
