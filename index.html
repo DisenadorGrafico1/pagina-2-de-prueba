@@ -1947,12 +1947,13 @@ function closeOfferModalLNP(){
 function cerrarPopupOferta(){
   var p=document.getElementById('ofertaPopup');
   p.style.opacity='0';p.style.transition='opacity .3s';
-  setTimeout(function(){p.classList.remove('visible');p.style.opacity='';},300);
+  setTimeout(function(){p.style.display='none';p.style.opacity='';},300);
   sessionStorage.setItem('ofertaVista','1');
 }
 if(!sessionStorage.getItem('ofertaVista')){
   setTimeout(function(){
-    document.getElementById('ofertaPopup').classList.add('visible');
+    var p=document.getElementById('ofertaPopup');
+    p.style.display='flex';
   }, 3500);
 }
 
