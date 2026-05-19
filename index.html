@@ -648,6 +648,11 @@ footer{
 }
 .btn-ejemplos:hover{background:rgba(168,85,247,.1);border-color:var(--purple-lt);}
 .btn-ejemplos i{margin-right:.4rem;}
+/* ── POPUP OFERTA ── */
+@keyframes popupIn{from{opacity:0;transform:scale(.88) translateY(30px);}to{opacity:1;transform:scale(1) translateY(0);}}
+#ofertaPopup{display:none;}
+#ofertaPopup.visible{display:flex;}
+
 /* ── CONTRATAR MODAL PAYMENT OPTIONS ── */
 .pago-opt{display:flex;align-items:center;gap:.5rem;color:var(--txt);cursor:pointer;font-size:.9rem;padding:.4rem .6rem;border-radius:8px;transition:background .2s;}
 .pago-opt:hover{background:rgba(168,85,247,.1);}
@@ -663,7 +668,7 @@ footer{
 <div class="nebula"></div>
 
 <!-- Flotante WhatsApp -->
-<a href="https://wa.me/527531627539" class="wa-float" target="_blank" aria-label="WhatsApp">
+<a href="https://wa.me/527531627539?text=Me%20interesa%20informaci%C3%B3n%20de%20los%20servicios%2C%20lo%20que%20requiero%20es%20_________________%2C%20quedo%20atento%20a%20su%20respuesta.%20Gracias." class="wa-float" target="_blank" aria-label="WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
 <a href="mailto:orion.creative.studio1.0@gmail.com" class="email-float" aria-label="Correo electrónico">
@@ -1018,7 +1023,7 @@ footer{
         <li><i class="fas fa-check"></i> Edición de video publicitario de productos o servicios</li>
         <li><i class="fas fa-check"></i> Soporte prioritario directo</li>
       </ul>
-      <button onclick="openContratarModal('Paquete Completo TOP','$1,299 USD')" class="pkg-cta cta-gold" style="border:none;cursor:pointer;">
+      <button type="button" onclick="openContratarModal('Paquete Completo TOP','$1,299 USD')" class="pkg-cta cta-gold" style="border:none;cursor:pointer;width:100%;">
         <i class="fas fa-crown"></i> Quiero el Paquete TOP
       </button>
     </div>
@@ -1099,6 +1104,8 @@ footer{
     <form action="https://formsubmit.co/orion.creative.studio1.0@gmail.com" method="POST" enctype="multipart/form-data" class="contact-card reveal">
       <input type="hidden" name="_subject" value="🌟 Nueva Consulta — ORION Creative Studio">
       <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://disenadorgrafico1.github.io/ORION-Creative-Studio/?enviado=1">
       <input type="hidden" name="Tipo" value="CONSULTA GENERAL">
 
       <div class="form-grid">
@@ -1238,6 +1245,42 @@ footer{
   </div>
 </div>
 </div><!-- /page -->
+
+<!-- ── POPUP OFERTA ESPECIAL ── -->
+<div id="ofertaPopup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(2,0,15,.88);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1rem;">
+  <div style="position:relative;width:100%;max-width:500px;background:linear-gradient(145deg,#0d0028,#1a003a);border:1px solid rgba(251,191,36,.45);border-radius:28px;overflow:hidden;box-shadow:0 0 80px rgba(251,191,36,.25),0 0 40px rgba(124,58,237,.3);animation:popupIn .5s ease;">
+    <!-- Ribbon -->
+    <div style="background:linear-gradient(90deg,#f59e0b,#d97706);color:#0d0028;text-align:center;padding:.45rem;font-weight:900;font-size:.8rem;letter-spacing:2px;">⚡ OFERTA POR TIEMPO LIMITADO ⚡</div>
+    <!-- Close -->
+    <button onclick="cerrarPopupOferta()" style="position:absolute;top:.9rem;right:1rem;background:rgba(255,255,255,.1);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;">✕</button>
+    <div style="padding:1.6rem 1.8rem 1.8rem;">
+      <div style="text-align:center;margin-bottom:1rem;">
+        <div style="font-size:2rem;margin-bottom:.3rem;">🚀✨</div>
+        <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(1.1rem,4vw,1.5rem);font-weight:900;color:#fbbf24;line-height:1.2;margin-bottom:.5rem;">Página Web Profesional<br>+ Logo para tu Negocio</h2>
+        <p style="color:rgba(255,255,255,.75);font-size:.88rem;line-height:1.5;margin-bottom:.9rem;">Lanza tu negocio al mundo con presencia digital completa. Diseño personalizado, logo con todos los formatos y entrega rápida.</p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-bottom:.4rem;">
+          <span style="color:rgba(255,255,255,.45);text-decoration:line-through;font-size:1.1rem;font-weight:600;">$449 USD</span>
+          <span style="background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-size:.72rem;font-weight:800;padding:.2rem .6rem;border-radius:20px;letter-spacing:1px;">55% OFF</span>
+        </div>
+        <div style="font-size:2.8rem;font-weight:900;color:#fbbf24;font-family:'Orbitron',sans-serif;line-height:1;">$199 <span style="font-size:1rem;color:rgba(255,255,255,.6);font-family:'Space Grotesk',sans-serif;font-weight:400;">USD</span></div>
+        <ul style="text-align:left;list-style:none;padding:0;margin:.9rem 0 1rem;display:flex;flex-direction:column;gap:.4rem;">
+          <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Página web 100% personalizada</li>
+          <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Logo para negocio (JPG, PNG, SVG, PDF)</li>
+          <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Formulario de contacto incluido</li>
+          <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Integración con redes sociales</li>
+          <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#fbbf24;font-size:1rem;">⚡</span> Entrega en 5–7 días hábiles</li>
+        </ul>
+      </div>
+      <button type="button" onclick="cerrarPopupOferta();openContratarModal('Página Web + Logo — Oferta Especial','$199 USD')" style="width:100%;padding:.9rem;background:linear-gradient(135deg,#f59e0b,#d97706);color:#0d0028;border:none;border-radius:14px;font-weight:900;font-size:1rem;cursor:pointer;letter-spacing:.5px;margin-bottom:.6rem;box-shadow:0 6px 24px rgba(251,191,36,.4);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+        🛒 ¡Quiero esta oferta ahora!
+      </button>
+      <a href="https://wa.me/527531627539?text=Hola%21%20Vi%20la%20oferta%20de%20P%C3%A1gina%20Web%20%2B%20Logo%20por%20%24199%20USD%20y%20me%20interesa.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" onclick="cerrarPopupOferta()" style="display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.75rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:14px;font-weight:700;font-size:.92rem;cursor:pointer;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.3);">
+        <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> Preguntar por WhatsApp
+      </a>
+      <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.8rem;cursor:pointer;" onclick="cerrarPopupOferta()">No me interesa por ahora</p>
+    </div>
+  </div>
+</div>
 
 <!-- ── MODAL CONTRATAR / COMPRAR ── -->
 <div id="contratarModal" class="modal-overlay" style="z-index:3000;" onclick="if(event.target===this)closeContratarModal()">
@@ -1898,6 +1941,19 @@ function openOfferModalLNP(){
 function closeOfferModalLNP(){
   document.getElementById('offerModalLNP').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+/* ── POPUP OFERTA ESPECIAL ── */
+function cerrarPopupOferta(){
+  var p=document.getElementById('ofertaPopup');
+  p.style.opacity='0';p.style.transition='opacity .3s';
+  setTimeout(function(){p.classList.remove('visible');p.style.opacity='';},300);
+  sessionStorage.setItem('ofertaVista','1');
+}
+if(!sessionStorage.getItem('ofertaVista')){
+  setTimeout(function(){
+    document.getElementById('ofertaPopup').classList.add('visible');
+  }, 3500);
 }
 
 /* ── CONTRATAR MODAL ── */
