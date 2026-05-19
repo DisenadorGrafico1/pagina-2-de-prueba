@@ -1101,11 +1101,10 @@ footer{
   </div>
 
   <div class="contact-wrap">
-    <form action="https://formsubmit.co/orion.creative.studio1.0@gmail.com" method="POST" enctype="multipart/form-data" class="contact-card reveal">
-      <input type="hidden" name="_subject" value="🌟 Nueva Consulta — ORION Creative Studio">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://disenadorgrafico1.github.io/ORION-Creative-Studio/?enviado=1">
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-card reveal">
+      <input type="hidden" name="access_key" value="c0e49a32-18be-459a-80bf-fc60f5003e70">
+      <input type="hidden" name="subject" value="🌟 Nueva Consulta — ORION Creative Studio">
+      <input type="hidden" name="from_name" value="ORION Creative Studio">
       <input type="hidden" name="Tipo" value="CONSULTA GENERAL">
 
       <div class="form-grid">
@@ -1268,7 +1267,7 @@ footer{
           <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Logo para negocio (JPG, PNG, SVG, PDF)</li>
           <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Formulario de contacto incluido</li>
           <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Integración con redes sociales</li>
-          <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#fbbf24;font-size:1rem;">⚡</span> Entrega en 5–7 días hábiles</li>
+          <li style="color:rgba(255,255,255,.85);font-size:.87rem;display:flex;align-items:center;gap:.5rem;"><span style="color:#fbbf24;font-size:1rem;">⚡</span> Tiempo de entrega: 2–4 días hábiles</li>
         </ul>
       </div>
       <button type="button" onclick="cerrarPopupOferta();openContratarModal('Página Web + Logo — Oferta Especial','$199 USD')" style="width:100%;padding:.9rem;background:linear-gradient(135deg,#f59e0b,#d97706);color:#0d0028;border:none;border-radius:14px;font-weight:900;font-size:1rem;cursor:pointer;letter-spacing:.5px;margin-bottom:.6rem;box-shadow:0 6px 24px rgba(251,191,36,.4);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
@@ -1279,6 +1278,26 @@ footer{
       </a>
       <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.8rem;cursor:pointer;" onclick="cerrarPopupOferta()">No me interesa por ahora</p>
     </div>
+  </div>
+</div>
+
+<!-- ── POPUP MESES SIN INTERESES ── -->
+<div id="popupMSI" style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:9998;max-width:300px;width:90%;background:linear-gradient(145deg,#0d0028,#1a003a);border:1px solid rgba(168,85,247,.5);border-radius:20px;box-shadow:0 8px 40px rgba(124,58,237,.4);animation:popupIn .5s ease;">
+  <div style="background:linear-gradient(90deg,#7c3aed,#6d28d9);border-radius:20px 20px 0 0;padding:.6rem 1rem;display:flex;align-items:center;justify-content:space-between;">
+    <span style="color:#fff;font-weight:800;font-size:.82rem;letter-spacing:.5px;">💳 MESES SIN INTERESES</span>
+    <button onclick="document.getElementById('popupMSI').style.display='none'" style="background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:1rem;line-height:1;">✕</button>
+  </div>
+  <div style="padding:1rem 1.1rem 1.2rem;">
+    <p style="color:rgba(255,255,255,.9);font-size:.85rem;font-weight:600;margin-bottom:.7rem;line-height:1.4;">¡Todos nuestros servicios disponibles a meses sin intereses!</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem;">
+      <span style="background:rgba(168,85,247,.2);border:1px solid rgba(168,85,247,.4);color:var(--purple-lt,#c084fc);border-radius:20px;padding:.2rem .6rem;font-size:.8rem;font-weight:700;">3 MSI</span>
+      <span style="background:rgba(168,85,247,.2);border:1px solid rgba(168,85,247,.4);color:var(--purple-lt,#c084fc);border-radius:20px;padding:.2rem .6rem;font-size:.8rem;font-weight:700;">6 MSI</span>
+      <span style="background:rgba(168,85,247,.2);border:1px solid rgba(168,85,247,.4);color:var(--purple-lt,#c084fc);border-radius:20px;padding:.2rem .6rem;font-size:.8rem;font-weight:700;">9 MSI</span>
+      <span style="background:rgba(168,85,247,.2);border:1px solid rgba(168,85,247,.4);color:var(--purple-lt,#c084fc);border-radius:20px;padding:.2rem .6rem;font-size:.8rem;font-weight:700;">12 MSI</span>
+      <span style="background:rgba(168,85,247,.2);border:1px solid rgba(168,85,247,.4);color:var(--purple-lt,#c084fc);border-radius:20px;padding:.2rem .6rem;font-size:.8rem;font-weight:700;">24 MSI</span>
+    </div>
+    <p style="color:rgba(255,255,255,.6);font-size:.75rem;margin-bottom:.8rem;">Pagando con tarjeta de crédito. Aplica para todos los servicios y paquetes.</p>
+    <button type="button" onclick="document.getElementById('popupMSI').style.display='none';document.querySelector('.cta-btn')" style="width:100%;padding:.55rem;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border:none;border-radius:10px;font-weight:700;font-size:.82rem;cursor:pointer;">¡Quiero pagar a meses!</button>
   </div>
 </div>
 
@@ -1947,7 +1966,12 @@ function closeOfferModalLNP(){
 function cerrarPopupOferta(){
   var p=document.getElementById('ofertaPopup');
   p.style.opacity='0';p.style.transition='opacity .3s';
-  setTimeout(function(){p.style.display='none';p.style.opacity='';},300);
+  setTimeout(function(){
+    p.style.display='none';p.style.opacity='';
+    if(!sessionStorage.getItem('msiVisto')){
+      document.getElementById('popupMSI').style.display='block';
+    }
+  },300);
   sessionStorage.setItem('ofertaVista','1');
 }
 if(!sessionStorage.getItem('ofertaVista')){
@@ -2045,50 +2069,31 @@ function continuarCompra() {
       </div>
     </div>
     <div style="padding:1.8rem 2rem;">
-      <form action="https://formsubmit.co/orion.creative.studio1.0@gmail.com" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_subject" value="🔥 OFERTA $99 — Paquete Básico Emprendedor">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="Tipo" value="⚡ OFERTA ESPECIAL $99 — Paquete Básico Emprendedor (precio regular $199)">
         <p style="color:#fca5a5;font-size:.85rem;font-weight:600;margin-bottom:1.2rem;text-align:center;">Llena el formulario para aprovechar la oferta de <strong style="color:#fff;">$99 USD</strong></p>
         <div class="form-grid">
           <div class="fg">
             <label class="lbl">Nombre Completo *</label>
-            <input type="text" name="Nombre" class="inp" placeholder="Tu nombre completo" required>
+            <input type="text" id="pbe-nombre" class="inp" placeholder="Tu nombre completo">
           </div>
           <div class="fg">
             <label class="lbl">WhatsApp / Teléfono *</label>
-            <input type="tel" name="Telefono" class="inp" placeholder="+52 000 000 0000" required>
+            <input type="tel" id="pbe-tel" class="inp" placeholder="+52 000 000 0000">
           </div>
           <div class="fg">
-            <label class="lbl">Email *</label>
-            <input type="email" name="Email" class="inp" placeholder="tu@email.com" required>
+            <label class="lbl">Email</label>
+            <input type="email" id="pbe-email" class="inp" placeholder="tu@email.com">
           </div>
           <div class="fg">
             <label class="lbl">Tipo de Negocio</label>
-            <input type="text" name="Negocio" class="inp" placeholder="Ej: Restaurante, Boutique...">
+            <input type="text" id="pbe-negocio" class="inp" placeholder="Ej: Restaurante, Boutique...">
           </div>
           <div class="fg full">
-            <label class="lbl">¿Qué quieres lograr? Descríbelo al detalle *</label>
-            <textarea name="Lo_que_quiero" class="ta" style="min-height:120px;"
-              placeholder="Cuéntanos todo: tu marca, colores favoritos, estilo deseado, público objetivo, qué sensación quieres transmitir, plataformas donde se usará..." required></textarea>
-          </div>
-          <div class="fg full">
-            <label class="lbl">¿Qué NO quieres en el diseño?</label>
-            <textarea name="Lo_que_NO_quiero" class="ta"
-              placeholder="Colores que no te gustan, estilos que no van con tu marca, elementos que definitivamente no quieres..."></textarea>
-          </div>
-          <div class="fg full">
-            <label class="lbl">Imágenes de Referencia (opcional)</label>
-            <div class="upload-zone">
-              <input type="file" name="Fotos_referencia" accept="image/*,.pdf" multiple id="pbeFileInput" onchange="var t=document.getElementById('pbeFileText');if(this.files.length){t.textContent='✅ '+this.files.length+' archivo(s): '+Array.from(this.files).map(function(f){return f.name;}).join(', ');t.style.color='#4ade80';t.style.fontWeight='700';}">
-              <div class="upload-icon">📁</div>
-              <div class="upload-txt" id="pbeFileText">Arrastra imágenes o haz clic para seleccionar</div>
-              <div class="upload-hint">PNG, JPG, PDF hasta 10 MB c/u</div>
-            </div>
+            <label class="lbl">¿Qué quieres lograr? Descríbelo al detalle</label>
+            <textarea id="pbe-detalle" class="ta" style="min-height:100px;" placeholder="Tu marca, colores favoritos, estilo deseado, plataformas donde se usará..."></textarea>
           </div>
           <div class="fg full">
             <label class="lbl">¿Cuándo lo necesitas?</label>
-            <select name="Plazo" class="sel">
+            <select id="pbe-plazo" class="sel">
               <option value="">Selecciona...</option>
               <option>Lo antes posible</option>
               <option>Esta semana</option>
@@ -2097,10 +2102,49 @@ function continuarCompra() {
             </select>
           </div>
         </div>
-        <button type="submit" style="width:100%;margin-top:1.2rem;padding:.9rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.05rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(239,68,68,.45);">
-          🔥 ¡Quiero aprovechar la oferta de $99!
+        <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:14px;padding:1rem 1.1rem;margin-top:.8rem;">
+          <div style="font-weight:700;color:#fca5a5;font-size:.9rem;margin-bottom:.7rem;"><i class="fas fa-credit-card"></i> &nbsp;Método de Pago</div>
+          <div style="margin-bottom:.7rem;">
+            <label class="lbl">¿Desde dónde pagas?</label>
+            <select id="pbe-region" class="sel" onchange="mostrarPagoOferta('pbe',this.value)">
+              <option value="">Selecciona tu región...</option>
+              <option value="mx">🇲🇽 México</option>
+              <option value="us">🇺🇸 Estados Unidos</option>
+              <option value="mundo">🌍 Resto del mundo</option>
+            </select>
+          </div>
+          <div id="pbe-pagos-mx" style="display:none;flex-direction:column;gap:.35rem;">
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Depósito bancario"> Depósito bancario</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Transferencia bancaria"> Transferencia bancaria</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Tarjeta de crédito/débito"> Tarjeta de crédito / débito</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Tarjeta — meses sin intereses"> Tarjeta con meses sin intereses</label>
+            <div id="pbe-meses-block" style="display:none;flex-wrap:wrap;gap:.4rem;padding-left:.5rem;margin-top:.4rem;">
+              <label class="mes-opt"><input type="radio" name="pbe_meses" value="3"> 3 MSI</label>
+              <label class="mes-opt"><input type="radio" name="pbe_meses" value="6"> 6 MSI</label>
+              <label class="mes-opt"><input type="radio" name="pbe_meses" value="9"> 9 MSI</label>
+              <label class="mes-opt"><input type="radio" name="pbe_meses" value="12"> 12 MSI</label>
+              <label class="mes-opt"><input type="radio" name="pbe_meses" value="24"> 24 MSI</label>
+            </div>
+          </div>
+          <div id="pbe-pagos-us" style="display:none;flex-direction:column;gap:.35rem;">
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="WhatsApp Pay (FELIX PAGO)"> WhatsApp Pay (FELIX PAGO)</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Remitly"> Remitly</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Xoom"> Xoom</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Western Union"> Western Union</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="MoneyGram"> MoneyGram</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Remesa"> Remesa</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Depósito/Transferencia banco México"> Depósito/Transferencia banco México</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="PayPal (aplica comisión)"> PayPal (aplica comisión)</label>
+          </div>
+          <div id="pbe-pagos-mundo" style="display:none;flex-direction:column;gap:.35rem;">
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="Western Union"> Western Union</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="MoneyGram"> MoneyGram</label>
+            <label class="pago-opt"><input type="radio" name="pbe_pago" value="PayPal (aplica comisión)"> PayPal (aplica comisión)</label>
+          </div>
+        </div>
+        <button type="button" onclick="enviarOfertaWA('pbe','Paquete Básico Emprendedor','$99 USD')" style="width:100%;margin-top:1.2rem;padding:.9rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.05rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(37,211,102,.35);display:flex;align-items:center;justify-content:center;gap:.5rem;">
+          <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> Continuar con la compra
         </button>
-      </form>
     </div>
   </div>
 </div>
@@ -2124,50 +2168,31 @@ function continuarCompra() {
       </div>
     </div>
     <div style="padding:1.8rem 2rem;">
-      <form action="https://formsubmit.co/orion.creative.studio1.0@gmail.com" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_subject" value="🔥 OFERTA $64 — Logo de Nombre Premium">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="Tipo" value="⚡ OFERTA ESPECIAL $64 — Logo de Nombre Premium (precio regular $79)">
         <p style="color:#fca5a5;font-size:.85rem;font-weight:600;margin-bottom:1.2rem;text-align:center;">Llena el formulario para aprovechar la oferta de <strong style="color:#fff;">$64 USD</strong></p>
         <div class="form-grid">
           <div class="fg">
             <label class="lbl">Nombre Completo *</label>
-            <input type="text" name="Nombre" class="inp" placeholder="Tu nombre completo" required>
+            <input type="text" id="lnp-nombre" class="inp" placeholder="Tu nombre completo">
           </div>
           <div class="fg">
             <label class="lbl">WhatsApp / Teléfono *</label>
-            <input type="tel" name="Telefono" class="inp" placeholder="+52 000 000 0000" required>
+            <input type="tel" id="lnp-tel" class="inp" placeholder="+52 000 000 0000">
           </div>
           <div class="fg">
-            <label class="lbl">Email *</label>
-            <input type="email" name="Email" class="inp" placeholder="tu@email.com" required>
+            <label class="lbl">Email</label>
+            <input type="email" id="lnp-email" class="inp" placeholder="tu@email.com">
           </div>
           <div class="fg">
             <label class="lbl">Tipo de Negocio</label>
-            <input type="text" name="Negocio" class="inp" placeholder="Ej: Restaurante, Boutique...">
+            <input type="text" id="lnp-negocio" class="inp" placeholder="Ej: Restaurante, Boutique...">
           </div>
           <div class="fg full">
-            <label class="lbl">¿Qué quieres lograr? Descríbelo al detalle *</label>
-            <textarea name="Lo_que_quiero" class="ta" style="min-height:120px;"
-              placeholder="Cuéntanos todo: tu nombre, colores favoritos, estilo deseado, público objetivo, qué sensación quieres transmitir, plataformas donde se usará..." required></textarea>
-          </div>
-          <div class="fg full">
-            <label class="lbl">¿Qué NO quieres en el diseño?</label>
-            <textarea name="Lo_que_NO_quiero" class="ta"
-              placeholder="Colores que no te gustan, estilos que no van con tu marca, elementos que definitivamente no quieres..."></textarea>
-          </div>
-          <div class="fg full">
-            <label class="lbl">Imágenes de Referencia (opcional)</label>
-            <div class="upload-zone">
-              <input type="file" name="Fotos_referencia" accept="image/*,.pdf" multiple id="lnpFileInput" onchange="var t=document.getElementById('lnpFileText');if(this.files.length){t.textContent='✅ '+this.files.length+' archivo(s): '+Array.from(this.files).map(function(f){return f.name;}).join(', ');t.style.color='#4ade80';t.style.fontWeight='700';}">
-              <div class="upload-icon">📁</div>
-              <div class="upload-txt" id="lnpFileText">Arrastra imágenes o haz clic para seleccionar</div>
-              <div class="upload-hint">PNG, JPG, PDF hasta 10 MB c/u</div>
-            </div>
+            <label class="lbl">¿Qué quieres lograr? Descríbelo al detalle</label>
+            <textarea id="lnp-detalle" class="ta" style="min-height:100px;" placeholder="Tu nombre, colores favoritos, estilo deseado, plataformas donde se usará..."></textarea>
           </div>
           <div class="fg full">
             <label class="lbl">¿Cuándo lo necesitas?</label>
-            <select name="Plazo" class="sel">
+            <select id="lnp-plazo" class="sel">
               <option value="">Selecciona...</option>
               <option>Lo antes posible</option>
               <option>Esta semana</option>
@@ -2176,10 +2201,49 @@ function continuarCompra() {
             </select>
           </div>
         </div>
-        <button type="submit" style="width:100%;margin-top:1.2rem;padding:.9rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.05rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(239,68,68,.45);">
-          🔥 ¡Quiero aprovechar la oferta de $64!
+        <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:14px;padding:1rem 1.1rem;margin-top:.8rem;">
+          <div style="font-weight:700;color:#fca5a5;font-size:.9rem;margin-bottom:.7rem;"><i class="fas fa-credit-card"></i> &nbsp;Método de Pago</div>
+          <div style="margin-bottom:.7rem;">
+            <label class="lbl">¿Desde dónde pagas?</label>
+            <select id="lnp-region" class="sel" onchange="mostrarPagoOferta('lnp',this.value)">
+              <option value="">Selecciona tu región...</option>
+              <option value="mx">🇲🇽 México</option>
+              <option value="us">🇺🇸 Estados Unidos</option>
+              <option value="mundo">🌍 Resto del mundo</option>
+            </select>
+          </div>
+          <div id="lnp-pagos-mx" style="display:none;flex-direction:column;gap:.35rem;">
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Depósito bancario"> Depósito bancario</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Transferencia bancaria"> Transferencia bancaria</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Tarjeta de crédito/débito"> Tarjeta de crédito / débito</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Tarjeta — meses sin intereses"> Tarjeta con meses sin intereses</label>
+            <div id="lnp-meses-block" style="display:none;flex-wrap:wrap;gap:.4rem;padding-left:.5rem;margin-top:.4rem;">
+              <label class="mes-opt"><input type="radio" name="lnp_meses" value="3"> 3 MSI</label>
+              <label class="mes-opt"><input type="radio" name="lnp_meses" value="6"> 6 MSI</label>
+              <label class="mes-opt"><input type="radio" name="lnp_meses" value="9"> 9 MSI</label>
+              <label class="mes-opt"><input type="radio" name="lnp_meses" value="12"> 12 MSI</label>
+              <label class="mes-opt"><input type="radio" name="lnp_meses" value="24"> 24 MSI</label>
+            </div>
+          </div>
+          <div id="lnp-pagos-us" style="display:none;flex-direction:column;gap:.35rem;">
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="WhatsApp Pay (FELIX PAGO)"> WhatsApp Pay (FELIX PAGO)</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Remitly"> Remitly</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Xoom"> Xoom</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Western Union"> Western Union</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="MoneyGram"> MoneyGram</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Remesa"> Remesa</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Depósito/Transferencia banco México"> Depósito/Transferencia banco México</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="PayPal (aplica comisión)"> PayPal (aplica comisión)</label>
+          </div>
+          <div id="lnp-pagos-mundo" style="display:none;flex-direction:column;gap:.35rem;">
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="Western Union"> Western Union</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="MoneyGram"> MoneyGram</label>
+            <label class="pago-opt"><input type="radio" name="lnp_pago" value="PayPal (aplica comisión)"> PayPal (aplica comisión)</label>
+          </div>
+        </div>
+        <button type="button" onclick="enviarOfertaWA('lnp','Logo de Nombre Premium','$64 USD')" style="width:100%;margin-top:1.2rem;padding:.9rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.05rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(37,211,102,.35);display:flex;align-items:center;justify-content:center;gap:.5rem;">
+          <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> Continuar con la compra
         </button>
-      </form>
     </div>
   </div>
 </div>
@@ -2207,56 +2271,31 @@ function continuarCompra() {
 
     <!-- Formulario -->
     <div style="padding:1.8rem 2rem;">
-      <form action="https://formsubmit.co/orion.creative.studio1.0@gmail.com" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_subject" value="🔥 OFERTA $159 — Logo para Negocio Premium">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="Tipo" value="⚡ OFERTA ESPECIAL $159 — Logo para Negocio Premium (precio regular $299)">
-
         <p style="color:#fca5a5;font-size:.85rem;font-weight:600;margin-bottom:1.2rem;text-align:center;">Llena el formulario para aprovechar la oferta de <strong style="color:#fff;">$159 USD</strong></p>
-
         <div class="form-grid">
           <div class="fg">
             <label class="lbl">Nombre Completo *</label>
-            <input type="text" name="Nombre" class="inp" placeholder="Tu nombre completo" required>
+            <input type="text" id="pnp-nombre" class="inp" placeholder="Tu nombre completo">
           </div>
           <div class="fg">
             <label class="lbl">WhatsApp / Teléfono *</label>
-            <input type="tel" name="Telefono" class="inp" placeholder="+52 000 000 0000" required>
+            <input type="tel" id="pnp-tel" class="inp" placeholder="+52 000 000 0000">
           </div>
           <div class="fg">
-            <label class="lbl">Email *</label>
-            <input type="email" name="Email" class="inp" placeholder="tu@email.com" required>
+            <label class="lbl">Email</label>
+            <input type="email" id="pnp-email" class="inp" placeholder="tu@email.com">
           </div>
           <div class="fg">
             <label class="lbl">Tipo de Negocio</label>
-            <input type="text" name="Negocio" class="inp" placeholder="Ej: Restaurante, Boutique...">
+            <input type="text" id="pnp-negocio" class="inp" placeholder="Ej: Restaurante, Boutique...">
           </div>
-
           <div class="fg full">
-            <label class="lbl">¿Qué quieres lograr? Descríbelo al detalle *</label>
-            <textarea name="Lo_que_quiero" class="ta" style="min-height:120px;"
-              placeholder="Cuéntanos todo: tu marca, colores favoritos, estilo deseado, público objetivo, qué sensación quieres transmitir, plataformas donde se usará, ejemplos de lo que te gusta..." required></textarea>
+            <label class="lbl">¿Qué quieres lograr? Descríbelo al detalle</label>
+            <textarea id="pnp-detalle" class="ta" style="min-height:100px;" placeholder="Tu marca, colores favoritos, estilo deseado, plataformas donde se usará..."></textarea>
           </div>
-
-          <div class="fg full">
-            <label class="lbl">¿Qué NO quieres en el diseño?</label>
-            <textarea name="Lo_que_NO_quiero" class="ta"
-              placeholder="Colores que no te gustan, estilos que no van con tu marca, elementos que definitivamente no quieres..."></textarea>
-          </div>
-
-          <div class="fg full">
-            <label class="lbl">Imágenes de Referencia (opcional)</label>
-            <div class="upload-zone">
-              <input type="file" name="Fotos_referencia" accept="image/*,.pdf" multiple id="pnpFileInput" onchange="var t=document.getElementById('pnpFileText');if(this.files.length){t.textContent='✅ '+this.files.length+' archivo(s): '+Array.from(this.files).map(function(f){return f.name;}).join(', ');t.style.color='#4ade80';t.style.fontWeight='700';}">
-              <div class="upload-icon">📁</div>
-              <div class="upload-txt" id="pnpFileText">Arrastra imágenes o haz clic para seleccionar</div>
-              <div class="upload-hint">PNG, JPG, PDF hasta 10 MB c/u</div>
-            </div>
-          </div>
-
           <div class="fg full">
             <label class="lbl">¿Cuándo lo necesitas?</label>
-            <select name="Plazo" class="sel">
+            <select id="pnp-plazo" class="sel">
               <option value="">Selecciona...</option>
               <option>Lo antes posible</option>
               <option>Esta semana</option>
@@ -2265,22 +2304,122 @@ function continuarCompra() {
             </select>
           </div>
         </div>
-
-        <button type="submit" style="width:100%;margin-top:1.2rem;padding:.9rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.05rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(239,68,68,.45);">
-          🔥 ¡Quiero aprovechar la oferta de $159!
+        <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);border-radius:14px;padding:1rem 1.1rem;margin-top:.8rem;">
+          <div style="font-weight:700;color:#fca5a5;font-size:.9rem;margin-bottom:.7rem;"><i class="fas fa-credit-card"></i> &nbsp;Método de Pago</div>
+          <div style="margin-bottom:.7rem;">
+            <label class="lbl">¿Desde dónde pagas?</label>
+            <select id="pnp-region" class="sel" onchange="mostrarPagoOferta('pnp',this.value)">
+              <option value="">Selecciona tu región...</option>
+              <option value="mx">🇲🇽 México</option>
+              <option value="us">🇺🇸 Estados Unidos</option>
+              <option value="mundo">🌍 Resto del mundo</option>
+            </select>
+          </div>
+          <div id="pnp-pagos-mx" style="display:none;flex-direction:column;gap:.35rem;">
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Depósito bancario"> Depósito bancario</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Transferencia bancaria"> Transferencia bancaria</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Tarjeta de crédito/débito"> Tarjeta de crédito / débito</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Tarjeta — meses sin intereses"> Tarjeta con meses sin intereses</label>
+            <div id="pnp-meses-block" style="display:none;flex-wrap:wrap;gap:.4rem;padding-left:.5rem;margin-top:.4rem;">
+              <label class="mes-opt"><input type="radio" name="pnp_meses" value="3"> 3 MSI</label>
+              <label class="mes-opt"><input type="radio" name="pnp_meses" value="6"> 6 MSI</label>
+              <label class="mes-opt"><input type="radio" name="pnp_meses" value="9"> 9 MSI</label>
+              <label class="mes-opt"><input type="radio" name="pnp_meses" value="12"> 12 MSI</label>
+              <label class="mes-opt"><input type="radio" name="pnp_meses" value="24"> 24 MSI</label>
+            </div>
+          </div>
+          <div id="pnp-pagos-us" style="display:none;flex-direction:column;gap:.35rem;">
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="WhatsApp Pay (FELIX PAGO)"> WhatsApp Pay (FELIX PAGO)</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Remitly"> Remitly</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Xoom"> Xoom</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Western Union"> Western Union</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="MoneyGram"> MoneyGram</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Remesa"> Remesa</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Depósito/Transferencia banco México"> Depósito/Transferencia banco México</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="PayPal (aplica comisión)"> PayPal (aplica comisión)</label>
+          </div>
+          <div id="pnp-pagos-mundo" style="display:none;flex-direction:column;gap:.35rem;">
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="Western Union"> Western Union</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="MoneyGram"> MoneyGram</label>
+            <label class="pago-opt"><input type="radio" name="pnp_pago" value="PayPal (aplica comisión)"> PayPal (aplica comisión)</label>
+          </div>
+        </div>
+        <button type="button" onclick="enviarOfertaWA('pnp','Logo para Negocio Premium','$159 USD')" style="width:100%;margin-top:1.2rem;padding:.9rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:12px;font-weight:800;font-size:1.05rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(37,211,102,.35);display:flex;align-items:center;justify-content:center;gap:.5rem;">
+          <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> Continuar con la compra
         </button>
-      </form>
     </div>
 
   </div>
 </div>
 
 <script>
-/* Los modales se insertan después del primer script, así que enlazamos los
-   inputs de archivo aquí, cuando el DOM ya está completo */
-bindFileUpload('pbeFileInput', 'pbeFileText');
-bindFileUpload('lnpFileInput', 'lnpFileText');
-bindFileUpload('pnpFileInput', 'pnpFileText');
+/* ── FUNCIONES MODALES OFERTA ── */
+function mostrarPagoOferta(prefix, region) {
+  ['mx','us','mundo'].forEach(function(r){
+    var el = document.getElementById(prefix+'-pagos-'+r);
+    if(el){ el.style.display='none'; }
+  });
+  document.querySelectorAll('[name="'+prefix+'_pago"],[name="'+prefix+'_meses"]').forEach(function(r){ r.checked=false; });
+  var mb = document.getElementById(prefix+'-meses-block');
+  if(mb) mb.style.display='none';
+  if(region){
+    var block = document.getElementById(prefix+'-pagos-'+region);
+    if(block) block.style.display='flex';
+  }
+}
+
+document.addEventListener('change', function(e){
+  ['pbe','lnp','pnp'].forEach(function(p){
+    if(e.target.name === p+'_pago'){
+      var mb = document.getElementById(p+'-meses-block');
+      if(mb){
+        mb.style.display = (e.target.value === 'Tarjeta — meses sin intereses') ? 'flex' : 'none';
+        if(e.target.value !== 'Tarjeta — meses sin intereses'){
+          document.querySelectorAll('[name="'+p+'_meses"]').forEach(function(r){ r.checked=false; });
+        }
+      }
+    }
+  });
+});
+
+function enviarOfertaWA(prefix, oferta, precio) {
+  var nombre = (document.getElementById(prefix+'-nombre')||{}).value||'';
+  var tel = (document.getElementById(prefix+'-tel')||{}).value||'';
+  var email = (document.getElementById(prefix+'-email')||{}).value||'';
+  var negocio = (document.getElementById(prefix+'-negocio')||{}).value||'';
+  var detalle = (document.getElementById(prefix+'-detalle')||{}).value||'';
+  var plazoEl = document.getElementById(prefix+'-plazo');
+  var plazo = plazoEl ? plazoEl.options[plazoEl.selectedIndex].text : '';
+  var regionEl = document.getElementById(prefix+'-region');
+  var region = regionEl ? regionEl.options[regionEl.selectedIndex].text : '';
+  var metodo = '';
+  var pagoCheck = document.querySelector('[name="'+prefix+'_pago"]:checked');
+  if(pagoCheck) metodo = pagoCheck.value;
+  var meses = '';
+  var mesesCheck = document.querySelector('[name="'+prefix+'_meses"]:checked');
+  if(mesesCheck) meses = mesesCheck.value;
+
+  if(!nombre.trim() || !tel.trim()){
+    alert('Por favor ingresa tu nombre y WhatsApp para continuar.');
+    return;
+  }
+
+  var msg = '¡Hola ORION! 🔥 Quiero aprovechar la oferta especial.\n\n';
+  msg += '📋 *DATOS DEL PEDIDO*\n';
+  msg += '🎁 Oferta: ' + oferta + ' — ' + precio + '\n';
+  msg += '👤 Nombre: ' + nombre + '\n';
+  msg += '📱 WhatsApp: ' + tel + '\n';
+  if(email) msg += '📧 Email: ' + email + '\n';
+  if(negocio) msg += '🏢 Negocio: ' + negocio + '\n';
+  if(detalle) msg += '📝 Detalles: ' + detalle + '\n';
+  if(plazo && plazo !== 'Selecciona...') msg += '⏰ Plazo: ' + plazo + '\n';
+  msg += '\n💳 *MÉTODO DE PAGO*\n';
+  if(region && region !== 'Selecciona tu región...') msg += '📍 Región: ' + region + '\n';
+  if(metodo){ msg += '💰 Forma de pago: ' + metodo; if(meses) msg += ' — ' + meses + ' meses sin intereses'; msg += '\n'; }
+  msg += '\n¡Quiero aprovechar esta oferta ahora! ✅';
+
+  window.open('https://wa.me/527531627539?text=' + encodeURIComponent(msg), '_blank');
+}
 </script>
 </body>
 </html>
