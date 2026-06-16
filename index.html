@@ -661,6 +661,321 @@ footer{
 .mes-opt{display:flex;align-items:center;gap:.4rem;color:var(--txt);cursor:pointer;font-size:.88rem;padding:.35rem .7rem;border:1px solid rgba(168,85,247,.3);border-radius:20px;transition:all .2s;}
 .mes-opt:hover{background:rgba(168,85,247,.15);border-color:var(--purple-lt);}
 .mes-opt input[type="radio"]{accent-color:var(--purple-lt);}
+
+/* ── WELCOME MODAL ── */
+#premiumLogoWelcomeModal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(2, 0, 15, 0.93);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  padding: 1.5rem;
+}
+#premiumLogoWelcomeModal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.welcome-modal-box {
+  background: linear-gradient(135deg, rgba(13, 0, 40, 0.98), rgba(2, 0, 15, 0.98));
+  border: 1.5px solid var(--gold);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  box-shadow: 0 0 50px rgba(251, 191, 36, 0.25), 0 0 100px rgba(168, 85, 247, 0.15);
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  overflow: hidden;
+  position: relative;
+}
+#premiumLogoWelcomeModal.open .welcome-modal-box {
+  transform: scale(1) translateY(0);
+}
+.welcome-modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid var(--border);
+  color: var(--txt2);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 10;
+}
+.welcome-modal-close:hover {
+  background: rgba(251, 191, 36, 0.25);
+  color: #fff;
+  border-color: var(--gold);
+}
+.welcome-modal-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.welcome-modal-visual {
+  background: rgba(2, 0, 15, 0.5);
+  border-left: 1px solid rgba(168, 85, 247, 0.15);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.2rem;
+  overflow: hidden;
+  min-height: 350px;
+}
+.welcome-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  color: #02000f;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+.welcome-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, #fff 30%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.welcome-desc {
+  color: var(--txt2);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+}
+.welcome-feats {
+  margin-bottom: 1.8rem;
+}
+.welcome-feats li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--txt);
+  margin-bottom: 0.65rem;
+}
+.welcome-feats li i {
+  color: var(--gold);
+  font-size: 0.95rem;
+}
+.welcome-price-area {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.welcome-price {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+.welcome-price-usd {
+  font-size: 1rem;
+  color: var(--txt3);
+  font-weight: 600;
+}
+.welcome-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.8rem;
+  background: linear-gradient(135deg, var(--gold-dk), var(--gold));
+  color: #02000f;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.98rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.35);
+  width: 100%;
+}
+.welcome-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.5);
+}
+.welcome-secondary-btn {
+  display: block;
+  text-align: center;
+  background: transparent;
+  color: var(--glow);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  padding: 0.75rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s;
+  margin-top: 0.8rem;
+  width: 100%;
+}
+.welcome-secondary-btn:hover {
+  background: rgba(168, 85, 247, 0.1);
+  border-color: var(--purple-lt);
+  color: #fff;
+}
+.welcome-skip {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--txt3);
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+.welcome-skip:hover {
+  color: #fff;
+}
+
+/* Carousel Inner Styles */
+.welcome-carousel {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.welcome-carousel-stage {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  background: rgba(2, 0, 15, 0.3);
+}
+.welcome-carousel-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.welcome-carousel-slide.active {
+  display: flex;
+  animation: welcomeFadeIn 0.4s ease-in-out;
+}
+.welcome-carousel-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+.welcome-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(13, 0, 40, 0.85);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: var(--glow);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.28s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+.welcome-carousel-arrow:hover {
+  background: rgba(124, 58, 237, 0.4);
+  border-color: var(--purple-lt);
+  color: #fff;
+}
+.welcome-carousel-prev {
+  left: -0.25rem;
+}
+.welcome-carousel-next {
+  right: -0.25rem;
+}
+.welcome-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+.welcome-carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  cursor: pointer;
+  transition: all 0.28s;
+}
+.welcome-carousel-dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+  transform: scale(1.3);
+}
+
+@keyframes welcomeFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media(max-width: 768px) {
+  .welcome-modal-box {
+    grid-template-columns: 1fr;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .welcome-modal-content {
+    padding: 1.8rem 1.5rem 1.2rem;
+  }
+  .welcome-modal-visual {
+    border-left: none;
+    border-top: 1px solid rgba(168, 85, 247, 0.15);
+    padding: 1.5rem;
+    min-height: 280px;
+  }
+  .welcome-carousel-stage {
+    height: 220px;
+  }
+}
 </style>
 </head>
 <body>
@@ -1246,6 +1561,66 @@ footer{
 </div>
 </div><!-- /page -->
 
+<!-- ── BIENVENIDA / LOGO PREMIUM MODAL ── -->
+<div id="premiumLogoWelcomeModal" role="dialog" aria-modal="true" style="display:none;">
+  <div class="welcome-modal-box">
+    <!-- Close -->
+    <button class="welcome-modal-close" onclick="closePremiumLogoWelcomeModal()" aria-label="Cerrar">✕</button>
+    
+    <!-- Left panel: Info & Pricing -->
+    <div class="welcome-modal-content">
+      <span class="welcome-badge">⭐ Diseño Premium ⭐</span>
+      <h2 class="welcome-title">Logo de Nombre Premium</h2>
+      <p class="welcome-desc">Transforma tu nombre en un logo con estilo visual exclusivo de alto impacto. Diseñado para proyectar tu marca personal o profesional al máximo nivel con todos los formatos y variantes listas para cualquier uso.</p>
+      
+      <ul class="welcome-feats">
+        <li><i class="fas fa-check-circle"></i> Archivos JPG, PNG, SVG, PDF (todos los formatos)</li>
+        <li><i class="fas fa-check-circle"></i> Variantes del logo (blanco, negro, color)</li>
+        <li><i class="fas fa-check-circle"></i> Estilo visual premium y de alto impacto</li>
+        <li><i class="fas fa-check-circle"></i> Revisiones y modificaciones ilimitadas</li>
+        <li><i class="fas fa-check-circle"></i> Archivos vectoriales editables incluidos</li>
+      </ul>
+      
+      <div class="welcome-price-area">
+        <span class="welcome-price">$79</span>
+        <span class="welcome-price-usd">USD</span>
+      </div>
+      
+      <button class="welcome-cta" onclick="closePremiumLogoWelcomeModal(); openContratarModal('Logo de Nombre Premium','$79 USD')">
+        <i class="fas fa-crown"></i> Contratar por $79 USD
+      </button>
+      
+      <button class="welcome-secondary-btn" onclick="closePremiumLogoWelcomeModal(); openGallery('logo-nombre-premium')">
+        <i class="fas fa-eye"></i> Ver Galería de Ejemplos
+      </button>
+      
+      <div class="welcome-skip" onclick="closePremiumLogoWelcomeModal()">Continuar al sitio web</div>
+    </div>
+    
+    <!-- Right panel: Examples carousel -->
+    <div class="welcome-modal-visual">
+      <div class="welcome-carousel">
+        <div class="welcome-carousel-stage" id="welcomeCarouselStage">
+          <!-- Slides loaded dynamically by JS -->
+        </div>
+        
+        <!-- Arrows -->
+        <button class="welcome-carousel-arrow welcome-carousel-prev" id="welcomeCarouselPrev" onclick="prevWelcomeSlide()" type="button">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="welcome-carousel-arrow welcome-carousel-next" id="welcomeCarouselNext" onclick="nextWelcomeSlide()" type="button">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Dots -->
+        <div class="welcome-carousel-dots" id="welcomeCarouselDots">
+          <!-- Dots loaded dynamically by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── POPUP OFERTA ESPECIAL ── -->
 <div id="ofertaPopup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(2,0,15,.88);backdrop-filter:blur(12px);align-items:flex-start;justify-content:center;padding:4rem 1rem 1rem;overflow-y:auto;">
   <div style="position:relative;width:100%;max-width:440px;background:linear-gradient(145deg,#0d0028,#1a003a);border:1px solid rgba(251,191,36,.45);border-radius:22px;overflow:hidden;box-shadow:0 0 60px rgba(251,191,36,.22),0 0 30px rgba(124,58,237,.25);animation:popupIn .5s ease;margin-bottom:1rem;">
@@ -1729,6 +2104,156 @@ function closeGallery(){
   document.body.style.overflow = '';
 }
 
+/* ── CONTROLES BIENVENIDA MODAL LOGO PREMIUM ── */
+let welcomeCurIndex = 0;
+let welcomeSlides = [];
+let welcomeCarouselInterval = null;
+
+function openPremiumLogoWelcomeModal() {
+  const modal = document.getElementById('premiumLogoWelcomeModal');
+  if(!modal) return;
+  
+  // Populate slides dynamically from galleries if not already loaded
+  if(welcomeSlides.length === 0 && typeof galleries !== 'undefined' && galleries['logo-nombre-premium']) {
+    // We can select the first 8 slides for the preview carousel to keep it punchy
+    welcomeSlides = galleries['logo-nombre-premium'].slides.slice(0, 8);
+  }
+  
+  modal.style.display = 'flex';
+  // Allow DOM to update style.display before adding class to trigger CSS transition
+  setTimeout(() => {
+    modal.classList.add('open');
+  }, 10);
+  
+  document.body.style.overflow = 'hidden';
+  welcomeCurIndex = 0;
+  
+  renderWelcomeDots();
+  renderWelcomeSlides();
+  startWelcomeCarouselAutoPlay();
+}
+
+function closePremiumLogoWelcomeModal() {
+  const modal = document.getElementById('premiumLogoWelcomeModal');
+  if(!modal) return;
+  
+  modal.classList.remove('open');
+  stopWelcomeCarouselAutoPlay();
+  
+  setTimeout(() => {
+    modal.style.display = 'none';
+    // Trigger the other original popups after the welcome modal closes
+    triggerOriginalPopupsAfterWelcome();
+  }, 400); // match CSS transition duration
+  
+  document.body.style.overflow = '';
+  sessionStorage.setItem('welcomeLogoVisto', '1');
+}
+
+function renderWelcomeSlides() {
+  const stage = document.getElementById('welcomeCarouselStage');
+  if(!stage || welcomeSlides.length === 0) return;
+  
+  stage.innerHTML = '';
+  const s = welcomeSlides[welcomeCurIndex];
+  
+  const slide = document.createElement('div');
+  slide.className = 'welcome-carousel-slide active';
+  slide.innerHTML = `<img src="${s.src}" alt="${s.label}">`;
+  stage.appendChild(slide);
+  
+  // Update dots active state
+  const dots = document.querySelectorAll('.welcome-carousel-dot');
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === welcomeCurIndex);
+  });
+}
+
+function renderWelcomeDots() {
+  const dotsContainer = document.getElementById('welcomeCarouselDots');
+  if(!dotsContainer) return;
+  
+  dotsContainer.innerHTML = '';
+  welcomeSlides.forEach((_, idx) => {
+    const dot = document.createElement('div');
+    dot.className = 'welcome-carousel-dot' + (idx === 0 ? ' active' : '');
+    dot.onclick = function() {
+      goToWelcomeSlide(idx);
+    };
+    dotsContainer.appendChild(dot);
+  });
+}
+
+function nextWelcomeSlide() {
+  if(welcomeSlides.length === 0) return;
+  welcomeCurIndex = (welcomeCurIndex + 1) % welcomeSlides.length;
+  renderWelcomeSlides();
+  resetWelcomeCarouselTimer();
+}
+
+function prevWelcomeSlide() {
+  if(welcomeSlides.length === 0) return;
+  welcomeCurIndex = (welcomeCurIndex - 1 + welcomeSlides.length) % welcomeSlides.length;
+  renderWelcomeSlides();
+  resetWelcomeCarouselTimer();
+}
+
+function goToWelcomeSlide(idx) {
+  welcomeCurIndex = idx;
+  renderWelcomeSlides();
+  resetWelcomeCarouselTimer();
+}
+
+function startWelcomeCarouselAutoPlay() {
+  stopWelcomeCarouselAutoPlay();
+  welcomeCarouselInterval = setInterval(nextWelcomeSlide, 3500);
+}
+
+function stopWelcomeCarouselAutoPlay() {
+  if(welcomeCarouselInterval) {
+    clearInterval(welcomeCarouselInterval);
+    welcomeCarouselInterval = null;
+  }
+}
+
+function resetWelcomeCarouselTimer() {
+  startWelcomeCarouselAutoPlay();
+}
+
+// Add arrow key navigation and Escape key listener for welcome modal
+document.addEventListener('keydown', e => {
+  const modal = document.getElementById('premiumLogoWelcomeModal');
+  if(modal && modal.classList.contains('open')) {
+    if(e.key === 'ArrowRight') {
+      nextWelcomeSlide();
+    } else if(e.key === 'ArrowLeft') {
+      prevWelcomeSlide();
+    } else if(e.key === 'Escape') {
+      closePremiumLogoWelcomeModal();
+    }
+  }
+});
+
+// Trigger Welcome Modal shortly after load
+document.addEventListener('DOMContentLoaded', () => {
+  if(!sessionStorage.getItem('welcomeLogoVisto')) {
+    setTimeout(openPremiumLogoWelcomeModal, 500);
+  } else {
+    // If welcome modal was already seen in this session, trigger original popup timer directly
+    triggerOriginalPopupsAfterWelcome();
+  }
+});
+
+function triggerOriginalPopupsAfterWelcome() {
+  if(!sessionStorage.getItem('ofertaVista')){
+    setTimeout(function(){
+      var p=document.getElementById('ofertaPopup');
+      if (p) p.style.display='flex';
+    }, 3500);
+  }
+}
+
+
 /* ── OFERTA LOGO NEGOCIO PREMIUM ── */
 (function(){
   const OFFER_MS  = 10 * 60 * 1000;
@@ -1991,12 +2516,7 @@ function cerrarPopupOferta(){
   },300);
   sessionStorage.setItem('ofertaVista','1');
 }
-if(!sessionStorage.getItem('ofertaVista')){
-  setTimeout(function(){
-    var p=document.getElementById('ofertaPopup');
-    p.style.display='flex';
-  }, 3500);
-}
+// Oferta popup is triggered dynamically by closePremiumLogoWelcomeModal() or DOMContentLoaded
 
 /* ── CONTRATAR MODAL ── */
 function openContratarModal(servicio, precio) {
