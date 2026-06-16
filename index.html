@@ -812,8 +812,8 @@ footer{
   justify-content: center;
   gap: 0.5rem;
   padding: 0.95rem 1.8rem;
-  background: linear-gradient(135deg, var(--gold-dk), var(--gold));
-  color: #02000f;
+  background: linear-gradient(135deg, var(--wa), #128c7e);
+  color: #fff;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
   font-size: 0.98rem;
@@ -822,12 +822,12 @@ footer{
   cursor: pointer;
   letter-spacing: 0.5px;
   transition: transform 0.25s, box-shadow 0.25s;
-  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.35);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
   width: 100%;
 }
 .welcome-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(251, 191, 36, 0.5);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.55);
 }
 .welcome-secondary-btn {
   display: block;
@@ -960,20 +960,65 @@ footer{
 @media(max-width: 768px) {
   .welcome-modal-box {
     grid-template-columns: 1fr;
-    max-height: 85vh;
-    overflow-y: auto;
+    max-height: 95vh;
+    width: 95%;
+    margin: auto;
+    border-radius: 16px;
   }
   .welcome-modal-content {
-    padding: 1.8rem 1.5rem 1.2rem;
+    padding: 1rem 1rem 0.5rem;
+    align-items: center;
+    text-align: center;
   }
   .welcome-modal-visual {
     border-left: none;
-    border-top: 1px solid rgba(168, 85, 247, 0.15);
-    padding: 1.5rem;
-    min-height: 280px;
+    border-top: none;
+    padding: 0.2rem 1rem 1rem;
+    min-height: auto;
   }
   .welcome-carousel-stage {
-    height: 220px;
+    height: 150px;
+  }
+  .welcome-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+  }
+  .welcome-desc {
+    display: none; /* Hide description to fit on one screen without scroll */
+  }
+  .welcome-badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .welcome-feats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+    width: 100%;
+    text-align: left;
+  }
+  .welcome-feats li {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+  .welcome-price-area {
+    margin-bottom: 0.7rem;
+  }
+  .welcome-price {
+    font-size: 1.6rem;
+  }
+  .welcome-cta {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+  .welcome-secondary-btn {
+    display: none; /* Hide secondary gallery button to prevent overflow */
+  }
+  .welcome-skip {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
   }
 }
 </style>
@@ -1587,7 +1632,7 @@ footer{
       </div>
       
       <button class="welcome-cta" onclick="closePremiumLogoWelcomeModal(); openContratarModal('Logo de Nombre Premium','$79 USD')">
-        <i class="fas fa-crown"></i> Contratar por $79 USD
+        <i class="fab fa-whatsapp"></i> Contratar por $79 USD
       </button>
       
       <button class="welcome-secondary-btn" onclick="closePremiumLogoWelcomeModal(); openGallery('logo-nombre-premium')">
@@ -2147,7 +2192,6 @@ function closePremiumLogoWelcomeModal() {
   }, 400); // match CSS transition duration
   
   document.body.style.overflow = '';
-  sessionStorage.setItem('welcomeLogoVisto', '1');
 }
 
 function renderWelcomeSlides() {
@@ -2236,12 +2280,7 @@ document.addEventListener('keydown', e => {
 
 // Trigger Welcome Modal shortly after load
 document.addEventListener('DOMContentLoaded', () => {
-  if(!sessionStorage.getItem('welcomeLogoVisto')) {
-    setTimeout(openPremiumLogoWelcomeModal, 500);
-  } else {
-    // If welcome modal was already seen in this session, trigger original popup timer directly
-    triggerOriginalPopupsAfterWelcome();
-  }
+  setTimeout(openPremiumLogoWelcomeModal, 500);
 });
 
 function triggerOriginalPopupsAfterWelcome() {
