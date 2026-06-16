@@ -663,7 +663,7 @@ footer{
 .mes-opt input[type="radio"]{accent-color:var(--purple-lt);}
 
 /* ── WELCOME MODAL ── */
-#premiumLogoWelcomeModal {
+#premiumLogoWelcomeModal, #logoNegocioPremiumPopup {
   position: fixed;
   inset: 0;
   z-index: 99999;
@@ -678,7 +678,7 @@ footer{
   transition: opacity 0.4s ease;
   padding: 1.5rem;
 }
-#premiumLogoWelcomeModal.open {
+#premiumLogoWelcomeModal.open, #logoNegocioPremiumPopup.open {
   opacity: 1;
   pointer-events: all;
 }
@@ -697,7 +697,7 @@ footer{
   overflow: hidden;
   position: relative;
 }
-#premiumLogoWelcomeModal.open .welcome-modal-box {
+#premiumLogoWelcomeModal.open .welcome-modal-box, #logoNegocioPremiumPopup.open .welcome-modal-box {
   transform: scale(1) translateY(0);
 }
 .welcome-modal-close {
@@ -1631,7 +1631,7 @@ footer{
         <span class="welcome-price-usd">USD</span>
       </div>
       
-      <button class="welcome-cta" onclick="closePremiumLogoWelcomeModal(); openContratarModal('Logo de Nombre Premium','$79 USD')">
+      <button class="welcome-cta" onclick="closePremiumLogoWelcomeModal(true); openContratarModal('Logo de Nombre Premium','$79 USD')">
         <i class="fab fa-whatsapp"></i> Contratar por $79 USD
       </button>
       
@@ -1666,6 +1666,66 @@ footer{
   </div>
 </div>
 
+<!-- ── POPUP LOGO PARA NEGOCIO PREMIUM ── -->
+<div id="logoNegocioPremiumPopup" role="dialog" aria-modal="true" style="display:none;">
+  <div class="welcome-modal-box">
+    <!-- Close -->
+    <button class="welcome-modal-close" onclick="closeLogoNegocioPremiumPopup()" aria-label="Cerrar">✕</button>
+    
+    <!-- Left panel: Info & Pricing -->
+    <div class="welcome-modal-content">
+      <span class="welcome-badge">⭐ Diseño Premium ⭐</span>
+      <h2 class="welcome-title">Logo para Negocio Premium</h2>
+      <p class="welcome-desc">El logo premium de tu negocio, con estilo visual de alto impacto y todos los formatos para proyectarte al máximo nivel profesional.</p>
+      
+      <ul class="welcome-feats">
+        <li><i class="fas fa-check-circle"></i> Archivos JPG, PNG, SVG, PDF (todos los formatos)</li>
+        <li><i class="fas fa-check-circle"></i> Múltiples variantes y paleta de colores</li>
+        <li><i class="fas fa-check-circle"></i> Revisiones y modificaciones ilimitadas</li>
+        <li><i class="fas fa-check-circle"></i> Propuesta de imagen visual del logo en tu negocio</li>
+        <li><i class="fas fa-check-circle"></i> Tarjeta de presentación de regalo lista para imprimir</li>
+      </ul>
+      
+      <div class="welcome-price-area">
+        <span class="welcome-price">$159</span>
+        <span class="welcome-price-usd">USD</span>
+      </div>
+      
+      <button class="welcome-cta" onclick="closeLogoNegocioPremiumPopup(true); openContratarModal('Logo para Negocio Premium','$159 USD')">
+        <i class="fab fa-whatsapp"></i> Contratar por $159 USD
+      </button>
+      
+      <button class="welcome-secondary-btn" onclick="closeLogoNegocioPremiumPopup(); openGallery('logo-negocio-premium')">
+        <i class="fas fa-eye"></i> Ver Galería de Ejemplos
+      </button>
+      
+      <div class="welcome-skip" onclick="closeLogoNegocioPremiumPopup()">Continuar al sitio web</div>
+    </div>
+    
+    <!-- Right panel: Examples carousel -->
+    <div class="welcome-modal-visual">
+      <div class="welcome-carousel">
+        <div class="welcome-carousel-stage" id="businessWelcomeCarouselStage">
+          <!-- Slides loaded dynamically by JS -->
+        </div>
+        
+        <!-- Arrows -->
+        <button class="welcome-carousel-arrow welcome-carousel-prev" id="businessWelcomeCarouselPrev" onclick="prevBusinessWelcomeSlide()" type="button">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="welcome-carousel-arrow welcome-carousel-next" id="businessWelcomeCarouselNext" onclick="nextBusinessWelcomeSlide()" type="button">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Dots -->
+        <div class="welcome-carousel-dots" id="businessWelcomeCarouselDots">
+          <!-- Dots loaded dynamically by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── POPUP OFERTA ESPECIAL ── -->
 <div id="ofertaPopup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(2,0,15,.88);backdrop-filter:blur(12px);align-items:flex-start;justify-content:center;padding:4rem 1rem 1rem;overflow-y:auto;">
   <div style="position:relative;width:100%;max-width:440px;background:linear-gradient(145deg,#0d0028,#1a003a);border:1px solid rgba(251,191,36,.45);border-radius:22px;overflow:hidden;box-shadow:0 0 60px rgba(251,191,36,.22),0 0 30px rgba(124,58,237,.25);animation:popupIn .5s ease;margin-bottom:1rem;">
@@ -1691,7 +1751,7 @@ footer{
           <li style="color:rgba(255,255,255,.85);font-size:.82rem;display:flex;align-items:center;gap:.4rem;"><span style="color:#fbbf24;font-size:.9rem;">⚡</span> Tiempo de entrega: 2–4 días hábiles</li>
         </ul>
       </div>
-      <button type="button" onclick="cerrarPopupOferta();openContratarModal('Página Web + Logo — Oferta Especial','$199 USD')" style="width:100%;padding:.75rem;background:linear-gradient(135deg,#f59e0b,#d97706);color:#0d0028;border:none;border-radius:12px;font-weight:900;font-size:.92rem;cursor:pointer;letter-spacing:.5px;margin-bottom:.5rem;box-shadow:0 5px 20px rgba(251,191,36,.4);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+      <button type="button" onclick="cerrarPopupOferta(true);openContratarModal('Página Web + Logo — Oferta Especial','$199 USD')" style="width:100%;padding:.75rem;background:linear-gradient(135deg,#f59e0b,#d97706);color:#0d0028;border:none;border-radius:12px;font-weight:900;font-size:.92rem;cursor:pointer;letter-spacing:.5px;margin-bottom:.5rem;box-shadow:0 5px 20px rgba(251,191,36,.4);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
         🛒 ¡Quiero esta oferta ahora!
       </button>
       <a href="https://wa.me/527531627539?text=Hola%21%20Vi%20la%20oferta%20de%20P%C3%A1gina%20Web%20%2B%20Logo%20por%20%24199%20USD%20y%20me%20interesa.%20%C2%BFMe%20pueden%20dar%20m%C3%A1s%20informaci%C3%B3n%3F" target="_blank" onclick="cerrarPopupOferta()" style="display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.65rem;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:.85rem;cursor:pointer;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,.3);">
@@ -2149,7 +2209,37 @@ function closeGallery(){
   document.body.style.overflow = '';
 }
 
-/* ── CONTROLES BIENVENIDA MODAL LOGO PREMIUM ── */
+/* ── CONTROLES DE LA SECUENCIA DE VENTANAS FLOTANTES ── */
+let currentModalStep = 0; // 0: Welcome Modal, 1: Oferta Popup, 2: Logo Negocio Premium, 3: MSI Popup, 4: Done
+let waitingForCheckout = false;
+
+function advanceModalSequence() {
+  currentModalStep++;
+  
+  if (currentModalStep === 1) {
+    // Step 1: Open Oferta Popup after 3.5 seconds
+    setTimeout(function() {
+      var p = document.getElementById('ofertaPopup');
+      if (p) {
+        p.style.display = 'flex';
+        p.style.opacity = '1';
+      }
+    }, 3500);
+  } else if (currentModalStep === 2) {
+    // Step 2: Open Logo Negocio Premium Popup after 3.5 seconds
+    setTimeout(function() {
+      openLogoNegocioPremiumPopup();
+    }, 3500);
+  } else if (currentModalStep === 3) {
+    // Step 3: Open MSI Popup after 3.5 seconds
+    setTimeout(function() {
+      var p = document.getElementById('popupMSI');
+      if (p) p.style.display = 'block';
+    }, 3500);
+  }
+}
+
+/* ── CONTROLES MODAL 1: LOGO DE NOMBRE PREMIUM (WELCOME) ── */
 let welcomeCurIndex = 0;
 let welcomeSlides = [];
 let welcomeCarouselInterval = null;
@@ -2158,14 +2248,11 @@ function openPremiumLogoWelcomeModal() {
   const modal = document.getElementById('premiumLogoWelcomeModal');
   if(!modal) return;
   
-  // Populate slides dynamically from galleries if not already loaded
   if(welcomeSlides.length === 0 && typeof galleries !== 'undefined' && galleries['logo-nombre-premium']) {
-    // We can select the first 8 slides for the preview carousel to keep it punchy
     welcomeSlides = galleries['logo-nombre-premium'].slides.slice(0, 8);
   }
   
   modal.style.display = 'flex';
-  // Allow DOM to update style.display before adding class to trigger CSS transition
   setTimeout(() => {
     modal.classList.add('open');
   }, 10);
@@ -2178,7 +2265,7 @@ function openPremiumLogoWelcomeModal() {
   startWelcomeCarouselAutoPlay();
 }
 
-function closePremiumLogoWelcomeModal() {
+function closePremiumLogoWelcomeModal(isHiring) {
   const modal = document.getElementById('premiumLogoWelcomeModal');
   if(!modal) return;
   
@@ -2187,9 +2274,12 @@ function closePremiumLogoWelcomeModal() {
   
   setTimeout(() => {
     modal.style.display = 'none';
-    // Trigger the other original popups after the welcome modal closes
-    triggerOriginalPopupsAfterWelcome();
-  }, 400); // match CSS transition duration
+    if (isHiring) {
+      waitingForCheckout = true;
+    } else {
+      advanceModalSequence();
+    }
+  }, 400);
   
   document.body.style.overflow = '';
 }
@@ -2206,8 +2296,7 @@ function renderWelcomeSlides() {
   slide.innerHTML = `<img src="${s.src}" alt="${s.label}">`;
   stage.appendChild(slide);
   
-  // Update dots active state
-  const dots = document.querySelectorAll('.welcome-carousel-dot');
+  const dots = document.querySelectorAll('#welcomeCarouselDots .welcome-carousel-dot');
   dots.forEach((dot, idx) => {
     dot.classList.toggle('active', idx === welcomeCurIndex);
   });
@@ -2264,10 +2353,124 @@ function resetWelcomeCarouselTimer() {
   startWelcomeCarouselAutoPlay();
 }
 
-// Add arrow key navigation and Escape key listener for welcome modal
+/* ── CONTROLES MODAL 3: LOGO PARA NEGOCIO PREMIUM ── */
+let businessWelcomeCurIndex = 0;
+let businessWelcomeSlides = [];
+let businessWelcomeCarouselInterval = null;
+
+function openLogoNegocioPremiumPopup() {
+  const modal = document.getElementById('logoNegocioPremiumPopup');
+  if(!modal) return;
+  
+  if(businessWelcomeSlides.length === 0 && typeof galleries !== 'undefined' && galleries['logo-negocio-premium']) {
+    businessWelcomeSlides = galleries['logo-negocio-premium'].slides.slice(0, 8);
+  }
+  
+  modal.style.display = 'flex';
+  setTimeout(() => {
+    modal.classList.add('open');
+  }, 10);
+  
+  document.body.style.overflow = 'hidden';
+  businessWelcomeCurIndex = 0;
+  
+  renderBusinessWelcomeDots();
+  renderBusinessWelcomeSlides();
+  startBusinessWelcomeCarouselAutoPlay();
+}
+
+function closeLogoNegocioPremiumPopup(isHiring) {
+  const modal = document.getElementById('logoNegocioPremiumPopup');
+  if(!modal) return;
+  
+  modal.classList.remove('open');
+  stopBusinessWelcomeCarouselAutoPlay();
+  
+  setTimeout(() => {
+    modal.style.display = 'none';
+    if (isHiring) {
+      waitingForCheckout = true;
+    } else {
+      advanceModalSequence();
+    }
+  }, 400);
+  
+  document.body.style.overflow = '';
+}
+
+function renderBusinessWelcomeSlides() {
+  const stage = document.getElementById('businessWelcomeCarouselStage');
+  if(!stage || businessWelcomeSlides.length === 0) return;
+  
+  stage.innerHTML = '';
+  const s = businessWelcomeSlides[businessWelcomeCurIndex];
+  
+  const slide = document.createElement('div');
+  slide.className = 'welcome-carousel-slide active';
+  slide.innerHTML = `<img src="${s.src}" alt="${s.label}">`;
+  stage.appendChild(slide);
+  
+  const dots = document.querySelectorAll('#businessWelcomeCarouselDots .welcome-carousel-dot');
+  dots.forEach((dot, idx) => {
+    dot.classList.toggle('active', idx === businessWelcomeCurIndex);
+  });
+}
+
+function renderBusinessWelcomeDots() {
+  const dotsContainer = document.getElementById('businessWelcomeCarouselDots');
+  if(!dotsContainer) return;
+  
+  dotsContainer.innerHTML = '';
+  businessWelcomeSlides.forEach((_, idx) => {
+    const dot = document.createElement('div');
+    dot.className = 'welcome-carousel-dot' + (idx === 0 ? ' active' : '');
+    dot.onclick = function() {
+      goToBusinessWelcomeSlide(idx);
+    };
+    dotsContainer.appendChild(dot);
+  });
+}
+
+function nextBusinessWelcomeSlide() {
+  if(businessWelcomeSlides.length === 0) return;
+  businessWelcomeCurIndex = (businessWelcomeCurIndex + 1) % businessWelcomeSlides.length;
+  renderBusinessWelcomeSlides();
+  resetBusinessWelcomeCarouselTimer();
+}
+
+function prevBusinessWelcomeSlide() {
+  if(businessWelcomeSlides.length === 0) return;
+  businessWelcomeCurIndex = (businessWelcomeCurIndex - 1 + businessWelcomeSlides.length) % businessWelcomeSlides.length;
+  renderBusinessWelcomeSlides();
+  resetBusinessWelcomeCarouselTimer();
+}
+
+function goToBusinessWelcomeSlide(idx) {
+  businessWelcomeCurIndex = idx;
+  renderBusinessWelcomeSlides();
+  resetBusinessWelcomeCarouselTimer();
+}
+
+function startBusinessWelcomeCarouselAutoPlay() {
+  stopBusinessWelcomeCarouselAutoPlay();
+  businessWelcomeCarouselInterval = setInterval(nextBusinessWelcomeSlide, 3500);
+}
+
+function stopBusinessWelcomeCarouselAutoPlay() {
+  if(businessWelcomeCarouselInterval) {
+    clearInterval(businessWelcomeCarouselInterval);
+    businessWelcomeCarouselInterval = null;
+  }
+}
+
+function resetBusinessWelcomeCarouselTimer() {
+  startBusinessWelcomeCarouselAutoPlay();
+}
+
+/* ── EVENTOS DE TECLADO Y CARGA INICIAL ── */
 document.addEventListener('keydown', e => {
-  const modal = document.getElementById('premiumLogoWelcomeModal');
-  if(modal && modal.classList.contains('open')) {
+  const welcomeModal = document.getElementById('premiumLogoWelcomeModal');
+  if(welcomeModal && welcomeModal.classList.contains('open')) {
     if(e.key === 'ArrowRight') {
       nextWelcomeSlide();
     } else if(e.key === 'ArrowLeft') {
@@ -2276,21 +2479,23 @@ document.addEventListener('keydown', e => {
       closePremiumLogoWelcomeModal();
     }
   }
+  
+  const businessModal = document.getElementById('logoNegocioPremiumPopup');
+  if(businessModal && businessModal.classList.contains('open')) {
+    if(e.key === 'ArrowRight') {
+      nextBusinessWelcomeSlide();
+    } else if(e.key === 'ArrowLeft') {
+      prevBusinessWelcomeSlide();
+    } else if(e.key === 'Escape') {
+      closeLogoNegocioPremiumPopup();
+    }
+  }
 });
 
-// Trigger Welcome Modal shortly after load
+// Trigger Welcome Modal shortly after load (Starts the sequence)
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(openPremiumLogoWelcomeModal, 500);
 });
-
-function triggerOriginalPopupsAfterWelcome() {
-  if(!sessionStorage.getItem('ofertaVista')){
-    setTimeout(function(){
-      var p=document.getElementById('ofertaPopup');
-      if (p) p.style.display='flex';
-    }, 3500);
-  }
-}
 
 
 /* ── OFERTA LOGO NEGOCIO PREMIUM ── */
@@ -2544,16 +2749,18 @@ function closeOfferModalLNP(){
 }
 
 /* ── POPUP OFERTA ESPECIAL ── */
-function cerrarPopupOferta(){
+function cerrarPopupOferta(isHiring){
   var p=document.getElementById('ofertaPopup');
+  if(!p) return;
   p.style.opacity='0';p.style.transition='opacity .3s';
   setTimeout(function(){
     p.style.display='none';p.style.opacity='';
-    if(!sessionStorage.getItem('msiVisto')){
-      document.getElementById('popupMSI').style.display='block';
+    if (isHiring) {
+      waitingForCheckout = true;
+    } else {
+      advanceModalSequence();
     }
   },300);
-  sessionStorage.setItem('ofertaVista','1');
 }
 // Oferta popup is triggered dynamically by closePremiumLogoWelcomeModal() or DOMContentLoaded
 
@@ -2573,6 +2780,10 @@ function openContratarModal(servicio, precio) {
 }
 function closeContratarModal() {
   document.getElementById('contratarModal').classList.remove('open');
+  if (typeof waitingForCheckout !== 'undefined' && waitingForCheckout) {
+    waitingForCheckout = false;
+    advanceModalSequence();
+  }
 }
 function mostrarPagos(region) {
   ['pagos-mx','pagos-us','pagos-mundo'].forEach(function(id){ document.getElementById(id).style.display='none'; });
@@ -2611,6 +2822,7 @@ function continuarCompra() {
   if(metodo){ msg += '💰 Forma de pago: ' + metodo; if(meses) msg += ' — ' + meses + ' meses sin intereses'; msg += '\n'; }
   msg += '\nPor favor confírmame los detalles para continuar. ✅';
   window.open('https://wa.me/527531627539?text=' + encodeURIComponent(msg), '_blank');
+  closeContratarModal();
 }
 
 </script>
