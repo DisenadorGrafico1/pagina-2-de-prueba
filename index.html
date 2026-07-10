@@ -257,7 +257,7 @@ section{padding:6.5rem 2rem;position:relative;}
   text-transform: none !important;
 }
 
-.title-curso-label {
+.ia-section-label.title-curso-label {
   font-family: 'Caveat', cursive !important;
   font-size: clamp(2rem, 5vw, 3.3rem) !important;
   font-weight: 700 !important;
@@ -275,11 +275,16 @@ section{padding:6.5rem 2rem;position:relative;}
   transform: none !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 0.8rem;
+  flex-direction: row !important;
+  justify-content: center !important;
+  width: auto !important;
+  box-sizing: border-box !important;
+  gap: 0.8rem !important;
 }
-.title-curso-label i {
+.ia-section-label.title-curso-label i {
   color: #000000 !important;
   -webkit-text-fill-color: initial !important;
+  display: inline-block !important;
 }
 .sec-desc{color:var(--txt2);max-width:580px;margin:0 auto;font-size:1.05rem;}
 .inner{max-width:1200px;margin:0 auto;}
