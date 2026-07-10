@@ -3217,6 +3217,7 @@ h1, h2, h3, h4, h5, h6,
       <input type="hidden" name="subject" value="🌟 Nueva Consulta — ORION Creative Studio">
       <input type="hidden" name="from_name" value="ORION Creative Studio">
       <input type="hidden" name="Tipo" value="CONSULTA GENERAL">
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
       <div class="form-grid">
         <div class="fg">
@@ -4777,12 +4778,12 @@ document.addEventListener('change', function(e){
   }
 });
 function continuarCompra() {
-  var nombre = document.getElementById('cm-nombre').value.trim();
-  var tel = document.getElementById('cm-tel').value.trim();
-  var email = document.getElementById('cm-email').value.trim();
-  var servicio = document.getElementById('cm-servicio').value.trim();
-  var precio = document.getElementById('cModal-precio').textContent.trim();
-  var detalles = document.getElementById('cm-detalles').value.trim();
+  var nombre = sanitizeInput(document.getElementById('cm-nombre').value);
+  var tel = sanitizeInput(document.getElementById('cm-tel').value);
+  var email = sanitizeInput(document.getElementById('cm-email').value);
+  var servicio = sanitizeInput(document.getElementById('cm-servicio').value);
+  var precio = sanitizeInput(document.getElementById('cModal-precio').textContent);
+  var detalles = sanitizeInput(document.getElementById('cm-detalles').value);
   var regionSel = document.getElementById('cm-region');
   var region = regionSel.options[regionSel.selectedIndex] ? regionSel.options[regionSel.selectedIndex].text : '';
   var metodo = document.querySelector('[name="metodoPago"]:checked') ? document.querySelector('[name="metodoPago"]:checked').value : '';
@@ -5472,13 +5473,13 @@ function handleDrawBack() {
 
 // Submit Quotation + canvas upload to tmpfiles.org and Web3Forms notification
 function submitSketchQuotation() {
-  var name = document.getElementById('drawClientName').value.trim();
-  var phone = document.getElementById('drawClientPhone').value.trim();
-  var email = document.getElementById('drawClientEmail').value.trim();
-  var colors = document.getElementById('drawLogoColors').value.trim();
-  var use = document.getElementById('drawLogoUse').value.trim();
-  var features = document.getElementById('drawFeatures').value.trim();
-  var notes = document.getElementById('drawNotes').value.trim();
+  var name = sanitizeInput(document.getElementById('drawClientName').value);
+  var phone = sanitizeInput(document.getElementById('drawClientPhone').value);
+  var email = sanitizeInput(document.getElementById('drawClientEmail').value);
+  var colors = sanitizeInput(document.getElementById('drawLogoColors').value);
+  var use = sanitizeInput(document.getElementById('drawLogoUse').value);
+  var features = sanitizeInput(document.getElementById('drawFeatures').value);
+  var notes = sanitizeInput(document.getElementById('drawNotes').value);
   
   if (!name || !phone || !email) {
     alert('Por favor completa todos los campos requeridos (Nombre, WhatsApp e Email).');
@@ -5765,6 +5766,18 @@ function initAiAssistant() {
   };
 
   window.renderAiHome = renderAiHome;
+}
+
+// Helper sanitize function to prevent DOM XSS or text injection
+function sanitizeInput(str) {
+  if (!str) return '';
+  return str.toString()
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;")
+    .replace(/\//g, "&#x2F;")
+    .trim();
 }
 
 // Start AI Assistant when DOM is ready
