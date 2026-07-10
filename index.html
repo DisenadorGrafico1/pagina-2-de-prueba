@@ -2306,7 +2306,7 @@ h1, h2, h3, h4, h5, h6,
     <!-- Hero actions row -->
     <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 1.5rem auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
       <a href="#portafolio" class="btn-hero-portfolio nav-scroll" style="margin: 0 !important;"><i class="fas fa-image"></i> Ver Portafolio</a>
-      <button onclick="openDibujoModal()" class="btn-hero-portfolio" style="margin: 0 !important; background: var(--purple) !important; color: #ffffff !important; border-color: var(--purple) !important; box-shadow: 0 0 15px rgba(47, 92, 255, 0.3) !important; cursor: pointer;"><i class="fas fa-paint-brush"></i> Dibujar idea de mi logo y cotizar</button>
+      <button onclick="openDibujoModal()" class="btn-hero-portfolio" style="margin: 0 !important; background: var(--purple) !important; color: #ffffff !important; border-color: var(--purple) !important; box-shadow: 0 0 15px rgba(47, 92, 255, 0.3) !important; cursor: pointer;"><i class="fas fa-paint-brush"></i> HACER BOCETO DE MI LOGO Y COTIZAR</button>
     </div>
 
 
@@ -4838,8 +4838,8 @@ function enviarOfertaWA(prefix, oferta, precio) {
 }
 
 /* ── INTERACTIVE CANVAS DRAWING & SKETCH MODAL LOGIC ── */
-var canvas = document.getElementById('sketchCanvas');
-var ctx = canvas ? canvas.getContext('2d') : null;
+var sketchCanvas = document.getElementById('sketchCanvas');
+var sketchCtx = sketchCanvas ? sketchCanvas.getContext('2d') : null;
 var isDrawing = false;
 var lastX = 0;
 var lastY = 0;
@@ -4856,22 +4856,22 @@ function openDibujoModal() {
 
 // Sizing canvas properly inside its bounding box
 function initCanvas() {
-  if (!canvas || !ctx) return;
+  if (!sketchCanvas || !sketchCtx) return;
   
   // Set size dynamically based on wrapper width
-  var rect = canvas.parentNode.getBoundingClientRect();
-  canvas.width = rect.width;
-  canvas.height = 280; // Fixed visual height
+  var rect = sketchCanvas.parentNode.getBoundingClientRect();
+  sketchCanvas.width = rect.width;
+  sketchCanvas.height = 280; // Fixed visual height
 
   // Set line cap and joins for smooth drawing
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
-  ctx.strokeStyle = brushColor;
-  ctx.lineWidth = brushSize;
+  sketchCtx.lineCap = 'round';
+  sketchCtx.lineJoin = 'round';
+  sketchCtx.strokeStyle = brushColor;
+  sketchCtx.lineWidth = brushSize;
 
   // Fill canvas with white color by default so it saves properly (not transparent)
-  ctx.fillStyle = '#ffffff';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  sketchCtx.fillStyle = '#ffffff';
+  sketchCtx.fillRect(0, 0, sketchCanvas.width, sketchCanvas.height);
 }
 
 // Close drawing modal
@@ -4902,15 +4902,15 @@ function resetDrawingModal() {
   document.getElementById('drawFeatures').value = '';
   document.getElementById('drawNotes').value = '';
   
-  if (canvas) initCanvas();
+  if (sketchCanvas) initCanvas();
 }
 
 // Event Listeners for drawing using unified PointerEvents (Mouse & Touch)
-if (canvas) {
-  canvas.addEventListener('pointerdown', startDrawing);
-  canvas.addEventListener('pointermove', draw);
-  canvas.addEventListener('pointerup', stopDrawing);
-  canvas.addEventListener('pointerleave', stopDrawing);
+if (sketchCanvas) {
+  sketchCanvas.addEventListener('pointerdown', startDrawing);
+  sketchCanvas.addEventListener('pointermove', draw);
+  sketchCanvas.addEventListener('pointerup', stopDrawing);
+  sketchCanvas.addEventListener('pointerleave', stopDrawing);
 }
 
 function startDrawing(e) {
@@ -4921,16 +4921,16 @@ function startDrawing(e) {
 }
 
 function draw(e) {
-  if (!isDrawing || !ctx) return;
+  if (!isDrawing || !sketchCtx) return;
   e.preventDefault(); // Prevents scroll on mobile touches
   
   var coords = getCoordinates(e);
-  ctx.beginPath();
-  ctx.moveTo(lastX, lastY);
-  ctx.lineTo(coords.x, coords.y);
-  ctx.strokeStyle = isEraser ? '#ffffff' : brushColor;
-  ctx.lineWidth = brushSize;
-  ctx.stroke();
+  sketchCtx.beginPath();
+  sketchCtx.moveTo(lastX, lastY);
+  sketchCtx.lineTo(coords.x, coords.y);
+  sketchCtx.strokeStyle = isEraser ? '#ffffff' : brushColor;
+  sketchCtx.lineWidth = brushSize;
+  sketchCtx.stroke();
   
   lastX = coords.x;
   lastY = coords.y;
@@ -4941,7 +4941,7 @@ function stopDrawing() {
 }
 
 function getCoordinates(e) {
-  var rect = canvas.getBoundingClientRect();
+  var rect = sketchCanvas.getBoundingClientRect();
   return {
     x: e.clientX - rect.left,
     y: e.clientY - rect.top
@@ -4959,7 +4959,7 @@ document.querySelectorAll('.color-dot').forEach(function(dot) {
     isEraser = false;
     
     brushColor = dot.getAttribute('data-color');
-    if (ctx) ctx.strokeStyle = brushColor;
+    if (sketchCtx) sketchCtx.strokeStyle = brushColor;
   });
 });
 
@@ -5045,7 +5045,7 @@ function submitSketchQuotation() {
   btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
   // Convert canvas to Blob (file upload object)
-  canvas.toBlob(function(blob) {
+  sketchCanvas.toBlob(function(blob) {
     var formData = new FormData();
     // Web3Forms Public Access Key
     formData.append('access_key', '8ef2a6d7-84a1-432d-9477-96a8ebc5ce32');
