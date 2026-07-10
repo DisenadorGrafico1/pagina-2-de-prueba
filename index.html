@@ -1682,27 +1682,57 @@ span[id*="countdown"], span[style*="color:#ef4444"], span[style*="color: #ef4444
   .nav-menu {
     display: flex !important;
     flex-direction: row !important;
+    flex-wrap: nowrap !important;
     position: static !important;
     background: transparent !important;
     padding: 0 !important;
     border: none !important;
-    gap: clamp(4px, 1.5vw, 10px) !important;
+    gap: 4px !important;
     justify-content: center !important;
     width: 100% !important;
   }
   
   nav {
-    padding: 0.5rem 0.8rem !important;
+    padding: 0.4rem 0.2rem !important;
   }
   
   .nav-menu a {
-    font-size: clamp(9px, 2vw, 12px) !important;
-    letter-spacing: 0.1px !important;
-    padding: 0.2rem 0.3rem !important;
+    font-size: 8px !important;
+    letter-spacing: 0.05px !important;
+    padding: 0.15rem 0.25rem !important;
   }
   
   .nav-wa {
-    display: none !important;
+    display: inline-flex !important;
+    background: linear-gradient(135deg, var(--wa), #128c7e) !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    font-size: 8px !important;
+    padding: 0.15rem 0.3rem !important;
+    margin-left: 2px !important;
+  }
+
+  /* Move hero section content down on mobile so it doesn't touch the fixed navbar */
+  #inicio {
+    padding-top: 7rem !important;
+  }
+
+  /* Portfolio captions styled neatly at the foot of photos on mobile */
+  .portfolio-info {
+    padding: 0.5rem 0.6rem !important;
+    transform: translateY(0) !important; /* Always visible on mobile */
+  }
+
+  .portfolio-title {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.1rem !important;
+  }
+
+  .portfolio-desc {
+    font-size: 0.58rem !important;
+    opacity: 0.85 !important;
+    transform: translateY(0) !important;
+    line-height: 1.25 !important;
   }
 }
 
@@ -1725,11 +1755,15 @@ h1, h2, h3, h4, h5, h6,
   display: none !important;
 }
 
-/* Make card titles larger and editorial */
+/* Make card titles larger and editorial - Desktop only */
+@media (min-width: 769px) {
+  .card-title {
+    font-size: 1.45rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.8rem !important;
+  }
+}
 .card-title {
-  font-size: 1.45rem !important;
-  line-height: 1.25 !important;
-  margin-bottom: 0.8rem !important;
   color: var(--txt) !important;
 }
 
@@ -2040,9 +2074,15 @@ h1, h2, h3, h4, h5, h6,
 .sec-head { position: relative; overflow: visible; }
 .pkg-grid { position: relative; overflow: visible; }
 
-/* Responsive: hide mascots on very small screens */
-@media (max-width: 600px) {
-  .mascot-svg { display: none; }
+/* Responsive: keep mascots on mobile but scale them down */
+@media (max-width: 768px) {
+  .mascot-svg {
+    display: block !important;
+  }
+  .mascot-sm { width: 35px !important; }
+  .mascot-md { width: 50px !important; }
+  .mascot-lg { width: 65px !important; }
+  .mascot-xl { width: 85px !important; }
 }
 </style>
 </head>
@@ -2498,7 +2538,7 @@ h1, h2, h3, h4, h5, h6,
     </div>
 
     <div class="pkg featured reveal">
-      <div class="pkg-crown">🚀 TOP</div>
+      <div class="pkg-crown">TOP</div>
       <div class="pkg-name">Paquete Completo TOP</div>
       <div class="pkg-tag">Todo lo que necesitas para despegar</div>
       <div class="pkg-price c-gold"><sup>$</sup>1,299 <span style="font-size:1.2rem;font-weight:400;color:var(--txt3)">USD</span></div>
