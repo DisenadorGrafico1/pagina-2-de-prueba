@@ -20,7 +20,7 @@
 <meta name="twitter:title"       content="ORION Creative Studio | Diseño · Publicidad · IA">
 <meta name="twitter:description" content="Creamos identidades visuales poderosas, estrategias de publicidad efectivas y soluciones integrales para que tu negocio conquiste el universo.">
 <meta name="twitter:image"       content="https://disenadorgrafico1.github.io/ORION-Creative-Studio/og-preview.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* ============================================================
@@ -1021,9 +1021,1052 @@ footer{
     font-size: 0.7rem;
   }
 }
+
+/* ============================================================
+   PORTFOLIO GALLERY
+============================================================ */
+#portafolio {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+  animation: fadeUp .9s ease .4s both;
+}
+
+.filter-btn {
+  background: rgba(124,58,237,0.06);
+  border: 1px solid var(--border);
+  color: var(--txt2);
+  padding: 0.6rem 1.6rem;
+  border-radius: 50px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+.filter-btn:hover {
+  background: rgba(168,85,247,0.15);
+  color: #fff;
+  border-color: var(--purple-lt);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.2);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--purple), var(--purple-mid));
+  color: #fff;
+  border-color: var(--glow);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+  min-height: 200px;
+}
+
+.portfolio-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 0, 38, 0.85) 100%);
+  z-index: 2;
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+}
+
+.portfolio-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--purple-lt);
+  box-shadow: 0 20px 45px rgba(124, 58, 237, 0.28);
+}
+
+.portfolio-card:hover img {
+  transform: scale(1.08);
+}
+
+.portfolio-card:hover::before {
+  opacity: 0.95;
+}
+
+.portfolio-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 3;
+  transform: translateY(10px);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-card:hover .portfolio-info {
+  transform: translateY(0);
+}
+
+.portfolio-category {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  color: var(--glow);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.portfolio-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+.portfolio-desc {
+  font-size: 0.75rem;
+  color: var(--txt2);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+  line-height: 1.4;
+}
+
+.portfolio-card:hover .portfolio-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-zoom-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(10, 0, 38, 0.7);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: var(--glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+  backdrop-filter: blur(5px);
+}
+
+.portfolio-card:hover .portfolio-zoom-btn {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.portfolio-zoom-btn:hover {
+  background: var(--purple);
+  color: #fff;
+  border-color: var(--glow);
+  box-shadow: 0 0 15px var(--glow);
+}
+
+.portfolio-load-more {
+  text-align: center;
+  margin-top: 2rem;
+  animation: fadeUp .9s ease .6s both;
+}
+
+.portfolio-load-more .btn-outline {
+  padding: 0.8rem 2.2rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+/* ============================================================
+   FLAT SYSTEM REDESIGN & GRADIENT OVERRIDES (NO GRADIENTS)
+============================================================ */
+:root {
+  --bg:        #ffffff;       /* Pure solid white */
+  --bg2:       #faf9f6;       /* Soft warm bone-white for secondary sections */
+  --card:      #ffffff;       /* Cards are solid white */
+  --purple:    #2f5cff;       /* Keep the gorgeous Electric Cobalt Blue! */
+  --purple-mid:#1b3bb3;
+  --purple-lt: #6088ff;
+  --glow:      #121214;       /* Text/contrast is deep charcoal */
+  --pink:      #ff2a85;       /* Solid Hot Pink */
+  --gold:      #e5b000;       /* Muted solid gold for light mode (increased contrast) */
+  --gold-dk:   #b88d00;
+  --txt:       #121214;       /* Main text is deep dark slate */
+  --txt2:      #52525e;       /* Secondary text is slate gray */
+  --txt3:      #82828e;       /* Muted text is warm gray */
+  --border:    rgba(0, 0, 0, 0.08); /* Clean light borders */
+  --border-focus: #2f5cff;
+  --wa:        #00c853;       /* Safe solid green for WhatsApp on white background */
+}
+
+/* Hide Nebula blobs */
+.nebula {
+  display: none !important;
+}
+
+/* Base Body Override */
+body {
+  background: var(--bg) !important;
+  color: var(--txt) !important;
+}
+
+/* Card overrides */
+.card, .pkg, .curso-card, .contact-card, .modal-box, .welcome-modal-box, .welcome-carousel-stage {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.card:hover, .pkg:hover, .curso-card:hover {
+  border-color: var(--purple) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 30px rgba(47, 92, 255, 0.15) !important;
+}
+
+/* Remove gradient pseudo-elements */
+.card::after, .pkg::after, .card::before, .pkg::before,
+.pkg.featured::before, .card.gold-card::after {
+  display: none !important;
+}
+
+/* Button & CTA overrides */
+.btn, .btn-purple, .btn-outline, .cta-btn, .submit-btn, .pkg-cta, .btn-ejemplos, .welcome-carousel-arrow {
+  background: var(--card) !important;
+  color: var(--txt) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-purple, .submit-btn, .pkg-cta, .cta-purple, button.submit-btn {
+  background: var(--purple) !important;
+  color: #fff !important;
+  border-color: var(--purple) !important;
+}
+
+.btn-purple:hover, .submit-btn:hover, .pkg-cta:hover, .cta-purple:hover {
+  background: transparent !important;
+  color: var(--purple) !important;
+  border-color: var(--purple) !important;
+}
+
+.btn-outline, .btn-ejemplos {
+  background: transparent !important;
+  color: var(--purple) !important;
+  border: 1px solid var(--purple) !important;
+}
+
+.btn-outline:hover, .btn-ejemplos:hover {
+  background: var(--purple) !important;
+  color: #fff !important;
+  border-color: var(--purple) !important;
+}
+
+.cta-gold, .welcome-cta {
+  background: var(--gold) !important;
+  color: #000 !important;
+  border-color: var(--gold) !important;
+}
+
+.cta-gold:hover, .welcome-cta:hover {
+  background: transparent !important;
+  color: var(--gold) !important;
+  border-color: var(--gold) !important;
+}
+
+/* Float Buttons overrides */
+.wa-float {
+  background: var(--wa) !important;
+  box-shadow: 0 4px 20px rgba(0, 229, 117, 0.25) !important;
+}
+
+.wa-float:hover {
+  background: #00c864 !important;
+}
+
+.email-float {
+  background: var(--purple) !important;
+  box-shadow: 0 4px 20px rgba(47, 92, 255, 0.25) !important;
+}
+
+.email-float:hover {
+  background: var(--purple-mid) !important;
+}
+
+/* Badges & Titles text overrides */
+.hero-badge, .sec-badge, .card-top-badge, .pkg-crown {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--txt2) !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+}
+
+.hero-h1 .l1, .hero-h1 .l2, .sec-title, .stat-n, .ia-section-label, .ia-icon {
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  color: var(--txt) !important;
+}
+
+.hero-h1 .l2, .stat-n, .ia-icon {
+  color: var(--purple) !important;
+}
+
+.cat-label::after {
+  background: var(--border) !important;
+}
+
+/* Form component inputs overrides */
+.inp, .sel, .ta {
+  background: #121215 !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  color: var(--txt) !important;
+}
+
+.inp:focus, .sel:focus, .ta:focus {
+  border-color: var(--purple) !important;
+  box-shadow: 0 0 0 2px rgba(47, 92, 255, 0.15) !important;
+}
+
+/* Portfolio grid cards and zoom flat styles */
+.portfolio-card {
+  background: var(--card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+.portfolio-card::before {
+  background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 12, 0.95) 100%) !important;
+}
+
+.portfolio-zoom-btn {
+  background: #121215 !important;
+  border: 1px solid var(--border) !important;
+  color: var(--purple) !important;
+  box-shadow: none !important;
+}
+
+.portfolio-zoom-btn:hover {
+  background: var(--purple) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(47, 92, 255, 0.3) !important;
+}
+
+/* Specific inline-style gradient overrides for popups/modals */
+#ofertaPopup, #popupMSI, #logoNegocioPremiumPopup, #contratarModal {
+  background-color: rgba(10, 10, 12, 0.96) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+/* Inline background gradients clean-up */
+div[style*="background:linear-gradient"], 
+div[style*="background: linear-gradient"],
+button[style*="background:linear-gradient"],
+button[style*="background: linear-gradient"] {
+  background: var(--purple) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+button[id="lnp-buy-btn"], button[id="pnp-buy-btn"], button[onclick*="openOfferModal"] {
+  background: #ef4444 !important; /* Keep warning color flat */
+  border-color: #ef4444 !important;
+  color: #fff !important;
+}
+
+button[id="lnp-buy-btn"]:hover, button[id="pnp-buy-btn"]:hover {
+  background: transparent !important;
+  color: #ef4444 !important;
+}
+
+/* Navigation link hover/active colors */
+.nav-menu a:hover, .nav-menu a.active {
+  color: var(--purple) !important;
+}
+
+/* Light mode section overrides */
+#curso, #contacto, footer {
+  background: var(--bg2) !important;
+  border-top: 1px solid var(--border) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(24px) !important;
+}
+
+/* Modal and Popups backdrop override */
+#ofertaPopup, #popupMSI, #logoNegocioPremiumPopup, #contratarModal, #premiumLogoWelcomeModal, #ejemplosModal {
+  background-color: rgba(2, 0, 15, 0.85) !important; /* Dark semi-transparent overlay backdrop */
+  backdrop-filter: blur(10px) !important;
+  color: #f5f5f7 !important;
+}
+
+/* Light card hover overlays */
+.portfolio-card::before {
+  background: linear-gradient(180deg, transparent 40%, rgba(255, 255, 255, 0.96) 100%) !important;
+}
+
+.portfolio-title {
+  color: var(--txt) !important;
+}
+
+.portfolio-desc {
+  color: var(--txt2) !important;
+}
+
+/* Fix popups title/desc text colors in light mode */
+.welcome-title, .modal-title, #ofertaPopup h2, #ofertaPopup p, #popupMSI h4, #popupMSI p {
+  color: var(--txt) !important;
+}
+
+/* Form component inputs overrides in light mode */
+.inp, .sel, .ta {
+  background: #f5f5f7 !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  color: var(--txt) !important;
+}
+
+/* Logo visibility overrides (invert white to black on white background) */
+.hero-logo, .footer-logo-img {
+  filter: invert(1) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.05)) !important;
+}
+
+/* Responsive Mobile 2-column Grid Overrides */
+@media (max-width: 768px) {
+  .portfolio-grid, .grid-4, .pkg-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.8rem !important;
+  }
+  
+  .card {
+    padding: 1rem !important;
+    border-radius: 10px !important;
+  }
+  
+  .pkg {
+    padding: 1.4rem 1rem !important;
+    border-radius: 14px !important;
+  }
+  
+  .card-icon {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1rem !important;
+    margin-bottom: 0.8rem !important;
+    border-radius: 8px !important;
+  }
+  
+  .card-title, .pkg-name {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+  
+  .card-desc, .pkg-tag {
+    font-size: 0.7rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.8rem !important;
+  }
+  
+  .price {
+    font-size: 1.15rem !important;
+  }
+  
+  .price-note {
+    font-size: 0.65rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+  
+  .pkg-price {
+    font-size: 1.65rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .card-feats, .pkg-list {
+    margin-bottom: 0.8rem !important;
+  }
+  
+  .card-feats li, .pkg-list li {
+    font-size: 0.68rem !important;
+    padding: 0.15rem 0 !important;
+    gap: 0.3rem !important;
+  }
+  
+  .btn, .cta-btn, .pkg-cta, .btn-ejemplos {
+    padding: 0.5rem 0.8rem !important;
+    font-size: 0.72rem !important;
+    border-radius: 6px !important;
+  }
+  
+  .btn-ejemplos {
+    margin-top: 0.4rem !important;
+    width: 100% !important;
+    display: block !important;
+    text-align: center !important;
+  }
+}
+
+/* Spacing Optimization (Reduce excess vertical whitespace) */
+section {
+  padding: 3.5rem 2rem !important;
+}
+
+#inicio {
+  padding: 5.5rem 2rem 2.5rem !important;
+  min-height: auto !important;
+}
+
+.hero-stats {
+  margin-top: 2.5rem !important;
+  padding-top: 2rem !important;
+}
+
+.sec-head {
+  margin-bottom: 2.5rem !important;
+}
+
+.portfolio-filters {
+  margin-bottom: 2rem !important;
+}
+
+/* Modal popup text readability and box overrides */
+#ofertaPopup > div, 
+#popupMSI, 
+#logoNegocioPremiumPopup > .welcome-modal-box, 
+#premiumLogoWelcomeModal > .welcome-modal-box, 
+#contratarModal > .modal-box, 
+#ejemplosModal > .modal-box {
+  background: #121215 !important; /* Solid dark slate */
+  border: 2px solid var(--purple) !important; /* Thick electric blue neon border outline */
+  border-radius: 20px !important;
+  color: #f5f5f7 !important; /* Highly readable bone-white text */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+  overflow: hidden !important;
+}
+
+#ofertaPopup > div *, 
+#popupMSI *, 
+#logoNegocioPremiumPopup > .welcome-modal-box *, 
+#premiumLogoWelcomeModal > .welcome-modal-box *, 
+#contratarModal > .modal-box *, 
+#ejemplosModal > .modal-box * {
+  color: #f5f5f7;
+}
+
+#ofertaPopup h2, 
+#logoNegocioPremiumPopup h2, 
+#premiumLogoWelcomeModal h2, 
+.welcome-title, 
+.modal-title,
+#popupMSI h4 {
+  color: #ffffff !important; /* Pure bold white titles */
+  font-weight: 800 !important;
+}
+
+#ofertaPopup .price, #popupMSI .price, #contratarModal .price, #ejemplosModal .price {
+  color: var(--purple) !important;
+}
+
+#ofertaPopup span, #popupMSI span, #contratarModal span, #logoNegocioPremiumPopup span, #premiumLogoWelcomeModal span {
+  color: #9e9eab; /* Secondary light gray text */
+}
+
+/* Force specific colors for elements inside modals */
+#ofertaPopup [style*="color:#fff"], #ofertaPopup [style*="color: #fff"],
+#popupMSI [style*="color:#fff"], #popupMSI [style*="color: #fff"],
+#contratarModal [style*="color:#fff"], #contratarModal [style*="color: #fff"],
+#ofertaPopup button, #popupMSI button, #logoNegocioPremiumPopup button, #premiumLogoWelcomeModal button, #contratarModal button,
+#ofertaPopup button *, #popupMSI button *, #logoNegocioPremiumPopup button *, #premiumLogoWelcomeModal button *, #contratarModal button * {
+  color: #ffffff !important; /* Button text is crisp white */
+}
+
+span[id*="countdown"], span[style*="color:#ef4444"], span[style*="color: #ef4444"], .countdown {
+  color: #ef4444 !important; /* Keep alerts red */
+}
+
+/* Carousel stage and logo frame backgrounds (not white, but elegant dark gray) */
+.welcome-carousel-stage, 
+.modal-stage, 
+#welcomeCarouselStage, 
+#businessWelcomeCarouselStage, 
+#modalStage {
+  background: #1a1a22 !important; /* Solid dark background for logo frame */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+}
+
+/* Modal carousel arrow buttons styling */
+.modal-arrow, 
+.welcome-carousel-arrow, 
+#welcomeCarouselPrev, 
+#welcomeCarouselNext, 
+#businessWelcomeCarouselPrev, 
+#businessWelcomeCarouselNext {
+  background: var(--purple) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--purple) !important;
+  opacity: 1 !important;
+  border-radius: 50% !important;
+}
+
+.modal-arrow:hover, 
+.welcome-carousel-arrow:hover {
+  background: #ffffff !important;
+  color: var(--purple) !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(47, 92, 255, 0.45) !important;
+}
+
+.welcome-carousel-dot {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.welcome-carousel-dot.active {
+  background: var(--purple) !important;
+}
+
+/* Mobile Single-Line Horizontal Navigation Menu */
+@media (max-width: 768px) {
+  .hamburger {
+    display: none !important;
+  }
+  
+  .nav-menu {
+    display: flex !important;
+    flex-direction: row !important;
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    gap: clamp(4px, 1.5vw, 10px) !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+  
+  nav {
+    padding: 0.5rem 0.8rem !important;
+  }
+  
+  .nav-menu a {
+    font-size: clamp(9px, 2vw, 12px) !important;
+    letter-spacing: 0.1px !important;
+    padding: 0.2rem 0.3rem !important;
+  }
+  
+  .nav-wa {
+    display: none !important;
+  }
+}
+
+/* Global Premium Typography Overrides */
+body, p, span, li, label, input, select, textarea, button {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6, 
+.sec-title, .card-title, .pkg-name, .logo-txt, .nav-menu a, 
+.welcome-title, .modal-title, .step-name {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  text-transform: uppercase !important;
+}
+
+/* Hide service icons and AI course icons */
+.card-icon, .ia-icon {
+  display: none !important;
+}
+
+/* Make card titles larger and editorial */
+.card-title {
+  font-size: 1.45rem !important;
+  line-height: 1.25 !important;
+  margin-bottom: 0.8rem !important;
+  color: var(--txt) !important;
+}
+
+/* Spacing and padding for cards without icons */
+.card {
+  padding-top: 1.8rem !important;
+}
+
+/* AI Course Section (Light-Mode Override for Cost Boxes & Methodologies Card) */
+.precio-box {
+  background: var(--bg2) !important; /* Soft warm bone-white background */
+  border: 1px solid var(--border) !important;
+  color: var(--txt) !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+}
+
+.precio-val {
+  color: var(--purple) !important; /* Stand-out Electric Cobalt Blue value */
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+.precio-lbl {
+  color: var(--txt2) !important;
+  font-size: 0.82rem !important;
+}
+
+.curso-card {
+  background: #ffffff !important; /* Solid white background */
+  border: 1px solid var(--border) !important;
+  border-radius: 20px !important;
+  padding: 2rem !important;
+}
+
+.steps-lbl {
+  color: var(--purple) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+.step {
+  background: #f5f5f7 !important; /* Clean light gray */
+  border: 1px solid var(--border) !important;
+  color: var(--txt) !important;
+  border-radius: 10px !important;
+}
+
+.step:hover {
+  background: #ffffff !important;
+  border-color: var(--purple) !important;
+}
+
+.step-num {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  color: var(--purple) !important;
+  background: rgba(47, 92, 255, 0.1) !important;
+  border-radius: 6px !important;
+}
+
+.step-arrow {
+  color: var(--purple) !important;
+}
+
+/* MSI Popup tag readability fixes */
+#popupMSI span[style*="background:rgba(168,85,247"] {
+  background: rgba(47, 92, 255, 0.15) !important;
+  border: 1px solid rgba(47, 92, 255, 0.3) !important;
+  color: #6088ff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+#popupMSI div span {
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+
+/* Step Popover Close button style */
+.step-popover-close {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  padding: 0.35rem 0.8rem !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-family: 'Outfit', sans-serif !important;
+}
+
+.step-popover-close:hover {
+  background: #ffffff !important;
+  color: var(--purple) !important;
+  border-color: #ffffff !important;
+}
+
+/* Specific text overrides to ignore light mode text colors inside popups */
+#ofertaPopup p, #popupMSI p, #logoNegocioPremiumPopup p, #premiumLogoWelcomeModal p, #contratarModal p, #ejemplosModal p,
+.welcome-title, .modal-title, #stepPopoverTitle, #stepPopoverList li, .step-popover-list li {
+  color: #f5f5f7 !important;
+}
+
+/* Portfolio card typography adjustments (keep smaller and unstretched) */
+.portfolio-title {
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-transform: none !important; /* Do not capitalize */
+  letter-spacing: normal !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.portfolio-desc {
+  font-size: 0.72rem !important;
+  letter-spacing: normal !important;
+  font-family: 'Outfit', sans-serif !important;
+}
+
+/* Neon Glow Outlines on Hover / Focus */
+.card:hover, .pkg:hover, .curso-card:hover, .portfolio-card:hover, 
+.btn:hover, .btn-purple:hover, .btn-outline:hover, .cta-btn:hover, 
+.submit-btn:hover, .pkg-cta:hover, .btn-ejemplos:hover, .welcome-carousel-arrow:hover,
+.filter-btn:hover, .inp:focus, .sel:focus, .ta:focus {
+  border-color: var(--purple) !important;
+  box-shadow: 0 0 12px rgba(47, 92, 255, 0.45) !important;
+  outline: none !important;
+}
+
+/* Background Watermark Outlines (Very low opacity and blurred) */
+.bg-watermark {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.024 !important; /* Slightly more visible faint watermark */
+  color: #000000 !important;
+  overflow: hidden;
+}
+
+/* Interactive Content Zoom Hover Animations */
+.card, .pkg, .curso-card, .btn, .cta-btn, .submit-btn, .pkg-cta, .btn-ejemplos,
+.sec-badge, .nav-menu a, .logo-txt, .hero-sub, .sec-title, .hero-logo,
+.card-feats li, .pkg-list li, .stat-n, .stat-l, .portfolio-filters button {
+  transition: transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.28s ease, border-color 0.28s ease !important;
+}
+
+.card:hover, .pkg:hover, .curso-card:hover,
+.btn:hover, .btn-purple:hover, .btn-outline:hover, .cta-btn:hover,
+.submit-btn:hover, .pkg-cta:hover, .btn-ejemplos:hover,
+.nav-menu a:hover, .portfolio-filters button:hover {
+  transform: scale(1.03) !important;
+}
+
+.sec-badge:hover, .logo-txt:hover, .hero-logo:hover {
+  transform: scale(1.04) !important;
+}
+
+.sec-title:hover, .hero-sub:hover {
+  transform: scale(1.015) !important;
+}
+
+.card-feats li:hover, .pkg-list li:hover {
+  transform: scale(1.02) !important;
+  transform-origin: left !important;
+}
+
+/* Move hero badge and text higher */
+.hero-logo {
+  margin-bottom: 0.75rem !important;
+}
+.hero-badge {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Relocated "Ver Portafolio" Eye-Catching Outline Pulsing Button */
+.btn-hero-portfolio {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  margin: 0.8rem auto 1.8rem !important;
+  padding: 0.9rem 2.2rem !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1.05rem !important;
+  color: var(--purple) !important;
+  background: transparent !important;
+  border: 3.5px solid var(--purple) !important;
+  border-radius: 50px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  cursor: pointer !important;
+  box-shadow: 0 0 15px rgba(47, 92, 255, 0.2) !important;
+  transition: transform 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.28s ease, background-color 0.28s ease, color 0.28s ease !important;
+  animation: outlinePulse 2s infinite !important;
+}
+
+.btn-hero-portfolio:hover {
+  transform: scale(1.06) !important;
+  background: var(--purple) !important;
+  color: #ffffff !important;
+  border-color: var(--purple) !important;
+  box-shadow: 0 0 25px rgba(47, 92, 255, 0.6) !important;
+}
+
+@keyframes outlinePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 92, 255, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(47, 92, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(47, 92, 255, 0);
+  }
+}
+
+/* ═══════ CTRL MASCOT — PEEK-A-BOO ANIMATED SVG ═══════ */
+.mascot-svg {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 14px rgba(47, 92, 255, 0.18));
+  opacity: 0;
+}
+
+/* Sizes */
+.mascot-sm { width: 55px; height: auto; }
+.mascot-md { width: 80px; height: auto; }
+.mascot-lg { width: 110px; height: auto; }
+.mascot-xl { width: 140px; height: auto; }
+
+/* Flip for pointing left */
+.mascot-flip { transform: scaleX(-1); }
+
+/* ══ PEEK-A-BOO: slide up from behind, wave, then hide ══ */
+.mascot-peek-up {
+  animation: peekUp 10s ease-in-out infinite;
+}
+.mascot-peek-up-slow {
+  animation: peekUp 14s ease-in-out infinite;
+}
+.mascot-peek-right {
+  animation: peekRight 12s ease-in-out infinite;
+}
+.mascot-peek-left {
+  animation: peekLeft 11s ease-in-out infinite;
+}
+
+@keyframes peekUp {
+  0%, 100%  { transform: translateY(100%); opacity: 0; }
+  8%        { transform: translateY(20%);  opacity: 0.5; }
+  15%, 55%  { transform: translateY(0);    opacity: 0.6; }
+  60%       { transform: translateY(20%);  opacity: 0.35; }
+  70%       { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes peekRight {
+  0%, 100%  { transform: translateX(110%); opacity: 0; }
+  10%       { transform: translateX(25%);  opacity: 0.5; }
+  18%, 52%  { transform: translateX(0);    opacity: 0.6; }
+  58%       { transform: translateX(25%);  opacity: 0.35; }
+  68%       { transform: translateX(110%); opacity: 0; }
+}
+
+@keyframes peekLeft {
+  0%, 100%  { transform: translateX(-110%); opacity: 0; }
+  10%       { transform: translateX(-25%);  opacity: 0.5; }
+  18%, 52%  { transform: translateX(0);     opacity: 0.6; }
+  58%       { transform: translateX(-25%);  opacity: 0.35; }
+  68%       { transform: translateX(-110%); opacity: 0; }
+}
+
+/* Waving arm */
+.mascot-arm-wave {
+  transform-origin: 55px 140px;
+  animation: mascotWave 1s ease-in-out infinite;
+}
+@keyframes mascotWave {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(22deg); }
+}
+
+/* Pointing arm — gentle bob */
+.mascot-arm-point {
+  transform-origin: 185px 140px;
+  animation: mascotPointBob 2s ease-in-out infinite;
+}
+@keyframes mascotPointBob {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(6deg); }
+}
+
+/* Eye blink */
+.mascot-eyes {
+  animation: mascotBlink 3.5s ease-in-out infinite;
+}
+@keyframes mascotBlink {
+  0%, 88%, 100% { transform: scaleY(1); }
+  93% { transform: scaleY(0.08); }
+}
+
+/* Section-relative positioning + overflow clip for peek effect */
+#inicio { position: relative; }
+#portafolio { position: relative; }
+#servicios { position: relative; }
+#paquetes { position: relative; }
+#curso { position: relative; }
+#contacto { position: relative; }
+.hero-btns { position: relative; overflow: visible; }
+.sec-head { position: relative; overflow: visible; }
+.pkg-grid { position: relative; overflow: visible; }
+
+/* Responsive: hide mascots on very small screens */
+@media (max-width: 600px) {
+  .mascot-svg { display: none; }
+}
 </style>
 </head>
 <body>
+
+<!-- Background Watermark Vector Shapes (Simplified: Pencil, Laptop, Ruler, Geometrics) -->
+<svg class="bg-watermark" style="top: 10%; right: 8%; width: 180px; height: 180px; transform: rotate(15deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M18.42 2.42a1.73 1.73 0 0 1 2.45 2.45L7.5 18.25l-4.5 1 1-4.5L17.25 3.51l1.17-1.09z"/>
+  <path d="M15 5l4 4"/>
+</svg>
+<svg class="bg-watermark" style="top: 35%; left: 5%; width: 220px; height: 220px; transform: rotate(-10deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="4" width="18" height="12" rx="2"/>
+  <path d="M2 20h20M5 16l-3 4M19 16l3 4"/>
+</svg>
+<svg class="bg-watermark" style="top: 60%; right: 7%; width: 200px; height: 200px; transform: rotate(35deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="8" width="18" height="8" rx="1"/>
+  <path d="M6 8v3M9 8v2M12 8v3M15 8v2M18 8v3"/>
+</svg>
+<svg class="bg-watermark" style="top: 82%; left: 6%; width: 220px; height: 220px; transform: rotate(-15deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="10" width="10" height="10" rx="1"/>
+  <circle cx="17" cy="7" r="5"/>
+  <path d="M12 11l6 10H6l6-10z"/>
+</svg>
+
 
 <canvas id="canvas-stars"></canvas>
 <div class="nebula"></div>
@@ -1047,6 +2090,7 @@ footer{
   </button>
   <div class="nav-menu" id="navMenu">
     <a href="#inicio"   class="nav-scroll">Inicio</a>
+    <a href="#portafolio" class="nav-scroll">Portafolio</a>
     <a href="#servicios" class="nav-scroll">Servicios</a>
     <a href="#paquetes"  class="nav-scroll">Paquetes</a>
     <a href="#curso"     class="nav-scroll">Curso IA</a>
@@ -1072,10 +2116,10 @@ footer{
       Agencia de Diseño y Publicidad Integral
     </div>
 
-    <h1 class="hero-h1">
-      <span class="l1">LLEVA TU MARCA<br>AL UNIVERSO</span>
-      <span class="l2">Creative Studio</span>
-    </h1>
+    <!-- Relocated Ver Portafolio button with pulsing outline -->
+    <a href="#portafolio" class="btn-hero-portfolio nav-scroll"><i class="fas fa-image"></i> Ver Portafolio</a>
+
+
 
     <p class="hero-sub">
       Creamos identidades visuales poderosas, estrategias de publicidad efectivas
@@ -1091,9 +2135,25 @@ footer{
       <span class="hero-tag">Fotografía de Producto</span>
     </div>
 
-    <div class="hero-btns">
+    <div class="hero-btns" style="position:relative;">
       <a href="#servicios" class="btn btn-purple nav-scroll"><i class="fas fa-rocket"></i> Ver Servicios</a>
+      <a href="#paquetes" class="btn btn-outline nav-scroll"><i class="fas fa-cubes"></i> Ver Paquetes</a>
       <a href="https://wa.me/527531627539" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Consulta Gratis</a>
+      <!-- Mascot CTRL: peeks up from behind the buttons -->
+      <svg class="mascot-svg mascot-md mascot-peek-up" style="bottom:-65px;right:10px;animation-delay:2s;" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <rect x="80" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="87" cy="242" rx="12" ry="6" fill="#2856a0"/>
+          <rect x="145" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="152" cy="242" rx="12" ry="6" fill="#2856a0"/>
+          <g class="mascot-arm-wave"><path d="M55 140 Q32 112 28 88" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="27" cy="82" r="9" fill="#3068b8"/><circle cx="21" cy="74" r="4" fill="#3068b8"/><circle cx="27" cy="71" r="4" fill="#3068b8"/><circle cx="33" cy="73" r="4" fill="#3068b8"/></g>
+          <g class="mascot-arm-point"><path d="M185 140 Q208 125 218 112" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="220" cy="108" r="8" fill="#3068b8"/><line x1="222" y1="106" x2="238" y2="102" stroke="#3068b8" stroke-width="7" stroke-linecap="round"/></g>
+          <rect x="50" y="35" width="140" height="178" rx="22" fill="#5b9bd5" stroke="#2856a0" stroke-width="3.5"/>
+          <rect x="62" y="47" width="116" height="154" rx="16" fill="#6baed6" stroke="#4a8ec9" stroke-width="1.5"/>
+          <text x="120" y="108" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="34" font-weight="bold" letter-spacing="2">CTRL</text>
+          <g class="mascot-eyes" transform-origin="120 143"><circle cx="92" cy="143" r="13" fill="white"/><circle cx="148" cy="143" r="13" fill="white"/><circle cx="96" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="152" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="98" cy="138" r="2.5" fill="white"/><circle cx="154" cy="138" r="2.5" fill="white"/></g>
+          <path d="M100 168 Q120 183 140 168" fill="none" stroke="#e74c6f" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="80" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/><ellipse cx="160" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/>
+        </g>
+      </svg>
     </div>
 
     <div class="hero-stats">
@@ -1101,6 +2161,45 @@ footer{
       <div><div class="stat-n">1000+</div><div class="stat-l">Proyectos</div></div>
       <div><div class="stat-n">~1h</div><div class="stat-l">Respuesta</div></div>
       <div><div class="stat-n">5 ★</div><div class="stat-l">Calificación</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     PORTAFOLIO (NUEVA SECCIÓN)
+================================================================ -->
+<section id="portafolio">
+  <!-- Mascot CTRL: peeks from the right side of portfolio header -->
+  <svg class="mascot-svg mascot-lg mascot-peek-right" style="top:60px;right:-15px;animation-delay:5s;" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <rect x="80" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="87" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <rect x="145" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="152" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <g class="mascot-arm-wave" style="animation-delay:0.3s"><path d="M55 140 Q32 112 28 88" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="27" cy="82" r="9" fill="#3068b8"/><circle cx="21" cy="74" r="4" fill="#3068b8"/><circle cx="27" cy="71" r="4" fill="#3068b8"/><circle cx="33" cy="73" r="4" fill="#3068b8"/></g>
+      <g class="mascot-arm-point" style="animation-delay:0.5s"><path d="M185 140 Q208 118 215 95" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="216" cy="89" r="9" fill="#3068b8"/><circle cx="222" cy="81" r="4" fill="#3068b8"/><circle cx="216" cy="78" r="4" fill="#3068b8"/><circle cx="210" cy="80" r="4" fill="#3068b8"/></g>
+      <rect x="50" y="35" width="140" height="178" rx="22" fill="#5b9bd5" stroke="#2856a0" stroke-width="3.5"/>
+      <rect x="62" y="47" width="116" height="154" rx="16" fill="#6baed6" stroke="#4a8ec9" stroke-width="1.5"/>
+      <text x="120" y="108" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="34" font-weight="bold" letter-spacing="2">CTRL</text>
+      <g class="mascot-eyes" transform-origin="120 143" style="animation-delay:1s"><circle cx="92" cy="143" r="13" fill="white"/><circle cx="148" cy="143" r="13" fill="white"/><circle cx="96" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="152" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="98" cy="138" r="2.5" fill="white"/><circle cx="154" cy="138" r="2.5" fill="white"/></g>
+      <path d="M100 168 Q120 183 140 168" fill="none" stroke="#e74c6f" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="80" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/><ellipse cx="160" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/>
+    </g>
+  </svg>
+  <div class="inner">
+    <div class="sec-head reveal">
+      <div class="sec-badge"><i class="fas fa-image"></i> Galería</div>
+      <h2 class="sec-title">Nuestro Portafolio</h2>
+      <p class="sec-desc">Explora una selección exclusiva de nuestras mejores creaciones en diseño gráfico, logotipos y publicidad de alto impacto.</p>
+    </div>
+
+    <div class="portfolio-filters">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="logos-personales">Logos Personales</button>
+      <button class="filter-btn" data-filter="logos-comerciales">Logos Comerciales</button>
+      <button class="filter-btn" data-filter="publicidad">Publicidad & Flyers</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      <!-- Los elementos del portafolio se inyectan dinámicamente con JS -->
     </div>
   </div>
 </section>
@@ -1315,6 +2414,36 @@ footer{
      PAQUETES
 ================================================================ -->
 <section id="paquetes">
+  <!-- Mascot CTRL: peeks from left behind packages title -->
+  <svg class="mascot-svg mascot-md mascot-peek-left mascot-flip" style="top:50px;left:-10px;animation-delay:3s;" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <rect x="80" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="87" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <rect x="145" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="152" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <g class="mascot-arm-wave"><path d="M55 140 Q32 112 28 88" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="27" cy="82" r="9" fill="#3068b8"/><circle cx="21" cy="74" r="4" fill="#3068b8"/><circle cx="27" cy="71" r="4" fill="#3068b8"/><circle cx="33" cy="73" r="4" fill="#3068b8"/></g>
+      <g class="mascot-arm-point"><path d="M185 140 Q208 125 218 112" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="220" cy="108" r="8" fill="#3068b8"/><line x1="222" y1="106" x2="238" y2="102" stroke="#3068b8" stroke-width="7" stroke-linecap="round"/></g>
+      <rect x="50" y="35" width="140" height="178" rx="22" fill="#5b9bd5" stroke="#2856a0" stroke-width="3.5"/>
+      <rect x="62" y="47" width="116" height="154" rx="16" fill="#6baed6" stroke="#4a8ec9" stroke-width="1.5"/>
+      <text x="120" y="108" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="34" font-weight="bold" letter-spacing="2" transform="scale(-1,1)" transform-origin="120 108">CTRL</text>
+      <g class="mascot-eyes" transform-origin="120 143"><circle cx="92" cy="143" r="13" fill="white"/><circle cx="148" cy="143" r="13" fill="white"/><circle cx="96" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="152" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="98" cy="138" r="2.5" fill="white"/><circle cx="154" cy="138" r="2.5" fill="white"/></g>
+      <path d="M100 168 Q120 183 140 168" fill="none" stroke="#e74c6f" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="80" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/><ellipse cx="160" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/>
+    </g>
+  </svg>
+  <!-- Mascot CTRL: peeks up from behind package cards -->
+  <svg class="mascot-svg mascot-sm mascot-peek-up" style="bottom:-50px;right:30px;animation-delay:8s;" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <rect x="80" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="87" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <rect x="145" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="152" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <g class="mascot-arm-wave" style="animation-delay:0.4s"><path d="M55 140 Q32 112 28 88" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="27" cy="82" r="9" fill="#3068b8"/><circle cx="21" cy="74" r="4" fill="#3068b8"/><circle cx="27" cy="71" r="4" fill="#3068b8"/><circle cx="33" cy="73" r="4" fill="#3068b8"/></g>
+      <g class="mascot-arm-point" style="animation-delay:0.7s"><path d="M185 140 Q208 125 218 112" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="220" cy="108" r="8" fill="#3068b8"/><line x1="222" y1="106" x2="238" y2="102" stroke="#3068b8" stroke-width="7" stroke-linecap="round"/></g>
+      <rect x="50" y="35" width="140" height="178" rx="22" fill="#5b9bd5" stroke="#2856a0" stroke-width="3.5"/>
+      <rect x="62" y="47" width="116" height="154" rx="16" fill="#6baed6" stroke="#4a8ec9" stroke-width="1.5"/>
+      <text x="120" y="108" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="34" font-weight="bold" letter-spacing="2">CTRL</text>
+      <g class="mascot-eyes" transform-origin="120 143" style="animation-delay:2s"><circle cx="92" cy="143" r="13" fill="white"/><circle cx="148" cy="143" r="13" fill="white"/><circle cx="96" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="152" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="98" cy="138" r="2.5" fill="white"/><circle cx="154" cy="138" r="2.5" fill="white"/></g>
+      <path d="M100 168 Q120 183 140 168" fill="none" stroke="#e74c6f" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="80" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/><ellipse cx="160" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/>
+    </g>
+  </svg>
   <div class="sec-head reveal">
     <div class="sec-badge"><i class="fas fa-box-open"></i> Paquetes</div>
     <h2 class="sec-title">Paquetes Completos</h2>
@@ -1407,6 +2536,21 @@ footer{
      CURSO IA
 ================================================================ -->
 <section id="curso">
+  <!-- Mascot CTRL: peeks from right side of curso section -->
+  <svg class="mascot-svg mascot-sm mascot-peek-right" style="top:80px;right:-10px;animation-delay:7s;" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <rect x="80" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="87" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <rect x="145" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="152" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <g class="mascot-arm-wave" style="animation-delay:0.6s"><path d="M55 140 Q32 112 28 88" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="27" cy="82" r="9" fill="#3068b8"/><circle cx="21" cy="74" r="4" fill="#3068b8"/><circle cx="27" cy="71" r="4" fill="#3068b8"/><circle cx="33" cy="73" r="4" fill="#3068b8"/></g>
+      <g class="mascot-arm-point" style="animation-delay:0.8s"><path d="M185 140 Q208 118 215 95" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="216" cy="89" r="9" fill="#3068b8"/><circle cx="222" cy="81" r="4" fill="#3068b8"/><circle cx="216" cy="78" r="4" fill="#3068b8"/><circle cx="210" cy="80" r="4" fill="#3068b8"/></g>
+      <rect x="50" y="35" width="140" height="178" rx="22" fill="#5b9bd5" stroke="#2856a0" stroke-width="3.5"/>
+      <rect x="62" y="47" width="116" height="154" rx="16" fill="#6baed6" stroke="#4a8ec9" stroke-width="1.5"/>
+      <text x="120" y="108" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="34" font-weight="bold" letter-spacing="2">CTRL</text>
+      <g class="mascot-eyes" transform-origin="120 143" style="animation-delay:2s"><circle cx="92" cy="143" r="13" fill="white"/><circle cx="148" cy="143" r="13" fill="white"/><circle cx="96" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="152" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="98" cy="138" r="2.5" fill="white"/><circle cx="154" cy="138" r="2.5" fill="white"/></g>
+      <path d="M100 168 Q120 183 140 168" fill="none" stroke="#e74c6f" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="80" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/><ellipse cx="160" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/>
+    </g>
+  </svg>
   <div class="curso-wrap inner">
 
     <div class="reveal">
@@ -1455,6 +2599,21 @@ footer{
      FORMULARIO DE CONTACTO
 ================================================================ -->
 <section id="contacto">
+  <!-- Mascot CTRL: peeks up from behind contact section -->
+  <svg class="mascot-svg mascot-md mascot-peek-up-slow" style="bottom:-60px;left:40px;animation-delay:4s;" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+    <g>
+      <rect x="80" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="87" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <rect x="145" y="208" width="14" height="32" rx="7" fill="#3068b8"/><ellipse cx="152" cy="242" rx="12" ry="6" fill="#2856a0"/>
+      <g class="mascot-arm-wave" style="animation-delay:0.2s"><path d="M55 140 Q32 112 28 88" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="27" cy="82" r="9" fill="#3068b8"/><circle cx="21" cy="74" r="4" fill="#3068b8"/><circle cx="27" cy="71" r="4" fill="#3068b8"/><circle cx="33" cy="73" r="4" fill="#3068b8"/></g>
+      <g class="mascot-arm-point" style="animation-delay:0.5s"><path d="M185 140 Q208 125 218 112" stroke="#3068b8" stroke-width="13" stroke-linecap="round" fill="none"/><circle cx="220" cy="108" r="8" fill="#3068b8"/><line x1="222" y1="106" x2="238" y2="102" stroke="#3068b8" stroke-width="7" stroke-linecap="round"/></g>
+      <rect x="50" y="35" width="140" height="178" rx="22" fill="#5b9bd5" stroke="#2856a0" stroke-width="3.5"/>
+      <rect x="62" y="47" width="116" height="154" rx="16" fill="#6baed6" stroke="#4a8ec9" stroke-width="1.5"/>
+      <text x="120" y="108" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="34" font-weight="bold" letter-spacing="2">CTRL</text>
+      <g class="mascot-eyes" transform-origin="120 143" style="animation-delay:3s"><circle cx="92" cy="143" r="13" fill="white"/><circle cx="148" cy="143" r="13" fill="white"/><circle cx="96" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="152" cy="141" r="6.5" fill="#1a3a6e"/><circle cx="98" cy="138" r="2.5" fill="white"/><circle cx="154" cy="138" r="2.5" fill="white"/></g>
+      <path d="M100 168 Q120 183 140 168" fill="none" stroke="#e74c6f" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="80" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/><ellipse cx="160" cy="163" rx="8" ry="5" fill="rgba(255,120,120,0.3)"/>
+    </g>
+  </svg>
   <div class="sec-head reveal">
     <div class="sec-badge"><i class="fas fa-envelope"></i> Contacto</div>
     <h2 class="sec-title">Cuéntanos tu Proyecto</h2>
@@ -1900,60 +3059,47 @@ document.querySelectorAll('.nav-scroll, a[href^="#"]').forEach(link => {
   });
 });
 
-/* ── STARFIELD ── */
+/* ── LIENZO INTERACTIVO DE PUNTOS (DOT-GRID BACKGROUND) ── */
 const cvs = document.getElementById('canvas-stars');
 const ctx = cvs.getContext('2d');
-function resize(){ cvs.width = innerWidth; cvs.height = innerHeight; }
+
+function resize(){ 
+  cvs.width = innerWidth; 
+  cvs.height = innerHeight; 
+}
 resize();
 window.addEventListener('resize', resize);
 
-const stars = Array.from({length:300}, () => ({
-  x: Math.random() * innerWidth,
-  y: Math.random() * innerHeight,
-  r: Math.random() * 1.4 + 0.15,
-  phase: Math.random() * Math.PI * 2,
-  speed: Math.random() * 0.004 + 0.001
-}));
+let mouseX = 0, mouseY = 0;
+let targetMouseX = 0, targetMouseY = 0;
+window.addEventListener('mousemove', (e) => {
+  targetMouseX = (e.clientX - window.innerWidth / 2);
+  targetMouseY = (e.clientY - window.innerHeight / 2);
+});
 
-function drawStars(){
+function drawDotGrid(){
   ctx.clearRect(0, 0, cvs.width, cvs.height);
-  stars.forEach(s => {
-    s.phase += s.speed;
-    const a = (Math.sin(s.phase) + 1) / 2 * 0.75 + 0.2;
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${a})`;
-    ctx.fill();
-  });
-  requestAnimationFrame(drawStars);
+  // Interpolación suave del cursor para el parallax
+  mouseX += (targetMouseX - mouseX) * 0.05;
+  mouseY += (targetMouseY - mouseY) * 0.05;
+
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.07)'; // Puntos sutiles
+  const dotSpacing = 48; // Espaciado de la retícula
+  
+  // Desplazamiento por parallax del ratón
+  const offsetX = (mouseX * -0.04) % dotSpacing;
+  const offsetY = (mouseY * -0.04) % dotSpacing;
+
+  for (let x = offsetX - dotSpacing; x < cvs.width + dotSpacing; x += dotSpacing) {
+    for (let y = offsetY - dotSpacing; y < cvs.height + dotSpacing; y += dotSpacing) {
+      ctx.beginPath();
+      ctx.arc(x, y, 1.2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  requestAnimationFrame(drawDotGrid);
 }
-drawStars();
-
-/* ── SHOOTING STARS ── */
-const ss = document.createElement('style');
-ss.textContent = `
-  @keyframes shootAnim{0%{transform:translate(0,0) scaleX(1);opacity:1}100%{transform:translate(260px,260px) scaleX(18);opacity:0}}
-  @keyframes shootAnim2{0%{transform:translate(0,0) scaleX(1);opacity:1}100%{transform:translate(180px,200px) scaleX(12);opacity:0}}
-  @keyframes shootAnim3{0%{transform:translate(0,0) scaleX(1);opacity:1}100%{transform:translate(320px,300px) scaleX(22);opacity:0}}
-`;
-document.head.appendChild(ss);
-
-const shootAnims = ['shootAnim','shootAnim2','shootAnim3'];
-const shootDurations = [2.5, 1.8, 3.2];
-
-function shoot(){
-  const idx = Math.floor(Math.random() * shootAnims.length);
-  const dur = shootDurations[idx];
-  const el = document.createElement('div');
-  const opacity = Math.random() * 0.35 + 0.15;
-  el.style.cssText = `position:fixed;z-index:0;pointer-events:none;width:2px;height:2px;border-radius:50%;background:#fff;left:${Math.random()*innerWidth}px;top:${Math.random()*(innerHeight*.65)}px;opacity:${opacity};animation:${shootAnims[idx]} ${dur}s ease-out forwards;`;
-  document.body.appendChild(el);
-  setTimeout(() => el.remove(), dur * 1000 + 100);
-}
-
-setInterval(shoot, 1800);
-setInterval(shoot, 2800);
-setInterval(shoot, 3600);
+drawDotGrid();
 
 /* ── NAVBAR SCROLL ── */
 const nav = document.getElementById('nav');
@@ -2086,6 +3232,9 @@ const galleries = {
   'publicidad-general': {
     title: 'Publicidad General — Ejemplos',
     slides: [
+      { type:'img', src:'flyr/flyr-11.jpg', label:'Mockup Whale Recuerdos' },
+      { type:'img', src:'flyr/flyr-12.jpg', label:'Bolsa de Compra Whale' },
+      { type:'img', src:'flyr/flyr-13.jpg', label:'Playera Polo Whale' },
       { type:'img', src:'flyr/flyr-01.webp', label:'Publicidad General 1' },
       { type:'img', src:'flyr/flyr-02.webp', label:'Publicidad General 2' },
       { type:'img', src:'flyr/flyr-03.webp', label:'Publicidad General 3' },
@@ -2198,6 +3347,199 @@ document.getElementById('modalClose').addEventListener('click', closeGallery);
 document.getElementById('ejemplosModal').addEventListener('click', e => {
   if(e.target === e.currentTarget) closeGallery();
 });
+
+/* ── PORTAFOLIO LOGIC ── */
+const portfolioItems = [];
+
+function buildPortfolioDatabase() {
+  if (typeof galleries === 'undefined') return;
+
+  // 1. Llenar desde logo-negocio-basico (Logos Pro de Negocio)
+  if (galleries['logo-negocio-basico']) {
+    galleries['logo-negocio-basico'].slides.forEach((slide, idx) => {
+      if (slide.type === 'img') {
+        portfolioItems.push({
+          src: slide.src,
+          label: slide.label || `Logo Comercial Pro ${idx + 1}`,
+          category: 'logos-comerciales',
+          desc: 'Logotipo profesional para marcas comerciales y empresas.',
+          galleryKey: 'logo-negocio-basico',
+          slideIndex: idx
+        });
+      }
+    });
+  }
+
+  // 2. Llenar desde logo-negocio-premium (Logos Premium de Negocio)
+  if (galleries['logo-negocio-premium']) {
+    galleries['logo-negocio-premium'].slides.forEach((slide, idx) => {
+      if (slide.type === 'img') {
+        portfolioItems.push({
+          src: slide.src,
+          label: slide.label || `Logo Comercial Premium ${idx + 1}`,
+          category: 'logos-comerciales',
+          desc: 'Identidad corporativa 360 de alta gama.',
+          galleryKey: 'logo-negocio-premium',
+          slideIndex: idx
+        });
+      }
+    });
+  }
+
+  // 3. Llenar desde logo-nombre-basico (Logos Personales Básicos)
+  if (galleries['logo-nombre-basico']) {
+    galleries['logo-nombre-basico'].slides.forEach((slide, idx) => {
+      if (slide.type === 'img') {
+        portfolioItems.push({
+          src: slide.src,
+          label: slide.label || `Logo Personal ${idx + 1}`,
+          category: 'logos-personales',
+          desc: 'Identidad de marca personal elegante.',
+          galleryKey: 'logo-nombre-basico',
+          slideIndex: idx
+        });
+      }
+    });
+  }
+
+  // 4. Llenar desde logo-nombre-premium (Logos Personales Premium)
+  if (galleries['logo-nombre-premium']) {
+    galleries['logo-nombre-premium'].slides.forEach((slide, idx) => {
+      if (slide.type === 'img') {
+        portfolioItems.push({
+          src: slide.src,
+          label: slide.label || `Logo Personal Premium ${idx + 1}`,
+          category: 'logos-personales',
+          desc: 'Branding personal artístico con estilo premium.',
+          galleryKey: 'logo-nombre-premium',
+          slideIndex: idx
+        });
+      }
+    });
+  }
+
+  // 5. Llenar desde publicidad-general (Publicidad & Flyers)
+  if (galleries['publicidad-general']) {
+    galleries['publicidad-general'].slides.forEach((slide, idx) => {
+      if (slide.type === 'img') {
+        portfolioItems.push({
+          src: slide.src,
+          label: slide.label || `Publicidad Digital ${idx + 1}`,
+          category: 'publicidad',
+          desc: 'Campañas visuales de alto impacto y flyers promocionales.',
+          galleryKey: 'publicidad-general',
+          slideIndex: idx
+        });
+      }
+    });
+  }
+}
+
+let portfolioLimit = 12;
+let activeFilter = 'all';
+
+function renderPortfolio() {
+  const grid = document.getElementById('portfolioGrid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+  
+  // Filtrar
+  const filtered = portfolioItems.filter(item => {
+    if (activeFilter === 'all') return true;
+    return item.category === activeFilter;
+  });
+
+  // Mostrar subconjunto
+  const visibleItems = filtered.slice(0, portfolioLimit);
+
+  visibleItems.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'portfolio-card reveal';
+    card.setAttribute('onclick', `openGalleryAt('${item.galleryKey}', ${item.slideIndex})`);
+    
+    let catLabel = 'Logotipo';
+    if (item.category === 'logos-personales') catLabel = 'Logo Personal';
+    else if (item.category === 'logos-comerciales') catLabel = 'Logo Comercial';
+    else if (item.category === 'publicidad') catLabel = 'Publicidad';
+
+    card.innerHTML = `
+      <img src="${item.src}" alt="${item.label}" loading="lazy">
+      <button class="portfolio-zoom-btn" aria-label="Expandir">
+        <i class="fas fa-expand-alt"></i>
+      </button>
+      <div class="portfolio-info">
+        <span class="portfolio-category">${catLabel}</span>
+        <h4 class="portfolio-title">${item.label}</h4>
+        <p class="portfolio-desc">${item.desc}</p>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Re-enlazar IntersectionObserver
+  if (typeof ro !== 'undefined') {
+    grid.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  }
+
+  // Manejar botón "Cargar Más"
+  let loadMoreContainer = document.getElementById('portfolioLoadMoreContainer');
+  if (filtered.length > portfolioLimit) {
+    if (!loadMoreContainer) {
+      loadMoreContainer = document.createElement('div');
+      loadMoreContainer.id = 'portfolioLoadMoreContainer';
+      loadMoreContainer.className = 'portfolio-load-more';
+      loadMoreContainer.innerHTML = `
+        <button id="portfolioLoadMoreBtn" class="btn btn-outline" onclick="loadMorePortfolio()">
+          <i class="fas fa-plus"></i> Ver Más Creaciones
+        </button>
+      `;
+      grid.parentNode.appendChild(loadMoreContainer);
+    } else {
+      loadMoreContainer.style.display = 'block';
+    }
+  } else {
+    if (loadMoreContainer) {
+      loadMoreContainer.style.display = 'none';
+    }
+  }
+}
+
+function loadMorePortfolio() {
+  portfolioLimit += 12;
+  renderPortfolio();
+}
+
+function initPortfolioFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      activeFilter = btn.getAttribute('data-filter');
+      portfolioLimit = 12;
+      
+      renderPortfolio();
+    });
+  });
+}
+
+function openGalleryAt(key, index) {
+  curGallery = galleries[key];
+  curIndex = index;
+  const modal = document.getElementById('ejemplosModal');
+  document.getElementById('modalTitle').textContent = curGallery.title;
+  renderSlides();
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function initPortfolio() {
+  buildPortfolioDatabase();
+  initPortfolioFilters();
+  renderPortfolio();
+}
 document.addEventListener('keydown', e => {
   if(!document.getElementById('ejemplosModal').classList.contains('open')) return;
   if(e.key === 'ArrowRight' && curIndex < curGallery.slides.length-1){ curIndex++; renderSlides(); }
@@ -2217,25 +3559,25 @@ function advanceModalSequence() {
   currentModalStep++;
   
   if (currentModalStep === 1) {
-    // Step 1: Open Oferta Popup after 3.5 seconds
+    // Step 1: Open Oferta Popup immediately
     setTimeout(function() {
       var p = document.getElementById('ofertaPopup');
       if (p) {
         p.style.display = 'flex';
         p.style.opacity = '1';
       }
-    }, 3500);
+    }, 50);
   } else if (currentModalStep === 2) {
-    // Step 2: Open Logo Negocio Premium Popup after 3.5 seconds
+    // Step 2: Skip Logo Negocio Premium Popup and advance
     setTimeout(function() {
-      openLogoNegocioPremiumPopup();
-    }, 3500);
+      advanceModalSequence();
+    }, 50);
   } else if (currentModalStep === 3) {
-    // Step 3: Open MSI Popup after 3.5 seconds
+    // Step 3: Open MSI Popup immediately
     setTimeout(function() {
       var p = document.getElementById('popupMSI');
       if (p) p.style.display = 'block';
-    }, 3500);
+    }, 50);
   }
 }
 
@@ -2495,6 +3837,7 @@ document.addEventListener('keydown', e => {
 // Trigger Welcome Modal shortly after load (Starts the sequence)
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(openPremiumLogoWelcomeModal, 500);
+  initPortfolio();
 });
 
 
