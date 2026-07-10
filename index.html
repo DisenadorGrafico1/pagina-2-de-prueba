@@ -2277,6 +2277,157 @@ h1, h2, h3, h4, h5, h6,
   margin: 0 !important;
   padding: 0.7rem 1.5rem !important;
 }
+
+/* ============================================================
+   FLOATING AI ASSISTANT WIDGET
+============================================================ */
+.ai-float {
+  position: fixed; bottom: 6.0rem; right: 1.5rem; z-index: 999;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple-mid), #ec4899); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+  box-shadow: 0 5px 25px rgba(124, 58, 237, 0.45);
+  transition: transform 0.3s, background 0.3s;
+  cursor: pointer; border: none;
+  animation: aiPulse 3s ease-in-out infinite;
+}
+@keyframes aiPulse{
+  0%,100%{box-shadow:0 5px 25px rgba(124, 58, 237,.45);}
+  50%{box-shadow:0 5px 45px rgba(124, 58, 237,.7);transform:scale(1.04);}
+}
+.ai-float:hover {
+  transform: scale(1.12) !important;
+}
+.ai-float i {
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s ease;
+}
+.ai-float i.spinning {
+  animation: aiSpin 1s linear infinite;
+}
+@keyframes aiSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.ai-tooltip {
+  position: fixed; bottom: 6.8rem; right: 6.0rem; z-index: 999;
+  background: rgba(10, 0, 35, 0.95); border: 1px solid var(--border);
+  color: #fff; padding: 0.6rem 1.2rem; border-radius: 12px 12px 0 12px;
+  font-size: 0.88rem; font-weight: 500; font-family: 'Plus Jakarta Sans', sans-serif;
+  box-shadow: 0 5px 20px rgba(124, 58, 237, 0.35);
+  white-space: nowrap;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.ai-tooltip.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Chat Window */
+.ai-chat-window {
+  position: fixed; bottom: 10.5rem; right: 1.5rem; z-index: 1000;
+  width: 350px; height: 480px; max-height: 80vh; max-width: calc(100vw - 3rem);
+  background: rgba(10, 0, 35, 0.94); border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(124, 58, 237, 0.15);
+  display: flex; flex-direction: column; overflow: hidden;
+  backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+  opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.ai-chat-window.open {
+  opacity: 1; visibility: visible; transform: translateY(0) scale(1);
+}
+
+.ai-chat-header {
+  padding: 1rem 1.2rem; background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(232, 121, 249, 0.08));
+  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ai-chat-header-info {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.ai-chat-avatar {
+  width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--pink));
+  display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #fff;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+}
+.ai-chat-title {
+  font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 700; color: #fff; letter-spacing: 0.5px;
+}
+.ai-chat-status {
+  font-size: 0.7rem; color: #34d399; font-weight: 500; margin-top: 0.1rem;
+}
+.ai-chat-close {
+  background: none; border: none; color: rgba(255, 255, 255, 0.6); font-size: 1.7rem; cursor: pointer;
+  transition: color 0.2s; line-height: 1; padding: 0;
+}
+.ai-chat-close:hover {
+  color: #fff;
+}
+
+.ai-chat-body {
+  flex: 1; padding: 1.2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.85rem; line-height: 1.45;
+}
+
+.ai-msg {
+  display: flex; flex-direction: column; gap: 0.4rem; max-width: 85%;
+}
+.ai-msg.assistant {
+  align-self: flex-start;
+}
+.ai-msg.user {
+  align-self: flex-end;
+}
+.ai-bubble {
+  padding: 0.75rem 1rem; border-radius: 16px; font-size: 0.84rem;
+}
+.ai-msg.assistant .ai-bubble {
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--txt);
+  border-bottom-left-radius: 4px;
+}
+.ai-msg.user .ai-bubble {
+  background: var(--purple); color: #fff; border-bottom-right-radius: 4px;
+}
+
+.ai-options-list {
+  display: flex; flex-direction: column; gap: 0.5rem; width: 100%; margin-top: 0.5rem;
+}
+.ai-option-btn {
+  background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(168, 85, 247, 0.2);
+  color: var(--txt); padding: 0.6rem 0.9rem; border-radius: 10px; text-align: left;
+  font-size: 0.8rem; font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.ai-option-btn:hover {
+  background: rgba(124, 58, 237, 0.2); border-color: var(--glow);
+  transform: translateX(4px);
+}
+
+.ai-actions-wrap {
+  display: flex; flex-direction: column; gap: 0.5rem; width: 100%; margin-top: 0.8rem;
+}
+.ai-action-primary {
+  background: linear-gradient(135deg, var(--purple), var(--purple-mid)); border: none;
+  color: #fff; padding: 0.6rem 1rem; border-radius: 10px; font-weight: 700; text-align: center;
+  font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.ai-action-primary:hover {
+  opacity: 0.9; transform: translateY(-1px);
+}
+.ai-action-secondary {
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--txt2); padding: 0.55rem 1rem; border-radius: 10px; text-align: center;
+  font-size: 0.78rem; cursor: pointer; transition: background 0.2s, color 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.ai-action-secondary:hover {
+  background: rgba(255, 255, 255, 0.1); color: #fff;
+}
 </style>
 </head>
 <body>
@@ -2303,6 +2454,31 @@ h1, h2, h3, h4, h5, h6,
 
 <canvas id="canvas-stars"></canvas>
 <div class="nebula"></div>
+
+<!-- Flotante Asistente IA -->
+<div id="aiAssistantContainer">
+  <div id="aiTooltip" class="ai-tooltip">Estoy aquí para ayudarte</div>
+  <button id="aiFloatBtn" class="ai-float" aria-label="Asistente IA">
+    <i id="aiFloatIcon" class="fas fa-robot spinning"></i>
+  </button>
+</div>
+
+<!-- Ventana de Chat del Asistente IA -->
+<div id="aiChatWindow" class="ai-chat-window">
+  <div class="ai-chat-header">
+    <div class="ai-chat-header-info">
+      <div class="ai-chat-avatar"><i class="fas fa-robot"></i></div>
+      <div>
+        <div class="ai-chat-title">ORION Inteligente</div>
+        <div class="ai-chat-status">En línea — Asistente de Diseño</div>
+      </div>
+    </div>
+    <button id="aiChatClose" class="ai-chat-close">&times;</button>
+  </div>
+  <div class="ai-chat-body" id="aiChatBody">
+    <!-- El contenido se inyectará dinámicamente -->
+  </div>
+</div>
 
 <!-- Flotante WhatsApp -->
 <a href="https://wa.me/527531627539?text=Me%20interesa%20informaci%C3%B3n%20de%20los%20servicios%2C%20lo%20que%20requiero%20es%20_________________%2C%20quedo%20atento%20a%20su%20respuesta.%20Gracias." class="wa-float" target="_blank" aria-label="WhatsApp">
@@ -5160,6 +5336,178 @@ function submitSketchQuotation() {
       btnSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Cotización';
     });
   }, 'image/png');
+}
+// AI Assistant system
+const aiQuestions = [
+  {
+    id: 'costos',
+    question: '💵 ¿Qué costos y tarifas manejan?',
+    answer: 'Ofrecemos paquetes completos para emprendedores desde $99 USD (incluye logo, publicidad y asesoría IA) y páginas web profesionales con logo desde $199 USD. También contamos con opciones individuales de logos desde $29 USD.',
+    target: '#paquetes',
+    actionText: 'Ver Paquetes y Costos'
+  },
+  {
+    id: 'servicios',
+    question: '🎨 ¿Qué servicios de diseño y publicidad ofrecen?',
+    answer: 'Creamos identidades de marca completas, logotipos comerciales y de nombre, publicidad y flyers de alto impacto, animación de logos, y desarrollo de páginas web profesionales.',
+    target: '#servicios',
+    actionText: 'Ver Todos los Servicios'
+  },
+  {
+    id: 'boceto',
+    question: '✏️ ¿Cómo cotizar mi idea o hacer un boceto?',
+    answer: '¡Contamos con un lienzo interactivo! Puedes hacer clic en "Hacer boceto" y dibujar tu idea. Una vez enviado, el dibujo y tus datos nos llegarán al correo electrónico alemoltru9497@gmail.com para darte una cotización exacta.',
+    target: 'action_open_sketch',
+    actionText: 'Abrir Lienzo de Boceto'
+  },
+  {
+    id: 'logos_nombre',
+    question: '✒️ Info sobre Logo de Nombre (Tipográfico)',
+    answer: 'El Logo de Nombre Básico ($29 USD) o Premium ($79 USD) está basado en diseño tipográfico personalizado de alta gama. Ideal si quieres que el nombre de tu marca luzca profesional y con estilo.',
+    target: '#servicios',
+    actionText: 'Ver Sección de Logos'
+  },
+  {
+    id: 'logos_negocio',
+    question: '💼 Info sobre Logo de Negocio (Marca completa)',
+    answer: 'El Logo de Negocio Premium ($159 USD) o Pro ($79 USD) incluye un isologotipo o icono comercial diseñado desde cero junto al manual de marca, paleta de colores y variantes para que represente tu negocio.',
+    target: '#servicios',
+    actionText: 'Ver Sección de Logos'
+  },
+  {
+    id: 'publicidad',
+    question: '📢 Diseño de Publicidad y Flyers',
+    answer: 'Diseñamos banners, flyers digitales para redes sociales, anuncios publicitarios y posters de alto impacto comercial que atraigan clientes a tu negocio.',
+    target: '#servicios',
+    actionText: 'Ver Galería de Publicidad'
+  },
+  {
+    id: 'curso',
+    question: '🤖 Curso de Inteligencia Artificial para Redes',
+    answer: 'Es un entrenamiento personalizado de 1 a 1. Aprenderás a usar herramientas de IA generativa para crear contenido masivo y programar agentes de atención automática en WhatsApp Business.',
+    target: '#curso',
+    actionText: 'Ver Detalles del Curso'
+  },
+  {
+    id: 'paquetes',
+    question: '📦 Ver los Paquetes Completos',
+    answer: 'Nuestros paquetes integran logotipos, flyers publicitarios, páginas web y asesoría de Inteligencia Artificial en un solo pago con descuento para emprendedores.',
+    target: '#paquetes',
+    actionText: 'Ver Paquetes Completos'
+  },
+  {
+    id: 'contacto',
+    question: '✉️ Enviar correo electrónico de contacto',
+    answer: 'Puedes escribirnos directamente a nuestro correo alemoltru9497@gmail.com llenando el formulario al final de la página. Te responderemos el mismo día.',
+    target: '#contacto',
+    actionText: 'Ir al Formulario de Correo'
+  },
+  {
+    id: 'whatsapp',
+    question: '📱 Contactar directamente por WhatsApp',
+    answer: 'Si prefieres una atención inmediata, haz clic abajo para chatear directamente por WhatsApp con el diseñador.',
+    target: 'action_direct_whatsapp',
+    actionText: 'Chatear por WhatsApp'
+  }
+];
+
+function initAiAssistant() {
+  const aiFloatBtn = document.getElementById('aiFloatBtn');
+  const aiFloatIcon = document.getElementById('aiFloatIcon');
+  const aiTooltip = document.getElementById('aiTooltip');
+  const aiChatWindow = document.getElementById('aiChatWindow');
+  const aiChatClose = document.getElementById('aiChatClose');
+  const aiChatBody = document.getElementById('aiChatBody');
+
+  // Load animation and tooltip behavior (5 seconds)
+  setTimeout(() => {
+    aiFloatIcon.classList.remove('spinning');
+    aiTooltip.classList.add('hidden');
+  }, 5000);
+
+  // Toggle chat window
+  aiFloatBtn.addEventListener('click', () => {
+    aiChatWindow.classList.toggle('open');
+    aiTooltip.classList.add('hidden');
+    renderAiHome();
+  });
+
+  aiChatClose.addEventListener('click', () => {
+    aiChatWindow.classList.remove('open');
+  });
+
+  function renderAiHome() {
+    aiChatBody.innerHTML = `
+      <div class="ai-msg assistant">
+        <div class="ai-bubble">👋 ¡Hola! Soy tu asistente de ORION. ¿En qué te puedo ayudar hoy? Selecciona una duda o pregunta para guiarte:</div>
+      </div>
+      <div class="ai-options-list">
+        ${aiQuestions.map(q => `
+          <button class="ai-option-btn" onclick="selectAiQuestion('${q.id}')">${q.question}</button>
+        `).join('')}
+      </div>
+      <button class="ai-action-secondary" onclick="contactDesignerDirectly()" style="margin-top: auto; border: 1px solid var(--purple); background: rgba(124,58,237,0.1); color: #fff;">
+        <i class="fab fa-whatsapp"></i> Contacto directo inmediato
+      </button>
+    `;
+  }
+
+  window.selectAiQuestion = function(id) {
+    const q = aiQuestions.find(item => item.id === id);
+    if (!q) return;
+
+    aiChatBody.innerHTML = `
+      <div class="ai-msg user">
+        <div class="ai-bubble">${q.question}</div>
+      </div>
+      <div class="ai-msg assistant" style="margin-top: 0.5rem;">
+        <div class="ai-bubble">${q.answer}</div>
+      </div>
+      <div class="ai-msg assistant" style="margin-top: 0.3rem;">
+        <div class="ai-bubble" style="background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.2);">¿Deseas avanzar a esta sección para ver más detalles o prefieres hablar directamente con el diseñador?</div>
+      </div>
+      <div class="ai-actions-wrap">
+        <button class="ai-action-primary" onclick="advanceToSection('${q.target}')">
+          <i class="fas fa-chevron-circle-right"></i> ${q.actionText}
+        </button>
+        <button class="ai-action-secondary" onclick="contactDesignerDirectly()">
+          <i class="fab fa-whatsapp"></i> Contactar directamente
+        </button>
+        <button class="ai-action-secondary" onclick="renderAiHome()" style="background: transparent; border-color: transparent; color: var(--glow); margin-top: 0.3rem;">
+          <i class="fas fa-arrow-left"></i> Volver al listado de dudas
+        </button>
+      </div>
+    `;
+  };
+
+  window.advanceToSection = function(target) {
+    aiChatWindow.classList.remove('open');
+    if (target === 'action_open_sketch') {
+      if (typeof openDibujoModal === 'function') {
+        openDibujoModal();
+      }
+    } else if (target === 'action_direct_whatsapp') {
+      contactDesignerDirectly();
+    } else {
+      const el = document.querySelector(target);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  window.contactDesignerDirectly = function() {
+    window.open('https://wa.me/527531627539?text=Hola%2C%20estoy%20en%20el%20sitio%20web%20y%20me%20gustar%C3%ADa%20hablar%20directamente%20con%20el%20dise%C3%B1ador%20sobre%20mi%20proyecto.', '_blank');
+  };
+
+  window.renderAiHome = renderAiHome;
+}
+
+// Start AI Assistant when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAiAssistant);
+} else {
+  initAiAssistant();
 }
 </script>
 </body>
