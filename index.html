@@ -2592,10 +2592,6 @@ h1, h2, h3, h4, h5, h6,
   <div class="ai-chat-body" id="aiChatBody">
     <!-- El contenido se inyectará dinámicamente -->
   </div>
-  <div class="ai-chat-footer">
-    <input type="text" id="aiChatInput" placeholder="Escribe tu duda o pregunta aquí..." autocomplete="off">
-    <button id="aiChatSendBtn" aria-label="Enviar"><i class="fas fa-paper-plane"></i></button>
-  </div>
 </div>
 
 <!-- Flotante WhatsApp -->
@@ -5536,117 +5532,6 @@ const aiQuestions = [
   }
 ];
 
-const responseRules = [
-  {
-    keys: ['cuesta', 'cuestan', 'precio', 'precios', 'costo', 'costos', 'tarifa', 'tarifas', 'valor', 'presupuesto', 'presupuestos', 'cotizar', 'cotizacion', 'cotización', 'cotizaciones', 'cuanto', 'cuánto', 'cobran', 'cueste'],
-    response: {
-      answer: 'Ofrecemos paquetes completos para emprendedores desde $99 USD (incluye logo, publicidad y asesoría IA) y páginas web profesionales con logo desde $199 USD. También contamos con opciones individuales de logos desde $29 USD.',
-      target: '#paquetes',
-      actionText: 'Ver Paquetes y Costos'
-    }
-  },
-  {
-    keys: ['boceto', 'bocetos', 'dibujo', 'dibujos', 'dibujar', 'lienzo', 'canvas', 'pizarra', 'pizarrón', 'pizarron', 'idea', 'diseñar yo', 'dibujo yo', 'pizarrón interactivo'],
-    response: {
-      answer: '¡Contamos con un lienzo interactivo en el sitio! Puedes hacer clic en "Hacer boceto" y dibujar tu idea. Una vez enviado, el dibujo y tus datos nos llegarán al correo electrónico alemoltru9497@gmail.com para darte una cotización exacta.',
-      target: 'action_open_sketch',
-      actionText: 'Abrir Lienzo de Boceto'
-    }
-  },
-  {
-    keys: ['logo de nombre', 'logo nombre', 'logotipo de nombre', 'tipografico', 'tipografia', 'tipografía', 'letras', 'letra', 'nombre basico', 'nombre premium', 'nombres'],
-    response: {
-      answer: 'El Logo de Nombre Básico ($29 USD) o Premium ($79 USD) está basado en diseño tipográfico personalizado de alta gama. Ideal si quieres que el nombre de tu marca luzca profesional y elegante.',
-      target: '#servicios',
-      actionText: 'Ver Sección de Logos'
-    }
-  },
-  {
-    keys: ['logo de negocio', 'logo negocio', 'logotipo de negocio', 'marca', 'isologo', 'isologotipo', 'imagotipo', 'isotipo', 'icono', 'comercial', 'empresas', 'empresa', 'negocio premium', 'negocio pro', 'negocios'],
-    response: {
-      answer: 'El Logo de Negocio Premium ($159 USD) o Pro ($79 USD) incluye un isologotipo o icono comercial diseñado desde cero junto al manual de marca, paleta de colores y variantes para representar tu negocio.',
-      target: '#servicios',
-      actionText: 'Ver Sección de Logos'
-    }
-  },
-  {
-    keys: ['publicidad', 'flyer', 'flyers', 'banner', 'anuncio', 'anuncios', 'post', 'posts', 'folleto', 'folletos', 'volante', 'volantes', 'redes sociales publicidad'],
-    response: {
-      answer: 'Diseñamos banners, flyers digitales para redes sociales, anuncios publicitarios y posters de alto impacto comercial que atraigan clientes a tu negocio.',
-      target: '#servicios',
-      actionText: 'Ver Galería de Publicidad'
-    }
-  },
-  {
-    keys: ['curso', 'clases', 'aprender', 'clase', 'redes', 'redes sociales', 'entrenamiento', 'inteligencia artificial', 'ia', 'robot', 'aprender ia', 'talleres', 'taller'],
-    response: {
-      answer: 'Es un entrenamiento personalizado de 1 a 1. Aprenderás a usar herramientas de IA generativa para crear contenido masivo y programar agentes de atención automática en WhatsApp Business.',
-      target: '#curso',
-      actionText: 'Ver Detalles del Curso'
-    }
-  },
-  {
-    keys: ['paquete', 'paquetes', 'combo', 'combos', 'todo incluido', 'top', 'basico emprendedor', 'oferta', 'ofertas', 'promocion', 'promociones', 'paquete completo'],
-    response: {
-      answer: 'Nuestros paquetes integran logotipos, flyers publicitarios, páginas web y asesoría de Inteligencia Artificial en un solo pago con descuento para emprendedores.',
-      target: '#paquetes',
-      actionText: 'Ver Paquetes Completos'
-    }
-  },
-  {
-    keys: ['contacto', 'correo', 'email', 'escribir', 'formulario', 'mensaje', 'correo electronico', 'mail', 'escribirle', 'buzon', 'e-mail'],
-    response: {
-      answer: 'Puedes escribirnos directamente a nuestro correo alemoltru9497@gmail.com llenando el formulario al final de la página. Te responderemos el mismo día.',
-      target: '#contacto',
-      actionText: 'Ir al Formulario de Correo'
-    }
-  },
-  {
-    keys: ['whatsapp', 'teléfono', 'telefono', 'celular', 'chat', 'hablar', 'llamar', 'inmediato', '24/7', 'contacto directo', 'diseñador', 'número', 'numero', 'whats'],
-    response: {
-      answer: 'Si prefieres una atención inmediata, puedes chatear directamente por WhatsApp con el diseñador en cualquier momento.',
-      target: 'action_direct_whatsapp',
-      actionText: 'Chatear por WhatsApp'
-    }
-  },
-  {
-    keys: ['ejemplo', 'ejemplos', 'catalogo', 'catálogo', 'portafolio', 'trabajos', 'muestras', 'ver', 'imagenes', 'imágenes', 'diseños hechos', 'galería', 'galeria', 'referencias', 'portafolios'],
-    response: {
-      answer: 'Tenemos un portafolio interactivo muy completo con nuestros mejores trabajos organizados por categorías: logos personales, logos comerciales y publicidad & flyers.',
-      target: '#portafolio',
-      actionText: 'Ver Portafolio de Ejemplos'
-    }
-  },
-  {
-    keys: ['servicio', 'servicios', 'hacen', 'hace', 'ofrece', 'ofrecen', 'diseño', 'diseños', 'crean', 'hacer', 'diseñar', 'crear logo', 'hacer logo', 'trabajo', 'trabajos', 'haces', 'ofreces'],
-    response: {
-      answer: 'Creamos identidades de marca completas, logotipos comerciales y de nombre, publicidad y flyers de alto impacto, animación de logos, y desarrollo de páginas web profesionales.',
-      target: '#servicios',
-      actionText: 'Ver Todos los Servicios'
-    }
-  }
-];
-
-function getBotResponse(input) {
-  const text = input.toLowerCase().trim();
-
-  // Find matching rule by checking keywords
-  for (const rule of responseRules) {
-    for (const key of rule.keys) {
-      if (text.includes(key)) {
-        return rule.response;
-      }
-    }
-  }
-
-  // Default response
-  return {
-    answer: 'No estoy seguro de haber entendido tu duda, pero puedo ayudarte a encontrar información sobre costos, servicios, logotipos, publicidad, hacer un boceto, ver ejemplos de nuestro portafolio o tomar el curso de IA. ¿Sobre qué te gustaría saber más?',
-    target: '#servicios',
-    actionText: 'Explorar Servicios'
-  };
-}
-
 function initAiAssistant() {
   const aiFloatBtn = document.getElementById('aiFloatBtn');
   const aiFloatIcon = document.getElementById('aiFloatIcon');
@@ -5654,8 +5539,6 @@ function initAiAssistant() {
   const aiChatWindow = document.getElementById('aiChatWindow');
   const aiChatClose = document.getElementById('aiChatClose');
   const aiChatBody = document.getElementById('aiChatBody');
-  const aiChatInput = document.getElementById('aiChatInput');
-  const aiChatSendBtn = document.getElementById('aiChatSendBtn');
 
   // Load animation and tooltip logic: keep active until all onload welcome sequence popups are closed
   let lastModalOpenTime = Date.now();
@@ -5704,89 +5587,10 @@ function initAiAssistant() {
     aiChatWindow.classList.remove('open');
   });
 
-  // Handle send button click
-  aiChatSendBtn.addEventListener('click', handleUserSendMessage);
-
-  // Handle enter key press in input
-  aiChatInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      handleUserSendMessage();
-    }
-  });
-
-  function handleUserSendMessage() {
-    const text = aiChatInput.value.trim();
-    if (!text) return;
-
-    aiChatInput.value = '';
-    addUserMessage(text);
-    processBotResponse(text);
-  }
-
-  function addUserMessage(message) {
-    const msgDiv = document.createElement('div');
-    msgDiv.className = 'ai-msg user';
-    msgDiv.innerHTML = `<div class="ai-bubble">${message}</div>`;
-    aiChatBody.appendChild(msgDiv);
-    scrollToBottom();
-  }
-
-  function addBotResponse(answer, target, actionText) {
-    // Typing simulation delay
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'ai-msg assistant';
-    typingDiv.innerHTML = `<div class="ai-bubble"><i>Escribiendo...</i></div>`;
-    aiChatBody.appendChild(typingDiv);
-    scrollToBottom();
-
-    setTimeout(() => {
-      // Remove typing indicator
-      typingDiv.remove();
-
-      // Append bot answer bubble
-      const answerDiv = document.createElement('div');
-      answerDiv.className = 'ai-msg assistant';
-      answerDiv.innerHTML = `<div class="ai-bubble">${answer}</div>`;
-      aiChatBody.appendChild(answerDiv);
-
-      // Append action buttons under the answer
-      const actionsDiv = document.createElement('div');
-      actionsDiv.className = 'ai-actions-wrap';
-      actionsDiv.style.alignSelf = 'flex-start';
-      actionsDiv.style.width = '100%';
-      actionsDiv.innerHTML = `
-        <button class="ai-action-primary" onclick="advanceToSection('${target}')">
-          <i class="fas fa-chevron-circle-right"></i> ${actionText}
-        </button>
-        <button class="ai-action-secondary" onclick="contactDesignerDirectly()">
-          <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
-        </button>
-        <button class="ai-action-secondary" onclick="renderAiHome()" style="background: rgba(255, 255, 255, 0.08) !important; border: 1.5px solid #3b82f6 !important; color: #fff !important; font-weight: bold !important; margin-top: 0.5rem !important; justify-content: center !important; width: 100% !important; display: flex !important; align-items: center !important; gap: 0.5rem !important;">
-          <i class="fas fa-arrow-left"></i> ⬅️ Volver Atrás (Preguntas)
-        </button>
-      `;
-      aiChatBody.appendChild(actionsDiv);
-      scrollToBottom();
-    }, 600);
-  }
-
-  window.selectAiQuestion = function(id) {
-    const q = aiQuestions.find(item => item.id === id);
-    if (!q) return;
-
-    addUserMessage(q.question);
-    addBotResponse(q.answer, q.target, q.actionText);
-  };
-
-  function processBotResponse(inputText) {
-    const response = getBotResponse(inputText);
-    addBotResponse(response.answer, response.target, response.actionText);
-  }
-
   function renderAiHome() {
     aiChatBody.innerHTML = `
       <div class="ai-msg assistant">
-        <div class="ai-bubble">👋 ¡Hola! Soy tu asistente de ORION. ¿En qué te puedo ayudar hoy? Selecciona una duda o escribe tu pregunta abajo:</div>
+        <div class="ai-bubble">👋 ¡Hola! Soy tu asistente de ORION. ¿En qué te puedo ayudar hoy? Selecciona una duda o pregunta para guiarte:</div>
       </div>
       <div class="ai-options-list">
         ${aiQuestions.map(q => `
@@ -5799,6 +5603,32 @@ function initAiAssistant() {
     `;
     scrollToBottom();
   }
+
+  window.selectAiQuestion = function(id) {
+    const q = aiQuestions.find(item => item.id === id);
+    if (!q) return;
+
+    aiChatBody.innerHTML = `
+      <div class="ai-msg user">
+        <div class="ai-bubble">${q.question}</div>
+      </div>
+      <div class="ai-msg assistant" style="margin-top: 0.5rem;">
+        <div class="ai-bubble">${q.answer}</div>
+      </div>
+      <div class="ai-actions-wrap">
+        <button class="ai-action-primary" onclick="advanceToSection('${q.target}')">
+          <i class="fas fa-chevron-circle-right"></i> ${q.actionText}
+        </button>
+        <button class="ai-action-secondary" onclick="contactDesignerDirectly()">
+          <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+        </button>
+        <button class="ai-action-secondary" onclick="renderAiHome()" style="background: rgba(255, 255, 255, 0.08) !important; border: 1.5px solid #3b82f6 !important; color: #fff !important; font-weight: bold !important; margin-top: 0.5rem !important; justify-content: center !important; width: 100% !important; display: flex !important; align-items: center !important; gap: 0.5rem !important;">
+          <i class="fas fa-arrow-left"></i> ⬅️ Volver Atrás (Preguntas)
+        </button>
+      </div>
+    `;
+    scrollToBottom();
+  };
 
   window.advanceToSection = function(target) {
     aiChatWindow.classList.remove('open');
