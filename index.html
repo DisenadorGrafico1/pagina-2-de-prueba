@@ -5025,7 +5025,7 @@ function handleDrawBack() {
   document.getElementById('drawModalTitle').innerHTML = '<i class="fas fa-paint-brush"></i> Paso 1: Dibuja tu idea';
 }
 
-// Submit Quotation + canvas upload to FormSubmit.co and WhatsApp notification
+// Submit Quotation + canvas upload to tmpfiles.org and Web3Forms notification
 function submitSketchQuotation() {
   var name = document.getElementById('drawClientName').value.trim();
   var phone = document.getElementById('drawClientPhone').value.trim();
@@ -5046,69 +5046,80 @@ function submitSketchQuotation() {
 
   // Convert canvas to Blob (file upload object)
   sketchCanvas.toBlob(function(blob) {
-    var formData = new FormData();
-    // Configuración para FormSubmit
-    formData.append('_subject', 'Nuevo Boceto de Logotipo + Cotización - ' + name);
-    formData.append('from_name', 'ORION Creative Studio (Bocetos)');
-    
-    // Form fields
-    formData.append('Nombre Cliente', name);
-    formData.append('WhatsApp/Teléfono', phone);
-    formData.append('Email', email);
-    formData.append('Colores Deseados', colors || 'No especificados');
-    formData.append('Uso del Logo', use || 'No especificados');
-    formData.append('Notas del Boceto', notes || 'Sin notas del lienzo');
-    formData.append('Características del Diseño', features || 'Sin características adicionales');
-    
-    // File upload attachment (boceto.png)
-    formData.append('attachment', blob, 'boceto_logo_' + name.toLowerCase().replace(/\s+/g, '_') + '.png');
+    // 1. Upload to tmpfiles.org anonymously
+    var uploadData = new FormData();
+    uploadData.append('file', blob, 'boceto_logo_' + name.toLowerCase().replace(/\s+/g, '_') + '.png');
+    uploadData.append('expire', '172800'); // Valid for 48 hours (2 days)
 
-    // Post asynchronously to FormSubmit API
-    fetch('https://formsubmit.co/ajax/alemoltru9497@gmail.com', {
+    fetch('https://tmpfiles.org/api/v1/upload', {
       method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
+      body: uploadData
     })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      if (data.success || data.success === 'true') {
-        alert('¡Boceto y especificaciones enviadas con éxito a nuestro correo! Te enviaremos a WhatsApp para iniciar tu cotización.');
-        
-        // Prepare WhatsApp redirect message
-        var wsMsg = '¡Hola ORION! 🎨 Acabo de enviar un boceto y los datos de especificación para la cotización de mi logotipo desde la web.\n\n';
-        wsMsg += '👤 *Cliente:* ' + name + '\n';
-        wsMsg += '📧 *Email registrado:* ' + email + '\n';
-        wsMsg += '🎨 *Colores preferidos:* ' + (colors || 'Por definir') + '\n';
-        wsMsg += '📱 *WhatsApp:* ' + phone + '\n';
-        if (use) wsMsg += '💼 *Uso:* ' + use + '\n';
-        wsMsg += '\nRevisen por favor su correo electrónico corporativo para ver el boceto adjunto. ¡Quedo atento!';
-        
-        window.open('https://wa.me/527531627539?text=' + encodeURIComponent(wsMsg), '_blank');
-        closeDibujoModal();
-      } else {
-        alert('Hubo un error al enviar el boceto: ' + data.message);
-        btnSubmit.disabled = false;
-        btnSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Cotización';
+    .then(function(uploadResponse) {
+      if (!uploadResponse.ok) {
+        throw new Error('Error al subir la imagen al servidor temporal.');
       }
+      return uploadResponse.json();
+    })
+    .then(function(uploadResult) {
+      if (uploadResult.status !== 'success' || !uploadResult.data || !uploadResult.data.url) {
+        throw new Error('Formato de respuesta de subida no válido.');
+      }
+      
+      // Get the direct download URL by replacing tmpfiles.org/ with tmpfiles.org/dl/
+      var directUrl = uploadResult.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
+
+      // 2. Submit data to Web3Forms using the working access key
+      var formData = new FormData();
+      formData.append('access_key', 'c0e49a32-18be-459a-80bf-fc60f5003e70');
+      formData.append('subject', 'Nuevo Boceto de Logotipo + Cotización - ' + name);
+      formData.append('from_name', 'ORION Creative Studio (Bocetos)');
+      
+      formData.append('Nombre Cliente', name);
+      formData.append('WhatsApp/Teléfono', phone);
+      formData.append('Email', email);
+      formData.append('Colores Deseados', colors || 'No especificados');
+      formData.append('Uso del Logo', use || 'No especificados');
+      formData.append('Notas del Boceto', notes || 'Sin notas del lienzo');
+      formData.append('Características del Diseño', features || 'Sin características adicionales');
+      formData.append('Enlace al Boceto (Imagen)', directUrl);
+
+      return fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(formResponse) {
+        return formResponse.json();
+      })
+      .then(function(formDataResult) {
+        if (formDataResult.success) {
+          alert('¡Boceto y especificaciones enviadas con éxito a nuestro correo! Te enviaremos a WhatsApp para iniciar tu cotización.');
+          
+          // Prepare WhatsApp redirect message with direct link to the drawing
+          var wsMsg = '¡Hola ORION! 🎨 Acabo de enviar un boceto y los datos de especificación para la cotización de mi logotipo desde la web.\n\n';
+          wsMsg += '👤 *Cliente:* ' + name + '\n';
+          wsMsg += '📧 *Email registrado:* ' + email + '\n';
+          wsMsg += '🎨 *Colores preferidos:* ' + (colors || 'Por definir') + '\n';
+          wsMsg += '📱 *WhatsApp:* ' + phone + '\n';
+          if (use) wsMsg += '💼 *Uso:* ' + use + '\n';
+          wsMsg += '🖼️ *Boceto:* ' + directUrl + '\n';
+          wsMsg += '\nRevisen por favor su correo electrónico corporativo para ver el boceto adjunto. ¡Quedo atento!';
+          
+          window.open('https://wa.me/527531627539?text=' + encodeURIComponent(wsMsg), '_blank');
+          closeDibujoModal();
+        } else {
+          throw new Error(formDataResult.message || 'Error en el servidor de correos.');
+        }
+      });
     })
     .catch(function(error) {
       console.error('Error submitting form:', error);
-      alert('Hubo un problema de conexión al enviar tu cotización. Por favor reintenta.');
+      alert('Hubo un error al enviar el boceto: ' + error.message + '\nPor favor intenta de nuevo.');
       btnSubmit.disabled = false;
       btnSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Cotización';
     });
   }, 'image/png');
 }
 </script>
-<form action="https://formsubmit.co/alemoltru9497@gmail.com" method="POST" target="_blank" style="position:fixed;bottom:20px;right:20px;z-index:999999;background:#1e1b4b;padding:15px;border:2px solid #818cf8;border-radius:10px;color:white;box-shadow:0 10px 25px rgba(0,0,0,0.5);font-family:sans-serif;max-width:280px;text-align:center;">
-  <p style="margin:0 0 10px 0;font-size:14px;font-weight:bold;">⚠️ Paso Necesario para Activación</p>
-  <p style="margin:0 0 12px 0;font-size:12px;color:#c7d2fe;line-height:1.4;">Haz clic aquí abajo para enviar una solicitud directa de activación y recibir el correo de verificación:</p>
-  <input type="hidden" name="mensaje" value="Activación del formulario de bocetos de ORION Creative Studio">
-  <button type="submit" style="background:#4f46e5;color:white;border:none;padding:8px 16px;cursor:pointer;border-radius:6px;font-weight:bold;width:100%;transition:background 0.2s;" onmouseover="this.style.background='#4338ca'" onmouseout="this.style.background='#4f46e5'">Enviar Correo de Activación</button>
-</form>
 </body>
 </html>
