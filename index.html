@@ -5025,7 +5025,7 @@ function handleDrawBack() {
   document.getElementById('drawModalTitle').innerHTML = '<i class="fas fa-paint-brush"></i> Paso 1: Dibuja tu idea';
 }
 
-// Submit Quotation + canvas upload to Web3Forms and WhatsApp notification
+// Submit Quotation + canvas upload to FormSubmit.co and WhatsApp notification
 function submitSketchQuotation() {
   var name = document.getElementById('drawClientName').value.trim();
   var phone = document.getElementById('drawClientPhone').value.trim();
@@ -5047,9 +5047,8 @@ function submitSketchQuotation() {
   // Convert canvas to Blob (file upload object)
   sketchCanvas.toBlob(function(blob) {
     var formData = new FormData();
-    // Web3Forms Public Access Key
-    formData.append('access_key', '8ef2a6d7-84a1-432d-9477-96a8ebc5ce32');
-    formData.append('subject', 'Nuevo Boceto de Logotipo + Cotización - ' + name);
+    // Configuración para FormSubmit
+    formData.append('_subject', 'Nuevo Boceto de Logotipo + Cotización - ' + name);
     formData.append('from_name', 'ORION Creative Studio (Bocetos)');
     
     // Form fields
@@ -5064,16 +5063,19 @@ function submitSketchQuotation() {
     // File upload attachment (boceto.png)
     formData.append('attachment', blob, 'boceto_logo_' + name.toLowerCase().replace(/\s+/g, '_') + '.png');
 
-    // Post asynchronosly to Web3Forms API
-    fetch('https://api.web3forms.com/submit', {
+    // Post asynchronously to FormSubmit API
+    fetch('https://formsubmit.co/ajax/alemoltru9497@gmail.com', {
       method: 'POST',
-      body: formData
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
     })
     .then(function(response) {
       return response.json();
     })
     .then(function(data) {
-      if (data.success) {
+      if (data.success || data.success === 'true') {
         alert('¡Boceto y especificaciones enviadas con éxito a nuestro correo! Te enviaremos a WhatsApp para iniciar tu cotización.');
         
         // Prepare WhatsApp redirect message
