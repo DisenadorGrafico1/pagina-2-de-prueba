@@ -259,7 +259,7 @@ section{padding:6.5rem 2rem;position:relative;}
 
 .ia-section-label.title-curso-label {
   font-family: 'Orbitron', sans-serif !important;
-  font-size: clamp(1.1rem, 2.5vw, 1.8rem) !important;
+  font-size: clamp(1.25rem, 3.2vw, 2.2rem) !important; /* Más grande */
   font-weight: 700 !important;
   background: #ffffff !important;
   border: none !important;
@@ -267,7 +267,7 @@ section{padding:6.5rem 2rem;position:relative;}
   -webkit-background-clip: initial !important;
   -webkit-text-fill-color: #000000 !important;
   color: #000000 !important;
-  padding: 0.4rem 1.8rem !important;
+  padding: 0.6rem 2rem !important;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.12) !important;
   text-shadow: none !important;
   letter-spacing: 2px !important;
@@ -279,7 +279,23 @@ section{padding:6.5rem 2rem;position:relative;}
   justify-content: center !important;
   width: auto !important;
   box-sizing: border-box !important;
-  gap: 0.8rem !important;
+  gap: 1rem !important;
+}
+.mini-neuron {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #00f2fe, #00a896) !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.6) !important;
+}
+.mini-neuron svg {
+  width: 75% !important;
+  height: 75% !important;
+  animation: aiSpin 4s linear infinite !important;
 }
 .sec-desc{color:var(--txt2);max-width:580px;margin:0 auto;font-size:1.05rem;}
 .inner{max-width:1200px;margin:0 auto;}
@@ -1597,6 +1613,19 @@ nav {
     width: 100% !important;
     display: block !important;
     text-align: center !important;
+  }
+  
+  .card-top-badge {
+    font-size: 0.48rem !important;
+    padding: 0.12rem 0.35rem !important;
+    top: 0.4rem !important;
+    right: 0.4rem !important;
+  }
+  .pkg-crown {
+    font-size: 0.48rem !important;
+    padding: 0.12rem 0.35rem !important;
+    top: 0.6rem !important;
+    right: 0.6rem !important;
   }
 }
 
@@ -3024,7 +3053,7 @@ h1, h2, h3, h4, h5, h6,
     </div>
 
     <div class="pkg featured reveal">
-      <div class="pkg-crown">TOP</div>
+      <div class="pkg-crown"><i class="fas fa-crown" style="font-size:0.85em; margin-right:3px;"></i> TOP</div>
       <div class="pkg-name">Paquete Completo TOP</div>
       <div class="pkg-tag">Todo lo que necesitas para despegar</div>
       <div class="pkg-price c-gold"><sup>$</sup>1,299 <span style="font-size:1.2rem;font-weight:400;color:var(--txt3)">USD</span></div>
@@ -3052,7 +3081,35 @@ h1, h2, h3, h4, h5, h6,
 ================================================================ -->
 <div class="ia-section-header reveal">
   <div class="ia-section-label title-curso-label">
-    Curso de Redes Sociales para Emprendedores usando Inteligencia Artificial como Herramienta
+    <!-- Neurona animada izquierda -->
+    <div class="mini-neuron">
+      <svg viewBox="0 0 100 100">
+        <line x1="20" y1="50" x2="50" y2="20" stroke="rgba(255,255,255,0.7)" stroke-width="4"/>
+        <line x1="20" y1="50" x2="50" y2="80" stroke="rgba(255,255,255,0.7)" stroke-width="4"/>
+        <line x1="50" y1="20" x2="80" y2="50" stroke="rgba(255,255,255,0.7)" stroke-width="4"/>
+        <line x1="50" y1="80" x2="80" y2="50" stroke="rgba(255,255,255,0.7)" stroke-width="4"/>
+        <circle cx="20" cy="50" r="8" fill="#fff"/>
+        <circle cx="50" cy="20" r="8" fill="#fff"/>
+        <circle cx="80" cy="50" r="8" fill="#fff"/>
+        <circle cx="50" cy="80" r="8" fill="#fff"/>
+        <circle cx="50" cy="50" r="10" fill="#fff"/>
+      </svg>
+    </div>
+    <span>Curso de Redes Sociales para Emprendedores usando Inteligencia Artificial como Herramienta</span>
+    <!-- Neurona animada derecha -->
+    <div class="mini-neuron">
+      <svg viewBox="0 0 100 100">
+        <line x1="20" y1="50" x2="50" y2="20" stroke="rgba(255,255,255,0.7)" stroke-width="4"/>
+        <line x1="20" y1="50" x2="50" y2="80" stroke="rgba(255,255,255,0.7)" stroke-width="4"/>
+        <line x1="50" y1="20" x2="80" y2="50" stroke="rgba(255,255,255,0.7)" stroke-width="4"/>
+        <line x1="50" y1="80" x2="80" y2="50" stroke="rgba(255,255,255,0.7)" stroke-width="4"/>
+        <circle cx="20" cy="50" r="8" fill="#fff"/>
+        <circle cx="50" cy="20" r="8" fill="#fff"/>
+        <circle cx="80" cy="50" r="8" fill="#fff"/>
+        <circle cx="50" cy="80" r="8" fill="#fff"/>
+        <circle cx="50" cy="50" r="10" fill="#fff"/>
+      </svg>
+    </div>
   </div>
 </div>
 
