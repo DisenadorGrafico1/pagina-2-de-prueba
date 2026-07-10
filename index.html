@@ -5536,97 +5536,110 @@ const aiQuestions = [
   }
 ];
 
-function getBotResponse(input) {
-  const text = input.toLowerCase().trim();
-
-  if (text.includes('costo') || text.includes('precio') || text.includes('cuanto cuesta') || text.includes('cuánto cuesta') || text.includes('tarifa') || text.includes('valor') || text.includes('dinero') || text.includes('barato') || text.includes('pagar') || text.includes('cotiza')) {
-    return {
+const responseRules = [
+  {
+    keys: ['cuesta', 'cuestan', 'precio', 'precios', 'costo', 'costos', 'tarifa', 'tarifas', 'valor', 'presupuesto', 'presupuestos', 'cotizar', 'cotizacion', 'cotización', 'cotizaciones', 'cuanto', 'cuánto', 'cobran', 'cueste'],
+    response: {
       answer: 'Ofrecemos paquetes completos para emprendedores desde $99 USD (incluye logo, publicidad y asesoría IA) y páginas web profesionales con logo desde $199 USD. También contamos con opciones individuales de logos desde $29 USD.',
       target: '#paquetes',
       actionText: 'Ver Paquetes y Costos'
-    };
-  }
-
-  if (text.includes('boceto') || text.includes('dibujo') || text.includes('dibujar') || text.includes('lienzo') || text.includes('canvas') || text.includes('idea') || text.includes('pizarra')) {
-    return {
-      answer: '¡Contamos con un lienzo interactivo en el sitio! Puedes dibujar tu idea tú mismo, llenar tus datos y enviárnoslo. Tu dibujo nos llegará al correo para darte una cotización exacta.',
+    }
+  },
+  {
+    keys: ['boceto', 'bocetos', 'dibujo', 'dibujos', 'dibujar', 'lienzo', 'canvas', 'pizarra', 'pizarrón', 'pizarron', 'idea', 'diseñar yo', 'dibujo yo', 'pizarrón interactivo'],
+    response: {
+      answer: '¡Contamos con un lienzo interactivo en el sitio! Puedes hacer clic en "Hacer boceto" y dibujar tu idea. Una vez enviado, el dibujo y tus datos nos llegarán al correo electrónico alemoltru9497@gmail.com para darte una cotización exacta.',
       target: 'action_open_sketch',
       actionText: 'Abrir Lienzo de Boceto'
-    };
-  }
-
-  if (text.includes('logo de nombre') || text.includes('logo nombre') || text.includes('tipograf') || text.includes('letras')) {
-    return {
+    }
+  },
+  {
+    keys: ['logo de nombre', 'logo nombre', 'logotipo de nombre', 'tipografico', 'tipografia', 'tipografía', 'letras', 'letra', 'nombre basico', 'nombre premium', 'nombres'],
+    response: {
       answer: 'El Logo de Nombre Básico ($29 USD) o Premium ($79 USD) está basado en diseño tipográfico personalizado de alta gama. Ideal si quieres que el nombre de tu marca luzca profesional y elegante.',
       target: '#servicios',
       actionText: 'Ver Sección de Logos'
-    };
-  }
-
-  if (text.includes('logo de negocio') || text.includes('logo negocio') || text.includes('marca') || text.includes('isologotipo') || text.includes('icono') || text.includes('identidad')) {
-    return {
+    }
+  },
+  {
+    keys: ['logo de negocio', 'logo negocio', 'logotipo de negocio', 'marca', 'isologo', 'isologotipo', 'imagotipo', 'isotipo', 'icono', 'comercial', 'empresas', 'empresa', 'negocio premium', 'negocio pro', 'negocios'],
+    response: {
       answer: 'El Logo de Negocio Premium ($159 USD) o Pro ($79 USD) incluye un isologotipo o icono comercial diseñado desde cero junto al manual de marca, paleta de colores y variantes para representar tu negocio.',
       target: '#servicios',
       actionText: 'Ver Sección de Logos'
-    };
-  }
-
-  if (text.includes('publicidad') || text.includes('flyer') || text.includes('banner') || text.includes('anuncio') || text.includes('post')) {
-    return {
+    }
+  },
+  {
+    keys: ['publicidad', 'flyer', 'flyers', 'banner', 'anuncio', 'anuncios', 'post', 'posts', 'folleto', 'folletos', 'volante', 'volantes', 'redes sociales publicidad'],
+    response: {
       answer: 'Diseñamos banners, flyers digitales para redes sociales, anuncios publicitarios y posters de alto impacto comercial que atraigan clientes a tu negocio.',
       target: '#servicios',
       actionText: 'Ver Galería de Publicidad'
-    };
-  }
-
-  if (text.includes('curso') || text.includes('aprender') || text.includes('clases') || text.includes('redes') || text.includes('entrenamiento')) {
-    return {
+    }
+  },
+  {
+    keys: ['curso', 'clases', 'aprender', 'clase', 'redes', 'redes sociales', 'entrenamiento', 'inteligencia artificial', 'ia', 'robot', 'aprender ia', 'talleres', 'taller'],
+    response: {
       answer: 'Es un entrenamiento personalizado de 1 a 1. Aprenderás a usar herramientas de IA generativa para crear contenido masivo y programar agentes de atención automática en WhatsApp Business.',
       target: '#curso',
       actionText: 'Ver Detalles del Curso'
-    };
-  }
-
-  if (text.includes('paquete') || text.includes('combo') || text.includes('todo incluido')) {
-    return {
+    }
+  },
+  {
+    keys: ['paquete', 'paquetes', 'combo', 'combos', 'todo incluido', 'top', 'basico emprendedor', 'oferta', 'ofertas', 'promocion', 'promociones', 'paquete completo'],
+    response: {
       answer: 'Nuestros paquetes integran logotipos, flyers publicitarios, páginas web y asesoría de Inteligencia Artificial en un solo pago con descuento para emprendedores.',
       target: '#paquetes',
       actionText: 'Ver Paquetes Completos'
-    };
-  }
-
-  if (text.includes('contacto') || text.includes('correo') || text.includes('email') || text.includes('escribir') || text.includes('formulario') || text.includes('mensaje')) {
-    return {
+    }
+  },
+  {
+    keys: ['contacto', 'correo', 'email', 'escribir', 'formulario', 'mensaje', 'correo electronico', 'mail', 'escribirle', 'buzon', 'e-mail'],
+    response: {
       answer: 'Puedes escribirnos directamente a nuestro correo alemoltru9497@gmail.com llenando el formulario al final de la página. Te responderemos el mismo día.',
       target: '#contacto',
       actionText: 'Ir al Formulario de Correo'
-    };
-  }
-
-  if (text.includes('whatsapp') || text.includes('teléfono') || text.includes('telefono') || text.includes('celular') || text.includes('chat') || text.includes('hablar') || text.includes('llamar')) {
-    return {
+    }
+  },
+  {
+    keys: ['whatsapp', 'teléfono', 'telefono', 'celular', 'chat', 'hablar', 'llamar', 'inmediato', '24/7', 'contacto directo', 'diseñador', 'número', 'numero', 'whats'],
+    response: {
       answer: 'Si prefieres una atención inmediata, puedes chatear directamente por WhatsApp con el diseñador en cualquier momento.',
       target: 'action_direct_whatsapp',
       actionText: 'Chatear por WhatsApp'
-    };
-  }
-
-  if (text.includes('ejemplo') || text.includes('catalogo') || text.includes('catálogo') || text.includes('portafolio') || text.includes('trabajos') || text.includes('muestras') || text.includes('ver')) {
-    return {
+    }
+  },
+  {
+    keys: ['ejemplo', 'ejemplos', 'catalogo', 'catálogo', 'portafolio', 'trabajos', 'muestras', 'ver', 'imagenes', 'imágenes', 'diseños hechos', 'galería', 'galeria', 'referencias', 'portafolios'],
+    response: {
       answer: 'Tenemos un portafolio interactivo muy completo con nuestros mejores trabajos organizados por categorías: logos personales, logos comerciales y publicidad & flyers.',
       target: '#portafolio',
       actionText: 'Ver Portafolio de Ejemplos'
-    };
-  }
-
-  if (text.includes('servicios') || text.includes('hacen') || text.includes('hace') || text.includes('ofrece') || text.includes('ofrecen') || text.includes('diseño') || text.includes('crean') || text.includes('hacer') || text.includes('diseñar')) {
-    return {
+    }
+  },
+  {
+    keys: ['servicio', 'servicios', 'hacen', 'hace', 'ofrece', 'ofrecen', 'diseño', 'diseños', 'crean', 'hacer', 'diseñar', 'crear logo', 'hacer logo', 'trabajo', 'trabajos', 'haces', 'ofreces'],
+    response: {
       answer: 'Creamos identidades de marca completas, logotipos comerciales y de nombre, publicidad y flyers de alto impacto, animación de logos, y desarrollo de páginas web profesionales.',
       target: '#servicios',
       actionText: 'Ver Todos los Servicios'
-    };
+    }
+  }
+];
+
+function getBotResponse(input) {
+  const text = input.toLowerCase().trim();
+
+  // Find matching rule by checking keywords
+  for (const rule of responseRules) {
+    for (const key of rule.keys) {
+      if (text.includes(key)) {
+        return rule.response;
+      }
+    }
   }
 
+  // Default response
   return {
     answer: 'No estoy seguro de haber entendido tu duda, pero puedo ayudarte a encontrar información sobre costos, servicios, logotipos, publicidad, hacer un boceto, ver ejemplos de nuestro portafolio o tomar el curso de IA. ¿Sobre qué te gustaría saber más?',
     target: '#servicios',
