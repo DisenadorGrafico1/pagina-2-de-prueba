@@ -799,9 +799,9 @@ footer{
   position: absolute;
   top: 1.2rem;
   right: 1.2rem;
-  background: rgba(168, 85, 247, 0.12);
-  border: 1px solid var(--border);
-  color: var(--txt2);
+  background: rgba(239, 68, 68, 0.18) !important;
+  border: 1.5px solid #ef4444 !important;
+  color: #fca5a5 !important;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -813,11 +813,15 @@ footer{
   justify-content: center;
   line-height: 1;
   z-index: 10;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.3) !important;
+  box-sizing: border-box !important;
 }
 .welcome-modal-close:hover {
-  background: rgba(251, 191, 36, 0.25);
-  color: #fff;
-  border-color: var(--gold);
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 18px rgba(239, 68, 68, 0.7) !important;
+  transform: scale(1.12);
 }
 .welcome-modal-content {
   padding: 2.5rem;
@@ -3372,13 +3376,22 @@ h1, h2, h3, h4, h5, h6,
         <li><i class="fas fa-check-circle"></i> Archivos vectoriales editables incluidos</li>
       </ul>
       
-      <div class="welcome-price-area">
-        <span class="welcome-price">$79</span>
-        <span class="welcome-price-usd">USD</span>
+      <div class="welcome-price-area" style="display: flex; flex-direction: column; gap: 0.2rem; align-items: flex-start; margin-bottom: 1.2rem;">
+        <div style="display:flex; align-items:center; gap:.7rem; flex-wrap:wrap;">
+          <span style="font-size:1.1rem; color:rgba(255,255,255,0.4); text-decoration:line-through; font-weight:600;">$99 USD</span>
+          <span style="background:#ef4444; color:#fff; font-size:.72rem; font-weight:700; padding:.15rem .5rem; border-radius:20px; letter-spacing:.5px;">PROMOCIÓN</span>
+        </div>
+        <div style="font-size:2.2rem; font-weight:900; color:#fbbf24; font-family:'Orbitron',sans-serif; line-height:1;">
+          $64 <span style="font-size:.9rem; color:rgba(255,255,255,0.6); font-family:'Space Grotesk',sans-serif; font-weight:400;">USD</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:.5rem; margin-top:.4rem;">
+          <i class="fas fa-clock" style="color:#ef4444; font-size:.9rem;"></i>
+          <span style="font-size:.85rem; color:#ef4444; font-weight:700;">La oferta termina en: <span id="welcome-countdown-timer">10:00</span></span>
+        </div>
       </div>
       
-      <button class="welcome-cta" onclick="closePremiumLogoWelcomeModal(true); openContratarModal('Logo de Nombre Premium','$79 USD')">
-        <i class="fab fa-whatsapp"></i> Contratar por $79 USD
+      <button class="welcome-cta" onclick="closePremiumLogoWelcomeModal(true); openContratarModal('Logo de Nombre Premium — Oferta Especial','$64 USD')">
+        <i class="fab fa-whatsapp"></i> Contratar Oferta Especial por $64 USD
       </button>
       
       <button class="welcome-secondary-btn" onclick="closePremiumLogoWelcomeModal(); openGallery('logo-nombre-premium')">
@@ -3478,11 +3491,11 @@ h1, h2, h3, h4, h5, h6,
     <!-- Ribbon -->
     <div style="background:linear-gradient(90deg,#f59e0b,#d97706);color:#0d0028;text-align:center;padding:.35rem;font-weight:900;font-size:.75rem;letter-spacing:2px;">⚡ OFERTA POR TIEMPO LIMITADO ⚡</div>
     <!-- Close -->
-    <button onclick="cerrarPopupOferta()" style="position:absolute;top:.7rem;right:.8rem;background:rgba(255,255,255,.1);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;">✕</button>
+    <button onclick="cerrarPopupOferta()" class="welcome-modal-close" style="width:30px !important; height:30px !important; top:.7rem !important; right:.8rem !important; font-size: 0.9rem !important; z-index:2;">✕</button>
     <div style="padding:1rem 1.2rem 1.2rem;">
       <div style="text-align:center;margin-bottom:.7rem;">
         <div style="font-size:1.3rem;margin-bottom:.2rem;">🚀✨</div>
-        <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(.95rem,3.5vw,1.2rem);font-weight:900;color:#fbbf24;line-height:1.2;margin-bottom:.35rem;">Página Web Profesional<br>+ Logo para tu Negocio</h2>
+        <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(1.2rem,4vw,1.65rem);font-weight:900;color:#fbbf24;line-height:1.2;margin-bottom:.35rem;">Página Web Profesional<br>+ Logo para tu Negocio</h2>
         <p style="color:rgba(255,255,255,.75);font-size:.8rem;line-height:1.4;margin-bottom:.6rem;">Lanza tu negocio al mundo con presencia digital completa. Diseño personalizado, logo con todos los formatos y entrega rápida.</p>
         <div style="display:flex;align-items:center;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.3rem;">
           <span style="color:rgba(255,255,255,.45);text-decoration:line-through;font-size:1rem;font-weight:600;">$449 USD</span>
@@ -3512,7 +3525,7 @@ h1, h2, h3, h4, h5, h6,
 <div id="popupMSI" style="display:none;position:fixed;bottom:1.5rem;right:1.5rem;z-index:9998;max-width:300px;width:90%;background:linear-gradient(145deg,#0d0028,#1a003a);border:1px solid rgba(168,85,247,.5);border-radius:20px;box-shadow:0 8px 40px rgba(124,58,237,.4);animation:popupIn .5s ease;">
   <div style="background:linear-gradient(90deg,#7c3aed,#6d28d9);border-radius:20px 20px 0 0;padding:.6rem 1rem;display:flex;align-items:center;justify-content:space-between;">
     <span style="color:#fff;font-weight:800;font-size:.82rem;letter-spacing:.5px;">💳 MESES SIN INTERESES</span>
-    <button onclick="document.getElementById('popupMSI').style.display='none'" style="background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:1rem;line-height:1;">✕</button>
+    <button onclick="document.getElementById('popupMSI').style.display='none'" class="welcome-modal-close" style="position:relative !important; top:0 !important; right:0 !important; width:26px !important; height:26px !important; font-size:0.8rem !important; margin:0 !important;">✕</button>
   </div>
   <div style="padding:1rem 1.1rem 1.2rem;">
     <p style="color:rgba(255,255,255,.9);font-size:.85rem;font-weight:600;margin-bottom:.7rem;line-height:1.4;">¡Todos nuestros servicios disponibles a meses sin intereses!</p>
@@ -4203,8 +4216,6 @@ function closePremiumLogoWelcomeModal(isHiring) {
     modal.style.display = 'none';
     if (isHiring) {
       waitingForCheckout = true;
-    } else {
-      advanceModalSequence();
     }
   }, 400);
   
@@ -4419,10 +4430,51 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Trigger Welcome Modal shortly after load (Starts the sequence)
+// Looping 10-minute countdown timer for Welcome Modal
+function startWelcomeCountdown() {
+  const timerSpan = document.getElementById('welcome-countdown-timer');
+  if (!timerSpan) return;
+
+  let timeRemaining = 10 * 60; // 10 minutes in seconds
+
+  const interval = setInterval(() => {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+
+    timerSpan.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    if (timeRemaining <= 0) {
+      timeRemaining = 10 * 60; // Loop/reset to 10 minutes
+    } else {
+      timeRemaining--;
+    }
+  }, 1000);
+}
+
+// Decoupled modal triggers on independent timers
 document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(openPremiumLogoWelcomeModal, 500);
   initPortfolio();
+  startWelcomeCountdown();
+
+  // 1. Immediately open Meses Sin Intereses popup (only one at load)
+  setTimeout(() => {
+    const msi = document.getElementById('popupMSI');
+    if (msi) msi.style.display = 'block';
+  }, 1000);
+
+  // 2. Open Logo de Nombre Premium welcome modal after 30 seconds
+  setTimeout(() => {
+    openPremiumLogoWelcomeModal();
+  }, 30000);
+
+  // 3. Open Página Web Promoción popup after 1 minute (60 seconds)
+  setTimeout(() => {
+    const webPromo = document.getElementById('ofertaPopup');
+    if (webPromo) {
+      webPromo.style.display = 'flex';
+      webPromo.style.opacity = '1';
+    }
+  }, 60000);
 });
 
 
@@ -4685,8 +4737,6 @@ function cerrarPopupOferta(isHiring){
     p.style.display='none';p.style.opacity='';
     if (isHiring) {
       waitingForCheckout = true;
-    } else {
-      advanceModalSequence();
     }
   },300);
 }
