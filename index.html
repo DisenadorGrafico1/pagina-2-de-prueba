@@ -2330,8 +2330,8 @@ h1, h2, h3, h4, h5, h6,
 .ai-chat-window {
   position: fixed; bottom: 10.5rem; right: 1.5rem; z-index: 1000;
   width: 350px; height: 480px; max-height: 80vh; max-width: calc(100vw - 3rem);
-  background: rgba(10, 0, 35, 0.94); border: 1px solid rgba(168, 85, 247, 0.25);
-  border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(124, 58, 237, 0.15);
+  background: rgba(10, 0, 35, 0.95); border: 2px solid #2563eb !important;
+  border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(37, 99, 235, 0.15);
   display: flex; flex-direction: column; overflow: hidden;
   backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
   opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95);
@@ -2342,17 +2342,17 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .ai-chat-header {
-  padding: 1rem 1.2rem; background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(232, 121, 249, 0.08));
-  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+  padding: 1rem 1.2rem; background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(96, 165, 250, 0.08));
+  border-bottom: 1px solid rgba(37, 99, 235, 0.2);
   display: flex; align-items: center; justify-content: space-between;
 }
 .ai-chat-header-info {
   display: flex; align-items: center; gap: 0.75rem;
 }
 .ai-chat-avatar {
-  width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--purple), var(--pink));
+  width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #60a5fa);
   display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #fff;
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
 }
 .ai-chat-title {
   font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 700; color: #fff; letter-spacing: 0.5px;
@@ -2384,26 +2384,27 @@ h1, h2, h3, h4, h5, h6,
 }
 .ai-bubble {
   padding: 0.75rem 1rem; border-radius: 16px; font-size: 0.84rem;
+  color: #e2e8f0 !important;
 }
 .ai-msg.assistant .ai-bubble {
-  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); color: var(--txt);
+  background: rgba(37, 99, 235, 0.08); border: 1px solid rgba(37, 99, 235, 0.15); color: #e2e8f0;
   border-bottom-left-radius: 4px;
 }
 .ai-msg.user .ai-bubble {
-  background: var(--purple); color: #fff; border-bottom-right-radius: 4px;
+  background: #2563eb; color: #fff; border-bottom-right-radius: 4px;
 }
 
 .ai-options-list {
   display: flex; flex-direction: column; gap: 0.5rem; width: 100%; margin-top: 0.5rem;
 }
 .ai-option-btn {
-  background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(168, 85, 247, 0.2);
-  color: var(--txt); padding: 0.6rem 0.9rem; border-radius: 10px; text-align: left;
+  background: rgba(37, 99, 235, 0.08) !important; border: 1px solid rgba(37, 99, 235, 0.2) !important;
+  color: #93c5fd !important; padding: 0.6rem 0.9rem; border-radius: 10px; text-align: left;
   font-size: 0.8rem; font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer;
   transition: background 0.2s, border-color 0.2s, transform 0.15s;
 }
 .ai-option-btn:hover {
-  background: rgba(124, 58, 237, 0.2); border-color: var(--glow);
+  background: rgba(37, 99, 235, 0.18) !important; border-color: #60a5fa !important;
   transform: translateX(4px);
 }
 
@@ -2411,7 +2412,7 @@ h1, h2, h3, h4, h5, h6,
   display: flex; flex-direction: column; gap: 0.5rem; width: 100%; margin-top: 0.8rem;
 }
 .ai-action-primary {
-  background: linear-gradient(135deg, var(--purple), var(--purple-mid)); border: none;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8); border: none;
   color: #fff; padding: 0.6rem 1rem; border-radius: 10px; font-weight: 700; text-align: center;
   font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;
   transition: opacity 0.2s, transform 0.15s;
@@ -2459,7 +2460,7 @@ h1, h2, h3, h4, h5, h6,
 <div id="aiAssistantContainer">
   <div id="aiTooltip" class="ai-tooltip">Estoy aquí para ayudarte</div>
   <button id="aiFloatBtn" class="ai-float" aria-label="Asistente IA">
-    <i id="aiFloatIcon" class="fas fa-robot spinning"></i>
+    <i id="aiFloatIcon" class="fas fa-brain spinning"></i>
   </button>
 </div>
 
@@ -2467,7 +2468,7 @@ h1, h2, h3, h4, h5, h6,
 <div id="aiChatWindow" class="ai-chat-window">
   <div class="ai-chat-header">
     <div class="ai-chat-header-info">
-      <div class="ai-chat-avatar"><i class="fas fa-robot"></i></div>
+      <div class="ai-chat-avatar"><i class="fas fa-brain"></i></div>
       <div>
         <div class="ai-chat-title">ORION Inteligente</div>
         <div class="ai-chat-status">En línea — Asistente de Diseño</div>
@@ -5419,11 +5420,36 @@ function initAiAssistant() {
   const aiChatClose = document.getElementById('aiChatClose');
   const aiChatBody = document.getElementById('aiChatBody');
 
-  // Load animation and tooltip behavior (5 seconds)
-  setTimeout(() => {
-    aiFloatIcon.classList.remove('spinning');
-    aiTooltip.classList.add('hidden');
-  }, 5000);
+  // Load animation and tooltip logic: keep active until all onload welcome sequence popups are closed
+  let lastModalOpenTime = Date.now();
+  let aiIntroActive = true;
+
+  const aiIntroInterval = setInterval(() => {
+    if (!aiIntroActive) return;
+
+    const welcomeModal = document.getElementById('premiumLogoWelcomeModal');
+    const ofertaPopup = document.getElementById('ofertaPopup');
+    const popupMsi = document.getElementById('popupMSI');
+
+    const isWelcomeOpen = welcomeModal && (welcomeModal.classList.contains('open') || welcomeModal.style.display === 'flex');
+    const isOfertaOpen = ofertaPopup && (ofertaPopup.style.opacity === '1' || ofertaPopup.style.display === 'flex');
+    const isMsiOpen = popupMsi && (popupMsi.style.display === 'block' || popupMsi.style.display === 'flex');
+
+    if (isWelcomeOpen || isOfertaOpen || isMsiOpen) {
+      // Welcome popups are active: reset timer and keep spinning/showing tooltip
+      lastModalOpenTime = Date.now();
+      aiFloatIcon.classList.add('spinning');
+      aiTooltip.classList.remove('hidden');
+    } else {
+      // Modals are closed: check if 5 seconds have elapsed since they were closed
+      if (Date.now() - lastModalOpenTime >= 5000) {
+        aiFloatIcon.classList.remove('spinning');
+        aiTooltip.classList.add('hidden');
+        aiIntroActive = false;
+        clearInterval(aiIntroInterval);
+      }
+    }
+  }, 300);
 
   // Toggle chat window
   aiFloatBtn.addEventListener('click', () => {
