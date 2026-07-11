@@ -67,7 +67,7 @@
 <meta name="twitter:title"       content="ORION Creative Studio | Diseño · Publicidad · IA">
 <meta name="twitter:description" content="Creamos identidades visuales poderosas, estrategias de publicidad efectivas y soluciones integrales para que tu negocio conquiste el universo.">
 <meta name="twitter:image"       content="https://disenadorgrafico1.github.io/ORION-Creative-Studio/og-preview.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@700&family=Architects+Daughter&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@700&family=Architects+Daughter&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* ============================================================
@@ -2240,153 +2240,292 @@ h1, h2, h3, h4, h5, h6,
   .mascot-lg { width: 65px !important; }
   .mascot-xl { width: 85px !important; }
 }
-/* ═══════ CERTIFICADO DE AUTENTICIDAD MODAL STYLES ═══════ */
+/* ═══════ CERTIFICADO DE AUTENTICIDAD MODAL — DISEÑO EDITORIAL ARTÍSTICO ═══════ */
 #certificadoModal {
   display: none;
   position: fixed;
   z-index: 1200;
   inset: 0;
-  background-color: rgba(2, 0, 15, 0.88);
-  backdrop-filter: blur(15px);
+  background: rgba(38, 32, 24, 0.62);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  color: var(--txt);
 }
 .cert-modal-container {
-  background: rgba(10, 5, 28, 0.72) !important;
+  background: #F7F2E9;
   width: 100%;
-  max-width: 720px;
-  max-height: 90vh;
+  max-width: 760px;
+  max-height: 92vh;
   border-radius: 20px;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 40px 100px rgba(30, 24, 14, 0.55);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(251, 191, 36, 0.35) !important;
-  animation: modalFadeIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  backdrop-filter: blur(28px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid #E7DFCE;
+  animation: certPopIn 0.32s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  position: relative;
 }
+@keyframes certPopIn {
+  from { opacity: 0; transform: scale(0.94) translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Barra coral superior — igual que el sitio ref */
+.cert-modal-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #D9482B 0%, #DE9F26 50%, #25867B 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Orbs de acuarela flotando detrás del contenido */
+.cert-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+.cert-orb-a {
+  width: 320px; height: 320px;
+  background: #E4744E;
+  opacity: 0.14;
+  top: -120px; left: -100px;
+  animation: certDriftA 20s ease-in-out infinite alternate;
+}
+.cert-orb-b {
+  width: 280px; height: 280px;
+  background: #3FA294;
+  opacity: 0.12;
+  bottom: -100px; right: -80px;
+  animation: certDriftB 25s ease-in-out infinite alternate;
+}
+.cert-orb-c {
+  width: 200px; height: 200px;
+  background: #E7B84C;
+  opacity: 0.12;
+  top: 40%; left: 58%;
+  animation: certDriftC 30s ease-in-out infinite alternate;
+}
+@keyframes certDriftA { to { transform: translate(80px, 60px) scale(1.12); } }
+@keyframes certDriftB { to { transform: translate(-60px, -50px) scale(1.08); } }
+@keyframes certDriftC { to { transform: translate(-60px, 80px) scale(0.9); } }
+
 .cert-modal-header {
-  padding: 1.4rem 1.8rem;
-  border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+  padding: 1.6rem 2rem 1.2rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  background: rgba(251, 191, 36, 0.05);
+  gap: 1rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.cert-modal-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.cert-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #D9482B;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.cert-eyebrow::before {
+  content: "";
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #D9482B;
   flex-shrink: 0;
 }
 .cert-modal-header h3 {
   margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--gold) !important;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  font-family: 'Fraunces', 'Georgia', serif;
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: #26221B !important;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.cert-modal-header h3 em {
+  font-style: italic;
+  color: #D9482B;
+}
+.cert-modal-subtitle {
+  font-size: 0.82rem;
+  color: #7C766A;
+  margin: 0;
+  margin-top: 0.2rem;
+  font-family: 'Inter', sans-serif;
 }
 .cert-modal-close {
-  background: none;
-  border: none;
-  color: var(--gold) !important;
-  font-size: 1.6rem;
+  background: #FBF7EE;
+  border: 1px solid #D8CDB6;
+  border-radius: 10px;
+  width: 36px; height: 36px;
+  font-size: 14px;
   cursor: pointer;
-  transition: transform 0.2s, color 0.2s;
-  opacity: 0.8;
-  line-height: 1;
+  color: #26221B;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 0.3rem;
 }
 .cert-modal-close:hover {
-  transform: scale(1.15);
-  color: #fff !important;
-  opacity: 1;
+  border-color: #D9482B;
+  color: #D9482B;
+  transform: rotate(90deg);
 }
 .cert-modal-body {
-  padding: 1.8rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.92rem;
+  padding: 0 2rem 1.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
   line-height: 1.6;
-  color: #cbd5e1 !important;
+  color: #26221B;
   overflow-y: auto;
   flex-grow: 1;
+  position: relative;
+  z-index: 1;
 }
 .cert-modal-footer {
-  padding: 1.2rem 1.8rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.2rem 2rem;
+  border-top: 1px solid #E7DFCE;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 1rem;
-  background: rgba(255, 255, 255, 0.02);
+  gap: 0.8rem;
+  background: #FBF7EE;
   flex-shrink: 0;
   flex-wrap: wrap;
-}
-.cert-section-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #fff !important;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.cert-section-title i {
-  color: var(--gold) !important;
-}
-.cert-badge-price {
-  background: rgba(37, 211, 102, 0.15) !important;
-  color: #25d366 !important;
-  border: 1px solid rgba(37, 211, 102, 0.35) !important;
-  padding: 0.35rem 0.95rem;
-  border-radius: 8px;
-  font-weight: 800;
-  display: inline-block;
-  margin-top: 0.6rem;
-  font-size: 0.95rem;
-  font-family: 'Orbitron', sans-serif;
-  box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
+/* Divider editorial con número de paso */
+.cert-steptag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 1.4rem 0 0.9rem;
+  font-family: 'Fraunces', 'Georgia', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #26221B;
+  letter-spacing: 0.01em;
+}
+.cert-steptag::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #E7DFCE;
+}
+.cert-steptag-num {
+  width: 28px; height: 28px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px; font-weight: 700;
+  color: #F7F2E9;
+  background: #26221B;
+  border-radius: 7px;
+}
+
+/* Feature cards con borde izquierdo de acento */
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.2rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .cert-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 1.3rem;
-  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+  background: #FFFDF8;
+  border: 1px solid #E7DFCE;
+  border-left: 3px solid #D9482B;
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 6px 18px rgba(58, 48, 32, 0.07);
+  transition: transform 0.22s, box-shadow 0.22s;
 }
+.cert-card:nth-child(2) { border-left-color: #DE9F26; }
+.cert-card:nth-child(3) { border-left-color: #25867B; }
+.cert-card:nth-child(4) { border-left-color: #7C4D8F; }
 .cert-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(251, 191, 36, 0.35);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(58, 48, 32, 0.13);
 }
 .cert-card-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-size: 1.02rem;
-  color: #ffffff !important;
+  font-size: 0.9rem;
+  color: #26221B !important;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 .cert-card-title i {
-  color: var(--gold) !important;
+  color: #D9482B !important;
 }
+.cert-card:nth-child(2) .cert-card-title i { color: #DE9F26 !important; }
+.cert-card:nth-child(3) .cert-card-title i { color: #25867B !important; }
+.cert-card:nth-child(4) .cert-card-title i { color: #7C4D8F !important; }
 .cert-card-text {
-  font-size: 0.86rem;
-  color: #cbd5e1 !important;
-  line-height: 1.6;
+  font-size: 0.82rem;
+  color: #4C463B !important;
+  line-height: 1.65;
 }
+
+/* Badge de precio */
+.cert-badge-price {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #7C4D8F;
+  background: rgba(124, 77, 143, 0.08);
+  border: 1px solid rgba(124, 77, 143, 0.28);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+}
+
+/* Cita de cierre */
+.cert-closing-note {
+  background: #FBF7EE;
+  border: 1px solid #E7DFCE;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-top: 1.2rem;
+  font-size: 0.84rem;
+  color: #4C463B;
+  line-height: 1.65;
+}
+.cert-closing-note strong {
+  color: #26221B;
+}
+
+/* Botón de sección */
+.cert-modal-section-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.86rem;
+  display: none;
+}
+
 
 /* ═══════ SKETCH MODAL & CANVAS DRAWING TOOL STYLES ═══════ */
 #dibujoModal {
@@ -5524,91 +5663,116 @@ function continuarCompra() {
   </div>
 </div>
 
-<!-- MODAL CERTIFICADO DE AUTENTICIDAD -->
-<div id="certificadoModal" role="dialog" aria-modal="true">
+<!-- MODAL CERTIFICADO DE AUTENTICIDAD — DISEÑO EDITORIAL ARTÍSTICO -->
+<div id="certificadoModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
   <div class="cert-modal-container">
-    <!-- Cabecera -->
+
+    <!-- Orbs de acuarela decorativos -->
+    <div class="cert-orb cert-orb-a" aria-hidden="true"></div>
+    <div class="cert-orb cert-orb-b" aria-hidden="true"></div>
+    <div class="cert-orb cert-orb-c" aria-hidden="true"></div>
+
+    <!-- Cabecera editorial -->
     <div class="cert-modal-header">
-      <h3><i class="fas fa-certificate"></i> Certificado de Autenticidad</h3>
+      <div class="cert-modal-header-left">
+        <span class="cert-eyebrow">Para artistas y diseñadores</span>
+        <h3 id="certModalTitle">Certifica tu obra con <em>huella digital única</em></h3>
+        <p class="cert-modal-subtitle">Pintura, ilustración, arte digital, fotografía o diseño gráfico — protege lo que creaste.</p>
+      </div>
       <button class="cert-modal-close" onclick="closeCertificadoModal()" aria-label="Cerrar">✕</button>
     </div>
+
     <!-- Cuerpo -->
     <div class="cert-modal-body">
-      <!-- Title & Price -->
-      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.8rem;">
-        <div>
-          <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; margin: 0; color: #ffffff;">Firma tu Autoría y Blindaje de Archivo</h4>
-          <p style="font-size: 0.82rem; color: #94a3b8; margin: 0.2rem 0 0;">Certificaciones inmutables para Obras y Marcas Originales</p>
-        </div>
-        <span class="cert-badge-price" style="margin: 0;">$50 MXN / Obra</span>
-      </div>
 
-      <!-- Main Copy Intro -->
-      <p style="font-size: 0.9rem; color: #e2e8f0; line-height: 1.6; margin-bottom: 1.4rem;">
-        Un certificado de autenticidad formal digital te permite dar validez jurídica y técnica a tus creaciones. Es una <strong>herramienta psicológica clave</strong> para profesionalizar tus entregas y cobrar tarifas más altas de diseño.
+      <!-- Intro -->
+      <p style="color: #4C463B; font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.4rem;">
+        Una clave <strong>única e irrepetible</strong> — el «ADN» de tu obra. Al certificar, demuestras autoría de forma matemática e irrefutable y entregas a tu cliente mucho más que una imagen: entregas un <strong>activo verificable para siempre</strong>.
       </p>
 
-      <!-- The Grid of Features -->
+      <!-- Divider 1 -->
+      <div class="cert-steptag">
+        <span class="cert-steptag-num">1</span>
+        Qué obtienes
+      </div>
+
+      <!-- Grid de tarjetas -->
       <div class="cert-grid">
-        <!-- Card 1 -->
+
         <div class="cert-card">
           <div class="cert-card-title">
             <i class="fas fa-fingerprint"></i>
-            Huella Digital Inmutable
+            Huella Digital SHA-256
           </div>
           <div class="cert-card-text">
-            Usa el algoritmo matemático de encriptación militar <strong>SHA-256</strong> (y superiores) para extraer la firma exacta de tu archivo. Si alguien altera un solo píxel o metadato de tu logo o ilustración, el código HASH cambia por completo.
+            El algoritmo de encriptación militar <strong>SHA-256</strong> (y superiores) extrae la firma exacta de tu archivo byte por byte. Si alguien modifica un solo píxel, el hash cambia por completo — prueba matemática inalterable de autoría.
           </div>
         </div>
 
-        <!-- Card 2 -->
         <div class="cert-card">
           <div class="cert-card-title">
             <i class="fas fa-file-pdf"></i>
-            Certificado PDF Formal
+            Certificado PDF Foliado
           </div>
           <div class="cert-card-text">
-            Genera un documento PDF firmado y foliado de validez internacional. Contiene el nombre del autor, licencia comercial, técnica, dispositivo y la firma de hash. Ideal para entregas premium a clientes corporativos.
+            Documento oficial con tu nombre, fecha, técnica, dispositivo y el código hash completo. Ideal para entregas profesionales a clientes corporativos y para justificar tarifas más altas de diseño.
           </div>
         </div>
 
-        <!-- Card 3 -->
         <div class="cert-card">
           <div class="cert-card-title">
             <i class="fas fa-shield-alt"></i>
-            Blindaje para Creadores
+            Protección Legal y Comercial
           </div>
           <div class="cert-card-text">
-            Diseñado especialmente para diseñadores gráficos, artistas e ilustradores digitales. Funciona como prueba definitiva de autoría y fecha de creación, protegiendo tus obras de piratería, plagio o reclamos futuros.
+            Protege tus logos, ilustraciones y pinturas digitales de plagios, copias o reclamos futuros. Cualquier persona puede verificar la autenticidad calculando el hash del archivo original — si coincide, es tuyo.
           </div>
         </div>
 
-        <!-- Card 4 -->
         <div class="cert-card">
           <div class="cert-card-title">
-            <i class="fas fa-search-dollar"></i>
+            <i class="fas fa-microscope"></i>
             Diagnóstico de Viabilidad
           </div>
           <div class="cert-card-text">
-            Incluye un escaneo y diagnóstico técnico de marcas en el portal para evaluar si tu logo cumple con el estándar de producción (bordado, serigrafía, legibilidad a escalas micro, monocromo) o si parece creado por IA.
+            Analiza si tu logo fue creado por IA y evalúa su rendimiento real en bordado, serigrafía, escala micro y monocromo — antes de entregarlo, asegúrate de que funcione en el mundo físico.
           </div>
         </div>
+
       </div>
 
-      <!-- Bottom Highlight Quote -->
-      <div style="background: rgba(251, 191, 36, 0.05); border: 1px solid rgba(251, 191, 36, 0.2); padding: 1.2rem; border-radius: 12px; margin-top: 1.2rem;">
-        <span style="font-size: 0.86rem; color: #cbd5e1; display: block; line-height: 1.6;">
-          <strong>💡 Impacto en Ventas:</strong> Los clientes premium no pagan solo por "dibujos", pagan por activos comerciales de valor. Al formalizar tus entregas con un certificado de autenticidad criptográfico, demuestras rigor y elevas drásticamente tu autoridad en el mercado.
-        </span>
+      <!-- Divider 2 -->
+      <div class="cert-steptag" style="margin-top: 1.4rem;">
+        <span class="cert-steptag-num">2</span>
+        ¿Para quién es?
       </div>
+
+      <!-- Closing note -->
+      <div class="cert-closing-note">
+        <strong>Diseñadores gráficos, ilustradores, fotógrafos y artistas digitales.</strong> Al entregar tu obra con su Certificado de Autenticidad criptográfico, el cliente no recibe solo un archivo — recibe un activo certificado. Eso justifica tarifas más elevadas y te coloca en una categoría completamente diferente a la competencia.
+      </div>
+
     </div>
+
     <!-- Pie de página -->
     <div class="cert-modal-footer">
-      <button class="btn btn-outline" onclick="closeCertificadoModal()" style="border-color: rgba(255,255,255,0.2) !important; color: #94a3b8 !important;">Cerrar</button>
-      <a href="https://certificados-autentificacion.vercel.app" target="_blank" class="btn" style="background: linear-gradient(90deg, #de9f26, #d9482b) !important; border: none !important; color: #fff !important; font-weight: 800 !important; text-decoration: none !important; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 0 15px rgba(222, 159, 38, 0.4);">
-        <i class="fas fa-external-link-alt"></i> Ir al Portal e Iniciar Certificación
+      <span class="cert-badge-price">$50 MXN · por obra</span>
+      <button
+        onclick="closeCertificadoModal()"
+        style="background: transparent; border: 1px solid #D8CDB6; color: #7C766A; padding: 0.6rem 1.2rem; border-radius: 9px; font-size: 0.88rem; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s;"
+        onmouseover="this.style.borderColor='#D9482B';this.style.color='#D9482B'"
+        onmouseout="this.style.borderColor='#D8CDB6';this.style.color='#7C766A'"
+      >Cerrar</button>
+      <a href="https://certificados-autentificacion.vercel.app" target="_blank"
+        style="display: inline-flex; align-items: center; gap: 0.5rem; background: #D9482B; color: #fff; font-weight: 700; font-family: 'Inter', sans-serif; font-size: 0.9rem; text-decoration: none; padding: 0.65rem 1.4rem; border-radius: 9px; box-shadow: 0 4px 16px rgba(217, 72, 43, 0.35); transition: all 0.22s;"
+        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(217,72,43,0.55)'"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(217,72,43,0.35)'"
+      >
+        Certificar mi obra
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
       </a>
     </div>
+
   </div>
 </div>
 
