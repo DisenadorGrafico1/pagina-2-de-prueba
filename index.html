@@ -2394,10 +2394,28 @@ h1, h2, h3, h4, h5, h6,
   font-size: 0.9rem;
   line-height: 1.6;
   color: #26221B;
-  overflow-y: auto;
+  overflow-y: scroll;
   flex-grow: 1;
   position: relative;
   z-index: 1;
+  /* Scrollbar always visible and styled */
+  scrollbar-width: thin;
+  scrollbar-color: #D8CDB6 #F7F2E9;
+}
+.cert-modal-body::-webkit-scrollbar {
+  width: 7px;
+}
+.cert-modal-body::-webkit-scrollbar-track {
+  background: #F7F2E9;
+  border-radius: 0 0 20px 0;
+}
+.cert-modal-body::-webkit-scrollbar-thumb {
+  background: #C4B89A;
+  border-radius: 10px;
+  min-height: 40px;
+}
+.cert-modal-body::-webkit-scrollbar-thumb:hover {
+  background: #D9482B;
 }
 .cert-modal-footer {
   padding: 1.2rem 2rem;
@@ -5876,15 +5894,64 @@ var dragOffsetX = 0;
 var dragOffsetY = 0;
 var currentStroke = null;
 
-// Certificado de Autenticidad Modal Handlers
-function openCertificadoModal() {
-  document.getElementById('certificadoModal').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-function closeCertificadoModal() {
-  document.getElementById('certificadoModal').style.display = 'none';
-  document.body.style.overflow = '';
-}
+// ── Certificado de Autenticidad Modal — stack-aware, no interfiere con otros modales ──
+(function() {
+  var certModal = null;
+
+  function getModal() {
+    if (!certModal) certModal = document.getElementById('certificadoModal');
+    return certModal;
+  }
+
+  // Cuenta cuántos modales overlay están abiertos (excluyendo el certificado)
+  function otherModalsOpen() {
+    var others = ['ejemplosModal','contratarModal','offerModal','dibujoModal','premiumLogoWelcomeModal'];
+    return others.some(function(id) {
+      var el = document.getElementById(id);
+      return el && el.style.display !== '' && el.style.display !== 'none';
+    });
+  }
+
+  window.openCertificadoModal = function() {
+    var m = getModal();
+    m.style.display = 'flex';
+    // Scroll body solo si no hay otro modal que ya lo bloqueó
+    if (!otherModalsOpen()) {
+      document.body.style.overflow = 'hidden';
+    }
+    // Scroll al tope del cuerpo del modal al abrirse
+    var body = m.querySelector('.cert-modal-body');
+    if (body) body.scrollTop = 0;
+    // Cerrar con Escape
+    document.addEventListener('keydown', handleEscape);
+  };
+
+  window.closeCertificadoModal = function() {
+    var m = getModal();
+    m.style.display = 'none';
+    document.removeEventListener('keydown', handleEscape);
+    // Solo restaurar el scroll del body si no hay otro modal abierto
+    if (!otherModalsOpen()) {
+      document.body.style.overflow = '';
+    }
+  };
+
+  function handleEscape(e) {
+    if (e.key === 'Escape') {
+      window.closeCertificadoModal();
+    }
+  }
+
+  // Cerrar al hacer clic en el overlay (fondo oscuro)
+  document.addEventListener('DOMContentLoaded', function() {
+    var m = getModal();
+    if (m) {
+      m.addEventListener('click', function(e) {
+        if (e.target === m) window.closeCertificadoModal();
+      });
+    }
+  });
+}());
 
 // Open drawing modal and init canvas sizing
 function openDibujoModal() {
