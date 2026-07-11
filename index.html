@@ -2468,11 +2468,33 @@ h1, h2, h3, h4, h5, h6,
   white-space: nowrap;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transform: translate(0, 0) scale(1);
+  transform-origin: bottom right;
+  transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1), transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.45s ease;
 }
 .ai-tooltip.hidden {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translate(4.5rem, 0.6rem) scale(0.05) !important;
+}
+
+.ai-float.glowing-absorb {
+  animation: absorbFlash 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+@keyframes absorbFlash {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 5px 25px rgba(0, 242, 254, 0.55);
+  }
+  25% {
+    transform: scale(1.18);
+    box-shadow: 0 0 50px 20px rgba(0, 240, 255, 0.95), 0 0 15px 5px rgba(255, 255, 255, 0.85);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 5px 25px rgba(0, 242, 254, 0.55);
+  }
 }
 
 /* Chat Window */
@@ -5770,12 +5792,23 @@ function initAiAssistant() {
       // Modals are closed: check if 5 seconds have elapsed since they were closed
       if (Date.now() - lastModalOpenTime >= 5000) {
         aiFloatIcon.classList.remove('spinning');
-        aiTooltip.classList.add('hidden');
+        hideAiTooltip();
         aiIntroActive = false;
         clearInterval(aiIntroInterval);
       }
     }
   }, 300);
+
+  function hideAiTooltip() {
+    if (aiTooltip.classList.contains('hidden')) return;
+    aiTooltip.classList.add('hidden');
+    setTimeout(() => {
+      aiFloatBtn.classList.add('glowing-absorb');
+      setTimeout(() => {
+        aiFloatBtn.classList.remove('glowing-absorb');
+      }, 850);
+    }, 350);
+  }
 
   // Helper to scroll to bottom of chat
   function scrollToBottom() {
@@ -5785,7 +5818,7 @@ function initAiAssistant() {
   // Toggle chat window
   aiFloatBtn.addEventListener('click', () => {
     aiChatWindow.classList.toggle('open');
-    aiTooltip.classList.add('hidden');
+    hideAiTooltip();
     renderAiHome();
   });
 
