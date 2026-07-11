@@ -2460,14 +2460,11 @@ h1, h2, h3, h4, h5, h6,
 
 .ai-tooltip {
   position: fixed; bottom: 6.8rem; right: 6.0rem; z-index: 999;
-  background: rgba(255, 255, 255, 0.08) !important; 
-  border: 1.5px solid rgba(255, 255, 255, 0.35) !important; /* Contorno neon cian/blanco traslúcido */
+  background: rgba(10, 0, 35, 0.98) !important; 
+  border: 2.5px solid #00f0ff !important; /* Contorno neon cian original */
   color: #fff !important; padding: 0.75rem 1.4rem !important; border-radius: 12px 12px 0 12px !important;
-  font-size: 1.05rem !important; font-weight: 800 !important; font-family: 'Plus Jakarta Sans', sans-serif !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), 0 0 15px rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.65) !important; /* Texto muy distinguible */
+  font-size: 1.05rem !important; font-weight: 700 !important; font-family: 'Plus Jakarta Sans', sans-serif !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.8), 0 0 5px rgba(0, 240, 255, 0.4) !important; /* Brillo neon original */
   white-space: nowrap;
   opacity: 1;
   visibility: visible;
@@ -2510,7 +2507,7 @@ h1, h2, h3, h4, h5, h6,
 }
 .ai-chat-title {
   font-family: 'Orbitron', sans-serif; font-size: 0.85rem; font-weight: 700; color: #fff; letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.5);
 }
 .ai-chat-status {
   font-size: 0.7rem; color: #34d399; font-weight: 500; margin-top: 0.1rem;
@@ -2540,17 +2537,19 @@ h1, h2, h3, h4, h5, h6,
 .ai-bubble {
   padding: 0.75rem 1rem; border-radius: 16px; font-size: 0.84rem;
   color: #ffffff !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35) !important;
+  text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.5) !important;
 }
 .ai-msg.assistant .ai-bubble {
-  background: rgba(255, 255, 255, 0.1) !important; 
-  border: 1px solid rgba(255, 255, 255, 0.15) !important; 
+  background: rgba(255, 255, 255, 0.16) !important; 
+  border: 1px solid rgba(255, 255, 255, 0.22) !important; 
   color: #ffffff !important;
+  font-weight: 600 !important;
   border-bottom-left-radius: 4px;
 }
 .ai-msg.user .ai-bubble {
-  background: rgba(37, 99, 235, 0.85) !important; 
+  background: rgba(37, 99, 235, 0.9) !important; 
   color: #fff !important; 
+  font-weight: 700 !important;
   border-bottom-right-radius: 4px;
 }
 
@@ -2558,16 +2557,17 @@ h1, h2, h3, h4, h5, h6,
   display: flex; flex-direction: column; gap: 0.5rem; width: 100%; margin-top: 0.5rem;
 }
 .ai-option-btn {
-  background: rgba(255, 255, 255, 0.06) !important; 
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  color: #93c5fd !important; padding: 0.6rem 0.9rem; border-radius: 10px; text-align: left;
-  font-size: 0.8rem; font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer;
+  background: rgba(255, 255, 255, 0.08) !important; 
+  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+  color: #a5f3fc !important; padding: 0.65rem 0.95rem; border-radius: 10px; text-align: left;
+  font-size: 0.82rem; font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer;
+  font-weight: 700 !important;
   transition: background 0.2s, border-color 0.2s, transform 0.15s;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.4) !important;
 }
 .ai-option-btn:hover {
-  background: rgba(255, 255, 255, 0.16) !important; 
-  border-color: #60a5fa !important;
+  background: rgba(255, 255, 255, 0.22) !important; 
+  border-color: #38bdf8 !important;
   color: #ffffff !important;
   transform: translateX(4px);
 }
