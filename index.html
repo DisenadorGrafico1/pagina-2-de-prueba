@@ -5315,6 +5315,14 @@ function continuarCompra() {
           <button class="tool-btn" style="margin-left:auto;background:#fee2e2;color:#ef4444;border-color:#fca5a5;" id="btnClearCanvas"><i class="fas fa-trash-alt"></i> Limpiar</button>
         </div>
 
+        <!-- Barra de Elementos (Texto y Figuras) -->
+        <div class="canvas-toolbar" style="margin-top:0.5rem; border-top:1px dashed rgba(255,255,255,0.15); padding-top:0.5rem; justify-content:flex-start; gap:0.5rem; flex-wrap:wrap;">
+          <button class="tool-btn" id="btnAddText" onclick="addTextToCanvas()" style="background:#e0f2fe; color:#0369a1; border-color:#bae6fd;"><i class="fas fa-font"></i> Agregar Texto</button>
+          <button class="tool-btn" id="btnAddCircle" onclick="addCircleToCanvas()" style="background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff;"><i class="far fa-circle"></i> Círculo</button>
+          <button class="tool-btn" id="btnAddSquare" onclick="addSquareToCanvas()" style="background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff;"><i class="far fa-square"></i> Cuadrado</button>
+          <button class="tool-btn" id="btnAddTriangle" onclick="addTriangleToCanvas()" style="background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff;"><i class="fas fa-play" style="transform:rotate(-90deg);font-size:0.75rem;"></i> Triángulo</button>
+        </div>
+
         <div class="fg">
           <label class="lbl">Observaciones del Dibujo (Opcional)</label>
           <textarea id="drawNotes" class="ta" placeholder="Describe brevemente lo que dibujaste en tu boceto (ej: 'Quiero que la forma sea circular y la letra esté en medio...')" style="height:70px;"></textarea>
@@ -5594,6 +5602,58 @@ if (btnClearCanvas) {
       initCanvas();
     }
   });
+}
+
+// Add Text to canvas in the center
+function addTextToCanvas() {
+  if (!sketchCtx) return;
+  var txt = prompt("Ingresa el texto que deseas agregar a tu logotipo:");
+  if (txt && txt.trim() !== "") {
+    sketchCtx.font = "bold 24px Arial";
+    sketchCtx.fillStyle = brushColor;
+    sketchCtx.textAlign = "center";
+    sketchCtx.textBaseline = "middle";
+    sketchCtx.fillText(txt.trim(), sketchCanvas.width / 2, sketchCanvas.height / 2);
+  }
+}
+
+// Add hollow circle to canvas in the center
+function addCircleToCanvas() {
+  if (!sketchCtx) return;
+  sketchCtx.beginPath();
+  var radius = 50;
+  sketchCtx.arc(sketchCanvas.width / 2, sketchCanvas.height / 2, radius, 0, 2 * Math.PI);
+  sketchCtx.strokeStyle = brushColor;
+  sketchCtx.lineWidth = brushSize * 1.5;
+  sketchCtx.stroke();
+}
+
+// Add hollow square to canvas in the center
+function addSquareToCanvas() {
+  if (!sketchCtx) return;
+  sketchCtx.beginPath();
+  var size = 100;
+  sketchCtx.rect(sketchCanvas.width / 2 - size / 2, sketchCanvas.height / 2 - size / 2, size, size);
+  sketchCtx.strokeStyle = brushColor;
+  sketchCtx.lineWidth = brushSize * 1.5;
+  sketchCtx.stroke();
+}
+
+// Add hollow triangle to canvas in the center
+function addTriangleToCanvas() {
+  if (!sketchCtx) return;
+  sketchCtx.beginPath();
+  var side = 100;
+  var h = side * (Math.sqrt(3) / 2);
+  var cx = sketchCanvas.width / 2;
+  var cy = sketchCanvas.height / 2;
+  sketchCtx.moveTo(cx, cy - h / 2);
+  sketchCtx.lineTo(cx - side / 2, cy + h / 2);
+  sketchCtx.lineTo(cx + side / 2, cy + h / 2);
+  sketchCtx.closePath();
+  sketchCtx.strokeStyle = brushColor;
+  sketchCtx.lineWidth = brushSize * 1.5;
+  sketchCtx.stroke();
 }
 
 // Next Step handler
