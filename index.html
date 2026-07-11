@@ -5729,14 +5729,21 @@ function continuarCompra() {
           </div>
         </div>
 
-        <div class="cert-card">
-          <div class="cert-card-title">
-            <i class="fas fa-microscope"></i>
-            Diagnóstico de Viabilidad
+        <div class="cert-card" style="background: #F0FBF9; border-color: #B2DED9; border-left-color: #25867B; position: relative;">
+          <div class="cert-card-title" style="color: #1A5C55 !important;">
+            <i class="fas fa-search" style="color: #25867B !important;"></i>
+            Diagnóstico de logos
           </div>
-          <div class="cert-card-text">
-            Analiza si tu logo fue creado por IA y evalúa su rendimiento real en bordado, serigrafía, escala micro y monocromo — antes de entregarlo, asegúrate de que funcione en el mundo físico.
+          <div class="cert-card-text" style="color: #2E6B65 !important;">
+            ¿Funciona tu logo en la vida real? Ideal para emprendedores que hicieron su propio logo y quieren saber si sobrevive en bordados, serigrafía y escala pequeña antes de invertir.
           </div>
+          <a href="https://certificados-autentificacion.vercel.app/analizador.html" target="_blank"
+            style="display: inline-flex; align-items: center; gap: 6px; margin-top: 0.7rem; background: #25867B; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; text-decoration: none; padding: 0.42rem 0.9rem; border-radius: 7px; box-shadow: 0 2px 8px rgba(37,134,123,0.28); transition: all 0.2s;"
+            onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 18px rgba(37,134,123,0.45)'"
+            onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(37,134,123,0.28)'"
+          >
+            <i class="fas fa-search"></i> Analizar logo
+          </a>
         </div>
 
       </div>
@@ -5756,7 +5763,7 @@ function continuarCompra() {
 
     <!-- Pie de página -->
     <div class="cert-modal-footer">
-      <span class="cert-badge-price">$50 MXN · por obra</span>
+      <span class="cert-badge-price">$50 MXN por certificado</span>
       <button
         onclick="closeCertificadoModal()"
         style="background: transparent; border: 1px solid #D8CDB6; color: #7C766A; padding: 0.6rem 1.2rem; border-radius: 9px; font-size: 0.88rem; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s;"
