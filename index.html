@@ -5321,6 +5321,7 @@ function continuarCompra() {
           <button class="tool-btn" id="btnAddCircle" onclick="addCircleToCanvas()" style="background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff;"><i class="far fa-circle"></i> Círculo</button>
           <button class="tool-btn" id="btnAddSquare" onclick="addSquareToCanvas()" style="background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff;"><i class="far fa-square"></i> Cuadrado</button>
           <button class="tool-btn" id="btnAddTriangle" onclick="addTriangleToCanvas()" style="background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff;"><i class="fas fa-play" style="transform:rotate(-90deg);font-size:0.75rem;"></i> Triángulo</button>
+          <button class="tool-btn" id="btnUndo" onclick="undoLastAction()" style="margin-left:auto; background:#fef3c7; color:#d97706; border-color:#fde68a;"><i class="fas fa-undo"></i> Paso Atrás</button>
         </div>
 
         <div class="fg">
@@ -5453,6 +5454,13 @@ var brushColor = '#000000';
 var brushSize = 3;
 var isEraser = false;
 
+// Layer and History tracking array for Text, Shapes, and freehand strokes
+var drawHistory = [];
+var selectedItem = null;
+var dragOffsetX = 0;
+var dragOffsetY = 0;
+var currentStroke = null;
+
 // Open drawing modal and init canvas sizing
 function openDibujoModal() {
   document.getElementById('dibujoModal').style.display = 'flex';
@@ -5475,9 +5483,65 @@ function initCanvas() {
   sketchCtx.strokeStyle = brushColor;
   sketchCtx.lineWidth = brushSize;
 
-  // Fill canvas with white color by default so it saves properly (not transparent)
+  redrawCanvas();
+}
+
+// Redraw all strokes and objects in history onto the canvas
+function redrawCanvas() {
+  if (!sketchCanvas || !sketchCtx) return;
+  
+  // Clear with solid white background
   sketchCtx.fillStyle = '#ffffff';
   sketchCtx.fillRect(0, 0, sketchCanvas.width, sketchCanvas.height);
+  
+  // Render history items chronologically
+  drawHistory.forEach(function(item) {
+    if (item.type === 'freehand') {
+      if (item.points.length < 1) return;
+      sketchCtx.beginPath();
+      sketchCtx.moveTo(item.points[0].x, item.points[0].y);
+      for (var i = 1; i < item.points.length; i++) {
+        sketchCtx.lineTo(item.points[i].x, item.points[i].y);
+      }
+      sketchCtx.strokeStyle = item.isEraser ? '#ffffff' : item.color;
+      sketchCtx.lineWidth = item.size;
+      sketchCtx.stroke();
+    } 
+    else if (item.type === 'circle') {
+      sketchCtx.beginPath();
+      sketchCtx.arc(item.x, item.y, item.radius, 0, 2 * Math.PI);
+      sketchCtx.strokeStyle = item.color;
+      sketchCtx.lineWidth = item.size * 1.5;
+      sketchCtx.stroke();
+    } 
+    else if (item.type === 'square') {
+      sketchCtx.beginPath();
+      sketchCtx.rect(item.x - item.sizeValue / 2, item.y - item.sizeValue / 2, item.sizeValue, item.sizeValue);
+      sketchCtx.strokeStyle = item.color;
+      sketchCtx.lineWidth = item.size * 1.5;
+      sketchCtx.stroke();
+    } 
+    else if (item.type === 'triangle') {
+      sketchCtx.beginPath();
+      var side = item.sizeValue;
+      var h = side * (Math.sqrt(3) / 2);
+      sketchCtx.moveTo(item.x, item.y - h / 2);
+      sketchCtx.lineTo(item.x - side / 2, item.y + h / 2);
+      sketchCtx.lineTo(item.x + side / 2, item.y + h / 2);
+      sketchCtx.closePath();
+      sketchCtx.strokeStyle = item.color;
+      sketchCtx.lineWidth = item.size * 1.5;
+      sketchCtx.stroke();
+    } 
+    else if (item.type === 'text') {
+      sketchCtx.font = "bold 24px Arial";
+      sketchCtx.fillStyle = item.color;
+      sketchCtx.textAlign = "center";
+      sketchCtx.textBaseline = "middle";
+      sketchCtx.fillText(item.text, item.x, item.y);
+      item.measuredWidth = sketchCtx.measureText(item.text).width;
+    }
+  });
 }
 
 // Close drawing modal
@@ -5508,6 +5572,7 @@ function resetDrawingModal() {
   document.getElementById('drawFeatures').value = '';
   document.getElementById('drawNotes').value = '';
   
+  drawHistory = [];
   if (sketchCanvas) initCanvas();
 }
 
@@ -5520,17 +5585,92 @@ if (sketchCanvas) {
 }
 
 function startDrawing(e) {
-  isDrawing = true;
   var coords = getCoordinates(e);
+  
+  // Hit test objects in history (reverse order so top objects are selected first)
+  var hitFound = false;
+  for (var i = drawHistory.length - 1; i >= 0; i--) {
+    var item = drawHistory[i];
+    if (item.type === 'freehand') continue;
+    
+    if (item.type === 'circle') {
+      var dist = Math.sqrt((coords.x - item.x) ** 2 + (coords.y - item.y) ** 2);
+      if (dist <= item.radius + 15) {
+        selectedItem = item;
+        dragOffsetX = coords.x - item.x;
+        dragOffsetY = coords.y - item.y;
+        hitFound = true;
+        break;
+      }
+    } 
+    else if (item.type === 'square') {
+      var half = item.sizeValue / 2 + 15;
+      if (coords.x >= item.x - half && coords.x <= item.x + half &&
+          coords.y >= item.y - half && coords.y <= item.y + half) {
+        selectedItem = item;
+        dragOffsetX = coords.x - item.x;
+        dragOffsetY = coords.y - item.y;
+        hitFound = true;
+        break;
+      }
+    } 
+    else if (item.type === 'triangle') {
+      var halfW = item.sizeValue / 2 + 15;
+      var halfH = (item.sizeValue * Math.sqrt(3) / 2) / 2 + 15;
+      if (coords.x >= item.x - halfW && coords.x <= item.x + halfW &&
+          coords.y >= item.y - halfH && coords.y <= item.y + halfH) {
+        selectedItem = item;
+        dragOffsetX = coords.x - item.x;
+        dragOffsetY = coords.y - item.y;
+        hitFound = true;
+        break;
+      }
+    } 
+    else if (item.type === 'text') {
+      var w = (item.measuredWidth || 100) / 2 + 15;
+      var h = 12 + 15;
+      if (coords.x >= item.x - w && coords.x <= item.x + w &&
+          coords.y >= item.y - h && coords.y <= item.y + h) {
+        selectedItem = item;
+        dragOffsetX = coords.x - item.x;
+        dragOffsetY = coords.y - item.y;
+        hitFound = true;
+        break;
+      }
+    }
+  }
+  
+  if (hitFound) {
+    isDrawing = false;
+    return;
+  }
+  
+  isDrawing = true;
   lastX = coords.x;
   lastY = coords.y;
+  currentStroke = {
+    type: 'freehand',
+    points: [{ x: coords.x, y: coords.y }],
+    color: brushColor,
+    size: brushSize,
+    isEraser: isEraser
+  };
 }
 
 function draw(e) {
-  if (!isDrawing || !sketchCtx) return;
-  e.preventDefault(); // Prevents scroll on mobile touches
-  
   var coords = getCoordinates(e);
+  
+  if (selectedItem) {
+    e.preventDefault();
+    selectedItem.x = coords.x - dragOffsetX;
+    selectedItem.y = coords.y - dragOffsetY;
+    redrawCanvas();
+    return;
+  }
+  
+  if (!isDrawing || !sketchCtx || !currentStroke) return;
+  e.preventDefault();
+  
   sketchCtx.beginPath();
   sketchCtx.moveTo(lastX, lastY);
   sketchCtx.lineTo(coords.x, coords.y);
@@ -5540,9 +5680,19 @@ function draw(e) {
   
   lastX = coords.x;
   lastY = coords.y;
+  currentStroke.points.push({ x: coords.x, y: coords.y });
 }
 
 function stopDrawing() {
+  if (selectedItem) {
+    selectedItem = null;
+    return;
+  }
+  
+  if (isDrawing && currentStroke) {
+    drawHistory.push(currentStroke);
+    currentStroke = null;
+  }
   isDrawing = false;
 }
 
@@ -5599,7 +5749,8 @@ var btnClearCanvas = document.getElementById('btnClearCanvas');
 if (btnClearCanvas) {
   btnClearCanvas.addEventListener('click', function() {
     if (confirm('¿Deseas limpiar por completo el lienzo de dibujo?')) {
-      initCanvas();
+      drawHistory = [];
+      redrawCanvas();
     }
   });
 }
@@ -5609,51 +5760,65 @@ function addTextToCanvas() {
   if (!sketchCtx) return;
   var txt = prompt("Ingresa el texto que deseas agregar a tu logotipo:");
   if (txt && txt.trim() !== "") {
-    sketchCtx.font = "bold 24px Arial";
-    sketchCtx.fillStyle = brushColor;
-    sketchCtx.textAlign = "center";
-    sketchCtx.textBaseline = "middle";
-    sketchCtx.fillText(txt.trim(), sketchCanvas.width / 2, sketchCanvas.height / 2);
+    drawHistory.push({
+      type: 'text',
+      text: txt.trim(),
+      x: sketchCanvas.width / 2,
+      y: sketchCanvas.height / 2,
+      color: brushColor
+    });
+    redrawCanvas();
   }
 }
 
 // Add hollow circle to canvas in the center
 function addCircleToCanvas() {
   if (!sketchCtx) return;
-  sketchCtx.beginPath();
-  var radius = 50;
-  sketchCtx.arc(sketchCanvas.width / 2, sketchCanvas.height / 2, radius, 0, 2 * Math.PI);
-  sketchCtx.strokeStyle = brushColor;
-  sketchCtx.lineWidth = brushSize * 1.5;
-  sketchCtx.stroke();
+  drawHistory.push({
+    type: 'circle',
+    x: sketchCanvas.width / 2,
+    y: sketchCanvas.height / 2,
+    radius: 50,
+    color: brushColor,
+    size: brushSize
+  });
+  redrawCanvas();
 }
 
 // Add hollow square to canvas in the center
 function addSquareToCanvas() {
   if (!sketchCtx) return;
-  sketchCtx.beginPath();
-  var size = 100;
-  sketchCtx.rect(sketchCanvas.width / 2 - size / 2, sketchCanvas.height / 2 - size / 2, size, size);
-  sketchCtx.strokeStyle = brushColor;
-  sketchCtx.lineWidth = brushSize * 1.5;
-  sketchCtx.stroke();
+  drawHistory.push({
+    type: 'square',
+    x: sketchCanvas.width / 2,
+    y: sketchCanvas.height / 2,
+    sizeValue: 100,
+    color: brushColor,
+    size: brushSize
+  });
+  redrawCanvas();
 }
 
 // Add hollow triangle to canvas in the center
 function addTriangleToCanvas() {
   if (!sketchCtx) return;
-  sketchCtx.beginPath();
-  var side = 100;
-  var h = side * (Math.sqrt(3) / 2);
-  var cx = sketchCanvas.width / 2;
-  var cy = sketchCanvas.height / 2;
-  sketchCtx.moveTo(cx, cy - h / 2);
-  sketchCtx.lineTo(cx - side / 2, cy + h / 2);
-  sketchCtx.lineTo(cx + side / 2, cy + h / 2);
-  sketchCtx.closePath();
-  sketchCtx.strokeStyle = brushColor;
-  sketchCtx.lineWidth = brushSize * 1.5;
-  sketchCtx.stroke();
+  drawHistory.push({
+    type: 'triangle',
+    x: sketchCanvas.width / 2,
+    y: sketchCanvas.height / 2,
+    sizeValue: 100,
+    color: brushColor,
+    size: brushSize
+  });
+  redrawCanvas();
+}
+
+// Undo Last Action helper
+function undoLastAction() {
+  if (drawHistory.length > 0) {
+    drawHistory.pop();
+    redrawCanvas();
+  }
 }
 
 // Next Step handler
