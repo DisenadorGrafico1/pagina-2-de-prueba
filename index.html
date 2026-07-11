@@ -2240,6 +2240,116 @@ h1, h2, h3, h4, h5, h6,
   .mascot-lg { width: 65px !important; }
   .mascot-xl { width: 85px !important; }
 }
+/* ═══════ CERTIFICADO DE AUTENTICIDAD MODAL STYLES ═══════ */
+#certificadoModal {
+  display: none;
+  position: fixed;
+  z-index: 1200;
+  inset: 0;
+  background-color: rgba(2, 0, 15, 0.88);
+  backdrop-filter: blur(15px);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  color: var(--txt);
+}
+.cert-modal-container {
+  background: rgba(10, 0, 35, 0.90) !important;
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 25px rgba(251, 191, 36, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid rgba(251, 191, 36, 0.35);
+  animation: modalFadeIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+.cert-modal-header {
+  padding: 1.4rem 1.8rem;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(251, 191, 36, 0.05);
+  flex-shrink: 0;
+}
+.cert-modal-header h3 {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.cert-modal-close {
+  background: none;
+  border: none;
+  color: var(--gold) !important;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+  opacity: 0.8;
+  line-height: 1;
+}
+.cert-modal-close:hover {
+  transform: scale(1.15);
+  color: #fff !important;
+  opacity: 1;
+}
+.cert-modal-body {
+  padding: 1.8rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #cbd5e1 !important;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+.cert-modal-footer {
+  padding: 1.2rem 1.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+.cert-section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff !important;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cert-section-title i {
+  color: var(--gold) !important;
+}
+.cert-badge-price {
+  background: rgba(37, 211, 102, 0.15) !important;
+  color: #25d366 !important;
+  border: 1px solid rgba(37, 211, 102, 0.35) !important;
+  padding: 0.35rem 0.95rem;
+  border-radius: 8px;
+  font-weight: 800;
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  font-family: 'Orbitron', sans-serif;
+  box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
+}
+
 /* ═══════ SKETCH MODAL & CANVAS DRAWING TOOL STYLES ═══════ */
 #dibujoModal {
   display: none;
@@ -2868,6 +2978,7 @@ h1, h2, h3, h4, h5, h6,
       <a href="#servicios" class="btn btn-purple nav-scroll"><i class="fas fa-rocket"></i> Ver Servicios</a>
       <a href="#paquetes" class="btn btn-outline nav-scroll"><i class="fas fa-cubes"></i> Ver Paquetes</a>
       <a href="https://wa.me/527531627539" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Consulta Gratis</a>
+      <button onclick="openCertificadoModal()" class="btn btn-outline" style="border-color: var(--gold) !important; color: var(--gold) !important; box-shadow: 0 0 10px rgba(251, 191, 36, 0.25);"><i class="fas fa-certificate"></i> Certificado de Autenticidad</button>
       <!-- Mascot CTRL: peeks up from behind the buttons -->
       <svg class="mascot-svg mascot-md mascot-peek-up" style="bottom:-65px;right:10px;animation-delay:2s;" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
         <g>
@@ -5375,6 +5486,64 @@ function continuarCompra() {
   </div>
 </div>
 
+<!-- MODAL CERTIFICADO DE AUTENTICIDAD -->
+<div id="certificadoModal" role="dialog" aria-modal="true">
+  <div class="cert-modal-container">
+    <!-- Cabecera -->
+    <div class="cert-modal-header">
+      <h3><i class="fas fa-certificate"></i> Certificado de Autenticidad</h3>
+      <button class="cert-modal-close" onclick="closeCertificadoModal()" aria-label="Cerrar">✕</button>
+    </div>
+    <!-- Cuerpo -->
+    <div class="cert-modal-body">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--gold); filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));"></i>
+        <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; margin: 0.8rem 0 0.2rem; color: #fff;">ADN Criptográfico para tus Obras Digitales</h4>
+        <span class="cert-badge-price">Costo: $50 MXN</span>
+      </div>
+
+      <p style="margin-bottom: 1.2rem; color: #cbd5e1; font-weight: 500;">
+        En la era de la inundación digital por Inteligencia Artificial (IA) y la piratería masiva, <strong>lo que no se certifica, se devalúa</strong>. Proteger tus creaciones ya no es una opción, es una necesidad psicológica y comercial para vender con autoridad.
+      </p>
+
+      <div class="cert-section-title">
+        <i class="fas fa-fingerprint"></i> ¿Qué es y cómo funciona el HASH SHA-256?
+      </div>
+      <p style="margin-bottom: 1.2rem; color: #94a3b8;">
+        Es la <strong>huella digital definitiva</strong> de tu archivo. El algoritmo criptográfico matemático de nivel militar <strong>SHA-256</strong> (y superiores) procesa tu diseño o ilustración generando una clave única e inmutable de 64 caracteres hexadecimales. Si alguien altera tan solo un píxel o metadato de tu obra, el HASH cambia por completo. Es la prueba matemática irrefutable de autoría original.
+      </p>
+
+      <div class="cert-section-title">
+        <i class="fas fa-file-pdf"></i> Certificación Formal en PDF
+      </div>
+      <p style="margin-bottom: 1.2rem; color: #94a3b8;">
+        Te entregamos un certificado oficial en PDF foliado que vincula formalmente tu nombre, fecha de creación, detalles técnicos de la obra y su HASH SHA-256. Es el complemento perfecto para que los diseñadores gráficos realicen entregas profesionales a sus clientes, y para que los ilustradores vendan arte digital garantizando su autenticidad y origen.
+      </p>
+
+      <div class="cert-section-title">
+        <i class="fas fa-search"></i> Diagnóstico de Logos & IA Integrado
+      </div>
+      <p style="margin-bottom: 1.2rem; color: #94a3b8;">
+        Además de la certificación, a través de nuestra plataforma asociada tendrás acceso a un <strong>Analizador de Logos Avanzado</strong>. Esta herramienta evalúa si tu diseño parece creado por IA y pone a prueba su viabilidad y rendimiento en el mundo real (legibilidad en formatos pequeños, monocromo, bordados, serigrafía y vallas publicitarias).
+      </p>
+
+      <div style="background: rgba(251, 191, 36, 0.07); border-left: 4px solid var(--gold); padding: 1rem; border-radius: 0 12px 12px 0; margin-top: 1.5rem;">
+        <strong style="color: var(--gold); font-family: 'Outfit', sans-serif; font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">💡 Ventaja Psicológica Comercial:</strong>
+        <span style="font-size: 0.88rem; color: #cbd5e1;">
+          Al entregar un logo o ilustración con su Certificado de Autenticidad, multiplicas el valor percibido del proyecto. Tu cliente no recibe solo una imagen; recibe un <strong>activo certificado inalterable</strong>. Esto justifica tarifas más elevadas y te diferencia del 99% de la competencia amateur.
+        </span>
+      </div>
+    </div>
+    <!-- Pie de página -->
+    <div class="cert-modal-footer">
+      <button class="btn btn-outline" onclick="closeCertificadoModal()" style="border-color: rgba(255,255,255,0.2) !important; color: #94a3b8 !important;">Cerrar</button>
+      <a href="https://certificados-autentificacion.vercel.app/analizador.html" target="_blank" class="btn" style="background: linear-gradient(90deg, #de9f26, #d9482b) !important; border: none !important; color: #fff !important; font-weight: 800 !important; text-decoration: none !important; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 0 15px rgba(222, 159, 38, 0.4);">
+        <i class="fas fa-external-link-alt"></i> Ir al Analizador e Iniciar Certificación
+      </a>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ── FUNCIONES MODALES OFERTA ── */
 function mostrarPagoOferta(prefix, region) {
@@ -5460,6 +5629,16 @@ var selectedItem = null;
 var dragOffsetX = 0;
 var dragOffsetY = 0;
 var currentStroke = null;
+
+// Certificado de Autenticidad Modal Handlers
+function openCertificadoModal() {
+  document.getElementById('certificadoModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCertificadoModal() {
+  document.getElementById('certificadoModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
 
 // Open drawing modal and init canvas sizing
 function openDibujoModal() {
