@@ -2254,19 +2254,19 @@ h1, h2, h3, h4, h5, h6,
   color: var(--txt);
 }
 .cert-modal-container {
-  background: rgba(10, 0, 35, 0.90) !important;
+  background: rgba(10, 5, 28, 0.72) !important;
   width: 100%;
-  max-width: 620px;
+  max-width: 720px;
   max-height: 90vh;
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 25px rgba(251, 191, 36, 0.15);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 1.5px solid rgba(251, 191, 36, 0.35);
+  border: 1px solid rgba(251, 191, 36, 0.35) !important;
   animation: modalFadeIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
 }
 .cert-modal-header {
   padding: 1.4rem 1.8rem;
@@ -2348,6 +2348,44 @@ h1, h2, h3, h4, h5, h6,
   font-size: 0.95rem;
   font-family: 'Orbitron', sans-serif;
   box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.cert-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.3rem;
+  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+}
+.cert-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(251, 191, 36, 0.35);
+  transform: translateY(-2px);
+}
+.cert-card-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.cert-card-title i {
+  color: var(--gold) !important;
+}
+.cert-card-text {
+  font-size: 0.86rem;
+  color: #cbd5e1 !important;
+  line-height: 1.6;
 }
 
 /* ═══════ SKETCH MODAL & CANVAS DRAWING TOOL STYLES ═══════ */
@@ -5496,41 +5534,71 @@ function continuarCompra() {
     </div>
     <!-- Cuerpo -->
     <div class="cert-modal-body">
-      <div style="text-align: center; margin-bottom: 1.5rem;">
-        <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--gold); filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));"></i>
-        <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; margin: 0.8rem 0 0.2rem; color: #fff;">ADN Criptográfico para tus Obras Digitales</h4>
-        <span class="cert-badge-price">Costo: $50 MXN</span>
+      <!-- Title & Price -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 1rem; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 0.8rem;">
+        <div>
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 800; margin: 0; color: #ffffff;">Firma tu Autoría y Blindaje de Archivo</h4>
+          <p style="font-size: 0.82rem; color: #94a3b8; margin: 0.2rem 0 0;">Certificaciones inmutables para Obras y Marcas Originales</p>
+        </div>
+        <span class="cert-badge-price" style="margin: 0;">$50 MXN / Obra</span>
       </div>
 
-      <p style="margin-bottom: 1.2rem; color: #cbd5e1; font-weight: 500;">
-        En la era de la inundación digital por Inteligencia Artificial (IA) y la piratería masiva, <strong>lo que no se certifica, se devalúa</strong>. Proteger tus creaciones ya no es una opción, es una necesidad psicológica y comercial para vender con autoridad.
+      <!-- Main Copy Intro -->
+      <p style="font-size: 0.9rem; color: #e2e8f0; line-height: 1.6; margin-bottom: 1.4rem;">
+        Un certificado de autenticidad formal digital te permite dar validez jurídica y técnica a tus creaciones. Es una <strong>herramienta psicológica clave</strong> para profesionalizar tus entregas y cobrar tarifas más altas de diseño.
       </p>
 
-      <div class="cert-section-title">
-        <i class="fas fa-fingerprint"></i> ¿Qué es y cómo funciona el HASH SHA-256?
+      <!-- The Grid of Features -->
+      <div class="cert-grid">
+        <!-- Card 1 -->
+        <div class="cert-card">
+          <div class="cert-card-title">
+            <i class="fas fa-fingerprint"></i>
+            Huella Digital Inmutable
+          </div>
+          <div class="cert-card-text">
+            Usa el algoritmo matemático de encriptación militar <strong>SHA-256</strong> (y superiores) para extraer la firma exacta de tu archivo. Si alguien altera un solo píxel o metadato de tu logo o ilustración, el código HASH cambia por completo.
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="cert-card">
+          <div class="cert-card-title">
+            <i class="fas fa-file-pdf"></i>
+            Certificado PDF Formal
+          </div>
+          <div class="cert-card-text">
+            Genera un documento PDF firmado y foliado de validez internacional. Contiene el nombre del autor, licencia comercial, técnica, dispositivo y la firma de hash. Ideal para entregas premium a clientes corporativos.
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="cert-card">
+          <div class="cert-card-title">
+            <i class="fas fa-shield-alt"></i>
+            Blindaje para Creadores
+          </div>
+          <div class="cert-card-text">
+            Diseñado especialmente para diseñadores gráficos, artistas e ilustradores digitales. Funciona como prueba definitiva de autoría y fecha de creación, protegiendo tus obras de piratería, plagio o reclamos futuros.
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="cert-card">
+          <div class="cert-card-title">
+            <i class="fas fa-search-dollar"></i>
+            Diagnóstico de Viabilidad
+          </div>
+          <div class="cert-card-text">
+            Incluye un escaneo y diagnóstico técnico de marcas en el portal para evaluar si tu logo cumple con el estándar de producción (bordado, serigrafía, legibilidad a escalas micro, monocromo) o si parece creado por IA.
+          </div>
+        </div>
       </div>
-      <p style="margin-bottom: 1.2rem; color: #94a3b8;">
-        Es la <strong>huella digital definitiva</strong> de tu archivo. El algoritmo criptográfico matemático de nivel militar <strong>SHA-256</strong> (y superiores) procesa tu diseño o ilustración generando una clave única e inmutable de 64 caracteres hexadecimales. Si alguien altera tan solo un píxel o metadato de tu obra, el HASH cambia por completo. Es la prueba matemática irrefutable de autoría original.
-      </p>
 
-      <div class="cert-section-title">
-        <i class="fas fa-file-pdf"></i> Certificación Formal en PDF
-      </div>
-      <p style="margin-bottom: 1.2rem; color: #94a3b8;">
-        Te entregamos un certificado oficial en PDF foliado que vincula formalmente tu nombre, fecha de creación, detalles técnicos de la obra y su HASH SHA-256. Es el complemento perfecto para que los diseñadores gráficos realicen entregas profesionales a sus clientes, y para que los ilustradores vendan arte digital garantizando su autenticidad y origen.
-      </p>
-
-      <div class="cert-section-title">
-        <i class="fas fa-search"></i> Diagnóstico de Logos & IA Integrado
-      </div>
-      <p style="margin-bottom: 1.2rem; color: #94a3b8;">
-        Además de la certificación, a través de nuestra plataforma asociada tendrás acceso a un <strong>Analizador de Logos Avanzado</strong>. Esta herramienta evalúa si tu diseño parece creado por IA y pone a prueba su viabilidad y rendimiento en el mundo real (legibilidad en formatos pequeños, monocromo, bordados, serigrafía y vallas publicitarias).
-      </p>
-
-      <div style="background: rgba(251, 191, 36, 0.07); border-left: 4px solid var(--gold); padding: 1rem; border-radius: 0 12px 12px 0; margin-top: 1.5rem;">
-        <strong style="color: var(--gold); font-family: 'Outfit', sans-serif; font-size: 0.95rem; display: block; margin-bottom: 0.3rem;">💡 Ventaja Psicológica Comercial:</strong>
-        <span style="font-size: 0.88rem; color: #cbd5e1;">
-          Al entregar un logo o ilustración con su Certificado de Autenticidad, multiplicas el valor percibido del proyecto. Tu cliente no recibe solo una imagen; recibe un <strong>activo certificado inalterable</strong>. Esto justifica tarifas más elevadas y te diferencia del 99% de la competencia amateur.
+      <!-- Bottom Highlight Quote -->
+      <div style="background: rgba(251, 191, 36, 0.05); border: 1px solid rgba(251, 191, 36, 0.2); padding: 1.2rem; border-radius: 12px; margin-top: 1.2rem;">
+        <span style="font-size: 0.86rem; color: #cbd5e1; display: block; line-height: 1.6;">
+          <strong>💡 Impacto en Ventas:</strong> Los clientes premium no pagan solo por "dibujos", pagan por activos comerciales de valor. Al formalizar tus entregas con un certificado de autenticidad criptográfico, demuestras rigor y elevas drásticamente tu autoridad en el mercado.
         </span>
       </div>
     </div>
