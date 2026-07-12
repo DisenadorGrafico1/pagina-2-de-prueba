@@ -3103,7 +3103,7 @@ h1, h2, h3, h4, h5, h6,
 </div>
 
 <!-- Flotante WhatsApp -->
-<a href="https://wa.me/527531627539?text=Me%20interesa%20informaci%C3%B3n%20de%20los%20servicios%2C%20lo%20que%20requiero%20es%20_________________%2C%20quedo%20atento%20a%20su%20respuesta.%20Gracias." class="wa-float" target="_blank" aria-label="WhatsApp" onclick="if(window.__track)window.__track('whatsapp_flotante_click')">
+<a href="https://wa.me/527531627539?text=Me%20interesa%20informaci%C3%B3n%20de%20los%20servicios%2C%20lo%20que%20requiero%20es%20_________________%2C%20quedo%20atento%20a%20su%20respuesta.%20Gracias." class="wa-float" target="_blank" aria-label="WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
 <a href="mailto:orion.creative.studio1.0@gmail.com" class="email-float" aria-label="Correo electrónico">
@@ -3126,7 +3126,7 @@ h1, h2, h3, h4, h5, h6,
     <a href="#paquetes"  class="nav-scroll">Paquetes</a>
     <a href="#curso"     class="nav-scroll">Curso IA</a>
     <a href="#contacto"  class="nav-scroll">Contacto</a>
-    <a href="https://wa.me/527531627539" target="_blank" class="nav-wa" onclick="if(window.__track)window.__track('whatsapp_nav_click')">
+    <a href="https://wa.me/527531627539" target="_blank" class="nav-wa">
       <i class="fab fa-whatsapp"></i> WhatsApp
     </a>
   </div>
@@ -3677,7 +3677,7 @@ h1, h2, h3, h4, h5, h6,
   </div>
 
   <div class="contact-wrap">
-    <form action="https://api.web3forms.com/submit" method="POST" class="contact-card reveal" onsubmit="if(window.__track)window.__track('formulario_contacto_submit')">
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-card reveal">
       <input type="hidden" name="access_key" value="c0e49a32-18be-459a-80bf-fc60f5003e70">
       <input type="hidden" name="subject" value="🌟 Nueva Consulta — ORION Creative Studio">
       <input type="hidden" name="from_name" value="ORION Creative Studio">
@@ -5210,7 +5210,6 @@ function cerrarPopupOferta(isHiring){
 
 /* ── CONTRATAR MODAL ── */
 function openContratarModal(servicio, precio) {
-  if (window.__track) window.__track('contratar_click', servicio);
   document.getElementById('cModal-title').textContent = servicio;
   document.getElementById('cModal-precio').textContent = precio || '';
   document.getElementById('cm-servicio').value = servicio;
@@ -6409,7 +6408,6 @@ function submitSketchQuotation() {
       })
       .then(function(formDataResult) {
         if (formDataResult.success) {
-          if (window.__track) window.__track('boceto_cotizacion_enviado');
           alert('¡Boceto y especificaciones enviadas con éxito a nuestro correo! Te enviaremos a WhatsApp para iniciar tu cotización.');
           
           // Prepare WhatsApp redirect message with direct link to the drawing
@@ -6668,33 +6666,6 @@ if (document.readyState === 'loading') {
 } else {
   initAiAssistant();
 }
-</script>
-<script>
-(function(){
-  function send(type, name){
-    var body = JSON.stringify({ site:'orion', type:type, path:location.pathname, name:name });
-    try{
-      if(navigator.sendBeacon){
-        navigator.sendBeacon('https://certificados-autentificacion.vercel.app/api/track', new Blob([body], {type:'application/json'}));
-      } else {
-        fetch('https://certificados-autentificacion.vercel.app/api/track', {method:'POST', headers:{'Content-Type':'application/json'}, body:body, keepalive:true}).catch(function(){});
-      }
-    }catch(e){}
-  }
-  function slug(s){
-    var accents = { a:'áàäâ', e:'éèëê', i:'íìïî', o:'óòöô', u:'úùüû', n:'ñ' };
-    var out = String(s || '').toLowerCase();
-    Object.keys(accents).forEach(function(plain){
-      accents[plain].split('').forEach(function(ch){ out = out.split(ch).join(plain); });
-    });
-    return out.replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 40);
-  }
-  window.__track = function(name, detail){
-    var evt = detail ? name + '_' + slug(detail) : name;
-    send('event', evt);
-  };
-  send('visit');
-})();
 </script>
 </body>
 </html>
