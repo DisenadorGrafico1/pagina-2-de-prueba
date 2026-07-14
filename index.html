@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
+<meta name="theme-color" content="#ffffff">
 <title>ORION Creative Studio | Diseño · Publicidad · IA</title>
 <meta name="description" content="Agencia de diseño y publicidad integral. Logos, branding, páginas web, cursos de IA y más.">
 <meta name="keywords" content="diseño de logotipos, branding para empresas, diseño web profesional, identidad de marca, agencia de publicidad, cursos de inteligencia artificial, marketing digital, diseño grafico, creacion de marcas, logos mexico">
@@ -91,8 +93,8 @@
   --wa:        #25d366;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%;}
-body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;line-height:1.65;max-width:100%;}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;line-height:1.65;max-width:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
 ul{list-style:none;}
@@ -177,6 +179,7 @@ nav.scrolled{padding:.65rem 2.5rem;background:rgba(2,0,15,.97);}
 ============================================================ */
 #inicio{
   min-height:100vh;
+  min-height:100svh;
   display:flex;align-items:center;justify-content:center;text-align:center;
   padding:7rem 2rem 5rem;
 }
@@ -2545,155 +2548,175 @@ h1, h2, h3, h4, h5, h6,
 }
 
 
-/* ═══════ SKETCH MODAL & CANVAS DRAWING TOOL STYLES ═══════ */
-#dibujoModal {
-  display: none;
-  position: fixed;
-  z-index: 1100;
-  inset: 0;
-  background-color: rgba(2, 0, 15, 0.85);
-  backdrop-filter: blur(12px);
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  color: var(--txt);
+/* ============================================================
+   MODAL: COTIZAR PÁGINA WEB (wq- prefix)
+============================================================ */
+#webQuoteModal .modal-box{
+  max-width:760px;
+  display:flex;flex-direction:column;
 }
-.draw-modal-container {
-  background: #ffffff;
-  width: 100%;
-  max-width: 580px;
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--border);
-  animation: modalFadeIn 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+#webQuoteModal .modal-title{
+  color:var(--txt) !important;
 }
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+#webQuoteModal .modal-close{
+  color:var(--txt2) !important;
 }
-.draw-modal-header {
-  padding: 1.2rem 1.5rem;
-  background: #f5f5f7;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.wq-body{
+  padding:1.6rem 1.8rem 1.8rem;
+  overflow-y:auto;
+  max-height:80vh;
 }
-.draw-modal-header h3 {
-  margin: 0;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: var(--txt);
-  text-transform: uppercase;
+.wq-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(47,92,255,.08);border:1px solid rgba(47,92,255,.25);
+  color:var(--purple);font-size:.75rem;font-weight:700;
+  padding:.45rem .9rem;border-radius:50px;margin-bottom:1rem;
 }
-.draw-modal-close {
-  background: rgba(0, 0, 0, 0.05);
-  border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--txt);
-  transition: background 0.2s;
+.wq-badge i{
+  width:22px;height:22px;border-radius:50%;background:var(--purple);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;
 }
-.draw-modal-close:hover {
-  background: rgba(0, 0, 0, 0.1);
+.wq-hero h3{
+  font-size:1.5rem;font-weight:800;color:var(--txt);line-height:1.2;margin:0 0 1.2rem;
 }
-.draw-modal-body {
-  padding: 1.5rem;
-  overflow-y: auto;
-  max-height: 75vh;
+.wq-hero h3 span{color:var(--purple);}
+.wq-features{
+  display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.2rem;margin-bottom:1.4rem;
 }
-.draw-step {
-  display: none;
+.wq-feature{display:flex;align-items:flex-start;gap:.7rem;}
+.wq-feature-icon{
+  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;
+  background:rgba(47,92,255,.1);color:var(--purple);
 }
-.draw-step.active {
-  display: block;
+.wq-feature strong{display:block;font-size:.88rem;color:var(--txt);}
+.wq-feature p{margin:.1rem 0 0;font-size:.78rem;color:var(--txt2);}
+.wq-start-btn{
+  width:100%;border:none;border-radius:12px;cursor:pointer;
+  background:var(--purple);color:#fff;font-weight:700;font-size:.95rem;
+  padding:.95rem 1.2rem;display:flex;align-items:center;justify-content:center;gap:.6rem;
+  transition:all .2s;margin-bottom:1.8rem;
 }
-/* Canvas container */
-.canvas-wrapper {
-  position: relative;
-  background: #ffffff;
-  border: 2px dashed rgba(47, 92, 255, 0.3);
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  touch-action: none; /* Prevents scroll when drawing */
+.wq-start-btn:hover{background:var(--purple-mid);transform:translateY(-2px);}
+
+/* ── Mockup clonado (imagen de referencia recreada en HTML/CSS) ── */
+.wq-mockup{
+  background:#F3F5FA;border:1px solid var(--border);border-radius:16px;
+  padding:1.4rem;position:relative;overflow:hidden;margin-bottom:1rem;
 }
-#sketchCanvas {
-  display: block;
-  width: 100%;
-  height: 280px;
-  background: #ffffff;
-  cursor: crosshair;
+.wq-mockup-row{display:flex;gap:1rem;align-items:flex-end;flex-wrap:wrap;}
+.wq-browser{
+  flex:1 1 300px;background:#fff;border-radius:12px;border:1px solid var(--border);
+  overflow:hidden;box-shadow:0 10px 30px rgba(20,30,60,.08);
 }
-.canvas-toolbar {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 1.2rem;
-  padding: 0.6rem;
-  background: #f5f5f7;
-  border-radius: 10px;
+.wq-browser-bar{
+  display:flex;align-items:center;gap:.5rem;padding:.6rem .8rem;
+  background:#F7F8FC;border-bottom:1px solid var(--border);
 }
-.tool-btn {
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  cursor: pointer;
-  border: 1px solid var(--border);
-  background: #ffffff;
-  color: var(--txt);
-  transition: all 0.2s;
+.wq-browser-bar .dot{width:9px;height:9px;border-radius:50%;}
+.wq-browser-bar .dot.red{background:#ff5f57;}
+.wq-browser-bar .dot.yellow{background:#febc2e;}
+.wq-browser-bar .dot.green{background:#28c840;}
+.wq-url{
+  margin-left:.6rem;flex:1;background:#fff;border:1px solid var(--border);
+  border-radius:6px;padding:.3rem .6rem;font-size:.7rem;color:var(--txt2);
+  display:flex;align-items:center;gap:.4rem;
 }
-.tool-btn:hover {
-  border-color: var(--purple);
-  background: rgba(47, 92, 255, 0.05);
+.wq-browser-body{padding:.9rem;}
+.wq-img-block{
+  height:110px;border-radius:8px;margin-bottom:.7rem;
+  background:linear-gradient(135deg,var(--purple-lt,#6088ff),var(--purple));
+  position:relative;overflow:hidden;
 }
-.tool-btn.active {
-  background: var(--purple);
-  color: #ffffff;
-  border-color: var(--purple);
+.wq-img-block::before{
+  content:"";position:absolute;left:14%;bottom:10%;width:46%;height:60%;
+  background:rgba(255,255,255,.28);clip-path:polygon(0% 100%,45% 25%,70% 55%,100% 100%);
 }
-.color-picker-wrapper {
-  display: flex;
-  gap: 0.4rem;
+.wq-img-block::after{
+  content:"";position:absolute;right:16%;top:14%;width:16px;height:16px;
+  border-radius:50%;background:rgba(255,255,255,.55);
 }
-.color-dot {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: transform 0.15s;
+.wq-img-block.small{height:70px;}
+.wq-line{height:9px;border-radius:5px;background:#E3E7F3;margin-bottom:.5rem;}
+.wq-line.w80{width:80%;} .wq-line.w70{width:70%;} .wq-line.w60{width:60%;} .wq-line.w50{width:50%;}
+.wq-pill{width:38%;height:20px;border-radius:20px;background:var(--purple);margin-top:.3rem;}
+.wq-phone{
+  flex:0 0 120px;background:#fff;border-radius:22px;border:1px solid var(--border);
+  padding:.5rem;box-shadow:0 10px 30px rgba(20,30,60,.1);
 }
-.color-dot:hover {
-  transform: scale(1.15);
+.wq-phone-notch{width:34%;height:6px;border-radius:4px;background:#E3E7F3;margin:0 auto .5rem;}
+.wq-phone-body{padding:0 .2rem;}
+.wq-cta-strip{
+  display:flex;flex-wrap:wrap;gap:.8rem;
+  background:#fff;border:1px solid var(--border);border-radius:14px;
+  padding:1.1rem 1.2rem;
 }
-.color-dot.active {
-  border-color: var(--purple);
-  transform: scale(1.1);
+.wq-cta-left,.wq-cta-right{
+  flex:1 1 220px;display:flex;align-items:center;gap:.8rem;
+  border-radius:12px;padding:.4rem;
 }
-.draw-modal-footer {
-  padding: 1.2rem 1.5rem;
-  border-top: 1px solid var(--border);
-  background: #f5f5f7;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+.wq-cta-right{background:var(--purple);color:#fff;padding:.9rem 1rem;}
+.wq-cta-left i{
+  width:42px;height:42px;border-radius:10px;background:var(--purple);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;
 }
-.draw-modal-footer .btn {
-  margin: 0 !important;
-  padding: 0.7rem 1.5rem !important;
+.wq-cta-right i{
+  width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;
+}
+.wq-cta-left strong,.wq-cta-right strong{display:block;font-size:.92rem;}
+.wq-cta-left span,.wq-cta-right span{font-size:.78rem;color:var(--txt2);}
+.wq-cta-right span{color:rgba(255,255,255,.85);}
+@media(max-width:560px){
+  .wq-features{grid-template-columns:1fr;}
+  .wq-phone{display:none;}
+}
+
+/* ── Formulario de requerimientos ── */
+.wq-form-title{font-size:1.2rem;font-weight:800;color:var(--txt);margin:0 0 .3rem;}
+.wq-form-sub{font-size:.85rem;color:var(--txt2);margin:0 0 1.2rem;}
+.wq-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.wq-form-grid .wq-full{grid-column:1/-1;}
+.wq-form-grid label{
+  display:block;font-size:.78rem;font-weight:700;color:var(--txt);margin-bottom:.35rem;
+}
+.wq-form-grid input,.wq-form-grid select,.wq-form-grid textarea{
+  width:100%;border:1px solid var(--border);border-radius:8px;
+  padding:.7rem .8rem;font-size:.85rem;font-family:inherit;color:var(--txt);
+  background:#fff;
+}
+.wq-form-grid textarea{min-height:70px;resize:vertical;}
+.wq-check-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:.5rem .8rem;
+  border:1px solid var(--border);border-radius:10px;padding:.8rem;
+}
+.wq-check-grid label{
+  display:flex;align-items:center;gap:.5rem;font-weight:500;font-size:.82rem;margin:0;
+}
+.wq-check-grid input{width:auto;}
+.wq-back-btn{
+  background:none;border:none;color:var(--txt2);font-size:.82rem;
+  display:flex;align-items:center;gap:.4rem;cursor:pointer;margin-bottom:1rem;
+  padding:0;
+}
+.wq-back-btn:hover{color:var(--purple);}
+.wq-submit-btn{
+  width:100%;border:none;border-radius:12px;cursor:pointer;
+  background:var(--purple);color:#fff;font-weight:700;font-size:.95rem;
+  padding:.95rem 1.2rem;display:flex;align-items:center;justify-content:center;gap:.6rem;
+  transition:all .2s;margin-top:1.4rem;
+}
+.wq-submit-btn:hover{background:var(--purple-mid);}
+.wq-submit-btn:disabled{opacity:.6;cursor:default;}
+.wq-success{
+  display:none;margin-top:1rem;background:rgba(0,200,83,.08);
+  border:1px solid rgba(0,200,83,.3);color:#0a8a3f;border-radius:10px;
+  padding:.9rem 1rem;font-size:.85rem;text-align:center;
+}
+.wq-success.show{display:block;}
+@media(max-width:560px){
+  .wq-form-grid{grid-template-columns:1fr;}
+  .wq-check-grid{grid-template-columns:1fr;}
 }
 
 /* ============================================================
@@ -3150,7 +3173,10 @@ h1, h2, h3, h4, h5, h6,
     <!-- Hero actions row -->
     <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 1.5rem auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
       <a href="#portafolio" class="btn-hero-portfolio nav-scroll" style="margin: 0 !important;"><i class="fas fa-image"></i> Ver Portafolio</a>
-      <button onclick="openDibujoModal()" class="btn-hero-portfolio" style="margin: 0 !important; background: var(--purple) !important; color: #ffffff !important; border-color: var(--purple) !important; box-shadow: 0 0 15px rgba(47, 92, 255, 0.3) !important; cursor: pointer;"><i class="fas fa-paint-brush"></i> HACER BOCETO DE MI LOGO Y COTIZAR</button>
+      <a href="#contacto" class="btn-hero-portfolio nav-scroll" style="margin: 0 !important; background: var(--purple) !important; color: #ffffff !important; border-color: var(--purple) !important; box-shadow: 0 0 15px rgba(47, 92, 255, 0.3) !important;"><i class="fas fa-pen-nib"></i> Cotizar mi Logo</a>
+    </div>
+    <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 0 auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
+      <button id="btnCotizarWeb" onclick="openWebQuoteModal()" class="btn-hero-portfolio" style="margin: 0 !important; background: var(--pink) !important; color: #ffffff !important; border-color: var(--pink) !important; box-shadow: 0 0 18px rgba(255, 42, 133, 0.55), 0 0 36px rgba(255, 42, 133, 0.28) !important; cursor: pointer;"><i class="fas fa-globe"></i> Cotizar Página Web</button>
     </div>
 
 
@@ -3179,7 +3205,7 @@ h1, h2, h3, h4, h5, h6,
         onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(217,72,43,0.32)'"
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
-        Certificado de Autenticidad
+        Certificado de Autenticidad para mi Logo o Ilustración
       </button>
       <!-- Mascot CTRL: peeks up from behind the buttons -->
       <svg class="mascot-svg mascot-md mascot-peek-up" style="bottom:-65px;right:10px;animation-delay:2s;" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
@@ -4102,6 +4128,177 @@ h1, h2, h3, h4, h5, h6,
         <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i> Continuar con la compra
       </button>
       <p style="text-align:center;font-size:.78rem;color:var(--txt2);margin-top:.6rem;">Te llevamos directo a WhatsApp para confirmar tu pedido</p>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     MODAL: COTIZAR PÁGINA WEB
+================================================================ -->
+<div id="webQuoteModal" class="modal-overlay" style="z-index:3000;" onclick="if(event.target===this)closeWebQuoteModal()">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">Cotiza tu Página Web</div>
+      <button class="modal-close" onclick="closeWebQuoteModal()">✕</button>
+    </div>
+
+    <div class="wq-body">
+
+      <!-- PASO 1: Presentación -->
+      <div id="wqStepIntro">
+        <div class="wq-hero">
+          <div class="wq-badge"><i class="fas fa-globe"></i> Estás a un clic del siguiente nivel</div>
+          <h3>Tu negocio necesita un <span>sitio web.</span></h3>
+        </div>
+
+        <div class="wq-features">
+          <div class="wq-feature">
+            <div class="wq-feature-icon"><i class="fas fa-arrow-trend-up"></i></div>
+            <div><strong>Más visibilidad</strong><p>Te encuentran 24/7</p></div>
+          </div>
+          <div class="wq-feature">
+            <div class="wq-feature-icon"><i class="fas fa-users"></i></div>
+            <div><strong>Más confianza</strong><p>Profesionalismo que genera credibilidad</p></div>
+          </div>
+          <div class="wq-feature">
+            <div class="wq-feature-icon"><i class="fas fa-cart-shopping"></i></div>
+            <div><strong>Más clientes</strong><p>Convierte visitas en oportunidades</p></div>
+          </div>
+          <div class="wq-feature">
+            <div class="wq-feature-icon"><i class="fas fa-rocket"></i></div>
+            <div><strong>Más crecimiento</strong><p>Haz que tu negocio llegue más lejos</p></div>
+          </div>
+        </div>
+
+        <button class="wq-start-btn" onclick="startWebQuoteForm()">
+          <i class="fas fa-arrow-right-long"></i> Empezar Cotización
+        </button>
+
+        <!-- Mockup (recreación de la imagen de referencia) -->
+        <div class="wq-mockup">
+          <div class="wq-mockup-row">
+            <div class="wq-browser">
+              <div class="wq-browser-bar">
+                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                <div class="wq-url"><i class="fas fa-lock"></i> tumarca.com</div>
+              </div>
+              <div class="wq-browser-body">
+                <div class="wq-img-block"></div>
+                <div class="wq-line w70"></div>
+                <div class="wq-line w50"></div>
+                <div class="wq-pill"></div>
+              </div>
+            </div>
+            <div class="wq-phone">
+              <div class="wq-phone-notch"></div>
+              <div class="wq-phone-body">
+                <div class="wq-img-block small"></div>
+                <div class="wq-line w80"></div>
+                <div class="wq-line w60"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="wq-cta-strip">
+          <div class="wq-cta-left">
+            <i class="fas fa-globe"></i>
+            <div><strong>Creamos tu sitio web</strong><span>moderno, rápido y efectivo.</span></div>
+          </div>
+          <div class="wq-cta-right">
+            <i class="fas fa-arrow-right"></i>
+            <div><strong>¿Listo para destacar?</strong><span>Hablemos y hagámoslo realidad.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASO 2: Formulario de requerimientos -->
+      <div id="wqStepForm" style="display:none;">
+        <button type="button" class="wq-back-btn" onclick="showWebQuoteIntro()"><i class="fas fa-arrow-left"></i> Atrás</button>
+        <div class="wq-form-title">Cuéntanos qué necesita tu página web</div>
+        <p class="wq-form-sub">Entre más detalles nos des, más precisa será tu cotización.</p>
+
+        <form id="wqForm" onsubmit="submitWebQuoteForm(event)">
+          <div class="wq-form-grid">
+            <div class="fg">
+              <label>Nombre completo *</label>
+              <input type="text" id="wqNombre" required placeholder="Tu nombre completo">
+            </div>
+            <div class="fg">
+              <label>WhatsApp / Teléfono *</label>
+              <input type="tel" id="wqTelefono" required placeholder="+52 000 000 0000">
+            </div>
+            <div class="fg">
+              <label>Correo electrónico *</label>
+              <input type="email" id="wqEmail" required placeholder="tu@correo.com">
+            </div>
+            <div class="fg">
+              <label>Nombre del negocio *</label>
+              <input type="text" id="wqNegocio" required placeholder="Nombre de tu negocio o marca">
+            </div>
+            <div class="fg">
+              <label>Giro o rubro del negocio</label>
+              <input type="text" id="wqGiro" placeholder="Ej. Restaurante, boutique, servicios...">
+            </div>
+            <div class="fg">
+              <label>¿Ya tienes un dominio?</label>
+              <input type="text" id="wqDominio" placeholder="Ej. tunegocio.com (o 'No tengo')">
+            </div>
+            <div class="fg wq-full">
+              <label>¿Cuántas páginas o secciones necesitas?</label>
+              <select id="wqPaginas">
+                <option value="1 página (landing page)">1 página (landing page)</option>
+                <option value="3 a 5 páginas">3 a 5 páginas</option>
+                <option value="6 o más páginas">6 o más páginas</option>
+                <option value="No estoy seguro">No estoy seguro</option>
+              </select>
+            </div>
+            <div class="fg wq-full">
+              <label>Funcionalidades que necesitas</label>
+              <div class="wq-check-grid">
+                <label><input type="checkbox" name="wqFuncion" value="Tienda en línea"> Tienda en línea</label>
+                <label><input type="checkbox" name="wqFuncion" value="Blog"> Blog</label>
+                <label><input type="checkbox" name="wqFuncion" value="Reservas o citas"> Reservas o citas</label>
+                <label><input type="checkbox" name="wqFuncion" value="Formulario de contacto"> Formulario de contacto</label>
+                <label><input type="checkbox" name="wqFuncion" value="Integración con redes sociales"> Integración con redes sociales</label>
+                <label><input type="checkbox" name="wqFuncion" value="Chat / WhatsApp"> Chat / WhatsApp</label>
+                <label><input type="checkbox" name="wqFuncion" value="Multi-idioma"> Multi-idioma</label>
+                <label><input type="checkbox" name="wqFuncion" value="Otro"> Otro</label>
+              </div>
+            </div>
+            <div class="fg wq-full">
+              <label>Referencias de diseño (enlaces o descripción)</label>
+              <textarea id="wqReferencias" placeholder="Páginas que te gusten, colores, estilo que buscas..."></textarea>
+            </div>
+            <div class="fg">
+              <label>¿Quién proporciona el contenido?</label>
+              <select id="wqContenido">
+                <option value="Yo proporciono textos y fotos">Yo proporciono textos y fotos</option>
+                <option value="Necesito que ustedes lo creen">Necesito que ustedes lo creen</option>
+                <option value="Un poco de ambos">Un poco de ambos</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>Presupuesto aproximado</label>
+              <input type="text" id="wqPresupuesto" placeholder="Ej. $35 - $70 USD">
+            </div>
+            <div class="fg wq-full">
+              <label>Fecha límite deseada</label>
+              <input type="text" id="wqFecha" placeholder="Ej. En 2 semanas, sin prisa, etc.">
+            </div>
+            <div class="fg wq-full">
+              <label>Comentarios adicionales</label>
+              <textarea id="wqComentarios" placeholder="Cualquier otro detalle que quieras compartir..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="wq-submit-btn" id="wqSubmitBtn">
+            <i class="fas fa-paper-plane"></i> Enviar Cotización
+          </button>
+          <div class="wq-success" id="wqFormSuccess">✅ ¡Tu solicitud fue enviada! Te contactaremos muy pronto.</div>
+        </form>
+      </div>
+
     </div>
   </div>
 </div>
@@ -5229,6 +5426,75 @@ function closeContratarModal() {
     advanceModalSequence();
   }
 }
+function openWebQuoteModal() {
+  showWebQuoteIntro();
+  document.getElementById('webQuoteModal').classList.add('open');
+}
+function closeWebQuoteModal() {
+  document.getElementById('webQuoteModal').classList.remove('open');
+}
+function showWebQuoteIntro() {
+  document.getElementById('wqStepIntro').style.display = 'block';
+  document.getElementById('wqStepForm').style.display = 'none';
+}
+function startWebQuoteForm() {
+  document.getElementById('wqStepIntro').style.display = 'none';
+  document.getElementById('wqStepForm').style.display = 'block';
+}
+function submitWebQuoteForm(e) {
+  e.preventDefault();
+  var btn = document.getElementById('wqSubmitBtn');
+  var successBox = document.getElementById('wqFormSuccess');
+
+  var funcionalidades = Array.prototype.map.call(
+    document.querySelectorAll('input[name="wqFuncion"]:checked'),
+    function (cb) { return cb.value; }
+  ).join(', ') || 'No especificado';
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+  var fd = new FormData();
+  fd.append('access_key', 'c0e49a32-18be-459a-80bf-fc60f5003e70');
+  fd.append('subject', 'Nueva Cotización de Página Web - ORION Creative Studio');
+  fd.append('from_name', 'ORION Creative Studio (Cotización Web)');
+  fd.append('Nombre Cliente', sanitizeInput(document.getElementById('wqNombre').value));
+  fd.append('WhatsApp / Teléfono', sanitizeInput(document.getElementById('wqTelefono').value));
+  fd.append('Email', sanitizeInput(document.getElementById('wqEmail').value));
+  fd.append('Nombre del Negocio', sanitizeInput(document.getElementById('wqNegocio').value));
+  fd.append('Giro del Negocio', sanitizeInput(document.getElementById('wqGiro').value) || 'No especificado');
+  fd.append('Dominio Deseado', sanitizeInput(document.getElementById('wqDominio').value) || 'No especificado');
+  fd.append('Cantidad de Páginas', document.getElementById('wqPaginas').value);
+  fd.append('Funcionalidades', funcionalidades);
+  fd.append('Referencias de Diseño', sanitizeInput(document.getElementById('wqReferencias').value) || 'Sin referencias');
+  fd.append('Quién Da el Contenido', document.getElementById('wqContenido').value);
+  fd.append('Presupuesto Aproximado', sanitizeInput(document.getElementById('wqPresupuesto').value) || 'No especificado');
+  fd.append('Fecha Límite Deseada', sanitizeInput(document.getElementById('wqFecha').value) || 'No especificada');
+  fd.append('Comentarios Adicionales', sanitizeInput(document.getElementById('wqComentarios').value) || 'Sin comentarios');
+
+  fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+    .then(function (r) { return r.json(); })
+    .then(function (result) {
+      if (result.success) {
+        successBox.classList.add('show');
+        document.getElementById('wqForm').reset();
+        setTimeout(function () {
+          closeWebQuoteModal();
+          successBox.classList.remove('show');
+          showWebQuoteIntro();
+        }, 3200);
+      } else {
+        throw new Error(result.message || 'Error en el servidor de correos.');
+      }
+    })
+    .catch(function (error) {
+      alert('Hubo un error al enviar tu cotización: ' + error.message + '\nPor favor intenta de nuevo.');
+    })
+    .finally(function () {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Cotización';
+    });
+}
 function mostrarPagos(region) {
   ['pagos-mx','pagos-us','pagos-mundo'].forEach(function(id){ document.getElementById(id).style.display='none'; });
   document.querySelectorAll('[name="metodoPago"],[name="meses"]').forEach(r => r.checked = false);
@@ -5584,110 +5850,6 @@ function continuarCompra() {
   </div>
 </div>
 
-<!-- ================================================================
-     MODAL DIBUJO Y BOCETO INTERACTIVO
-================================================================ -->
-<div id="dibujoModal" role="dialog" aria-modal="true">
-  <div class="draw-modal-container">
-    
-    <!-- Cabecera -->
-    <div class="draw-modal-header">
-      <h3 id="drawModalTitle"><i class="fas fa-paint-brush"></i> Paso 1: Dibuja tu idea</h3>
-      <button class="draw-modal-close" onclick="closeDibujoModal()" aria-label="Cerrar">✕</button>
-    </div>
-
-    <!-- Cuerpo -->
-    <div class="draw-modal-body">
-      
-      <!-- PASO 1: Lienzo de Dibujo -->
-      <div id="drawStep1" class="draw-step active">
-        <p style="font-size:0.85rem;color:var(--txt2);margin-bottom:0.8rem;text-align:center;">Usa tu mouse o tu dedo en pantallas táctiles para dibujar un boceto básico de lo que imaginas para tu logotipo:</p>
-        
-        <!-- Canvas wrapper -->
-        <div class="canvas-wrapper">
-          <canvas id="sketchCanvas"></canvas>
-        </div>
-
-        <!-- Barra de Herramientas -->
-        <div class="canvas-toolbar">
-          <div class="color-picker-wrapper">
-            <div class="color-dot active" style="background:#000000;" data-color="#000000"></div>
-            <div class="color-dot" style="background:#0019e4;" data-color="#0019e4"></div>
-            <div class="color-dot" style="background:#ef4444;" data-color="#ef4444"></div>
-            <div class="color-dot" style="background:#22c55e;" data-color="#22c55e"></div>
-          </div>
-          <button class="tool-btn" id="btnEraser"><i class="fas fa-eraser"></i> Borrador</button>
-          <div style="display:flex;align-items:center;gap:0.3rem;">
-            <label style="font-size:0.75rem;font-weight:700;">Grosor:</label>
-            <select id="selectBrushSize" class="sel" style="padding:0.2rem 0.5rem;font-size:0.75rem;width:auto;margin:0;">
-              <option value="3" selected>3px</option>
-              <option value="6">6px</option>
-              <option value="12">12px</option>
-            </select>
-          </div>
-          <button class="tool-btn" style="margin-left:auto;background:#fee2e2;color:#ef4444;border-color:#fca5a5;" id="btnClearCanvas"><i class="fas fa-trash-alt"></i> Limpiar</button>
-        </div>
-
-        <!-- Barra de Elementos (Texto y Figuras) -->
-        <div class="canvas-toolbar" style="margin-top:0.5rem; border-top:1px dashed rgba(255,255,255,0.15); padding-top:0.5rem; justify-content:flex-start; gap:0.5rem; flex-wrap:wrap;">
-          <button class="tool-btn" id="btnAddText" onclick="addTextToCanvas()" style="background:#e0f2fe; color:#0369a1; border-color:#bae6fd;"><i class="fas fa-font"></i> Agregar Texto</button>
-          <button class="tool-btn" id="btnAddCircle" onclick="addCircleToCanvas()" style="background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff;"><i class="far fa-circle"></i> Círculo</button>
-          <button class="tool-btn" id="btnAddSquare" onclick="addSquareToCanvas()" style="background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff;"><i class="far fa-square"></i> Cuadrado</button>
-          <button class="tool-btn" id="btnAddTriangle" onclick="addTriangleToCanvas()" style="background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff;"><i class="fas fa-play" style="transform:rotate(-90deg);font-size:0.75rem;"></i> Triángulo</button>
-          <button class="tool-btn" id="btnUndo" onclick="undoLastAction()" style="margin-left:auto; background:#fef3c7; color:#d97706; border-color:#fde68a;"><i class="fas fa-undo"></i> Paso Atrás</button>
-        </div>
-
-        <div class="fg">
-          <label class="lbl">Observaciones del Dibujo (Opcional)</label>
-          <textarea id="drawNotes" class="ta" placeholder="Describe brevemente lo que dibujaste en tu boceto (ej: 'Quiero que la forma sea circular y la letra esté en medio...')" style="height:70px;"></textarea>
-        </div>
-      </div>
-
-      <!-- PASO 2: Características y Datos de Contacto -->
-      <div id="drawStep2" class="draw-step">
-        <p style="font-size:0.85rem;color:var(--txt2);margin-bottom:1.2rem;text-align:center;">Por favor, ingresa los detalles y características que deseas en tu logotipo para darte una cotización precisa:</p>
-        
-        <div class="form-grid">
-          <div class="fg">
-            <label class="lbl">Nombre Completo *</label>
-            <input type="text" id="drawClientName" class="inp" placeholder="Tu nombre completo" required>
-          </div>
-          <div class="fg">
-            <label class="lbl">WhatsApp / Teléfono *</label>
-            <input type="tel" id="drawClientPhone" class="inp" placeholder="Ej: +52 753 162 7539" required>
-          </div>
-          <div class="fg full">
-            <label class="lbl">Correo Electrónico *</label>
-            <input type="email" id="drawClientEmail" class="inp" placeholder="tu-correo@email.com" required>
-          </div>
-          <div class="fg">
-            <label class="lbl">Colores deseados para el Logo</label>
-            <input type="text" id="drawLogoColors" class="inp" placeholder="Ej: Azul marino y oro, Negro minimalista">
-          </div>
-          <div class="fg">
-            <label class="lbl">¿Qué uso principal le darás?</label>
-            <input type="text" id="drawLogoUse" class="inp" placeholder="Ej: Redes sociales, Tarjetas, Uniformes, Web">
-          </div>
-          <div class="fg full">
-            <label class="lbl">Características deseadas (Detalla al máximo)</label>
-            <textarea id="drawFeatures" class="ta" placeholder="Cuéntanos más sobre tu idea (ej: 'Es un negocio de café, quiero un estilo rústico pero moderno. Busco que transmita calidez.')" style="height:90px;"></textarea>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Pie de página / Botones -->
-    <div class="draw-modal-footer">
-      <button class="btn btn-outline" id="btnDrawBack" onclick="handleDrawBack()" style="display:none;"><i class="fas fa-arrow-left"></i> Atrás</button>
-      <button class="btn btn-outline" id="btnDrawCancel" onclick="closeDibujoModal()">Cancelar</button>
-      <button class="btn btn-purple" id="btnDrawNext" onclick="handleDrawNext()" style="margin-left:auto !important;">Siguiente <i class="fas fa-arrow-right"></i></button>
-      <button class="btn btn-purple" id="btnDrawSubmit" onclick="submitSketchQuotation()" style="display:none;margin-left:auto !important;background:linear-gradient(90deg,#00c853,#128c7e)!important;border-color:#128c7e!important;color:#fff!important;"><i class="fas fa-paper-plane"></i> Enviar Cotización</button>
-    </div>
-
-  </div>
-</div>
-
 <!-- MODAL CERTIFICADO DE AUTENTICIDAD — DISEÑO EDITORIAL ARTÍSTICO -->
 <div id="certificadoModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
   <div class="cert-modal-container">
@@ -5877,23 +6039,6 @@ function enviarOfertaWA(prefix, oferta, precio) {
   window.open('https://wa.me/527531627539?text=' + encodeURIComponent(msg), '_blank');
 }
 
-/* ── INTERACTIVE CANVAS DRAWING & SKETCH MODAL LOGIC ── */
-var sketchCanvas = document.getElementById('sketchCanvas');
-var sketchCtx = sketchCanvas ? sketchCanvas.getContext('2d') : null;
-var isDrawing = false;
-var lastX = 0;
-var lastY = 0;
-var brushColor = '#000000';
-var brushSize = 3;
-var isEraser = false;
-
-// Layer and History tracking array for Text, Shapes, and freehand strokes
-var drawHistory = [];
-var selectedItem = null;
-var dragOffsetX = 0;
-var dragOffsetY = 0;
-var currentStroke = null;
-
 // ── Certificado de Autenticidad Modal — stack-aware, no interfiere con otros modales ──
 (function() {
   var certModal = null;
@@ -5905,7 +6050,7 @@ var currentStroke = null;
 
   // Cuenta cuántos modales overlay están abiertos (excluyendo el certificado)
   function otherModalsOpen() {
-    var others = ['ejemplosModal','contratarModal','offerModal','dibujoModal','premiumLogoWelcomeModal'];
+    var others = ['ejemplosModal','contratarModal','offerModal','premiumLogoWelcomeModal'];
     return others.some(function(id) {
       var el = document.getElementById(id);
       return el && el.style.display !== '' && el.style.display !== 'none';
@@ -5953,488 +6098,6 @@ var currentStroke = null;
   });
 }());
 
-// Open drawing modal and init canvas sizing
-function openDibujoModal() {
-  document.getElementById('dibujoModal').style.display = 'flex';
-  document.body.style.overflow = 'hidden'; // Stop body scrolling
-  initCanvas();
-}
-
-// Sizing canvas properly inside its bounding box
-function initCanvas() {
-  if (!sketchCanvas || !sketchCtx) return;
-  
-  // Set size dynamically based on wrapper width
-  var rect = sketchCanvas.parentNode.getBoundingClientRect();
-  sketchCanvas.width = rect.width;
-  sketchCanvas.height = 280; // Fixed visual height
-
-  // Set line cap and joins for smooth drawing
-  sketchCtx.lineCap = 'round';
-  sketchCtx.lineJoin = 'round';
-  sketchCtx.strokeStyle = brushColor;
-  sketchCtx.lineWidth = brushSize;
-
-  redrawCanvas();
-}
-
-// Redraw all strokes and objects in history onto the canvas
-function redrawCanvas() {
-  if (!sketchCanvas || !sketchCtx) return;
-  
-  // Clear with solid white background
-  sketchCtx.fillStyle = '#ffffff';
-  sketchCtx.fillRect(0, 0, sketchCanvas.width, sketchCanvas.height);
-  
-  // Render history items chronologically
-  drawHistory.forEach(function(item) {
-    if (item.type === 'freehand') {
-      if (item.points.length < 1) return;
-      sketchCtx.beginPath();
-      sketchCtx.moveTo(item.points[0].x, item.points[0].y);
-      for (var i = 1; i < item.points.length; i++) {
-        sketchCtx.lineTo(item.points[i].x, item.points[i].y);
-      }
-      sketchCtx.strokeStyle = item.isEraser ? '#ffffff' : item.color;
-      sketchCtx.lineWidth = item.size;
-      sketchCtx.stroke();
-    } 
-    else if (item.type === 'circle') {
-      sketchCtx.beginPath();
-      sketchCtx.arc(item.x, item.y, item.radius, 0, 2 * Math.PI);
-      sketchCtx.strokeStyle = item.color;
-      sketchCtx.lineWidth = item.size * 1.5;
-      sketchCtx.stroke();
-    } 
-    else if (item.type === 'square') {
-      sketchCtx.beginPath();
-      sketchCtx.rect(item.x - item.sizeValue / 2, item.y - item.sizeValue / 2, item.sizeValue, item.sizeValue);
-      sketchCtx.strokeStyle = item.color;
-      sketchCtx.lineWidth = item.size * 1.5;
-      sketchCtx.stroke();
-    } 
-    else if (item.type === 'triangle') {
-      sketchCtx.beginPath();
-      var side = item.sizeValue;
-      var h = side * (Math.sqrt(3) / 2);
-      sketchCtx.moveTo(item.x, item.y - h / 2);
-      sketchCtx.lineTo(item.x - side / 2, item.y + h / 2);
-      sketchCtx.lineTo(item.x + side / 2, item.y + h / 2);
-      sketchCtx.closePath();
-      sketchCtx.strokeStyle = item.color;
-      sketchCtx.lineWidth = item.size * 1.5;
-      sketchCtx.stroke();
-    } 
-    else if (item.type === 'text') {
-      sketchCtx.font = "bold 24px Arial";
-      sketchCtx.fillStyle = item.color;
-      sketchCtx.textAlign = "center";
-      sketchCtx.textBaseline = "middle";
-      sketchCtx.fillText(item.text, item.x, item.y);
-      item.measuredWidth = sketchCtx.measureText(item.text).width;
-    }
-  });
-}
-
-// Close drawing modal
-function closeDibujoModal() {
-  document.getElementById('dibujoModal').style.display = 'none';
-  document.body.style.overflow = ''; // Restore body scrolling
-  resetDrawingModal();
-}
-
-// Reset modal to Paso 1
-function resetDrawingModal() {
-  document.getElementById('drawStep1').classList.add('active');
-  document.getElementById('drawStep2').classList.remove('active');
-  
-  document.getElementById('btnDrawBack').style.display = 'none';
-  document.getElementById('btnDrawCancel').style.display = 'inline-block';
-  document.getElementById('btnDrawNext').style.display = 'inline-block';
-  document.getElementById('btnDrawSubmit').style.display = 'none';
-  
-  document.getElementById('drawModalTitle').innerHTML = '<i class="fas fa-paint-brush"></i> Paso 1: Dibuja tu idea';
-  
-  // Reset inputs
-  document.getElementById('drawClientName').value = '';
-  document.getElementById('drawClientPhone').value = '';
-  document.getElementById('drawClientEmail').value = '';
-  document.getElementById('drawLogoColors').value = '';
-  document.getElementById('drawLogoUse').value = '';
-  document.getElementById('drawFeatures').value = '';
-  document.getElementById('drawNotes').value = '';
-  
-  drawHistory = [];
-  if (sketchCanvas) initCanvas();
-}
-
-// Event Listeners for drawing using unified PointerEvents (Mouse & Touch)
-if (sketchCanvas) {
-  sketchCanvas.addEventListener('pointerdown', startDrawing);
-  sketchCanvas.addEventListener('pointermove', draw);
-  sketchCanvas.addEventListener('pointerup', stopDrawing);
-  sketchCanvas.addEventListener('pointerleave', stopDrawing);
-}
-
-function startDrawing(e) {
-  var coords = getCoordinates(e);
-  
-  // Hit test objects in history (reverse order so top objects are selected first)
-  var hitFound = false;
-  for (var i = drawHistory.length - 1; i >= 0; i--) {
-    var item = drawHistory[i];
-    if (item.type === 'freehand') continue;
-    
-    if (item.type === 'circle') {
-      var dist = Math.sqrt((coords.x - item.x) ** 2 + (coords.y - item.y) ** 2);
-      if (dist <= item.radius + 15) {
-        selectedItem = item;
-        dragOffsetX = coords.x - item.x;
-        dragOffsetY = coords.y - item.y;
-        hitFound = true;
-        break;
-      }
-    } 
-    else if (item.type === 'square') {
-      var half = item.sizeValue / 2 + 15;
-      if (coords.x >= item.x - half && coords.x <= item.x + half &&
-          coords.y >= item.y - half && coords.y <= item.y + half) {
-        selectedItem = item;
-        dragOffsetX = coords.x - item.x;
-        dragOffsetY = coords.y - item.y;
-        hitFound = true;
-        break;
-      }
-    } 
-    else if (item.type === 'triangle') {
-      var halfW = item.sizeValue / 2 + 15;
-      var halfH = (item.sizeValue * Math.sqrt(3) / 2) / 2 + 15;
-      if (coords.x >= item.x - halfW && coords.x <= item.x + halfW &&
-          coords.y >= item.y - halfH && coords.y <= item.y + halfH) {
-        selectedItem = item;
-        dragOffsetX = coords.x - item.x;
-        dragOffsetY = coords.y - item.y;
-        hitFound = true;
-        break;
-      }
-    } 
-    else if (item.type === 'text') {
-      var w = (item.measuredWidth || 100) / 2 + 15;
-      var h = 12 + 15;
-      if (coords.x >= item.x - w && coords.x <= item.x + w &&
-          coords.y >= item.y - h && coords.y <= item.y + h) {
-        selectedItem = item;
-        dragOffsetX = coords.x - item.x;
-        dragOffsetY = coords.y - item.y;
-        hitFound = true;
-        break;
-      }
-    }
-  }
-  
-  if (hitFound) {
-    isDrawing = false;
-    return;
-  }
-  
-  isDrawing = true;
-  lastX = coords.x;
-  lastY = coords.y;
-  currentStroke = {
-    type: 'freehand',
-    points: [{ x: coords.x, y: coords.y }],
-    color: brushColor,
-    size: brushSize,
-    isEraser: isEraser
-  };
-}
-
-function draw(e) {
-  var coords = getCoordinates(e);
-  
-  if (selectedItem) {
-    e.preventDefault();
-    selectedItem.x = coords.x - dragOffsetX;
-    selectedItem.y = coords.y - dragOffsetY;
-    redrawCanvas();
-    return;
-  }
-  
-  if (!isDrawing || !sketchCtx || !currentStroke) return;
-  e.preventDefault();
-  
-  sketchCtx.beginPath();
-  sketchCtx.moveTo(lastX, lastY);
-  sketchCtx.lineTo(coords.x, coords.y);
-  sketchCtx.strokeStyle = isEraser ? '#ffffff' : brushColor;
-  sketchCtx.lineWidth = brushSize;
-  sketchCtx.stroke();
-  
-  lastX = coords.x;
-  lastY = coords.y;
-  currentStroke.points.push({ x: coords.x, y: coords.y });
-}
-
-function stopDrawing() {
-  if (selectedItem) {
-    selectedItem = null;
-    return;
-  }
-  
-  if (isDrawing && currentStroke) {
-    drawHistory.push(currentStroke);
-    currentStroke = null;
-  }
-  isDrawing = false;
-}
-
-function getCoordinates(e) {
-  var rect = sketchCanvas.getBoundingClientRect();
-  return {
-    x: e.clientX - rect.left,
-    y: e.clientY - rect.top
-  };
-}
-
-// Color picker buttons handler
-document.querySelectorAll('.color-dot').forEach(function(dot) {
-  dot.addEventListener('click', function() {
-    document.querySelectorAll('.color-dot').forEach(function(d) { d.classList.remove('active'); });
-    dot.classList.add('active');
-    
-    // Deactivate eraser when choosing color
-    document.getElementById('btnEraser').classList.remove('active');
-    isEraser = false;
-    
-    brushColor = dot.getAttribute('data-color');
-    if (sketchCtx) sketchCtx.strokeStyle = brushColor;
-  });
-});
-
-// Eraser button handler
-var btnEraser = document.getElementById('btnEraser');
-if (btnEraser) {
-  btnEraser.addEventListener('click', function() {
-    isEraser = !isEraser;
-    btnEraser.classList.toggle('active', isEraser);
-    
-    // Remove active style from color dots if active
-    if (isEraser) {
-      document.querySelectorAll('.color-dot').forEach(function(d) { d.classList.remove('active'); });
-    } else {
-      var activeDot = document.querySelector('.color-dot[data-color="' + brushColor + '"]');
-      if (activeDot) activeDot.classList.add('active');
-    }
-  });
-}
-
-// Brush size change
-var selectBrushSize = document.getElementById('selectBrushSize');
-if (selectBrushSize) {
-  selectBrushSize.addEventListener('change', function() {
-    brushSize = parseInt(selectBrushSize.value, 10);
-  });
-}
-
-// Clear canvas button
-var btnClearCanvas = document.getElementById('btnClearCanvas');
-if (btnClearCanvas) {
-  btnClearCanvas.addEventListener('click', function() {
-    if (confirm('¿Deseas limpiar por completo el lienzo de dibujo?')) {
-      drawHistory = [];
-      redrawCanvas();
-    }
-  });
-}
-
-// Add Text to canvas in the center
-function addTextToCanvas() {
-  if (!sketchCtx) return;
-  var txt = prompt("Ingresa el texto que deseas agregar a tu logotipo:");
-  if (txt && txt.trim() !== "") {
-    drawHistory.push({
-      type: 'text',
-      text: txt.trim(),
-      x: sketchCanvas.width / 2,
-      y: sketchCanvas.height / 2,
-      color: brushColor
-    });
-    redrawCanvas();
-  }
-}
-
-// Add hollow circle to canvas in the center
-function addCircleToCanvas() {
-  if (!sketchCtx) return;
-  drawHistory.push({
-    type: 'circle',
-    x: sketchCanvas.width / 2,
-    y: sketchCanvas.height / 2,
-    radius: 50,
-    color: brushColor,
-    size: brushSize
-  });
-  redrawCanvas();
-}
-
-// Add hollow square to canvas in the center
-function addSquareToCanvas() {
-  if (!sketchCtx) return;
-  drawHistory.push({
-    type: 'square',
-    x: sketchCanvas.width / 2,
-    y: sketchCanvas.height / 2,
-    sizeValue: 100,
-    color: brushColor,
-    size: brushSize
-  });
-  redrawCanvas();
-}
-
-// Add hollow triangle to canvas in the center
-function addTriangleToCanvas() {
-  if (!sketchCtx) return;
-  drawHistory.push({
-    type: 'triangle',
-    x: sketchCanvas.width / 2,
-    y: sketchCanvas.height / 2,
-    sizeValue: 100,
-    color: brushColor,
-    size: brushSize
-  });
-  redrawCanvas();
-}
-
-// Undo Last Action helper
-function undoLastAction() {
-  if (drawHistory.length > 0) {
-    drawHistory.pop();
-    redrawCanvas();
-  }
-}
-
-// Next Step handler
-function handleDrawNext() {
-  // Switch visual steps
-  document.getElementById('drawStep1').classList.remove('active');
-  document.getElementById('drawStep2').classList.add('active');
-  
-  document.getElementById('btnDrawBack').style.display = 'inline-block';
-  document.getElementById('btnDrawCancel').style.display = 'none';
-  document.getElementById('btnDrawNext').style.display = 'none';
-  document.getElementById('btnDrawSubmit').style.display = 'inline-block';
-  
-  document.getElementById('drawModalTitle').innerHTML = '<i class="fas fa-list-alt"></i> Paso 2: Especificaciones y Datos';
-}
-
-// Back Step handler
-function handleDrawBack() {
-  document.getElementById('drawStep1').classList.add('active');
-  document.getElementById('drawStep2').classList.remove('active');
-  
-  document.getElementById('btnDrawBack').style.display = 'none';
-  document.getElementById('btnDrawCancel').style.display = 'inline-block';
-  document.getElementById('btnDrawNext').style.display = 'inline-block';
-  document.getElementById('btnDrawSubmit').style.display = 'none';
-  
-  document.getElementById('drawModalTitle').innerHTML = '<i class="fas fa-paint-brush"></i> Paso 1: Dibuja tu idea';
-}
-
-// Submit Quotation + canvas upload to tmpfiles.org and Web3Forms notification
-function submitSketchQuotation() {
-  var name = sanitizeInput(document.getElementById('drawClientName').value);
-  var phone = sanitizeInput(document.getElementById('drawClientPhone').value);
-  var email = sanitizeInput(document.getElementById('drawClientEmail').value);
-  var colors = sanitizeInput(document.getElementById('drawLogoColors').value);
-  var use = sanitizeInput(document.getElementById('drawLogoUse').value);
-  var features = sanitizeInput(document.getElementById('drawFeatures').value);
-  var notes = sanitizeInput(document.getElementById('drawNotes').value);
-  
-  if (!name || !phone || !email) {
-    alert('Por favor completa todos los campos requeridos (Nombre, WhatsApp e Email).');
-    return;
-  }
-
-  var btnSubmit = document.getElementById('btnDrawSubmit');
-  btnSubmit.disabled = true;
-  btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-
-  // Convert canvas to Blob (file upload object)
-  sketchCanvas.toBlob(function(blob) {
-    // 1. Upload to tmpfiles.org anonymously
-    var uploadData = new FormData();
-    uploadData.append('file', blob, 'boceto_logo_' + name.toLowerCase().replace(/\s+/g, '_') + '.png');
-    uploadData.append('expire', '172800'); // Valid for 48 hours (2 days)
-
-    fetch('https://tmpfiles.org/api/v1/upload', {
-      method: 'POST',
-      body: uploadData
-    })
-    .then(function(uploadResponse) {
-      if (!uploadResponse.ok) {
-        throw new Error('Error al subir la imagen al servidor temporal.');
-      }
-      return uploadResponse.json();
-    })
-    .then(function(uploadResult) {
-      if (uploadResult.status !== 'success' || !uploadResult.data || !uploadResult.data.url) {
-        throw new Error('Formato de respuesta de subida no válido.');
-      }
-      
-      // Get the direct download URL by replacing tmpfiles.org/ with tmpfiles.org/dl/
-      var directUrl = uploadResult.data.url.replace('tmpfiles.org/', 'tmpfiles.org/dl/');
-
-      // 2. Submit data to Web3Forms using the working access key
-      var formData = new FormData();
-      formData.append('access_key', 'c0e49a32-18be-459a-80bf-fc60f5003e70');
-      formData.append('subject', 'Nuevo Boceto de Logotipo + Cotización - ' + name);
-      formData.append('from_name', 'ORION Creative Studio (Bocetos)');
-      
-      formData.append('Nombre Cliente', name);
-      formData.append('WhatsApp/Teléfono', phone);
-      formData.append('Email', email);
-      formData.append('Colores Deseados', colors || 'No especificados');
-      formData.append('Uso del Logo', use || 'No especificados');
-      formData.append('Notas del Boceto', notes || 'Sin notas del lienzo');
-      formData.append('Características del Diseño', features || 'Sin características adicionales');
-      formData.append('Enlace al Boceto (Imagen)', directUrl);
-
-      return fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      })
-      .then(function(formResponse) {
-        return formResponse.json();
-      })
-      .then(function(formDataResult) {
-        if (formDataResult.success) {
-          alert('¡Boceto y especificaciones enviadas con éxito a nuestro correo! Te enviaremos a WhatsApp para iniciar tu cotización.');
-          
-          // Prepare WhatsApp redirect message with direct link to the drawing
-          var wsMsg = '¡Hola ORION! 🎨 Acabo de enviar un boceto y los datos de especificación para la cotización de mi logotipo desde la web.\n\n';
-          wsMsg += '👤 *Cliente:* ' + name + '\n';
-          wsMsg += '📧 *Email registrado:* ' + email + '\n';
-          wsMsg += '🎨 *Colores preferidos:* ' + (colors || 'Por definir') + '\n';
-          wsMsg += '📱 *WhatsApp:* ' + phone + '\n';
-          if (use) wsMsg += '💼 *Uso:* ' + use + '\n';
-          wsMsg += '🖼️ *Boceto:* ' + directUrl + '\n';
-          wsMsg += '\nRevisen por favor su correo electrónico corporativo para ver el boceto adjunto. ¡Quedo atento!';
-          
-          window.open('https://wa.me/527531627539?text=' + encodeURIComponent(wsMsg), '_blank');
-          closeDibujoModal();
-        } else {
-          throw new Error(formDataResult.message || 'Error en el servidor de correos.');
-        }
-      });
-    })
-    .catch(function(error) {
-      console.error('Error submitting form:', error);
-      alert('Hubo un error al enviar el boceto: ' + error.message + '\nPor favor intenta de nuevo.');
-      btnSubmit.disabled = false;
-      btnSubmit.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Cotización';
-    });
-  }, 'image/png');
-}
 // AI Assistant system
 const aiQuestions = [
   {
@@ -6457,13 +6120,6 @@ const aiQuestions = [
     answer: '¡Sí, claro! Tenemos un portafolio interactivo muy completo con nuestros mejores trabajos organizados por categorías: logos personales, logos comerciales y publicidad & flyers. Puedes ver ejemplos reales de cada uno.',
     target: '#portafolio',
     actionText: 'Ver Portafolio de Ejemplos'
-  },
-  {
-    id: 'boceto',
-    question: '✏️ ¿Cómo cotizar mi idea o hacer un boceto?',
-    answer: '¡Contamos con un lienzo interactivo! Puedes hacer clic en "Hacer boceto" y dibujar tu idea. Una vez enviado, el dibujo y tus datos nos llegarán al correo electrónico alemoltru9497@gmail.com para darte una cotización exacta.',
-    target: 'action_open_sketch',
-    actionText: 'Abrir Lienzo de Boceto'
   },
   {
     id: 'logos_nombre',
@@ -6627,11 +6283,7 @@ function initAiAssistant() {
 
   window.advanceToSection = function(target) {
     aiChatWindow.classList.remove('open');
-    if (target === 'action_open_sketch') {
-      if (typeof openDibujoModal === 'function') {
-        openDibujoModal();
-      }
-    } else if (target === 'action_direct_whatsapp') {
+    if (target === 'action_direct_whatsapp') {
       contactDesignerDirectly();
     } else {
       const el = document.querySelector(target);
