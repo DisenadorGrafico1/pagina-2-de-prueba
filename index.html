@@ -2558,9 +2558,10 @@ nav::after{
   background:var(--purple);
 }
 .card,.curso-card,.contact-card{position:relative;overflow:hidden;}
-.card::before,.curso-card::before,.contact-card::before,.pkg::before{
+.card::before,.curso-card::before,.contact-card::before,.pkg::before,.pkg.featured::before{
   content:'';display:block !important;position:absolute;top:0;left:0;right:0;
-  height:3px;background:var(--purple);z-index:2;
+  width:auto;height:3px;background:var(--purple);z-index:2;
+  animation:none !important;transform:none !important;
 }
 
 /* ============================================================
@@ -3189,8 +3190,6 @@ nav::after{
     <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 1.5rem auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
       <a href="#portafolio" class="btn-hero-portfolio nav-scroll" style="margin: 0 !important;"><i class="fas fa-image"></i> Ver Portafolio</a>
       <a href="#contacto" class="btn-hero-portfolio nav-scroll" style="margin: 0 !important; background: var(--purple) !important; color: #ffffff !important; border-color: var(--purple) !important; box-shadow: 0 0 15px rgba(47, 92, 255, 0.3) !important;"><i class="fas fa-pen-nib"></i> Cotizar mi Logo</a>
-    </div>
-    <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 0 auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
       <button id="btnCotizarWeb" onclick="openWebQuoteModal()" class="btn-hero-portfolio" style="margin: 0 !important; background: var(--pink) !important; color: #ffffff !important; border-color: var(--pink) !important; box-shadow: 0 0 15px rgba(255, 42, 133, 0.3) !important; cursor: pointer;"><i class="fas fa-globe"></i> Cotizar Página Web</button>
     </div>
 
