@@ -2558,7 +2558,7 @@ nav::after{
   background:var(--purple);
 }
 .card,.curso-card,.contact-card{position:relative;overflow:hidden;}
-.card::before,.curso-card::before,.contact-card::before{
+.card::before,.curso-card::before,.contact-card::before,.pkg::before{
   content:'';display:block !important;position:absolute;top:0;left:0;right:0;
   height:3px;background:var(--purple);z-index:2;
 }
@@ -2993,8 +2993,8 @@ nav::after{
   justify-content: center !important;
   gap: 0.8rem !important;
   background: linear-gradient(135deg, #7c3aed, #4f46e5) !important;
-  border: 2.5px solid #c084fc !important; /* Contorno */
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.45) !important; /* Sombra resplandor */
+  border: 2.5px solid transparent !important;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.4), 0 0 34px rgba(168, 85, 247, 0.2) !important; /* Ligero resplandor */
   color: #ffffff !important;
   font-weight: 800 !important;
   font-size: 1.12rem !important; /* Más grande */
@@ -3007,8 +3007,7 @@ nav::after{
 }
 .btn-reservar-curso:hover {
   transform: scale(1.04) translateY(-2px) !important;
-  box-shadow: 0 0 32px rgba(168, 85, 247, 0.8) !important;
-  border-color: #e879f9 !important;
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.6), 0 0 46px rgba(168, 85, 247, 0.3) !important;
 }
 
 /* Chat Footer Input Area */
@@ -3192,7 +3191,7 @@ nav::after{
       <a href="#contacto" class="btn-hero-portfolio nav-scroll" style="margin: 0 !important; background: var(--purple) !important; color: #ffffff !important; border-color: var(--purple) !important; box-shadow: 0 0 15px rgba(47, 92, 255, 0.3) !important;"><i class="fas fa-pen-nib"></i> Cotizar mi Logo</a>
     </div>
     <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 0 auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
-      <button id="btnCotizarWeb" onclick="openWebQuoteModal()" class="btn-hero-portfolio" style="margin: 0 !important; background: var(--pink) !important; color: #ffffff !important; border-color: var(--pink) !important; box-shadow: 0 0 18px rgba(255, 42, 133, 0.55), 0 0 36px rgba(255, 42, 133, 0.28) !important; cursor: pointer;"><i class="fas fa-globe"></i> Cotizar Página Web</button>
+      <button id="btnCotizarWeb" onclick="openWebQuoteModal()" class="btn-hero-portfolio" style="margin: 0 !important; background: var(--pink) !important; color: #ffffff !important; border-color: var(--pink) !important; box-shadow: 0 0 15px rgba(255, 42, 133, 0.3) !important; cursor: pointer;"><i class="fas fa-globe"></i> Cotizar Página Web</button>
     </div>
 
 
@@ -3270,7 +3269,7 @@ nav::after{
   </svg>
   <div class="inner">
     <div class="sec-head reveal">
-      <div class="sec-badge"><i class="fas fa-image"></i> Galería</div>
+      <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-image"></i> Galería de Proyectos</div>
       <h2 class="sec-title title-portafolio">Nuestro Portafolio</h2>
       <p class="sec-desc">Explora una selección exclusiva de nuestras mejores creaciones en diseño gráfico, logotipos y publicidad de alto impacto.</p>
     </div>
@@ -3294,7 +3293,7 @@ nav::after{
 <section id="servicios">
   <div class="inner">
     <div class="sec-head reveal">
-      <div class="sec-badge"><i class="fas fa-palette"></i> Servicios</div>
+      <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-palette"></i> Servicios</div>
       <h2 class="sec-title title-servicios">Nuestros Servicios</h2>
       <p class="sec-desc">Desde logos hasta campañas completas — todo lo que tu marca necesita para brillar.</p>
     </div>
@@ -3529,7 +3528,7 @@ nav::after{
     </g>
   </svg>
   <div class="sec-head reveal">
-    <div class="sec-badge"><i class="fas fa-box-open"></i> Paquetes</div>
+    <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-box-open"></i> Paquetes</div>
     <h2 class="sec-title title-paquetes">Paquetes Completos</h2>
     <p class="sec-desc">La solución integral para llevar tu negocio al siguiente nivel — todo en un solo paquete.</p>
   </div>
@@ -3713,7 +3712,7 @@ nav::after{
     </g>
   </svg>
   <div class="sec-head reveal">
-    <div class="sec-badge"><i class="fas fa-envelope"></i> Contacto</div>
+    <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-envelope"></i> Contacto</div>
     <h2 class="sec-title title-proyecto">Cuéntanos tu Proyecto</h2>
     <p class="sec-desc">Llena el formulario con todos los detalles. Mientras más información, mejores resultados.</p>
   </div>
@@ -6249,6 +6248,7 @@ function initAiAssistant() {
     aiChatWindow.classList.toggle('open');
     hideAiTooltip();
     renderAiHome();
+    aiChatBody.scrollTop = 0;
   });
 
   aiChatClose.addEventListener('click', () => {
@@ -6269,7 +6269,7 @@ function initAiAssistant() {
         <i class="fab fa-whatsapp"></i> Contacto directo inmediato
       </button>
     `;
-    scrollToBottom();
+    aiChatBody.scrollTop = 0;
   }
 
   window.selectAiQuestion = function(id) {
