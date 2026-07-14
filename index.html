@@ -6159,6 +6159,13 @@ const aiQuestions = [
     actionText: 'Ver Galería de Publicidad'
   },
   {
+    id: 'paginas_web',
+    question: '🌐 ¿Realizan páginas web?',
+    answer: 'Sí! Nuestras páginas web parten desde $150 USD, y el costo final depende de las características que necesites (número de páginas, tienda en línea, reservas, blog, etc.). Son 100% personalizadas, con diseño responsivo, integración con redes sociales, formulario de contacto y SEO básico incluido — listas para vender todos tus productos y servicios.',
+    target: 'action_open_web_quote',
+    actionText: 'Cotizar mi Página Web'
+  },
+  {
     id: 'curso',
     question: '🤖 Curso de Inteligencia Artificial para Redes',
     answer: 'Es un entrenamiento personalizado de 1 a 1. Aprenderás a usar herramientas de IA generativa para crear contenido masivo y programar agentes de atención automática en WhatsApp Business.',
@@ -6302,6 +6309,10 @@ function initAiAssistant() {
     aiChatWindow.classList.remove('open');
     if (target === 'action_direct_whatsapp') {
       contactDesignerDirectly();
+    } else if (target === 'action_open_web_quote') {
+      if (typeof openWebQuoteModal === 'function') {
+        openWebQuoteModal();
+      }
     } else {
       const el = document.querySelector(target);
       if (el) {
