@@ -118,7 +118,7 @@ ul{list-style:none;}
 /* ============================================================
    NAVIGATION
 ============================================================ */
-nav{
+#nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
   padding:1rem 2.5rem;
   display:flex;align-items:center;justify-content:center;gap:1rem;
@@ -126,7 +126,7 @@ nav{
   border-bottom:1px solid var(--border);
   transition:padding .3s,background .3s;
 }
-nav.scrolled{padding:.65rem 2.5rem;background:rgba(2,0,15,.97);}
+#nav.scrolled{padding:.65rem 2.5rem;background:rgba(2,0,15,.97);}
 
 /* Logo imagen en nav */
 
@@ -171,8 +171,11 @@ nav.scrolled{padding:.65rem 2.5rem;background:rgba(2,0,15,.97);}
   .pkg{padding:1.8rem 1.4rem;}
   .modal-box{width:96%;padding:1.2rem;}
 }
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
-.hamburger span{display:block;width:24px;height:2px;background:var(--glow);border-radius:2px;transition:all .3s;}
+.hamburger{display:none;align-items:center;gap:.5rem;cursor:pointer;padding:.4rem .3rem;background:none;border:none;}
+.hamburger-label{font-size:.78rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--glow);}
+.hamburger-lines{display:flex;flex-direction:column;gap:5px;}
+.hamburger-lines span{display:block;width:22px;height:2px;background:var(--glow);border-radius:2px;transition:all .3s;}
+.nav-inicio-btn{display:none;}
 
 /* ============================================================
    HERO
@@ -658,7 +661,7 @@ footer{
   .pkg-grid{grid-template-columns:1fr;}
 }
 @media(max-width:768px){
-  nav{padding:.8rem 1.5rem;}
+  #nav{padding:.8rem 1.5rem;}
   .nav-menu{
     display:none;flex-direction:column;
     position:absolute;top:100%;left:0;right:0;
@@ -1586,7 +1589,7 @@ button[id="lnp-buy-btn"]:hover, button[id="pnp-buy-btn"]:hover {
   border-bottom: 1px solid var(--border) !important;
 }
 
-nav {
+#nav {
   background: rgba(255, 255, 255, 0.85) !important;
   backdrop-filter: blur(24px) !important;
 }
@@ -1837,45 +1840,70 @@ span[id*="countdown"], span[style*="color:#ef4444"], span[style*="color: #ef4444
 
 /* Mobile Single-Line Horizontal Navigation Menu */
 @media (max-width: 768px) {
-  .hamburger {
-    display: none !important;
+  #nav {
+    justify-content: space-between !important;
+    padding: 0.7rem 1.2rem !important;
+    gap: 1rem !important;
   }
-  
-  .nav-menu {
+
+  .nav-inicio-btn {
+    display: block !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    color: var(--glow) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hamburger {
     display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    position: static !important;
-    background: transparent !important;
-    padding: 0 !important;
-    border: none !important;
-    gap: 1px !important;
-    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(2, 0, 15, 0.98) !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding: 1rem 1.4rem 1.4rem !important;
+    gap: 0 !important;
     width: 100% !important;
   }
 
-  nav {
-    padding: 0.4rem 0.15rem !important;
-    gap: 2px !important;
+  .nav-menu.open {
+    display: flex !important;
+  }
+
+  /* Oculta el "Inicio" duplicado dentro del desplegable — ya está fijo a la izquierda */
+  .nav-menu a:first-child {
+    display: none !important;
   }
 
   .nav-menu a {
-    font-size: 6.2px !important;
-    letter-spacing: 0px !important;
-    padding: 0.12rem 0.14rem !important;
-    white-space: nowrap !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.8px !important;
+    padding: 0.85rem 0.2rem !important;
+    width: 100% !important;
+    text-align: left !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
   .nav-wa {
     display: inline-flex !important;
     background: linear-gradient(135deg, var(--wa), #128c7e) !important;
     color: #fff !important;
-    border-radius: 4px !important;
-    font-size: 6.2px !important;
-    padding: 0.12rem 0.2rem !important;
-    margin-left: 1px !important;
-    gap: 0.15rem !important;
-    flex-shrink: 0 !important;
+    border-radius: 10px !important;
+    font-size: 0.85rem !important;
+    padding: 0.7rem 1rem !important;
+    margin: 1rem 0 0 !important;
+    justify-content: center !important;
+    border-bottom: none !important;
   }
 
   /* Move hero section content down on mobile so it doesn't touch the fixed navbar */
@@ -3159,9 +3187,7 @@ nav::after{
      NAVBAR
 ================================================================ -->
 <nav id="nav">
-  <button class="hamburger" id="ham" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="#inicio" class="nav-scroll nav-inicio-btn">Inicio</a>
   <div class="nav-menu" id="navMenu">
     <a href="#inicio"   class="nav-scroll">Inicio</a>
     <a href="#portafolio" class="nav-scroll">Portafolio</a>
@@ -3173,6 +3199,10 @@ nav::after{
       <i class="fab fa-whatsapp"></i> WhatsApp
     </a>
   </div>
+  <button class="hamburger" id="ham" aria-label="Menú">
+    <span class="hamburger-label">Menú</span>
+    <span class="hamburger-lines"><span></span><span></span><span></span></span>
+  </button>
 </nav>
 
 <!-- ================================================================
