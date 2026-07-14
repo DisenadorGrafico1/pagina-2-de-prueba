@@ -2549,6 +2549,21 @@ h1, h2, h3, h4, h5, h6,
 
 
 /* ============================================================
+   BARRA AZUL DELGADA — misma línea del Paquete Básico Emprendedor
+   aplicada a: nav, tarjetas de servicios, tarjeta de metodología
+   del curso y tarjeta del formulario de contacto.
+============================================================ */
+nav::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:var(--purple);
+}
+.card,.curso-card,.contact-card{position:relative;overflow:hidden;}
+.card::before,.curso-card::before,.contact-card::before{
+  content:'';display:block !important;position:absolute;top:0;left:0;right:0;
+  height:3px;background:var(--purple);z-index:2;
+}
+
+/* ============================================================
    MODAL: COTIZAR PÁGINA WEB (wq- prefix)
 ============================================================ */
 #webQuoteModal .modal-box{
@@ -2669,7 +2684,8 @@ h1, h2, h3, h4, h5, h6,
 .wq-cta-right span{color:rgba(255,255,255,.85);}
 @media(max-width:560px){
   .wq-features{grid-template-columns:1fr;}
-  .wq-phone{display:none;}
+  .wq-mockup-row{justify-content:center;}
+  .wq-phone{flex:0 0 96px;margin:0 auto;}
 }
 
 /* ── Formulario de requerimientos ── */
@@ -4280,7 +4296,8 @@ h1, h2, h3, h4, h5, h6,
             </div>
             <div class="fg">
               <label>Presupuesto aproximado</label>
-              <input type="text" id="wqPresupuesto" placeholder="Ej. $35 - $70 USD">
+              <input type="text" id="wqPresupuesto" placeholder="Ej. $150 USD en adelante">
+              <span style="display:block;font-size:.72rem;color:var(--txt2);margin-top:.3rem;">Nuestras páginas web parten desde $150 USD; el costo final depende de las características que necesites.</span>
             </div>
             <div class="fg wq-full">
               <label>Fecha límite deseada</label>
