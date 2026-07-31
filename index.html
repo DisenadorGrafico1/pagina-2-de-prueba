@@ -2298,6 +2298,26 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+/* Resplandor de atención para el botón principal "Cotizar mi Logo" */
+/* Nota: el box-shadow base de .btn-hero-portfolio usa !important, y una animación
+   normal no puede ganarle a un !important estático. Por eso el halo se anima en un
+   pseudo-elemento aparte, sin ningún !important compitiendo. */
+.btn-cta-glow {
+  position: relative !important;
+}
+.btn-cta-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: ctaAttentionGlow 1.8s ease-in-out infinite;
+}
+@keyframes ctaAttentionGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(47, 92, 255, 0.35); }
+  50%      { box-shadow: 0 0 26px rgba(47, 92, 255, 0.9), 0 0 44px rgba(47, 92, 255, 0.4); }
+}
+
 /* Section-relative positioning + overflow clip for peek effect */
 #inicio { position: relative; }
 #portafolio { position: relative; }
@@ -3241,7 +3261,7 @@ nav::after{
     <!-- Hero actions row -->
     <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 1.5rem auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
       <a href="#portafolio" class="btn-hero-portfolio nav-scroll btn-hero-pair" style="margin: 0 !important;"><i class="fas fa-image"></i> Ver Portafolio</a>
-      <a href="#contacto" class="btn-hero-portfolio nav-scroll btn-hero-pair" style="margin: 0 !important; background: var(--purple) !important; color: #ffffff !important; border-color: var(--purple) !important; box-shadow: 0 0 15px rgba(47, 92, 255, 0.3) !important;"><i class="fas fa-pen-nib"></i> Cotizar mi Logo</a>
+      <a href="#contacto" class="btn-hero-portfolio nav-scroll btn-hero-pair btn-cta-glow" style="margin: 0 !important; background: var(--purple) !important; color: #ffffff !important; border-color: var(--purple) !important;"><i class="fas fa-pen-nib"></i> Cotizar mi Logo</a>
       <button id="btnCotizarWeb" onclick="openWebQuoteModal()" class="btn-hero-portfolio" style="margin: 0 !important; background: var(--pink) !important; color: #ffffff !important; border-color: var(--pink) !important; box-shadow: 0 0 15px rgba(255, 42, 133, 0.3) !important; cursor: pointer;"><i class="fas fa-globe"></i> Cotizar Página Web</button>
     </div>
 
