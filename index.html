@@ -1974,6 +1974,7 @@ span[id*="countdown"], span[style*="color:#ef4444"], span[style*="color: #ef4444
   /* Cotizar Página Web: siempre debajo, en su propia línea */
   #btnCotizarWeb {
     flex: 1 1 100% !important;
+    justify-content: center !important;
   }
 
   .nav-inicio-btn {
@@ -4510,6 +4511,9 @@ const galleries = {
   'logo-negocio-premium': {
     title: 'Logo para Negocio Premium — Ejemplos',
     slides: [
+      { type:'img', src:'logos-negocio-premium/dara-restoration-identidad.webp', label:'DARA Restoration & Contracting — Identidad de Marca' },
+      { type:'img', src:'logos-negocio-premium/gk-premier-identidad.webp', label:'GK Premier Engineering and Construction — Identidad de Marca' },
+      { type:'img', src:'logos-negocio-premium/burger-king-rebrand.webp', label:'Burger King — Rediseño de Marca (Concepto)' },
       { type:'img', src:'logos-negocio-premium/GridArt_20260509_224349001.webp', label:'Logo para Negocio Premium 1' },
       { type:'img', src:'logos-negocio-premium/file_00000000004c71fd873e4b9cee18c786.webp', label:'Logo para Negocio Premium 2' },
       { type:'img', src:'logos-negocio-premium/file_00000000298871fd964abab7438a2b57.webp', label:'Logo para Negocio Premium 3' },
@@ -4534,14 +4538,6 @@ const galleries = {
       { type:'img', src:'logos-negocio-premium/file_00000000eb3471f59326da133604f6ab.webp', label:'Logo para Negocio Premium 22' },
       { type:'img', src:'logos-negocio-premium/file_00000000f75071f78bc7eb4eb343dea6.webp', label:'Logo para Negocio Premium 23' },
       { type:'img', src:'logos-negocio-premium/file_00000000fbb871f886730011bbdd1250.webp', label:'Logo para Negocio Premium 24' }
-    ]
-  },
-  'destacados-comerciales': {
-    title: 'Identidades de Marca Destacadas — Ejemplos',
-    slides: [
-      { type:'img', src:'logos-negocio-premium/dara-restoration-identidad.webp', label:'DARA Restoration & Contracting — Identidad de Marca' },
-      { type:'img', src:'logos-negocio-premium/gk-premier-identidad.webp', label:'GK Premier Engineering and Construction — Identidad de Marca' },
-      { type:'img', src:'logos-negocio-premium/burger-king-rebrand.webp', label:'Burger King — Rediseño de Marca (Concepto)' }
     ]
   },
   'publicidad-general': {
@@ -4669,39 +4665,10 @@ const portfolioItems = [];
 function buildPortfolioDatabase() {
   if (typeof galleries === 'undefined') return;
 
-  // 0. Identidades de marca destacadas (siempre primero en "Todos" y "Logos Comerciales")
-  if (galleries['destacados-comerciales']) {
-    galleries['destacados-comerciales'].slides.forEach((slide, idx) => {
-      if (slide.type === 'img') {
-        portfolioItems.push({
-          src: slide.src,
-          label: slide.label,
-          category: 'logos-comerciales',
-          desc: 'Identidad de marca completa: logotipo, papelería y aplicaciones de marca.',
-          galleryKey: 'destacados-comerciales',
-          slideIndex: idx
-        });
-      }
-    });
-  }
-
-  // 1. Llenar desde logo-negocio-basico (Logos Pro de Negocio)
-  if (galleries['logo-negocio-basico']) {
-    galleries['logo-negocio-basico'].slides.forEach((slide, idx) => {
-      if (slide.type === 'img') {
-        portfolioItems.push({
-          src: slide.src,
-          label: slide.label || `Logo Comercial Pro ${idx + 1}`,
-          category: 'logos-comerciales',
-          desc: 'Logotipo profesional para marcas comerciales y empresas.',
-          galleryKey: 'logo-negocio-basico',
-          slideIndex: idx
-        });
-      }
-    });
-  }
-
-  // 2. Llenar desde logo-negocio-premium (Logos Premium de Negocio)
+  // 1. Llenar desde logo-negocio-premium (Logos Premium de Negocio) — primero para que
+  //    las identidades de marca destacadas (DARA, GK Premier, Burger King) aparezcan
+  //    al inicio de "Todos" y "Logos Comerciales", y compartan la misma galería/flecha
+  //    de navegación que el resto de logos premium.
   if (galleries['logo-negocio-premium']) {
     galleries['logo-negocio-premium'].slides.forEach((slide, idx) => {
       if (slide.type === 'img') {
@@ -4711,6 +4678,22 @@ function buildPortfolioDatabase() {
           category: 'logos-comerciales',
           desc: 'Identidad corporativa 360 de alta gama.',
           galleryKey: 'logo-negocio-premium',
+          slideIndex: idx
+        });
+      }
+    });
+  }
+
+  // 2. Llenar desde logo-negocio-basico (Logos Pro de Negocio)
+  if (galleries['logo-negocio-basico']) {
+    galleries['logo-negocio-basico'].slides.forEach((slide, idx) => {
+      if (slide.type === 'img') {
+        portfolioItems.push({
+          src: slide.src,
+          label: slide.label || `Logo Comercial Pro ${idx + 1}`,
+          category: 'logos-comerciales',
+          desc: 'Logotipo profesional para marcas comerciales y empresas.',
+          galleryKey: 'logo-negocio-basico',
           slideIndex: idx
         });
       }
