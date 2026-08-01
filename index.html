@@ -675,6 +675,10 @@ section{padding:6.5rem 2rem;position:relative;}
 .inp:focus,.sel:focus,.ta:focus{border-color:var(--purple-lt);box-shadow:0 0 0 3px rgba(168,85,247,.12);}
 .sel option{background:var(--bg2);}
 .ta{resize:vertical;min-height:115px;}
+.phone-row{display:flex;gap:.5rem;}
+.phone-row .sel,.phone-row .inp{width:auto;}
+.phone-row .inp:disabled{opacity:.5;cursor:not-allowed;}
+@media(max-width:480px){.phone-row{flex-wrap:wrap;} .phone-row select{flex:1 1 100% !important;} .phone-row input{flex:1 1 100% !important;}}
 .upload-zone{
   border:2px dashed var(--border);border-radius:12px;padding:2rem;
   text-align:center;cursor:pointer;transition:all .28s;position:relative;
@@ -3739,7 +3743,12 @@ nav::after{
         </div>
         <div class="fg">
           <label class="lbl">WhatsApp / Teléfono *</label>
-          <input type="tel" name="Telefono" class="inp" placeholder="+52 000 000 0000" required>
+          <div class="phone-row">
+            <select name="Clave de País" id="mainTelPais" class="sel" required onchange="handleMainTelPaisChange(this)" style="flex:0 0 128px;">
+              <option value="">País...</option>
+            </select>
+            <input type="tel" name="Telefono" id="mainTelNumero" class="inp" placeholder="Selecciona tu país" required disabled style="flex:1;">
+          </div>
         </div>
         <div class="fg">
           <label class="lbl">Email *</label>
@@ -6369,6 +6378,64 @@ function initAiAssistant() {
   };
 
   window.renderAiHome = renderAiHome;
+}
+
+// ── Selector de país obligatorio para el teléfono del formulario principal ──
+const paisesTelefono = [
+  { flag: '🇲🇽', name: 'México', code: '+52' },
+  { flag: '🇺🇸', name: 'Estados Unidos', code: '+1' },
+  { flag: '🇨🇦', name: 'Canadá', code: '+1' },
+  { flag: '🇪🇸', name: 'España', code: '+34' },
+  { flag: '🇨🇴', name: 'Colombia', code: '+57' },
+  { flag: '🇦🇷', name: 'Argentina', code: '+54' },
+  { flag: '🇨🇱', name: 'Chile', code: '+56' },
+  { flag: '🇵🇪', name: 'Perú', code: '+51' },
+  { flag: '🇻🇪', name: 'Venezuela', code: '+58' },
+  { flag: '🇪🇨', name: 'Ecuador', code: '+593' },
+  { flag: '🇧🇴', name: 'Bolivia', code: '+591' },
+  { flag: '🇵🇾', name: 'Paraguay', code: '+595' },
+  { flag: '🇺🇾', name: 'Uruguay', code: '+598' },
+  { flag: '🇧🇷', name: 'Brasil', code: '+55' },
+  { flag: '🇬🇹', name: 'Guatemala', code: '+502' },
+  { flag: '🇭🇳', name: 'Honduras', code: '+504' },
+  { flag: '🇸🇻', name: 'El Salvador', code: '+503' },
+  { flag: '🇳🇮', name: 'Nicaragua', code: '+505' },
+  { flag: '🇨🇷', name: 'Costa Rica', code: '+506' },
+  { flag: '🇵🇦', name: 'Panamá', code: '+507' },
+  { flag: '🇨🇺', name: 'Cuba', code: '+53' },
+  { flag: '🇩🇴', name: 'Rep. Dominicana', code: '+1' },
+  { flag: '🇵🇷', name: 'Puerto Rico', code: '+1' },
+  { flag: '🇬🇧', name: 'Reino Unido', code: '+44' },
+  { flag: '🇫🇷', name: 'Francia', code: '+33' },
+  { flag: '🇩🇪', name: 'Alemania', code: '+49' },
+  { flag: '🇮🇹', name: 'Italia', code: '+39' },
+  { flag: '🇵🇹', name: 'Portugal', code: '+351' },
+];
+
+function populateMainTelPais() {
+  const sel = document.getElementById('mainTelPais');
+  if (!sel) return;
+  paisesTelefono.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p.code;
+    opt.textContent = `${p.flag} ${p.name} (${p.code})`;
+    sel.appendChild(opt);
+  });
+}
+populateMainTelPais();
+
+function handleMainTelPaisChange(sel) {
+  const tel = document.getElementById('mainTelNumero');
+  if (!tel) return;
+  if (sel.value) {
+    tel.disabled = false;
+    tel.placeholder = `${sel.value} 000 000 0000`;
+    tel.focus();
+  } else {
+    tel.disabled = true;
+    tel.value = '';
+    tel.placeholder = 'Selecciona tu país';
+  }
 }
 
 // Helper sanitize function to prevent DOM XSS or text injection
