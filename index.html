@@ -4749,7 +4749,7 @@ function buildPortfolioDatabase() {
   }
 }
 
-let portfolioLimit = 100; // suficientemente alto para mostrar siempre todos los elementos del filtro activo
+let portfolioLimit = 12;
 let activeFilter = 'all';
 
 function renderPortfolio() {
@@ -4830,7 +4830,7 @@ function initPortfolioFilters() {
       btn.classList.add('active');
 
       activeFilter = btn.getAttribute('data-filter');
-      portfolioLimit = 100;
+      portfolioLimit = 12;
 
       renderPortfolio();
     });
