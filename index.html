@@ -1344,6 +1344,107 @@ footer{
   min-height: 200px;
 }
 
+/* ============================================================
+   PORTFOLIO CAROUSEL — proyecto al frente, 2 difuminados detrás
+============================================================ */
+.pf-carousel{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  gap:1rem;
+  margin-bottom:1.6rem;
+}
+.pf-carousel-track{
+  position:relative;
+  width:100%;max-width:800px;
+  height:440px;
+  margin:0 auto;
+  overflow:hidden;
+}
+.pf-card{
+  position:absolute;top:50%;left:50%;
+  width:300px;height:380px;
+  border-radius:18px;overflow:hidden;
+  background:var(--card,#0d0026);
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+  cursor:pointer;
+  transition:transform .55s cubic-bezier(.22,.9,.3,1),opacity .55s ease,filter .55s ease;
+  transform:translate(-50%,-50%) scale(.8);
+  opacity:0;
+  z-index:1;
+  pointer-events:none;
+}
+.pf-card img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  pointer-events:none;
+}
+.pf-card-prev,.pf-card-next{
+  opacity:.5;
+  filter:blur(3px);
+  z-index:2;
+  pointer-events:auto;
+}
+.pf-card-prev{ transform:translate(calc(-50% - 230px),-50%) scale(.82); }
+.pf-card-next{ transform:translate(calc(-50% + 230px),-50%) scale(.82); }
+.pf-card-current{
+  transform:translate(-50%,-50%) scale(1);
+  opacity:1;
+  filter:none;
+  z-index:3;
+  pointer-events:auto;
+}
+.pf-card-current:hover{ transform:translate(-50%,-50%) scale(1.02); }
+.pf-card-info{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:1.5rem 1.2rem 1rem;
+  background:linear-gradient(0deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.35) 60%,transparent 100%);
+  color:#fff;text-align:left;
+}
+.pf-card-info h4{
+  font-size:.92rem;font-weight:700;margin:0 0 .2rem;
+  overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+}
+.pf-card-info span{
+  font-size:.7rem;letter-spacing:.5px;text-transform:uppercase;color:var(--purple-lt,#c084fc);font-weight:700;
+}
+.pf-carousel-arrow{
+  flex-shrink:0;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(124,58,237,.1);
+  border:1px solid var(--border);
+  color:var(--glow);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;cursor:pointer;
+  transition:all .25s ease;
+  z-index:5;
+}
+.pf-carousel-arrow:hover{
+  background:linear-gradient(135deg,var(--purple),var(--purple-mid));
+  color:#fff;border-color:var(--glow);
+  transform:scale(1.08);
+}
+.pf-carousel-dots{
+  display:flex;justify-content:center;align-items:center;gap:.5rem;
+  margin-bottom:3rem;
+}
+.pf-carousel-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--border);
+  border:none;cursor:pointer;padding:0;
+  transition:all .3s ease;
+}
+.pf-carousel-dot.active{
+  width:24px;border-radius:5px;
+  background:linear-gradient(135deg,var(--purple),var(--purple-mid));
+}
+@media(max-width:768px){
+  .pf-carousel{gap:.4rem;}
+  .pf-carousel-track{height:340px;}
+  .pf-card{width:220px;height:290px;border-radius:14px;}
+  .pf-card-prev{ transform:translate(calc(-50% - 130px),-50%) scale(.78); }
+  .pf-card-next{ transform:translate(calc(-50% + 130px),-50%) scale(.78); }
+  .pf-carousel-arrow{width:38px;height:38px;font-size:.85rem;}
+}
+
 .portfolio-card {
   position: relative;
   border-radius: 20px;
@@ -3354,9 +3455,14 @@ nav::after{
       <button class="filter-btn" data-filter="publicidad">Publicidad & Flyers</button>
     </div>
 
-    <div class="portfolio-grid" id="portfolioGrid">
-      <!-- Los elementos del portafolio se inyectan dinámicamente con JS -->
+    <div class="pf-carousel" id="portfolioCarousel">
+      <button class="pf-carousel-arrow pf-carousel-prev" onclick="portfolioCarouselPrev()" aria-label="Proyecto anterior"><i class="fas fa-chevron-left"></i></button>
+      <div class="pf-carousel-track" id="portfolioCarouselTrack">
+        <!-- Las tarjetas se inyectan dinámicamente con JS -->
+      </div>
+      <button class="pf-carousel-arrow pf-carousel-next" onclick="portfolioCarouselNext()" aria-label="Siguiente proyecto"><i class="fas fa-chevron-right"></i></button>
     </div>
+    <div class="pf-carousel-dots" id="portfolioCarouselDots"></div>
   </div>
 </section>
 
@@ -4766,77 +4872,103 @@ function buildPortfolioDatabase() {
   }
 }
 
-let portfolioLimit = 12;
 let activeFilter = 'all';
+let portfolioFilteredItems = [];
+let portfolioCarouselIndex = 0;
+let portfolioCarouselTimer = null;
 
-function renderPortfolio() {
-  const grid = document.getElementById('portfolioGrid');
-  if (!grid) return;
+function catLabelFor(category) {
+  if (category === 'logos-personales') return 'Logo Personal';
+  if (category === 'logos-comerciales') return 'Logo Comercial';
+  if (category === 'publicidad') return 'Publicidad';
+  return 'Logotipo';
+}
 
-  grid.innerHTML = '';
-  
-  // Filtrar
-  const filtered = portfolioItems.filter(item => {
-    if (activeFilter === 'all') return true;
-    return item.category === activeFilter;
-  });
+function renderPortfolioCarousel() {
+  const track = document.getElementById('portfolioCarouselTrack');
+  const dotsWrap = document.getElementById('portfolioCarouselDots');
+  if (!track) return;
 
-  // Mostrar subconjunto
-  const visibleItems = filtered.slice(0, portfolioLimit);
+  portfolioFilteredItems = portfolioItems.filter(item => activeFilter === 'all' || item.category === activeFilter);
+  track.innerHTML = '';
+  if (dotsWrap) dotsWrap.innerHTML = '';
 
-  visibleItems.forEach(item => {
+  const total = portfolioFilteredItems.length;
+  if (total === 0) return;
+
+  if (portfolioCarouselIndex >= total) portfolioCarouselIndex = 0;
+  if (portfolioCarouselIndex < 0) portfolioCarouselIndex = total - 1;
+
+  const prevIdx = (portfolioCarouselIndex - 1 + total) % total;
+  const nextIdx = (portfolioCarouselIndex + 1) % total;
+
+  const slots = total === 1
+    ? [{ idx: portfolioCarouselIndex, role: 'current' }]
+    : total === 2
+      ? [{ idx: portfolioCarouselIndex, role: 'current' }, { idx: nextIdx, role: 'next' }]
+      : [
+          { idx: prevIdx, role: 'prev' },
+          { idx: portfolioCarouselIndex, role: 'current' },
+          { idx: nextIdx, role: 'next' }
+        ];
+
+  slots.forEach(({ idx, role }) => {
+    const item = portfolioFilteredItems[idx];
     const card = document.createElement('div');
-    card.className = 'portfolio-card reveal';
-    card.setAttribute('onclick', `openGalleryAt('${item.galleryKey}', ${item.slideIndex})`);
-    
-    let catLabel = 'Logotipo';
-    if (item.category === 'logos-personales') catLabel = 'Logo Personal';
-    else if (item.category === 'logos-comerciales') catLabel = 'Logo Comercial';
-    else if (item.category === 'publicidad') catLabel = 'Publicidad';
-
+    card.className = `pf-card pf-card-${role}`;
+    card.onclick = role === 'current'
+      ? () => openGalleryAt(item.galleryKey, item.slideIndex)
+      : () => goToPortfolioSlide(idx);
     card.innerHTML = `
       <img src="${item.src}" alt="${item.label}" loading="lazy">
-      <button class="portfolio-zoom-btn" aria-label="Expandir">
-        <i class="fas fa-expand-alt"></i>
-      </button>
-      <div class="portfolio-info">
-        <h4 class="portfolio-title">${item.label}</h4>
+      <div class="pf-card-info">
+        <span>${catLabelFor(item.category)}</span>
+        <h4>${item.label}</h4>
       </div>
     `;
-    grid.appendChild(card);
+    track.appendChild(card);
   });
 
-  // Re-enlazar IntersectionObserver
-  if (typeof ro !== 'undefined') {
-    grid.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-  }
-
-  // Manejar botón "Cargar Más"
-  let loadMoreContainer = document.getElementById('portfolioLoadMoreContainer');
-  if (filtered.length > portfolioLimit) {
-    if (!loadMoreContainer) {
-      loadMoreContainer = document.createElement('div');
-      loadMoreContainer.id = 'portfolioLoadMoreContainer';
-      loadMoreContainer.className = 'portfolio-load-more';
-      loadMoreContainer.innerHTML = `
-        <button id="portfolioLoadMoreBtn" class="btn btn-outline" onclick="loadMorePortfolio()">
-          <i class="fas fa-plus"></i> Ver Más Creaciones
-        </button>
-      `;
-      grid.parentNode.appendChild(loadMoreContainer);
-    } else {
-      loadMoreContainer.style.display = 'block';
-    }
-  } else {
-    if (loadMoreContainer) {
-      loadMoreContainer.style.display = 'none';
-    }
+  if (dotsWrap && total > 1) {
+    portfolioFilteredItems.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'pf-carousel-dot' + (i === portfolioCarouselIndex ? ' active' : '');
+      dot.setAttribute('aria-label', `Ir al proyecto ${i + 1}`);
+      dot.onclick = () => goToPortfolioSlide(i);
+      dotsWrap.appendChild(dot);
+    });
   }
 }
 
-function loadMorePortfolio() {
-  portfolioLimit += 12;
-  renderPortfolio();
+function advancePortfolioCarousel() {
+  const total = portfolioFilteredItems.length;
+  if (!total) return;
+  portfolioCarouselIndex = (portfolioCarouselIndex + 1) % total;
+  renderPortfolioCarousel();
+}
+
+function portfolioCarouselNext() {
+  advancePortfolioCarousel();
+  restartPortfolioAutoplay();
+}
+
+function portfolioCarouselPrev() {
+  const total = portfolioFilteredItems.length;
+  if (!total) return;
+  portfolioCarouselIndex = (portfolioCarouselIndex - 1 + total) % total;
+  renderPortfolioCarousel();
+  restartPortfolioAutoplay();
+}
+
+function goToPortfolioSlide(i) {
+  portfolioCarouselIndex = i;
+  renderPortfolioCarousel();
+  restartPortfolioAutoplay();
+}
+
+function restartPortfolioAutoplay() {
+  if (portfolioCarouselTimer) clearInterval(portfolioCarouselTimer);
+  portfolioCarouselTimer = setInterval(advancePortfolioCarousel, 4500);
 }
 
 function initPortfolioFilters() {
@@ -4847,9 +4979,10 @@ function initPortfolioFilters() {
       btn.classList.add('active');
 
       activeFilter = btn.getAttribute('data-filter');
-      portfolioLimit = 12;
+      portfolioCarouselIndex = 0;
 
-      renderPortfolio();
+      renderPortfolioCarousel();
+      restartPortfolioAutoplay();
     });
   });
 }
@@ -4867,7 +5000,14 @@ function openGalleryAt(key, index) {
 function initPortfolio() {
   buildPortfolioDatabase();
   initPortfolioFilters();
-  renderPortfolio();
+  renderPortfolioCarousel();
+  restartPortfolioAutoplay();
+
+  const carouselEl = document.getElementById('portfolioCarousel');
+  if (carouselEl) {
+    carouselEl.addEventListener('mouseenter', () => { if (portfolioCarouselTimer) clearInterval(portfolioCarouselTimer); });
+    carouselEl.addEventListener('mouseleave', () => restartPortfolioAutoplay());
+  }
 }
 document.addEventListener('keydown', e => {
   if(!document.getElementById('ejemplosModal').classList.contains('open')) return;
