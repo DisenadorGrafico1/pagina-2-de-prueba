@@ -1437,12 +1437,30 @@ footer{
   background:linear-gradient(135deg,var(--purple),var(--purple-mid));
 }
 @media(max-width:768px){
-  .pf-carousel{gap:.4rem;}
-  .pf-carousel-track{height:340px;}
-  .pf-card{width:220px;height:290px;border-radius:14px;}
-  .pf-card-prev{ transform:translate(calc(-50% - 130px),-50%) scale(.78); }
-  .pf-card-next{ transform:translate(calc(-50% + 130px),-50%) scale(.78); }
-  .pf-carousel-arrow{width:38px;height:38px;font-size:.85rem;}
+  .pf-carousel{
+    position:relative;
+    gap:0;
+  }
+  .pf-carousel-track{
+    height:360px;
+    width:100vw;
+    max-width:100vw;
+    margin-left:calc(50% - 50vw);
+    margin-right:calc(50% - 50vw);
+  }
+  .pf-card{width:240px;height:310px;border-radius:16px;}
+  .pf-card-prev{ transform:translate(calc(-50% - 148px),-50%) scale(.8); }
+  .pf-card-next{ transform:translate(calc(-50% + 148px),-50%) scale(.8); }
+  .pf-carousel-arrow{
+    position:absolute;top:50%;
+    transform:translateY(-50%);
+    width:38px;height:38px;font-size:.85rem;
+    z-index:6;
+    background:rgba(2,0,15,.55);
+    backdrop-filter:blur(4px);
+  }
+  .pf-carousel-prev{left:6px;}
+  .pf-carousel-next{right:6px;}
 }
 
 .portfolio-card {
