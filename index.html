@@ -267,8 +267,21 @@ ul{list-style:none;}
   min-height:100svh;
   display:flex;align-items:center;justify-content:center;text-align:center;
   padding:7rem 2rem 5rem;
+  position:relative;
+  overflow:hidden;
 }
-.hero-inner{max-width:960px;width:100%;}
+#inicio::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:url('hero-bg-edificios.webp');
+  background-size:cover;
+  background-position:center 30%;
+  opacity:.16;
+  z-index:0;
+  pointer-events:none;
+}
+.hero-inner{max-width:960px;width:100%;position:relative;z-index:1;}
 
 /* Logo grande en hero */
 .hero-logo{
