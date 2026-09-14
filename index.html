@@ -150,7 +150,7 @@
 <meta name="twitter:title"       content="ORION Creative Studio | Logos, Páginas Web, Redes Sociales y Publicidad">
 <meta name="twitter:description" content="Diseño de logos, páginas web, manejo de redes sociales, publicidad general y cursos de IA. Soluciones integrales para que tu negocio conquiste el universo.">
 <meta name="twitter:image"       content="https://orion-creative-studio.vercel.app/og-preview.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@700&family=Architects+Daughter&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800;900&family=Space+Grotesk:wght@500;600;700;900&family=Caveat:wght@700&family=Architects+Daughter&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 /* ============================================================
@@ -3285,6 +3285,1345 @@ nav::after{
 .ai-chat-footer button:active {
   transform: scale(0.95);
 }
+/* ============================================================
+   COLLAGE EDITORIAL MODERNO / NEO-POP DESIGN SYSTEM
+   - Inspiración: Editorial Collage, Modern Scrapbook, Neo-Pop
+   - Seamless Panoramic Carousel con continuidad visual entre láminas
+   - Recortes de foto tipo sticker, bordes de papel rasgado,
+     bloques naranja & azul cobalto, wireframes y tramas halftone
+============================================================ */
+
+:root {
+  --neo-paper:       #F5EFE6;
+  --neo-paper-card:  #FAF7F0;
+  --neo-paper-cream: #FFFDF8;
+  --neo-paper-dark:  #E8E0D2;
+  --neo-orange:      #EA580C;
+  --neo-orange-dark: #C2410C;
+  --neo-orange-lt:   #FB923C;
+  --neo-blue:        #0B4FBA;
+  --neo-blue-dark:   #083885;
+  --neo-blue-lt:     #2563EB;
+  --neo-ink:         #111113;
+  --neo-ink-sub:     #3F3F46;
+  --neo-ink-muted:   #71717A;
+  --neo-white:       #FFFFFF;
+  --neo-yellow:      #FACC15;
+  --neo-border:      #111113;
+  --neo-shadow-sm:   2px 2px 0px #111113;
+  --neo-shadow:      4px 4px 0px #111113;
+  --neo-shadow-lg:   6px 6px 0px #111113;
+  --neo-shadow-xl:   8px 8px 0px #111113;
+  --neo-sticker-sh:  0 10px 25px rgba(17,17,19,0.18), 4px 4px 0px #111113;
+  --torn-shadow:     0 4px 10px rgba(17,17,19,0.12);
+}
+
+/* Base Body & Paper Background */
+body {
+  background-color: var(--neo-paper) !important;
+  color: var(--neo-ink) !important;
+  font-family: 'Space Grotesk', -apple-system, sans-serif !important;
+  background-image: 
+    radial-gradient(rgba(17, 17, 19, 0.08) 1.2px, transparent 1.2px),
+    radial-gradient(ellipse at 15% 30%, rgba(234, 88, 12, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 70%, rgba(11, 79, 186, 0.05) 0%, transparent 60%) !important;
+  background-size: 24px 24px, 100% 100%, 100% 100% !important;
+}
+
+/* Ocultar elementos espaciales antiguos */
+#canvas-stars, .nebula {
+  display: none !important;
+}
+
+/* Registration marks (Cruces de registro tipográfico e imprenta editorial) */
+.reg-cross {
+  position: absolute;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--neo-ink);
+  opacity: 0.35;
+  user-select: none;
+  pointer-events: none;
+  z-index: 4;
+}
+.reg-top-left { top: 1.5rem; left: 1.5rem; }
+.reg-top-right { top: 1.5rem; right: 1.5rem; }
+.reg-bottom-left { bottom: 1.5rem; left: 1.5rem; }
+.reg-bottom-right { bottom: 1.5rem; right: 1.5rem; }
+
+/* Tramas Halftone (Medios tonos Pop-Art) */
+.halftone-screen-orange {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background-image: radial-gradient(var(--neo-orange) 2px, transparent 2px);
+  background-size: 8px 8px;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 1;
+}
+.halftone-screen-blue {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background-image: radial-gradient(var(--neo-blue) 2px, transparent 2px);
+  background-size: 8px 8px;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+}
+.halftone-screen-ink {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background-image: radial-gradient(var(--neo-ink) 1.8px, transparent 1.8px);
+  background-size: 7px 7px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================
+   HEADER & NAVIGATION EDITORIAL
+============================================================ */
+#nav {
+  background: rgba(245, 239, 230, 0.96) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 2px solid var(--neo-ink) !important;
+  padding: 0.85rem 2rem !important;
+  box-shadow: 0 4px 15px rgba(17,17,19,0.06) !important;
+}
+#nav::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: var(--neo-orange);
+}
+.nav-menu a {
+  color: var(--neo-ink) !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease !important;
+}
+.nav-menu a:hover, .nav-menu a.active {
+  color: #fff !important;
+  background: var(--neo-orange) !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+}
+.nav-wa {
+  background: #16a34a !important;
+  color: #fff !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 50px !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  font-weight: 700 !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+}
+.nav-wa:hover {
+  transform: translate(-1px, -1px) !important;
+  box-shadow: var(--neo-shadow) !important;
+}
+
+/* ============================================================
+   HERO: COLLAGE EDITORIAL NEO-POP
+============================================================ */
+#inicio {
+  background: var(--neo-paper) !important;
+  padding: 8rem 2rem 5.5rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-bottom: 2px solid var(--neo-ink) !important;
+}
+#inicio::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(11, 79, 186, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 79, 186, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Formas orgánicas de papel de color en el Hero */
+.hero-torn-shape-orange {
+  position: absolute;
+  top: -30px;
+  right: -50px;
+  width: 480px;
+  height: 380px;
+  background: var(--neo-orange);
+  clip-path: polygon(15% 0%, 100% 0%, 100% 85%, 70% 100%, 30% 85%, 0% 50%, 10% 20%);
+  z-index: 0;
+  opacity: 0.95;
+  filter: drop-shadow(var(--torn-shadow));
+}
+.hero-torn-shape-orange::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#111 2px, transparent 2px);
+  background-size: 10px 10px;
+  opacity: 0.12;
+}
+
+.hero-torn-shape-blue {
+  position: absolute;
+  bottom: -40px;
+  left: -60px;
+  width: 440px;
+  height: 340px;
+  background: var(--neo-blue);
+  clip-path: polygon(0% 25%, 35% 10%, 75% 30%, 100% 75%, 85% 100%, 0% 100%);
+  z-index: 0;
+  opacity: 0.95;
+  filter: drop-shadow(var(--torn-shadow));
+}
+.hero-torn-shape-blue::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#fff 2px, transparent 2px);
+  background-size: 12px 12px;
+  opacity: 0.15;
+}
+
+/* Architectural blueprint sketch overlay */
+.hero-blueprint-lines {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 380px;
+  height: 280px;
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Logo sticker frame */
+.hero-logo-sticker-container {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto 1.8rem;
+  padding: 1.4rem 2.8rem;
+  background: var(--neo-ink);
+  border: 3px solid var(--neo-ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0px var(--neo-orange), 0 16px 36px rgba(17,17,19,0.18);
+  transform: rotate(-1deg);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
+}
+.hero-logo-sticker-container:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+.hero-logo-sticker-container .hero-logo {
+  filter: none !important;
+  max-width: 360px;
+  margin: 0 !important;
+}
+.hero-logo-sticker-container .sticker-pin {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: var(--neo-yellow);
+  color: var(--neo-ink);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.6rem;
+  border: 2px solid var(--neo-ink);
+  border-radius: 4px;
+  box-shadow: 2px 2px 0px var(--neo-ink);
+  transform: rotate(-3deg);
+}
+
+/* Badge editorial en Hero */
+.hero-badge {
+  background: var(--neo-paper-card) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 50px !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.76rem !important;
+  letter-spacing: 1.5px !important;
+  padding: 0.45rem 1.4rem !important;
+  transform: rotate(0.8deg);
+  animation: none !important;
+  opacity: 1 !important;
+}
+.hero-badge i {
+  color: var(--neo-orange) !important;
+}
+
+/* Titulares editoriales */
+.hero-editorial-title {
+  font-family: 'Syne', sans-serif !important;
+  font-size: clamp(2.4rem, 6vw, 4.8rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.05 !important;
+  color: var(--neo-ink) !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 1.2rem !important;
+  text-shadow: none !important;
+}
+.hero-editorial-title span.hl-orange {
+  color: var(--neo-orange);
+  position: relative;
+  display: inline-block;
+}
+.hero-editorial-title span.hl-orange::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 4px;
+  height: 10px;
+  background: rgba(234, 88, 12, 0.22);
+  z-index: -1;
+}
+
+.hero-sub {
+  color: var(--neo-ink-sub) !important;
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important;
+  font-weight: 500 !important;
+  max-width: 640px !important;
+  line-height: 1.6 !important;
+}
+
+/* Ticker Marquee: Cinta industrial / editorial impresa */
+.hero-tags-marquee {
+  background: var(--neo-orange) !important;
+  border-top: 2px solid var(--neo-ink) !important;
+  border-bottom: 2px solid var(--neo-ink) !important;
+  padding: 0.75rem 0 !important;
+  margin: 2.5rem 0 3.2rem !important;
+  transform: rotate(-0.8deg);
+  box-shadow: 0 6px 18px rgba(234,88,12,0.25) !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  opacity: 1 !important;
+  animation: none !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+.hero-tag {
+  background: transparent !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  padding: 0 1.2rem !important;
+}
+.hero-tag::after {
+  content: '✦';
+  margin-left: 1.2rem;
+  color: var(--neo-yellow);
+}
+
+/* Botones Neo-Pop */
+.btn-hero-pair, .btn-hero-portfolio, .btn, .cta-btn, .pkg-cta, .submit-btn {
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 12px !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  box-shadow: var(--neo-shadow) !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease !important;
+}
+.btn-hero-portfolio {
+  background: var(--neo-blue) !important;
+  color: #fff !important;
+  padding: 0.9rem 1.8rem !important;
+}
+.btn-cta-glow {
+  background: var(--neo-orange) !important;
+  color: #fff !important;
+}
+#btnCotizarWeb {
+  background: var(--neo-yellow) !important;
+  color: var(--neo-ink) !important;
+}
+.btn-hero-pair:hover, .btn-hero-portfolio:hover, .btn:hover, .cta-btn:hover, .pkg-cta:hover, .submit-btn:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: var(--neo-shadow-lg) !important;
+}
+.btn-hero-pair:active, .btn-hero-portfolio:active, .btn:active, .cta-btn:active, .pkg-cta:active, .submit-btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+}
+
+/* Hero stats */
+.hero-stats {
+  border-top: 2px dashed var(--neo-ink) !important;
+  padding-top: 2.5rem !important;
+  margin-top: 3.5rem !important;
+}
+.stat-n {
+  font-family: 'Syne', sans-serif !important;
+  font-size: 2.6rem !important;
+  font-weight: 900 !important;
+  color: var(--neo-ink) !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
+  border-bottom: 4px solid var(--neo-orange);
+  display: inline-block;
+  line-height: 1;
+  padding-bottom: 4px;
+}
+.stat-l {
+  color: var(--neo-ink-sub) !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  margin-top: 0.5rem !important;
+}
+
+/* ============================================================
+   SECCIONES: CABECERAS EDITORIALES Y NUMERACIÓN GIGANTE
+============================================================ */
+.editorial-sec-index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+.ed-sec-num {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3.2rem, 7vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--neo-ink);
+  letter-spacing: -0.04em;
+}
+.ed-sec-bar {
+  width: 55px;
+  height: 5px;
+  background: var(--neo-orange);
+  border-radius: 2px;
+  margin-top: 0.4rem;
+}
+.sec-title {
+  font-family: 'Syne', sans-serif !important;
+  font-size: clamp(2rem, 4.5vw, 3.2rem) !important;
+  font-weight: 900 !important;
+  color: var(--neo-ink) !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
+  letter-spacing: -0.02em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0.8rem !important;
+}
+.title-portafolio, .title-servicios, .title-paquetes, .title-proyecto {
+  background: transparent !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
+  color: var(--neo-ink) !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.sec-desc {
+  color: var(--neo-ink-sub) !important;
+  font-size: 1.05rem !important;
+  max-width: 600px !important;
+  margin: 0 auto !important;
+}
+
+/* Reset reveal para visibilidad inmediata editorial */
+.reveal, .reveal.visible {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+.cat-label {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.92rem !important;
+  color: var(--neo-ink) !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+}
+.cat-label i {
+  color: var(--neo-orange) !important;
+}
+.cat-label::after {
+  background: var(--neo-ink) !important;
+  height: 2px !important;
+  opacity: 0.25 !important;
+}
+
+/* ============================================================
+   CARRUSEL PANORÁMICO CONTINUO (SEAMLESS INSTAGRAM CAROUSEL)
+============================================================ */
+.panoramic-portfolio-sec {
+  position: relative;
+  background: var(--neo-paper-card);
+  padding: 6.5rem 0 5.5rem !important;
+  border-bottom: 2px solid var(--neo-ink);
+  overflow: hidden;
+}
+
+/* Filtros de Portafolio Neo-Pop */
+.portfolio-filters-neo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 2.2rem 1rem 2.8rem;
+}
+.portfolio-filters-neo .filter-btn {
+  background: var(--neo-paper-cream) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 8px !important;
+  padding: 0.55rem 1.25rem !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  cursor: pointer;
+  transition: all 0.2s ease !important;
+}
+.portfolio-filters-neo .filter-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--neo-shadow);
+}
+.portfolio-filters-neo .filter-btn.active {
+  background: var(--neo-orange) !important;
+  color: #fff !important;
+  box-shadow: var(--neo-shadow) !important;
+  transform: translate(-1px, -1px);
+}
+
+/* Viewport y Track Panorámico */
+.panoramic-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.panoramic-track-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--neo-orange) var(--neo-paper-dark);
+  padding: 2.5rem 1.5rem 3rem;
+  cursor: grab;
+}
+.panoramic-track-wrapper:active {
+  cursor: grabbing;
+}
+.panoramic-track-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.panoramic-track-wrapper::-webkit-scrollbar-track {
+  background: var(--neo-paper-dark);
+  border-radius: 4px;
+}
+.panoramic-track-wrapper::-webkit-scrollbar-thumb {
+  background: var(--neo-orange);
+  border-radius: 4px;
+  border: 1px solid var(--neo-ink);
+}
+
+.panoramic-track {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0 !important; /* Continuous seamless edge-to-edge slides */
+  width: max-content;
+  position: relative;
+  padding: 0 1rem;
+}
+
+/* Lámina Panorámica Continua */
+.panoramic-slide {
+  scroll-snap-align: center;
+  position: relative;
+  width: clamp(340px, 85vw, 440px);
+  min-height: 610px;
+  background: var(--neo-paper-cream);
+  border: 2px solid var(--neo-ink);
+  border-right: none; /* Seam connect */
+  padding: 2rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(17,17,19,0.08);
+  user-select: none;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.panoramic-slide:last-child {
+  border-right: 2px solid var(--neo-ink);
+}
+
+/* Montaña y Cinta de Papel Rasgado Panorámica Continua */
+.pan-torn-mountain-orange {
+  position: absolute;
+  top: 0; left: 0;
+  width: 58%;
+  height: 145px;
+  background: var(--neo-orange);
+  clip-path: polygon(0 0, 100% 0, 85% 65%, 45% 100%, 0 85%);
+  opacity: 0.95;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+  z-index: 0;
+  pointer-events: none;
+}
+.pan-torn-mountain-orange::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#111 1.8px, transparent 1.8px);
+  background-size: 8px 8px;
+  opacity: 0.16;
+}
+
+.pan-torn-ribbon-blue {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: var(--neo-blue);
+  clip-path: polygon(0 45%, 35% 25%, 70% 50%, 100% 20%, 100% 100%, 0 100%);
+  opacity: 0.95;
+  filter: drop-shadow(0 -3px 6px rgba(0,0,0,0.15));
+  z-index: 0;
+  pointer-events: none;
+}
+.pan-torn-ribbon-blue::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#fff 1.8px, transparent 1.8px);
+  background-size: 10px 10px;
+  opacity: 0.15;
+}
+
+/* Continuidad alternada entre láminas contiguas */
+.panoramic-slide:nth-child(even) .pan-torn-mountain-orange {
+  left: auto; right: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 55% 100%, 15% 65%);
+}
+.panoramic-slide:nth-child(even) .pan-torn-ribbon-blue {
+  clip-path: polygon(0 20%, 30% 50%, 65% 25%, 100% 45%, 100% 100%, 0 100%);
+}
+
+/* Línea de papel rasgado SVG transversal que cruza la lámina */
+.pan-torn-svg-cross {
+  position: absolute;
+  bottom: 15%;
+  left: -20px;
+  right: -20px;
+  height: 45px;
+  background-repeat: repeat-x;
+  background-size: 160px 45px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 45' preserveAspectRatio='none'%3E%3Cpath d='M0,25 Q20,12 40,28 T80,18 T120,30 T160,20 L160,45 L0,45 Z' fill='%230B4FBA' opacity='0.85'/%3E%3Cpath d='M0,22 Q20,10 40,25 T80,15 T120,27 T160,17' fill='none' stroke='%23ffffff' stroke-width='4' filter='drop-shadow(0 2px 3px rgba(0,0,0,0.15))'/%3E%3C/svg%3E");
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Dibujo arquitectónico de fondo (wireframe blueprint) */
+.pan-blueprint-bg {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 170px;
+  height: 170px;
+  opacity: 0.22;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Cabecera de la Lámina: Número grande + Subrayado + Titular */
+.slide-header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1.2rem;
+}
+.slide-num-wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+}
+.slide-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 3.4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--neo-ink);
+  letter-spacing: -0.04em;
+}
+.slide-line {
+  width: 50px;
+  height: 5px;
+  background: var(--neo-orange);
+  border-radius: 2px;
+  margin-bottom: 0.75rem;
+}
+.slide-headline {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--neo-ink);
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+/* Mockup Cut-out fotográfico con borde tipo sticker blanco */
+.pan-cutout-container {
+  position: relative;
+  z-index: 2;
+  margin: 0.8rem auto 1.4rem;
+  width: 100%;
+  max-width: 320px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pan-cutout-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border: 5px solid #FFFFFF;
+  border-radius: 16px;
+  box-shadow: var(--neo-sticker-sh);
+  overflow: hidden;
+  transform: rotate(-1.5deg);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.panoramic-slide:nth-child(even) .pan-cutout-frame {
+  transform: rotate(1.5deg);
+}
+.pan-cutout-frame:hover {
+  transform: rotate(0deg) scale(1.03) !important;
+  box-shadow: 0 16px 36px rgba(17,17,19,0.22), 6px 6px 0px var(--neo-ink) !important;
+}
+.pan-cutout-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Pie de la lámina: Metadata y Botón */
+.slide-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.slide-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.slide-category-pill {
+  background: var(--neo-ink);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 4px;
+}
+.slide-title-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--neo-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+}
+.slide-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  background: var(--neo-orange);
+  color: #fff;
+  border: 2px solid var(--neo-ink);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: var(--neo-shadow-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.slide-action-btn:hover {
+  background: var(--neo-orange-dark);
+  transform: translate(-1px, -1px);
+  box-shadow: var(--neo-shadow);
+}
+
+/* Controles de navegación del carrusel */
+.panoramic-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.neo-control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50% !important;
+  background: var(--neo-paper-cream) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  box-shadow: var(--neo-shadow) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s ease !important;
+}
+.neo-control-btn:hover {
+  background: var(--neo-yellow) !important;
+  transform: translate(-2px, -2px) !important;
+  box-shadow: var(--neo-shadow-lg) !important;
+}
+.neo-control-btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+}
+
+.panoramic-counter-badge {
+  background: var(--neo-paper-cream);
+  border: 2px solid var(--neo-ink);
+  border-radius: 30px;
+  padding: 0.4rem 1.2rem;
+  box-shadow: var(--neo-shadow-sm);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--neo-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.count-current {
+  color: var(--neo-orange);
+  font-size: 1.1rem;
+}
+.count-divider {
+  opacity: 0.4;
+}
+
+/* ============================================================
+   SERVICIOS: FICHAS DE SCRAPBOOK EDITORIAL
+============================================================ */
+#servicios {
+  background: var(--neo-paper) !important;
+  border-bottom: 2px solid var(--neo-ink);
+}
+.card {
+  background: var(--neo-paper-cream) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--neo-shadow) !important;
+  padding: 2.2rem 1.8rem 1.8rem !important;
+  position: relative !important;
+  overflow: visible !important; /* Para que la cinta adhesiva y stickers sobresalgan */
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+}
+.card::before {
+  /* Washi tape adhesivo superior */
+  content: '' !important;
+  position: absolute !important;
+  top: -10px !important;
+  left: 25px !important;
+  width: 65px !important;
+  height: 18px !important;
+  background: rgba(234, 88, 12, 0.85) !important;
+  border: 1px solid rgba(0,0,0,0.15) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+  transform: rotate(-3deg) !important;
+  z-index: 5 !important;
+}
+.card.gold-card::before {
+  background: rgba(250, 204, 21, 0.9) !important;
+  transform: rotate(2deg) !important;
+}
+.card:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: var(--neo-shadow-lg) !important;
+}
+.card-icon {
+  width: 54px !important;
+  height: 54px !important;
+  border-radius: 12px !important;
+  background: var(--neo-paper) !important;
+  border: 2px solid var(--neo-ink) !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  color: var(--neo-ink) !important;
+  margin-bottom: 1.2rem !important;
+}
+.card-title {
+  font-family: 'Syne', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 900 !important;
+  color: var(--neo-ink) !important;
+  letter-spacing: -0.01em !important;
+  margin-bottom: 0.6rem !important;
+}
+.card-desc {
+  color: var(--neo-ink-sub) !important;
+  font-size: 0.88rem !important;
+  line-height: 1.55 !important;
+}
+.card-feats li {
+  color: var(--neo-ink-sub) !important;
+  font-size: 0.83rem !important;
+  font-weight: 500 !important;
+}
+.card-feats li i.fa-check-circle {
+  color: #16a34a !important;
+}
+.price {
+  font-family: 'Syne', sans-serif !important;
+  font-size: 2.1rem !important;
+  font-weight: 900 !important;
+  color: var(--neo-ink) !important;
+  margin: 0.8rem 0 0.3rem !important;
+}
+.cta-purple {
+  background: var(--neo-orange) !important;
+  color: #fff !important;
+}
+.cta-gold {
+  background: var(--neo-blue) !important;
+  color: #fff !important;
+}
+.btn-ejemplos {
+  background: var(--neo-paper) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  font-weight: 800 !important;
+  padding: 0.55rem !important;
+  margin-top: 0.5rem !important;
+  transition: all 0.2s ease !important;
+}
+.btn-ejemplos:hover {
+  background: var(--neo-yellow) !important;
+  transform: translate(-1px, -1px) !important;
+}
+
+/* ============================================================
+   PAQUETES: PROPUESTAS DE PRECIOS EDITORIALES
+============================================================ */
+#paquetes {
+  background: var(--neo-paper-card) !important;
+  border-bottom: 2px solid var(--neo-ink);
+}
+.pkg {
+  background: var(--neo-paper-cream) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--neo-shadow) !important;
+  padding: 3rem 2.4rem !important;
+  position: relative !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+.pkg.featured {
+  background: var(--neo-paper-cream) !important;
+  border: 3px solid var(--neo-ink) !important;
+  box-shadow: var(--neo-shadow-lg) !important;
+}
+.pkg:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: var(--neo-shadow-lg) !important;
+}
+.pkg.featured:hover {
+  box-shadow: var(--neo-shadow-xl) !important;
+}
+.pkg-crown {
+  position: absolute !important;
+  top: -14px !important;
+  right: 25px !important;
+  background: var(--neo-yellow) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 6px !important;
+  box-shadow: 2px 2px 0px var(--neo-ink) !important;
+  font-family: 'Syne', sans-serif !important;
+  font-size: 0.72rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+  padding: 0.3rem 0.8rem !important;
+  transform: rotate(3deg) !important;
+}
+.pkg-name {
+  font-family: 'Syne', sans-serif !important;
+  font-size: 1.45rem !important;
+  font-weight: 900 !important;
+  color: var(--neo-ink) !important;
+  letter-spacing: -0.01em !important;
+}
+.pkg-price {
+  font-family: 'Syne', sans-serif !important;
+  font-size: 3.4rem !important;
+  font-weight: 900 !important;
+  color: var(--neo-ink) !important;
+}
+.pkg-list li {
+  color: var(--neo-ink-sub) !important;
+  border-bottom: 1px dashed rgba(17,17,19,0.15) !important;
+}
+
+/* ============================================================
+   CURSO DE IA: BLOQUE NEO-POP AZUL COBALTO
+============================================================ */
+#curso {
+  background: var(--neo-blue) !important;
+  color: #fff !important;
+  position: relative;
+  border-bottom: 2px solid var(--neo-ink);
+  overflow: hidden;
+}
+#curso::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+}
+#curso .sec-title, #curso .ed-sec-num {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+#curso .sec-desc {
+  color: rgba(255,255,255,0.85) !important;
+}
+#curso .curso-card {
+  background: var(--neo-paper-cream) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 16px !important;
+  box-shadow: 6px 6px 0px #000 !important;
+}
+#curso .curso-card h3, #curso .curso-card p, #curso .curso-card li {
+  color: var(--neo-ink) !important;
+}
+
+/* ============================================================
+   CONTACTO Y FORMULARIOS EDITORIALES
+============================================================ */
+#contacto {
+  background: var(--neo-paper) !important;
+  border-bottom: 2px solid var(--neo-ink);
+}
+.contact-card {
+  background: var(--neo-paper-cream) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--neo-shadow-lg) !important;
+}
+.inp, .ta, .sel, .cert-input {
+  background: var(--neo-paper-cream) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 8px !important;
+  color: var(--neo-ink) !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 500 !important;
+  padding: 0.8rem 1rem !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  transition: all 0.2s ease !important;
+}
+.inp:focus, .ta:focus, .sel:focus, .cert-input:focus {
+  border-color: var(--neo-orange) !important;
+  box-shadow: var(--neo-shadow) !important;
+  outline: none !important;
+}
+.lbl {
+  color: var(--neo-ink) !important;
+  font-weight: 800 !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0.4rem !important;
+}
+
+/* ============================================================
+   FOOTER EDITORIAL
+============================================================ */
+footer {
+  background: var(--neo-ink) !important;
+  color: #fff !important;
+  border-top: 3px solid var(--neo-orange) !important;
+  padding: 4.5rem 2rem 2.5rem !important;
+}
+.footer-logo-img {
+  filter: drop-shadow(0 4px 12px rgba(234,88,12,0.4)) !important;
+}
+.footer-sub {
+  color: rgba(255,255,255,0.7) !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+}
+.footer-nav a {
+  color: rgba(255,255,255,0.85) !important;
+  font-weight: 600 !important;
+}
+.footer-nav a:hover {
+  color: var(--neo-orange) !important;
+}
+.footer-copy {
+  color: rgba(255,255,255,0.5) !important;
+  border-top: 1px solid rgba(255,255,255,0.15) !important;
+}
+
+/* Responsividad móvil del Carrusel Panorámico y Hero */
+@media (max-width: 600px) {
+  #inicio {
+    padding: 5.5rem 1.2rem 4rem !important;
+  }
+  .ai-tooltip {
+    display: none !important;
+  }
+  .hero-torn-shape-orange {
+    width: 170px !important;
+    height: 140px !important;
+    top: -20px !important;
+    right: -25px !important;
+    opacity: 0.8 !important;
+  }
+  .hero-torn-shape-blue {
+    width: 160px !important;
+    height: 120px !important;
+    bottom: -20px !important;
+    left: -25px !important;
+    opacity: 0.8 !important;
+  }
+  .hero-logo-sticker-container {
+    max-width: 92% !important;
+    padding: 1.1rem 1.3rem !important;
+  }
+  .hero-logo-sticker-container .hero-logo {
+    max-width: 250px !important;
+  }
+  .hero-badge {
+    font-size: 0.68rem !important;
+    padding: 0.35rem 0.9rem !important;
+    max-width: 90% !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+  .hero-action-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    gap: 0.75rem !important;
+  }
+  .btn-hero-pair, .btn-hero-portfolio {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .panoramic-slide {
+    width: clamp(285px, 86vw, 360px) !important;
+    min-height: 520px !important;
+    padding: 1.4rem 1.1rem 1.2rem !important;
+  }
+  .slide-num {
+    font-size: 2.7rem !important;
+  }
+  .slide-headline {
+    font-size: 1.05rem !important;
+  }
+  .pan-cutout-container {
+    height: 195px !important;
+    margin: 0.6rem auto 1rem !important;
+  }
+  .slide-action-btn {
+    padding: 0.55rem 0.85rem !important;
+    font-size: 0.78rem !important;
+  }
+  .panoramic-controls-bar {
+    gap: 1rem !important;
+  }
+  .neo-control-btn {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ============================================================
+   MODALES Y POPUPS: ESTILO SCRAPBOOK Y PAPEL EDITORIAL
+============================================================ */
+.modal-overlay {
+  background: rgba(17, 17, 19, 0.82) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+#popupMSI,
+#ofertaPopup > div,
+#logoNegocioPremiumPopup > .welcome-modal-box,
+#premiumLogoWelcomeModal > .welcome-modal-box,
+#contratarModal > .modal-box,
+#ejemplosModal > .modal-box,
+#cotizarModal > .modal-box,
+#webQuoteModal > .modal-box,
+.modal-box,
+.welcome-modal-box {
+  background: var(--neo-paper-card) !important;
+  color: var(--neo-ink) !important;
+  border: 3px solid var(--neo-ink) !important;
+  border-radius: 20px !important;
+  box-shadow: 10px 10px 0px var(--neo-ink), 0 25px 60px rgba(0,0,0,0.3) !important;
+}
+
+#popupMSI *,
+#ofertaPopup > div *:not(.btn):not(.welcome-cta):not(.modal-close),
+#logoNegocioPremiumPopup > .welcome-modal-box *:not(.welcome-badge):not(.welcome-cta):not(.welcome-secondary-btn):not(.btn),
+#premiumLogoWelcomeModal > .welcome-modal-box *:not(.welcome-badge):not(.welcome-cta):not(.welcome-secondary-btn):not(.btn),
+#contratarModal > .modal-box *:not(.btn):not(.submit-btn),
+#ejemplosModal > .modal-box *:not(.modal-close):not(.modal-arrow):not(.modal-counter),
+#cotizarModal > .modal-box *:not(.btn):not(.submit-btn),
+#webQuoteModal > .modal-box *:not(.btn):not(.submit-btn) {
+  color: var(--neo-ink);
+}
+
+.modal-title, .welcome-title,
+#ofertaPopup h2, #logoNegocioPremiumPopup h2, #premiumLogoWelcomeModal h2, #popupMSI h4 {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 900 !important;
+  color: var(--neo-ink) !important;
+}
+
+.modal-counter {
+  background: var(--neo-yellow) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-weight: 800 !important;
+  padding: 0.2rem 0.7rem !important;
+  border-radius: 20px !important;
+}
+
+.modal-arrow {
+  background: var(--neo-paper-cream) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 50% !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  transition: all 0.2s ease !important;
+}
+.modal-arrow:hover:not(:disabled) {
+  background: var(--neo-yellow) !important;
+  transform: scale(1.08) !important;
+  box-shadow: var(--neo-shadow) !important;
+}
+
+.modal-slide img {
+  border: 4px solid #FFFFFF !important;
+  border-radius: 12px !important;
+  box-shadow: var(--neo-sticker-sh) !important;
+}
+
+.modal-close, .welcome-modal-close {
+  background: var(--neo-paper-cream) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 50% !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  transition: all 0.2s ease !important;
+}
+.modal-close:hover, .welcome-modal-close:hover {
+  background: #ef4444 !important;
+  color: #fff !important;
+  transform: translate(-1px, -1px);
+}
+
+.welcome-desc, .welcome-feats li {
+  color: var(--neo-ink-sub) !important;
+}
+.welcome-badge {
+  background: var(--neo-yellow) !important;
+  color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 4px !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  font-weight: 900 !important;
+}
+.welcome-price {
+  font-family: 'Syne', sans-serif !important;
+  color: var(--neo-ink) !important;
+  font-weight: 900 !important;
+}
+.welcome-cta {
+  background: #16a34a !important;
+  color: #fff !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--neo-shadow) !important;
+  font-weight: 800 !important;
+}
+.welcome-secondary-btn {
+  background: var(--neo-blue) !important;
+  color: #fff !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--neo-shadow) !important;
+  font-weight: 800 !important;
+}
+
+/* Floating AI & WhatsApp */
+.wa-float {
+  border: 2px solid var(--neo-ink) !important;
+  box-shadow: 4px 4px 0px var(--neo-ink) !important;
+}
+.ai-float {
+  border: 2px solid var(--neo-ink) !important;
+  box-shadow: 4px 4px 0px var(--neo-ink) !important;
+}
 </style>
 </head>
 <body>
@@ -3382,104 +4721,174 @@ nav::after{
 </nav>
 
 <!-- ================================================================
-     HERO
+     HERO: COLLAGE EDITORIAL NEO-POP
 ================================================================ -->
 <section id="inicio">
+  <!-- Cruces de registro de imprenta editorial -->
+  <div class="reg-cross reg-top-left">+</div>
+  <div class="reg-cross reg-top-right">+</div>
+  <div class="reg-cross reg-bottom-left">+</div>
+  <div class="reg-cross reg-bottom-right">+</div>
+
+  <!-- Formas orgánicas de papel de color y tramas halftone -->
+  <div class="hero-torn-shape-orange"></div>
+  <div class="hero-torn-shape-blue"></div>
+  <div class="halftone-screen-orange" style="top:3rem;right:4rem;"></div>
+  <div class="halftone-screen-blue" style="bottom:2rem;left:3rem;"></div>
+
+  <!-- Wireframe blueprint técnico decorativo -->
+  <svg class="hero-blueprint-lines" viewBox="0 0 300 200" fill="none" stroke="#111113" stroke-width="1.2" stroke-dasharray="3 3">
+    <rect x="20" y="20" width="260" height="160" />
+    <line x1="20" y1="20" x2="280" y2="180" />
+    <line x1="280" y1="20" x2="20" y2="180" />
+    <circle cx="150" cy="100" r="45" />
+    <circle cx="150" cy="100" r="3" fill="#111113" />
+    <text x="30" y="40" font-family="monospace" font-size="10" fill="#111113" opacity="0.6">SEC_01 // 17.9620° N</text>
+    <text x="200" y="170" font-family="monospace" font-size="10" fill="#111113" opacity="0.6">9.00m · ARCH_REF</text>
+  </svg>
+
   <div class="hero-inner">
+    <h1 class="sr-only">ORION Creative Studio — Agencia de Diseño y Publicidad Integral: Logos, Páginas Web, Redes Sociales y Publicidad</h1>
 
-    <h1 class="sr-only">ORION Creative Studio — Agencia de Diseño y Publicidad Integral: Logos, Páginas Web, Manejo de Redes Sociales, Publicidad General y Cursos de IA</h1>
-
-    <!-- Logo grande -->
-    <img src="logo.png" alt="ORION Creative Studio" class="hero-logo" width="3005" height="955" loading="eager"
-         onerror="this.style.display='none'">
-
-    <div class="hero-badge">
-      <i class="fas fa-star"></i>
-      Agencia de Diseño y Publicidad Integral
+    <!-- Portada Editorial: Número 01 con subrayado -->
+    <div class="editorial-sec-index" style="margin-bottom:1.2rem;">
+      <span class="ed-sec-num">01</span>
+      <span class="ed-sec-bar"></span>
     </div>
 
-    <!-- Hero actions row -->
-    <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 1.5rem auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
-      <a href="#portafolio" class="btn-hero-portfolio nav-scroll btn-hero-pair" style="margin: 0 !important;"><i class="fas fa-image"></i> Ver Portafolio</a>
-      <a href="#contacto" class="btn-hero-portfolio nav-scroll btn-hero-pair btn-cta-glow" style="margin: 0 !important; background: var(--purple) !important; color: #ffffff !important; border-color: var(--purple) !important;"><i class="fas fa-pen-nib"></i> Cotizar mi Logo</a>
-      <button id="btnCotizarWeb" onclick="openWebQuoteModal()" class="btn-hero-portfolio" style="margin: 0 !important; background: var(--pink) !important; color: #ffffff !important; border-color: var(--pink) !important; box-shadow: 0 0 15px rgba(255, 42, 133, 0.3) !important; cursor: pointer;"><i class="fas fa-globe"></i> Cotizar Página Web</button>
+    <!-- Logo Sticker Frame -->
+    <div class="hero-logo-sticker-container">
+      <span class="sticker-pin">ORION STUDIO · EST. 2025</span>
+      <img src="logo.png" alt="ORION Creative Studio" class="hero-logo" width="3005" height="955" loading="eager" onerror="this.style.display='none'">
+      <div class="reg-cross" style="top:4px;left:8px;font-size:1rem;color:#fff;opacity:0.4;">+</div>
+      <div class="reg-cross" style="bottom:4px;right:8px;font-size:1rem;color:#fff;opacity:0.4;">+</div>
     </div>
 
-
-
-    <p class="hero-sub">
-      Creamos identidades visuales poderosas, estrategias de publicidad efectivas
-      y soluciones integrales para que tu negocio conquiste el universo.
-    </p>
-
-    <div class="hero-tags-marquee">
-      <div class="hero-tags-track">
-        <span class="hero-tag">Diseño de Logos</span>
-        <span class="hero-tag">Branding Completo</span>
-        <span class="hero-tag">Publicidad Digital</span>
-        <span class="hero-tag">Páginas Web</span>
-        <span class="hero-tag">Manejo de Redes Sociales</span>
-        <span class="hero-tag">Curso de IA</span>
-        <span class="hero-tag">Fotografía de Producto</span>
-        <span class="hero-tag" aria-hidden="true">Diseño de Logos</span>
-        <span class="hero-tag" aria-hidden="true">Branding Completo</span>
-        <span class="hero-tag" aria-hidden="true">Publicidad Digital</span>
-        <span class="hero-tag" aria-hidden="true">Páginas Web</span>
-        <span class="hero-tag" aria-hidden="true">Manejo de Redes Sociales</span>
-        <span class="hero-tag" aria-hidden="true">Curso de IA</span>
-        <span class="hero-tag" aria-hidden="true">Fotografía de Producto</span>
+    <div style="margin-bottom: 1.4rem;">
+      <div class="hero-badge">
+        <i class="fas fa-star"></i>
+        Agencia de Diseño & Publicidad Integral
       </div>
     </div>
 
-    <div class="hero-btns" style="position:relative;">
-      <a href="#servicios" class="btn btn-purple nav-scroll"><i class="fas fa-rocket"></i> Ver Servicios</a>
-      <a href="#paquetes" class="btn btn-outline nav-scroll"><i class="fas fa-cubes"></i> Ver Paquetes</a>
-      <a href="https://wa.me/527531627539" target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Consulta Gratis</a>
+    <h2 class="hero-editorial-title">
+      DISEÑO Y PUBLICIDAD <span class="hl-orange">PODEROSOS</span>
+    </h2>
+
+    <p class="hero-sub">
+      Identidades visuales memorables, diseño editorial contemporáneo y estrategias de publicidad listas para posicionar tu negocio en el mundo real y digital.
+    </p>
+
+    <!-- Hero actions row -->
+    <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 1.5rem auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
+      <a href="#portafolio" class="btn-hero-portfolio nav-scroll btn-hero-pair" style="margin: 0 !important;"><i class="fas fa-eye"></i> Ver Portafolio Panorámico</a>
+      <a href="#contacto" class="btn-hero-portfolio nav-scroll btn-hero-pair btn-cta-glow" style="margin: 0 !important;"><i class="fas fa-pen-nib"></i> Cotizar mi Logo</a>
+      <button id="btnCotizarWeb" onclick="openWebQuoteModal()" class="btn-hero-portfolio" style="margin: 0 !important; cursor: pointer;"><i class="fas fa-globe"></i> Cotizar Página Web</button>
+    </div>
+
+    <!-- Ticker Marquee: Cinta impresa continua -->
+    <div class="hero-tags-marquee">
+      <div class="hero-tags-track">
+        <span class="hero-tag">DISEÑO DE LOGOS</span>
+        <span class="hero-tag">BRANDING COMPLETO</span>
+        <span class="hero-tag">PUBLICIDAD DIGITAL</span>
+        <span class="hero-tag">PÁGINAS WEB</span>
+        <span class="hero-tag">MANEJO DE REDES</span>
+        <span class="hero-tag">CURSO DE IA</span>
+        <span class="hero-tag">DIRECCIÓN DE ARTE</span>
+        <span class="hero-tag" aria-hidden="true">DISEÑO DE LOGOS</span>
+        <span class="hero-tag" aria-hidden="true">BRANDING COMPLETO</span>
+        <span class="hero-tag" aria-hidden="true">PUBLICIDAD DIGITAL</span>
+        <span class="hero-tag" aria-hidden="true">PÁGINAS WEB</span>
+        <span class="hero-tag" aria-hidden="true">MANEJO DE REDES</span>
+        <span class="hero-tag" aria-hidden="true">CURSO DE IA</span>
+        <span class="hero-tag" aria-hidden="true">DIRECCIÓN DE ARTE</span>
+      </div>
+    </div>
+
+    <div class="hero-btns" style="position:relative; margin-top: 1.2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
       <button onclick="openCertificadoModal()"
-        style="display: inline-flex; align-items: center; gap: 8px; background: #D9482B; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700; border: none; padding: 0.65rem 1.3rem; border-radius: 999px; box-shadow: 0 4px 14px rgba(217,72,43,0.32); cursor: pointer; transition: all 0.22s; letter-spacing: 0.01em;"
-        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(217,72,43,0.50)'"
-        onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(217,72,43,0.32)'"
+        style="display: inline-flex; align-items: center; gap: 8px; background: var(--neo-paper-cream); color: var(--neo-ink); font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; font-weight: 800; border: 2px solid var(--neo-ink); padding: 0.75rem 1.6rem; border-radius: 12px; box-shadow: var(--neo-shadow); cursor: pointer; transition: all 0.2s;"
+        onmouseover="this.style.transform='translate(-2px, -2px)';this.style.boxShadow='var(--neo-shadow-lg)'"
+        onmouseout="this.style.transform='';this.style.boxShadow='var(--neo-shadow)'"
       >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
-        Certifica tu Ilustración o Verifica la Utilidad de tu Logo en un Uso Real
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+        Certifica tu Ilustración o Verifica la Utilidad de tu Logo en Uso Real ✦
       </button>
+      <a href="https://wa.me/527531627539" target="_blank"
+        style="display: inline-flex; align-items: center; gap: 8px; background: #16a34a; color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 0.88rem; font-weight: 800; border: 2px solid var(--neo-ink); padding: 0.75rem 1.6rem; border-radius: 12px; box-shadow: var(--neo-shadow); cursor: pointer; text-decoration: none; transition: all 0.2s;"
+        onmouseover="this.style.transform='translate(-2px, -2px)';this.style.boxShadow='var(--neo-shadow-lg)'"
+        onmouseout="this.style.transform='';this.style.boxShadow='var(--neo-shadow)'"
+      >
+        <i class="fab fa-whatsapp" style="font-size:1.1rem;"></i> Consulta Gratis por WhatsApp
+      </a>
     </div>
 
     <div class="hero-stats">
-      <div><div class="stat-n">500+</div><div class="stat-l">Clientes</div></div>
-      <div><div class="stat-n">1000+</div><div class="stat-l">Proyectos</div></div>
-      <div><div class="stat-n">~1h</div><div class="stat-l">Respuesta</div></div>
-      <div><div class="stat-n">5 ★</div><div class="stat-l">Calificación</div></div>
+      <div><div class="stat-n">500+</div><div class="stat-l">Clientes Felices</div></div>
+      <div><div class="stat-n">1000+</div><div class="stat-l">Proyectos Entregados</div></div>
+      <div><div class="stat-n">~1h</div><div class="stat-l">Tiempo de Respuesta</div></div>
+      <div><div class="stat-n">5.0 ★</div><div class="stat-l">Calificación</div></div>
     </div>
   </div>
 </section>
 
 <!-- ================================================================
-     PORTAFOLIO (NUEVA SECCIÓN)
+     PORTAFOLIO: CARRUSEL PANORÁMICO CONTINUO (COLLAGE EDITORIAL)
 ================================================================ -->
-<section id="portafolio">
-  <div class="inner">
+<section id="portafolio" class="panoramic-portfolio-sec">
+  <div class="reg-cross reg-top-left">+</div>
+  <div class="reg-cross reg-top-right">+</div>
+  <div class="reg-cross reg-bottom-left">+</div>
+  <div class="reg-cross reg-bottom-right">+</div>
+  <div class="halftone-screen-orange" style="top:1.5rem;left:2.5rem;"></div>
+  <div class="halftone-screen-blue" style="bottom:2rem;right:2rem;"></div>
+
+  <div class="inner-panoramic">
     <div class="sec-head reveal">
-      <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-image"></i> Galería de Proyectos</div>
-      <h2 class="sec-title title-portafolio">Nuestro Portafolio</h2>
-      <p class="sec-desc">Explora una selección exclusiva de nuestras mejores creaciones en diseño gráfico, logotipos y publicidad de alto impacto.</p>
-    </div>
-
-    <div class="portfolio-filters">
-      <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="logos-personales">Logos Personales</button>
-      <button class="filter-btn" data-filter="logos-comerciales">Logos Comerciales</button>
-      <button class="filter-btn" data-filter="publicidad">Publicidad & Flyers</button>
-    </div>
-
-    <div class="pf-carousel" id="portfolioCarousel">
-      <button class="pf-carousel-arrow pf-carousel-prev" onclick="portfolioCarouselPrev()" aria-label="Proyecto anterior"><i class="fas fa-chevron-left"></i></button>
-      <div class="pf-carousel-track" id="portfolioCarouselTrack">
-        <!-- Las tarjetas se inyectan dinámicamente con JS -->
+      <div class="editorial-sec-index">
+        <span class="ed-sec-num">02</span>
+        <span class="ed-sec-bar"></span>
       </div>
-      <button class="pf-carousel-arrow pf-carousel-next" onclick="portfolioCarouselNext()" aria-label="Siguiente proyecto"><i class="fas fa-chevron-right"></i></button>
+      <h2 class="sec-title title-portafolio">EN CADA ESPACIO, NUESTRA HUELLA</h2>
+      <p class="sec-desc">Carrusel panorámico continuo de collage editorial moderno · Dirección de arte, identidades recortadas como stickers y continuidad visual entre láminas.</p>
     </div>
-    <div class="pf-carousel-dots" id="portfolioCarouselDots"></div>
+
+    <div class="portfolio-filters portfolio-filters-neo">
+      <button class="filter-btn active" data-filter="all">TODOS</button>
+      <button class="filter-btn" data-filter="logos-personales">LOGOS PERSONALES</button>
+      <button class="filter-btn" data-filter="logos-comerciales">LOGOS COMERCIALES</button>
+      <button class="filter-btn" data-filter="publicidad">PUBLICIDAD & FLYERS</button>
+    </div>
+
+    <!-- Contenedor del Carrusel Panorámico -->
+    <div class="panoramic-carousel-container" id="portfolioCarousel">
+      
+      <div class="panoramic-track-wrapper" id="panoramicTrackWrapper">
+        <div class="pf-carousel-track panoramic-track" id="portfolioCarouselTrack">
+          <!-- Las láminas panorámicas se inyectan dinámicamente con JS -->
+        </div>
+      </div>
+
+      <!-- Barra de controles inferior -->
+      <div class="panoramic-controls-bar">
+        <button class="neo-control-btn pf-carousel-arrow pf-carousel-prev" onclick="portfolioCarouselPrev()" aria-label="Proyecto anterior">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+
+        <div class="panoramic-counter-badge" id="panoramicCounterBadge">
+          <span class="count-current" id="portfolioCurrentCount">01</span>
+          <span class="count-divider">/</span>
+          <span class="count-total" id="portfolioTotalCount">16</span>
+        </div>
+
+        <button class="neo-control-btn pf-carousel-arrow pf-carousel-next" onclick="portfolioCarouselNext()" aria-label="Siguiente proyecto">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="pf-carousel-dots" id="portfolioCarouselDots" style="margin-top:1.2rem;"></div>
+    </div>
   </div>
 </section>
 
@@ -3489,6 +4898,10 @@ nav::after{
 <section id="servicios">
   <div class="inner">
     <div class="sec-head reveal">
+      <div class="editorial-sec-index">
+        <span class="ed-sec-num">03</span>
+        <span class="ed-sec-bar"></span>
+      </div>
       <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-palette"></i> Servicios</div>
       <h2 class="sec-title title-servicios">Nuestros Servicios</h2>
       <p class="sec-desc">Desde logos hasta campañas completas — todo lo que tu marca necesita para brillar.</p>
@@ -3710,6 +5123,10 @@ nav::after{
 ================================================================ -->
 <section id="paquetes">
   <div class="sec-head reveal">
+    <div class="editorial-sec-index">
+      <span class="ed-sec-num">04</span>
+      <span class="ed-sec-bar"></span>
+    </div>
     <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-box-open"></i> Paquetes</div>
     <h2 class="sec-title title-paquetes">Paquetes Completos</h2>
     <p class="sec-desc">La solución integral para llevar tu negocio al siguiente nivel — todo en un solo paquete.</p>
@@ -3790,6 +5207,10 @@ nav::after{
      SEPARADOR — CURSO IA
 ================================================================ -->
 <div class="ia-section-header reveal">
+  <div class="editorial-sec-index" style="margin-bottom:0.8rem;">
+    <span class="ed-sec-num">05</span>
+    <span class="ed-sec-bar"></span>
+  </div>
   <div class="ia-section-label title-curso-label">
     <div class="neuron-particle particle-1"></div>
     <div class="neuron-particle particle-2"></div>
@@ -3864,6 +5285,10 @@ nav::after{
 ================================================================ -->
 <section id="contacto">
   <div class="sec-head reveal">
+    <div class="editorial-sec-index">
+      <span class="ed-sec-num">06</span>
+      <span class="ed-sec-bar"></span>
+    </div>
     <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-envelope"></i> Contacto</div>
     <h2 class="sec-title title-proyecto">Cuéntanos tu Proyecto</h2>
     <p class="sec-desc">Llena el formulario con todos los detalles. Mientras más información, mejores resultados.</p>
@@ -4901,9 +6326,26 @@ function catLabelFor(category) {
   return 'Logotipo';
 }
 
+const editorialHeadlines = [
+  "EL EQUIPO QUE CONSTRUYE TUS IDEAS",
+  "EN CADA ESPACIO, NUESTRA HUELLA",
+  "DISEÑO CON IDENTIDAD INCONFUNDIBLE",
+  "CREATIVIDAD QUE TRANSFORMA NEGOCIOS",
+  "IMAGEN CORPORATIVA DE ALTO VALOR",
+  "BRANDING VISUAL PARA EL MUNDO REAL",
+  "LOGOTIPOS QUE INSPIRAN CONFIANZA",
+  "PUBLICIDAD DE IMPACTO INMEDIATO",
+  "DIRECCIÓN DE ARTE SIN LÍMITES",
+  "LA ESENCIA DE TU MARCA AL MÁXIMO",
+  "ESTRATEGIA VISUAL QUE COMUNICA",
+  "DISEÑO EDITORIAL DE ALTO IMPACTO"
+];
+
 function renderPortfolioCarousel() {
   const track = document.getElementById('portfolioCarouselTrack');
   const dotsWrap = document.getElementById('portfolioCarouselDots');
+  const totalCountEl = document.getElementById('portfolioTotalCount');
+  const curCountEl = document.getElementById('portfolioCurrentCount');
   if (!track) return;
 
   portfolioFilteredItems = portfolioItems.filter(item => activeFilter === 'all' || item.category === activeFilter);
@@ -4913,74 +6355,151 @@ function renderPortfolioCarousel() {
   const total = portfolioFilteredItems.length;
   if (total === 0) return;
 
-  if (portfolioCarouselIndex >= total) portfolioCarouselIndex = 0;
-  if (portfolioCarouselIndex < 0) portfolioCarouselIndex = total - 1;
+  if (totalCountEl) totalCountEl.textContent = String(total).padStart(2, '0');
+  if (curCountEl) curCountEl.textContent = String(Math.min(portfolioCarouselIndex + 1, total)).padStart(2, '0');
 
-  const prevIdx = (portfolioCarouselIndex - 1 + total) % total;
-  const nextIdx = (portfolioCarouselIndex + 1) % total;
+  portfolioFilteredItems.forEach((item, idx) => {
+    const formattedNum = String(idx + 1).padStart(2, '0');
+    const headline = editorialHeadlines[idx % editorialHeadlines.length];
+    const waveVariant = (idx % 2 === 0) ? 'wave-variant-a' : 'wave-variant-b';
 
-  const slots = total === 1
-    ? [{ idx: portfolioCarouselIndex, role: 'current' }]
-    : total === 2
-      ? [{ idx: portfolioCarouselIndex, role: 'current' }, { idx: nextIdx, role: 'next' }]
-      : [
-          { idx: prevIdx, role: 'prev' },
-          { idx: portfolioCarouselIndex, role: 'current' },
-          { idx: nextIdx, role: 'next' }
-        ];
+    const slide = document.createElement('div');
+    slide.className = `panoramic-slide ${waveVariant}`;
+    slide.setAttribute('data-slide-index', idx);
+    slide.innerHTML = `
+      <div class="pan-torn-mountain-orange"></div>
+      <div class="pan-torn-ribbon-blue"></div>
+      <div class="pan-torn-svg-cross"></div>
+      <div class="halftone-screen-orange" style="top:5px;right:5px;width:75px;height:75px;"></div>
+      <svg class="pan-blueprint-bg" viewBox="0 0 160 160" fill="none" stroke="#111113" stroke-width="1" stroke-dasharray="2 2">
+        <rect x="10" y="10" width="140" height="140" />
+        <line x1="10" y1="10" x2="150" y2="150" />
+        <line x1="150" y1="10" x2="10" y2="150" />
+        <circle cx="80" cy="80" r="35" />
+        <circle cx="80" cy="80" r="2.5" fill="#111113" />
+        <text x="18" y="26" font-family="monospace" font-size="8" fill="#111113">REF_${formattedNum} // 3.00m</text>
+      </svg>
+      <div class="reg-cross" style="top:10px;right:12px;font-size:1.1rem;opacity:0.4;">+</div>
 
-  slots.forEach(({ idx, role }) => {
-    const item = portfolioFilteredItems[idx];
-    const card = document.createElement('div');
-    card.className = `pf-card pf-card-${role}`;
-    card.onclick = role === 'current'
-      ? () => openGalleryAt(item.galleryKey, item.slideIndex)
-      : () => goToPortfolioSlide(idx);
-    card.innerHTML = `
-      <img src="${item.src}" alt="${item.label}" loading="lazy">
-      <div class="pf-card-info">
-        <span>${catLabelFor(item.category)}</span>
-        <h4>${item.label}</h4>
+      <div class="slide-header">
+        <div class="slide-num-wrap">
+          <span class="slide-num">${formattedNum}</span>
+        </div>
+        <div class="slide-line"></div>
+        <h3 class="slide-headline">${headline}</h3>
+      </div>
+
+      <div class="pan-cutout-container" onclick="openGalleryAt('${item.galleryKey}', ${item.slideIndex})">
+        <div class="pan-cutout-frame">
+          <img src="${item.src}" alt="${item.label}" loading="lazy">
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="slide-meta-row">
+          <span class="slide-category-pill">${catLabelFor(item.category)}</span>
+          <span class="slide-title-label" title="${item.label}">${item.label}</span>
+        </div>
+        <button type="button" class="slide-action-btn" onclick="openGalleryAt('${item.galleryKey}', ${item.slideIndex})">
+          <i class="fas fa-search-plus"></i> Ver en Galería ✦
+        </button>
       </div>
     `;
-    track.appendChild(card);
+    track.appendChild(slide);
   });
 
   if (dotsWrap && total > 1) {
-    portfolioFilteredItems.forEach((_, i) => {
+    const dotsCount = Math.min(total, 12);
+    for (let i = 0; i < dotsCount; i++) {
       const dot = document.createElement('button');
       dot.className = 'pf-carousel-dot' + (i === portfolioCarouselIndex ? ' active' : '');
-      dot.setAttribute('aria-label', `Ir al proyecto ${i + 1}`);
+      dot.setAttribute('aria-label', `Ir a lámina ${i + 1}`);
       dot.onclick = () => goToPortfolioSlide(i);
       dotsWrap.appendChild(dot);
-    });
+    }
   }
+
+  setupPanoramicScrollSync();
+}
+
+function setupPanoramicScrollSync() {
+  const wrapper = document.getElementById('panoramicTrackWrapper');
+  if (!wrapper || wrapper._hasScrollSync) return;
+  wrapper._hasScrollSync = true;
+
+  wrapper.addEventListener('scroll', () => {
+    const slides = wrapper.querySelectorAll('.panoramic-slide');
+    if (!slides.length) return;
+    const wrapperLeft = wrapper.getBoundingClientRect().left;
+    let closestIdx = 0;
+    let minDiff = Infinity;
+
+    slides.forEach((slide, idx) => {
+      const diff = Math.abs(slide.getBoundingClientRect().left - wrapperLeft);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = idx;
+      }
+    });
+
+    if (portfolioCarouselIndex !== closestIdx) {
+      portfolioCarouselIndex = closestIdx;
+      const curCountEl = document.getElementById('portfolioCurrentCount');
+      if (curCountEl) curCountEl.textContent = String(closestIdx + 1).padStart(2, '0');
+
+      const dots = document.querySelectorAll('.pf-carousel-dot');
+      dots.forEach((dot, dIdx) => {
+        dot.classList.toggle('active', dIdx === (closestIdx % dots.length));
+      });
+    }
+  }, { passive: true });
 }
 
 function advancePortfolioCarousel() {
-  const total = portfolioFilteredItems.length;
-  if (!total) return;
-  portfolioCarouselIndex = (portfolioCarouselIndex + 1) % total;
-  renderPortfolioCarousel();
+  const wrapper = document.getElementById('panoramicTrackWrapper');
+  const slides = wrapper ? wrapper.querySelectorAll('.panoramic-slide') : [];
+  if (!wrapper || !slides.length) return;
+
+  portfolioCarouselIndex = (portfolioCarouselIndex + 1) % slides.length;
+  goToPortfolioSlide(portfolioCarouselIndex);
 }
 
 function portfolioCarouselNext() {
-  advancePortfolioCarousel();
+  const wrapper = document.getElementById('panoramicTrackWrapper');
+  const slides = wrapper ? wrapper.querySelectorAll('.panoramic-slide') : [];
+  if (!wrapper || !slides.length) return;
+
+  portfolioCarouselIndex = (portfolioCarouselIndex + 1) % slides.length;
+  goToPortfolioSlide(portfolioCarouselIndex);
   restartPortfolioAutoplay();
 }
 
 function portfolioCarouselPrev() {
-  const total = portfolioFilteredItems.length;
-  if (!total) return;
-  portfolioCarouselIndex = (portfolioCarouselIndex - 1 + total) % total;
-  renderPortfolioCarousel();
+  const wrapper = document.getElementById('panoramicTrackWrapper');
+  const slides = wrapper ? wrapper.querySelectorAll('.panoramic-slide') : [];
+  if (!wrapper || !slides.length) return;
+
+  portfolioCarouselIndex = (portfolioCarouselIndex - 1 + slides.length) % slides.length;
+  goToPortfolioSlide(portfolioCarouselIndex);
   restartPortfolioAutoplay();
 }
 
 function goToPortfolioSlide(i) {
   portfolioCarouselIndex = i;
-  renderPortfolioCarousel();
-  restartPortfolioAutoplay();
+  const wrapper = document.getElementById('panoramicTrackWrapper');
+  if (!wrapper) return;
+  const slides = wrapper.querySelectorAll('.panoramic-slide');
+  if (slides[i]) {
+    slides[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  const curCountEl = document.getElementById('portfolioCurrentCount');
+  if (curCountEl) curCountEl.textContent = String(i + 1).padStart(2, '0');
+
+  const dots = document.querySelectorAll('.pf-carousel-dot');
+  dots.forEach((dot, dIdx) => {
+    dot.classList.toggle('active', dIdx === (i % dots.length));
+  });
 }
 
 function restartPortfolioAutoplay() {
