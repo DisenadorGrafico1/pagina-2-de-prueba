@@ -1355,10 +1355,10 @@ footer{
 }
 .pf-carousel-track{
   position:relative;
-  width:100%;max-width:800px;
-  height:440px;
+  width:100%;
+  height:auto;
   margin:0 auto;
-  overflow:hidden;
+  overflow:visible;
 }
 .pf-card{
   position:absolute;top:50%;left:50%;
@@ -1441,11 +1441,9 @@ footer{
     gap:0;
   }
   .pf-carousel-track{
-    height:360px;
-    width:100vw;
-    max-width:100vw;
-    margin-left:calc(50% - 50vw);
-    margin-right:calc(50% - 50vw);
+    height:auto;
+    width:100%;
+    overflow:visible;
   }
   .pf-card{width:240px;height:310px;border-radius:16px;}
   .pf-card-prev{ transform:translate(calc(-50% - 148px),-50%) scale(.8); }
@@ -3288,41 +3286,98 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 32' preserveAspectRatio='none'%3E%3Cpath d='M0,16 Q25,2 50,16 T100,16 T150,6 T200,20 T250,12 T300,24 T350,8 T400,18 T450,10 T500,26 T550,14 T600,22 T650,8 T700,20 T750,12 T800,24 T850,10 T900,18 T950,6 T1000,22 T1050,14 T1100,24 T1150,8 L1200,16 L1200,32 L0,32 Z' fill='%231834C7'/%3E%3Cpath d='M0,16 Q25,2 50,16 T100,16 T150,6 T200,20 T250,12 T300,24 T350,8 T400,18 T450,10 T500,26 T550,14 T600,22 T650,8 T700,20 T750,12 T800,24 T850,10 T900,18 T950,6 T1000,22 T1050,14 T1100,24 T1150,8 L1200,16' fill='none' stroke='%230C0D14' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 
-/* Retazos decorativos de papel kraft cortado */
-.paper-scrap-patch {
+/* ============================================================
+   PARTES DE PAPEL ROTO (TORN PAPER SCRAPS) EN EL FONDO
+============================================================ */
+.torn-paper-scrap {
   position: absolute;
   pointer-events: none;
-  z-index: 1;
-  filter: drop-shadow(3px 4px 8px rgba(12,13,20,0.08));
+  z-index: 0;
+  filter: drop-shadow(4px 8px 18px rgba(12, 13, 20, 0.12));
+  transition: transform 0.3s ease;
 }
-.scrap-hero-top {
-  top: 2rem;
-  left: 3%;
-  width: 140px;
-  height: 110px;
-  background: var(--neo-paper-dark);
-  clip-path: polygon(0% 12%, 88% 0%, 100% 82%, 14% 100%);
-  transform: rotate(-7deg);
+.torn-paper-scrap svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
-.scrap-servicios-right {
+.scrap-hero-left {
+  top: 3.5rem;
+  left: 2rem;
+  width: 190px;
+  height: 155px;
+  transform: rotate(-6deg);
+}
+.scrap-hero-right {
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 220px;
+  height: 175px;
+  transform: rotate(7deg);
+}
+.scrap-portfolio-bg-1 {
   top: 5rem;
+  left: 2%;
+  width: 260px;
+  height: 200px;
+  transform: rotate(-4deg);
+  opacity: 0.92;
+}
+.scrap-portfolio-bg-2 {
+  bottom: 6rem;
   right: 2%;
-  width: 160px;
-  height: 130px;
-  background: var(--neo-lime);
-  clip-path: polygon(10% 0%, 100% 18%, 85% 100%, 0% 82%);
-  opacity: 0.28;
+  width: 280px;
+  height: 210px;
+  transform: rotate(5deg);
+  opacity: 0.92;
+}
+.scrap-servicios-top {
+  top: 3rem;
+  right: 3%;
+  width: 220px;
+  height: 170px;
   transform: rotate(6deg);
 }
-.scrap-paquetes-left {
-  top: 6rem;
-  left: 2%;
-  width: 180px;
-  height: 140px;
-  background: var(--neo-pink);
-  clip-path: polygon(6% 14%, 94% 0%, 100% 88%, 8% 100%);
-  opacity: 0.20;
+.scrap-servicios-bottom {
+  bottom: 3rem;
+  left: 3%;
+  width: 240px;
+  height: 180px;
   transform: rotate(-5deg);
+}
+.scrap-paquetes-left {
+  top: 5rem;
+  left: 2.5%;
+  width: 230px;
+  height: 175px;
+  transform: rotate(-6deg);
+}
+.scrap-paquetes-right {
+  bottom: 4rem;
+  right: 2.5%;
+  width: 210px;
+  height: 160px;
+  transform: rotate(5deg);
+}
+.scrap-contacto-left {
+  top: 4rem;
+  left: 2%;
+  width: 220px;
+  height: 170px;
+  transform: rotate(-7deg);
+}
+.scrap-contacto-right {
+  bottom: 3rem;
+  right: 2.5%;
+  width: 240px;
+  height: 180px;
+  transform: rotate(6deg);
+}
+@media (max-width: 768px) {
+  .torn-paper-scrap {
+    transform: scale(0.65) !important;
+    opacity: 0.75 !important;
+  }
 }
 
 /* ============================================================
@@ -4230,12 +4285,12 @@ body {
 .panoramic-track-wrapper {
   width: 100%;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible !important;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--neo-orange) var(--neo-paper-dark);
-  padding: 2.5rem 1.5rem 3rem;
+  padding: 2rem 1rem 2.8rem;
   cursor: grab;
 }
 .panoramic-track-wrapper:active {
@@ -4268,15 +4323,15 @@ body {
   scroll-snap-align: center;
   position: relative;
   width: clamp(340px, 85vw, 440px);
-  min-height: 610px;
+  min-height: 680px;
   background: var(--neo-paper-cream);
   border: 2px solid var(--neo-ink);
   border-right: none; /* Seam connect */
-  padding: 2rem 1.6rem 1.6rem;
+  padding: 1.8rem 1.4rem 1.4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: visible !important;
   box-shadow: 0 12px 30px rgba(17,17,19,0.08);
   user-select: none;
   flex-shrink: 0;
@@ -4404,10 +4459,10 @@ body {
 .pan-cutout-container {
   position: relative;
   z-index: 2;
-  margin: 0.8rem auto 1.4rem;
+  margin: 0.6rem auto 1.2rem;
   width: 100%;
-  max-width: 320px;
-  height: 250px;
+  max-width: 360px;
+  height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4418,7 +4473,7 @@ body {
   height: 100%;
   background: #FFFFFF !important;
   border: 4px solid #FFFFFF !important;
-  border-radius: 14px !important;
+  border-radius: 16px !important;
   box-shadow: var(--neo-sticker-sh) !important;
   overflow: hidden !important;
   transform: rotate(-1.5deg);
@@ -4428,20 +4483,22 @@ body {
   align-items: center !important;
   justify-content: center !important;
   padding: 8px !important;
+  box-sizing: border-box !important;
 }
 .panoramic-slide:nth-child(even) .pan-cutout-frame {
   transform: rotate(1.5deg);
 }
 .pan-cutout-frame:hover {
-  transform: rotate(0deg) scale(1.03) !important;
+  transform: rotate(0deg) scale(1.02) !important;
   box-shadow: 0 16px 36px rgba(17,17,19,0.22), 6px 6px 0px var(--neo-ink) !important;
 }
 .pan-cutout-frame img {
-  width: auto !important;
-  height: auto !important;
+  width: 100% !important;
+  height: 100% !important;
   max-width: 100% !important;
   max-height: 100% !important;
   object-fit: contain !important;
+  object-position: center !important;
   border-radius: 8px !important;
   display: block !important;
   margin: auto !important;
@@ -4884,8 +4941,9 @@ footer {
 
   .panoramic-slide {
     width: clamp(285px, 86vw, 360px) !important;
-    min-height: 520px !important;
+    min-height: 590px !important;
     padding: 1.4rem 1.1rem 1.2rem !important;
+    overflow: visible !important;
   }
   .slide-num {
     font-size: 2.7rem !important;
@@ -4894,7 +4952,8 @@ footer {
     font-size: 1.05rem !important;
   }
   .pan-cutout-container {
-    height: 195px !important;
+    height: 310px !important;
+    max-width: 320px !important;
     margin: 0.6rem auto 1rem !important;
   }
   .slide-action-btn {
@@ -5239,21 +5298,34 @@ footer {
   <div class="reg-cross reg-bottom-left">+</div>
   <div class="reg-cross reg-bottom-right">+</div>
 
-  <!-- Retazos de papel cortado en el fondo (Collage Scrapbook) -->
-  <div class="paper-scrap-patch scrap-hero-top"></div>
+  <!-- Retazos de papel roto en el fondo (Collage Scrapbook) -->
+  <div class="torn-paper-scrap scrap-hero-left">
+    <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 18 C35 14 70 19 110 13 C150 17 175 12 188 22 C185 55 190 95 186 138 C172 134 158 142 140 136 C122 144 98 138 75 143 C52 137 32 145 14 139 C16 98 10 58 12 18 Z" fill="#E8DCCB" />
+      <path d="M10 15 C35 12 70 17 110 10 C150 15 175 10 186 20 C182 55 188 95 183 140 C170 136 155 144 138 138 C120 146 95 140 72 145 C50 139 30 147 12 141 C15 98 8 58 10 15 Z" fill="#FBF9F4" />
+      <path d="M35 25 V130 M60 25 V130 M85 25 V130 M110 25 V130 M135 25 V130 M160 25 V130" stroke="#0C0D14" stroke-width="0.75" opacity="0.08" stroke-dasharray="2 2"/>
+      <path d="M20 45 H175 M20 70 H175 M20 95 H175 M20 120 H175" stroke="#0C0D14" stroke-width="0.75" opacity="0.08" stroke-dasharray="2 2"/>
+      <path d="M10 15 C35 12 70 17 110 10 C150 15 175 10 186 20 C182 55 188 95 183 140 C170 136 155 144 138 138 C120 146 95 140 72 145 C50 139 30 147 12 141 Z" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.9" />
+      <path d="M12 141 C30 147 50 139 72 145 C95 140 120 146 138 138 C155 144 170 136 183 140" fill="none" stroke="#D3C3B0" stroke-width="1.8" />
+      <polygon points="5,8 48,15 44,32 1,25" fill="#EA580C" opacity="0.75" />
+    </svg>
+  </div>
+
+  <div class="torn-paper-scrap scrap-hero-right">
+    <svg viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 25 C45 20 85 28 130 18 C170 24 195 15 208 30 C202 70 210 115 204 165 C185 158 165 168 142 160 C118 170 92 162 65 168 C38 160 22 170 8 162 C12 115 5 70 15 25 Z" fill="#D8C5AD" />
+      <path d="M12 22 C42 18 82 25 127 15 C167 22 192 12 205 28 C199 68 207 113 200 162 C182 155 162 165 139 157 C115 167 89 159 62 165 C35 157 19 167 5 159 C9 113 2 68 12 22 Z" fill="#EADECE" />
+      <path d="M5 159 C19 167 35 157 62 165 C89 159 115 167 139 157 C162 165 182 155 200 162" stroke="#FFFFFF" stroke-width="3" opacity="0.85" />
+      <path d="M12 22 C42 18 82 25 127 15 C167 22 192 12 205 28" stroke="#FFFFFF" stroke-width="2" opacity="0.8" />
+      <polygon points="175,5 218,18 212,34 169,21" fill="#FACC15" opacity="0.75" />
+    </svg>
+  </div>
 
   <!-- STICKERS DIE-CUT EDITORIALES EN HERO -->
   <div class="neo-sticker sticker-starburst starburst-lime" style="top:3.5rem; right:3.5rem; transform: rotate(12deg);" title="100% Garantía de Diseño">
     <span class="sb-sm">✦ ORION ✦</span>
     <span class="sb-lg">DISEÑO TOP</span>
     <span class="sb-sm">100% PRO</span>
-  </div>
-
-  <div class="neo-sticker sticker-barcode-badge" style="top:4rem; left:2.5rem; transform: rotate(-8deg);">
-    <svg class="barcode-svg" viewBox="0 0 100 24" fill="#0C0D14">
-      <rect x="0" y="0" width="3" height="24"/><rect x="5" y="0" width="1.5" height="24"/><rect x="8" y="0" width="4" height="24"/><rect x="14" y="0" width="2" height="24"/><rect x="18" y="0" width="3" height="24"/><rect x="23" y="0" width="1" height="24"/><rect x="26" y="0" width="4" height="24"/><rect x="32" y="0" width="2" height="24"/><rect x="36" y="0" width="3.5" height="24"/><rect x="42" y="0" width="1" height="24"/><rect x="45" y="0" width="5" height="24"/><rect x="52" y="0" width="2" height="24"/><rect x="56" y="0" width="3" height="24"/><rect x="61" y="0" width="1.5" height="24"/><rect x="64" y="0" width="4" height="24"/><rect x="70" y="0" width="2" height="24"/><rect x="74" y="0" width="3" height="24"/><rect x="79" y="0" width="1" height="24"/><rect x="82" y="0" width="4.5" height="24"/><rect x="89" y="0" width="2" height="24"/><rect x="93" y="0" width="3" height="24"/><rect x="98" y="0" width="2" height="24"/>
-    </svg>
-    <div class="bc-sub"><span>REF//2025</span><span>ORION-MX</span></div>
   </div>
 
   <!-- Formas orgánicas de papel de color y tramas halftone -->
@@ -5403,6 +5475,28 @@ footer {
   <div class="halftone-screen-orange" style="top:1.5rem;left:2.5rem;"></div>
   <div class="halftone-screen-blue" style="bottom:2rem;right:2rem;"></div>
 
+  <!-- Retazos de papel roto en el fondo de portafolio -->
+  <div class="torn-paper-scrap scrap-portfolio-bg-1">
+    <svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 25 C60 18 120 28 175 16 C215 24 238 12 250 32 C242 75 252 130 244 185 C220 178 195 188 165 178 C135 188 105 180 72 186 C40 178 22 188 10 180 C15 125 6 75 12 25 Z" fill="#D3C1A9" />
+      <path d="M10 22 C58 15 118 25 173 13 C213 21 235 10 247 30 C239 73 249 128 241 182 C217 175 192 185 162 175 C132 185 102 177 69 183 C37 175 20 185 8 177 C13 123 4 72 10 22 Z" fill="#E6D7C3" />
+      <path d="M10 22 C58 15 118 25 173 13 C213 21 235 10 247 30 C239 73 249 128 241 182" stroke="#FFFFFF" stroke-width="2.5" opacity="0.8" />
+      <path d="M8 177 C37 175 69 183 102 177 C132 185 162 175 192 185 C217 175 241 182" stroke="#FFFFFF" stroke-width="3" opacity="0.85" />
+      <polygon points="12,10 62,24 55,42 6,28" fill="#EA580C" opacity="0.65" />
+    </svg>
+  </div>
+
+  <div class="torn-paper-scrap scrap-portfolio-bg-2">
+    <svg viewBox="0 0 280 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 22 C70 15 135 24 195 14 C245 22 268 12 276 35 C268 85 278 140 270 195 C242 188 215 198 182 188 C148 198 115 190 78 196 C42 188 24 198 12 190 C18 135 8 80 20 22 Z" fill="#DDD2C2" />
+      <path d="M18 18 C68 12 133 20 192 10 C242 18 265 8 273 32 C265 82 275 137 267 192 C239 185 212 195 179 185 C145 195 112 187 75 193 C39 185 22 195 10 187 C16 132 6 77 18 18 Z" fill="#FCFAF6" />
+      <path d="M45 30 V175 M80 30 V175 M115 30 V175 M150 30 V175 M185 30 V175 M220 30 V175 M255 30 V175" stroke="#0C0D14" stroke-width="0.75" opacity="0.07" stroke-dasharray="2 2"/>
+      <path d="M25 55 H260 M25 90 H260 M25 125 H260 M25 160 H260" stroke="#0C0D14" stroke-width="0.75" opacity="0.07" stroke-dasharray="2 2"/>
+      <path d="M10 187 C22 195 39 185 75 193 C112 187 145 195 179 185 C212 195 239 185 267 192" stroke="#FFFFFF" stroke-width="3" opacity="0.9" />
+      <polygon points="220,180 270,195 263,212 213,197" fill="#FACC15" opacity="0.75" />
+    </svg>
+  </div>
+
   <div class="inner-panoramic">
     <div class="sec-head reveal">
       <div class="editorial-sec-index">
@@ -5424,7 +5518,7 @@ footer {
     <div class="panoramic-carousel-container" id="portfolioCarousel">
       
       <div class="panoramic-track-wrapper" id="panoramicTrackWrapper">
-        <div class="pf-carousel-track panoramic-track" id="portfolioCarouselTrack">
+        <div class="panoramic-track" id="portfolioCarouselTrack">
           <!-- Las láminas panorámicas se inyectan dinámicamente con JS -->
         </div>
       </div>
@@ -5489,8 +5583,27 @@ footer {
      SERVICIOS
 ================================================================ -->
 <section id="servicios">
-  <!-- Retazo de papel cortado en el fondo -->
-  <div class="paper-scrap-patch scrap-servicios-right"></div>
+  <!-- Retazos de papel roto en el fondo de servicios -->
+  <div class="torn-paper-scrap scrap-servicios-top">
+    <svg viewBox="0 0 220 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 22 C55 14 105 24 155 12 C185 20 205 10 215 28 C207 68 214 112 208 155 C185 148 162 158 138 150 C112 158 85 152 58 156 C32 150 18 158 8 152 C12 108 5 65 15 22 Z" fill="#DDD0BF" />
+      <path d="M12 18 C52 10 102 20 152 8 C182 16 202 6 212 24 C204 64 211 108 205 151 C182 144 159 154 135 146 C109 154 82 148 55 152 C29 146 15 154 5 148 C9 104 2 61 12 18 Z" fill="#F8F3EA" />
+      <path d="M5 148 C15 154 29 146 55 152 C82 148 109 154 135 146 C159 154 182 144 205 151" stroke="#FFFFFF" stroke-width="3" opacity="0.9" />
+      <path d="M12 18 C52 10 102 20 152 8 C182 16 202 6 212 24" stroke="#FFFFFF" stroke-width="2" opacity="0.8" />
+      <polygon points="170,8 212,22 205,38 163,24" fill="#0B4FBA" opacity="0.65" />
+    </svg>
+  </div>
+
+  <div class="torn-paper-scrap scrap-servicios-bottom">
+    <svg viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 20 C65 14 120 22 175 12 C210 18 228 10 236 28 C228 72 235 122 228 168 C202 162 178 172 148 162 C118 172 88 164 58 170 C28 162 15 170 5 164 C10 118 3 68 18 20 Z" fill="#D5C5B0" />
+      <path d="M15 16 C62 10 117 18 172 8 C207 14 225 6 233 24 C225 68 232 118 225 164 C199 158 175 168 145 158 C115 168 85 160 55 166 C25 158 12 166 2 160 C7 114 0 64 15 16 Z" fill="#EDE1D1" />
+      <path d="M40 28 V150 M75 28 V150 M110 28 V150 M145 28 V150 M180 28 V150" stroke="#0C0D14" stroke-width="0.75" opacity="0.06" stroke-dasharray="2 2"/>
+      <path d="M20 55 H220 M20 90 H220 M20 125 H220" stroke="#0C0D14" stroke-width="0.75" opacity="0.06" stroke-dasharray="2 2"/>
+      <path d="M2 160 C12 166 25 158 55 166 C85 160 115 168 145 158 C175 168 199 158 225 164" stroke="#FFFFFF" stroke-width="3" opacity="0.9" />
+      <polygon points="10,12 55,24 48,40 3,28" fill="#FACC15" opacity="0.7" />
+    </svg>
+  </div>
   <div class="inner">
     <div class="sec-head reveal">
       <div class="editorial-sec-index">
@@ -5747,8 +5860,26 @@ footer {
      PAQUETES
 ================================================================ -->
 <section id="paquetes">
-  <!-- Retazo de papel cortado en el fondo -->
-  <div class="paper-scrap-patch scrap-paquetes-left"></div>
+  <!-- Retazos de papel roto en el fondo de paquetes -->
+  <div class="torn-paper-scrap scrap-paquetes-left">
+    <svg viewBox="0 0 230 175" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 20 C60 12 115 22 170 10 C205 18 222 8 228 26 C220 70 226 118 220 162 C195 156 170 166 140 156 C112 166 82 158 54 164 C26 156 12 164 4 158 C8 112 2 62 14 20 Z" fill="#D8C8B4" />
+      <path d="M12 16 C58 8 112 18 168 6 C202 14 220 4 225 22 C217 66 224 114 217 158 C192 152 168 162 138 152 C110 162 80 154 52 160 C24 152 10 160 2 154 C6 108 0 58 12 16 Z" fill="#FAF6EE" />
+      <path d="M20 45 H210 M20 75 H210 M20 105 H210 M20 135 H210" stroke="#0B4FBA" stroke-width="0.8" opacity="0.12"/>
+      <path d="M50 20 V155" stroke="#EF4444" stroke-width="0.8" opacity="0.18"/>
+      <path d="M2 154 C10 160 24 152 52 160 C80 154 110 162 138 152 C168 162 192 152 217 158" stroke="#FFFFFF" stroke-width="3" opacity="0.9" />
+      <polygon points="175,6 220,18 214,34 169,22" fill="#EA580C" opacity="0.7" />
+    </svg>
+  </div>
+
+  <div class="torn-paper-scrap scrap-paquetes-right">
+    <svg viewBox="0 0 210 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 18 C50 12 95 20 145 10 C175 16 195 8 205 24 C198 62 205 108 198 148 C175 142 152 152 125 144 C98 152 70 145 42 150 C18 142 8 150 2 144 C5 102 0 58 12 18 Z" fill="#CCA885" />
+      <path d="M10 15 C48 9 92 17 142 7 C172 13 192 5 202 21 C195 59 202 104 195 144 C172 138 150 148 122 140 C95 148 68 142 40 146 C16 138 6 146 0 140 C3 98 -2 55 10 15 Z" fill="#E2CAAF" />
+      <path d="M0 140 C6 146 16 138 40 146 C68 142 95 148 122 140 C150 148 172 138 195 144" stroke="#FFFFFF" stroke-width="2.5" opacity="0.85" />
+      <polygon points="5,10 48,22 42,38 0,26" fill="#FACC15" opacity="0.75" />
+    </svg>
+  </div>
   <div class="sec-head reveal">
     <div class="editorial-sec-index">
       <span class="ed-sec-num">04</span>
@@ -5974,6 +6105,26 @@ footer {
      FORMULARIO DE CONTACTO
 ================================================================ -->
 <section id="contacto">
+  <!-- Retazos de papel roto en el fondo de contacto -->
+  <div class="torn-paper-scrap scrap-contacto-left">
+    <svg viewBox="0 0 220 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 20 C50 14 105 24 160 12 C190 20 208 10 216 28 C208 68 215 112 208 155 C185 148 160 158 135 150 C110 158 82 152 55 156 C28 150 15 158 5 152 C10 108 3 65 12 20 Z" fill="#DDD2C2" />
+      <path d="M10 16 C48 10 102 20 158 8 C188 16 205 6 213 24 C205 64 212 108 205 151 C182 144 158 154 132 146 C108 154 80 148 52 152 C25 146 12 154 2 148 C7 104 0 61 10 16 Z" fill="#FAF6EE" />
+      <path d="M35 25 V130 M70 25 V130 M105 25 V130 M140 25 V130 M175 25 V130" stroke="#0C0D14" stroke-width="0.75" opacity="0.06" stroke-dasharray="2 2"/>
+      <path d="M20 45 H195 M20 75 H195 M20 105 H195 M20 135 H195" stroke="#0C0D14" stroke-width="0.75" opacity="0.06" stroke-dasharray="2 2"/>
+      <path d="M2 148 C12 154 25 146 52 152 C80 148 108 154 132 146 C158 154 182 144 205 151" stroke="#FFFFFF" stroke-width="3" opacity="0.9" />
+      <polygon points="12,8 55,20 48,36 5,24" fill="#0B4FBA" opacity="0.65" />
+    </svg>
+  </div>
+
+  <div class="torn-paper-scrap scrap-contacto-right">
+    <svg viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 22 C60 14 115 22 170 12 C205 18 225 10 234 28 C226 72 232 122 225 168 C200 162 175 172 145 162 C118 172 88 164 58 170 C28 162 15 170 5 164 C10 118 3 68 15 22 Z" fill="#D2BEA6" />
+      <path d="M12 18 C58 10 112 18 168 8 C202 14 222 6 230 24 C222 68 228 118 222 164 C198 158 172 168 142 158 C115 168 85 160 55 166 C25 158 12 166 2 160 C7 114 0 64 12 18 Z" fill="#E8DAC7" />
+      <path d="M2 160 C12 166 25 158 55 166 C85 160 115 168 142 158 C172 168 198 158 222 164" stroke="#FFFFFF" stroke-width="3" opacity="0.9" />
+      <polygon points="175,12 220,24 214,40 169,28" fill="#FACC15" opacity="0.75" />
+    </svg>
+  </div>
   <div class="sec-head reveal">
     <div class="editorial-sec-index">
       <span class="ed-sec-num">06</span>
