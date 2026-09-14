@@ -1827,12 +1827,7 @@ button[id="lnp-buy-btn"]:hover, button[id="pnp-buy-btn"]:hover {
   backdrop-filter: blur(24px) !important;
 }
 
-/* Modal and Popups backdrop override */
-#ofertaPopup, #popupMSI, #logoNegocioPremiumPopup, #contratarModal, #premiumLogoWelcomeModal, #ejemplosModal {
-  background-color: rgba(2, 0, 15, 0.85) !important; /* Dark semi-transparent overlay backdrop */
-  backdrop-filter: blur(10px) !important;
-  color: #f5f5f7 !important;
-}
+
 
 /* Light card hover overlays */
 .portfolio-card::before {
@@ -1975,101 +1970,7 @@ section {
   margin-bottom: 2rem !important;
 }
 
-/* Modal popup text readability and box overrides */
-#ofertaPopup > div, 
-#popupMSI, 
-#logoNegocioPremiumPopup > .welcome-modal-box, 
-#premiumLogoWelcomeModal > .welcome-modal-box, 
-#contratarModal > .modal-box, 
-#ejemplosModal > .modal-box {
-  background: #121215 !important; /* Solid dark slate */
-  border: 2px solid var(--purple) !important; /* Thick electric blue neon border outline */
-  border-radius: 20px !important;
-  color: #f5f5f7 !important; /* Highly readable bone-white text */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
-  overflow: hidden !important;
-}
 
-#ofertaPopup > div *, 
-#popupMSI *, 
-#logoNegocioPremiumPopup > .welcome-modal-box *, 
-#premiumLogoWelcomeModal > .welcome-modal-box *, 
-#contratarModal > .modal-box *, 
-#ejemplosModal > .modal-box * {
-  color: #f5f5f7;
-}
-
-#ofertaPopup h2, 
-#logoNegocioPremiumPopup h2, 
-#premiumLogoWelcomeModal h2, 
-.welcome-title, 
-.modal-title,
-#popupMSI h4 {
-  color: #ffffff !important; /* Pure bold white titles */
-  font-weight: 800 !important;
-}
-
-#ofertaPopup .price, #popupMSI .price, #contratarModal .price, #ejemplosModal .price {
-  color: var(--purple) !important;
-}
-
-#ofertaPopup span, #popupMSI span, #contratarModal span, #logoNegocioPremiumPopup span, #premiumLogoWelcomeModal span {
-  color: #9e9eab; /* Secondary light gray text */
-}
-
-/* Force specific colors for elements inside modals */
-#ofertaPopup [style*="color:#fff"], #ofertaPopup [style*="color: #fff"],
-#popupMSI [style*="color:#fff"], #popupMSI [style*="color: #fff"],
-#contratarModal [style*="color:#fff"], #contratarModal [style*="color: #fff"],
-#ofertaPopup button, #popupMSI button, #logoNegocioPremiumPopup button, #premiumLogoWelcomeModal button, #contratarModal button,
-#ofertaPopup button *, #popupMSI button *, #logoNegocioPremiumPopup button *, #premiumLogoWelcomeModal button *, #contratarModal button * {
-  color: #ffffff !important; /* Button text is crisp white */
-}
-
-span[id*="countdown"], span[style*="color:#ef4444"], span[style*="color: #ef4444"], .countdown {
-  color: #ef4444 !important; /* Keep alerts red */
-}
-
-/* Carousel stage and logo frame backgrounds (not white, but elegant dark gray) */
-.welcome-carousel-stage, 
-.modal-stage, 
-#welcomeCarouselStage, 
-#businessWelcomeCarouselStage, 
-#modalStage {
-  background: #1a1a22 !important; /* Solid dark background for logo frame */
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 8px !important;
-}
-
-/* Modal carousel arrow buttons styling */
-.modal-arrow, 
-.welcome-carousel-arrow, 
-#welcomeCarouselPrev, 
-#welcomeCarouselNext, 
-#businessWelcomeCarouselPrev, 
-#businessWelcomeCarouselNext {
-  background: var(--purple) !important;
-  color: #ffffff !important;
-  border: 1px solid var(--purple) !important;
-  opacity: 1 !important;
-  border-radius: 50% !important;
-}
-
-.modal-arrow:hover, 
-.welcome-carousel-arrow:hover {
-  background: #ffffff !important;
-  color: var(--purple) !important;
-  border-color: #ffffff !important;
-  box-shadow: 0 0 12px rgba(47, 92, 255, 0.45) !important;
-}
-
-.welcome-carousel-dot {
-  background: rgba(255, 255, 255, 0.3) !important;
-}
-
-.welcome-carousel-dot.active {
-  background: var(--purple) !important;
-}
 
 /* Mobile Single-Line Horizontal Navigation Menu */
 @media (max-width: 768px) {
@@ -3294,40 +3195,548 @@ nav::after{
 ============================================================ */
 
 :root {
-  --neo-paper:       #F5EFE6;
-  --neo-paper-card:  #FAF7F0;
+  /* ============================================================
+     NUEVA PALETA NEO-POP 2.0 EDITORIAL SCRAPBOOK
+     - Fondo: Papel artístico cálido con textura y rasgados
+     - Acentos: Royal Cobalt Blue, Acid Lime, Hyper Orange, Hot Pink, Post-It Yellow
+     - Tinta: Jet Obsidian Ink de máxima legibilidad
+  ============================================================ */
+  --neo-paper:       #FAF6ED;
+  --neo-paper-card:  #FFFFFF;
   --neo-paper-cream: #FFFDF8;
-  --neo-paper-dark:  #E8E0D2;
-  --neo-orange:      #EA580C;
-  --neo-orange-dark: #C2410C;
-  --neo-orange-lt:   #FB923C;
-  --neo-blue:        #0B4FBA;
-  --neo-blue-dark:   #083885;
-  --neo-blue-lt:     #2563EB;
-  --neo-ink:         #111113;
-  --neo-ink-sub:     #3F3F46;
-  --neo-ink-muted:   #71717A;
+  --neo-paper-dark:  #EBE2D0;
+  --neo-paper-torn:  #DFD4BD;
+
+  --neo-blue:        #1834C7;
+  --neo-blue-dark:   #0E2085;
+  --neo-blue-lt:     #3B65FF;
+  --neo-lime:        #CCFF00;
+  --neo-orange:      #FF4600;
+  --neo-orange-dark: #C93400;
+  --neo-orange-lt:   #FF6F36;
+  --neo-pink:        #FF2688;
+  --neo-yellow:      #FEE122;
+  --neo-cyan:        #00D4FF;
+
+  --neo-ink:         #0C0D14;
+  --neo-ink-sub:     #2D3142;
+  --neo-ink-muted:   #5D6377;
   --neo-white:       #FFFFFF;
-  --neo-yellow:      #FACC15;
-  --neo-border:      #111113;
-  --neo-shadow-sm:   2px 2px 0px #111113;
-  --neo-shadow:      4px 4px 0px #111113;
-  --neo-shadow-lg:   6px 6px 0px #111113;
-  --neo-shadow-xl:   8px 8px 0px #111113;
-  --neo-sticker-sh:  0 10px 25px rgba(17,17,19,0.18), 4px 4px 0px #111113;
-  --torn-shadow:     0 4px 10px rgba(17,17,19,0.12);
+  --neo-border:      #0C0D14;
+
+  --neo-shadow-sm:   2px 2px 0px #0C0D14;
+  --neo-shadow:      4px 4px 0px #0C0D14;
+  --neo-shadow-lg:   6px 6px 0px #0C0D14;
+  --neo-shadow-xl:   8px 8px 0px #0C0D14;
+  --neo-sticker-sh:  0 10px 24px rgba(12,13,20,0.14), 4px 4px 0px #0C0D14;
+  --torn-shadow:     0 6px 16px rgba(12,13,20,0.10);
+
+  /* Sobreescritura de variables heredadas para contraste oscuro 100% legible */
+  --txt:             #0C0D14 !important;
+  --txt2:            #2D3142 !important;
+  --txt3:            #5D6377 !important;
+  --bg:              #FAF6ED !important;
+  --card:            #FFFFFF !important;
+  --border:          rgba(12, 13, 20, 0.22) !important;
+  --glow:            #FF4600 !important;
 }
 
-/* Base Body & Paper Background */
+/* Base Body & Paper Background con textura de papel cortado */
 body {
   background-color: var(--neo-paper) !important;
   color: var(--neo-ink) !important;
   font-family: 'Space Grotesk', -apple-system, sans-serif !important;
   background-image: 
-    radial-gradient(rgba(17, 17, 19, 0.08) 1.2px, transparent 1.2px),
-    radial-gradient(ellipse at 15% 30%, rgba(234, 88, 12, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse at 85% 70%, rgba(11, 79, 186, 0.05) 0%, transparent 60%) !important;
-  background-size: 24px 24px, 100% 100%, 100% 100% !important;
+    radial-gradient(rgba(12, 13, 20, 0.08) 1.2px, transparent 1.2px),
+    radial-gradient(ellipse at 12% 20%, rgba(255, 70, 0, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 88% 75%, rgba(24, 52, 199, 0.06) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(12, 13, 20, 0.025) 28px) !important;
+  background-size: 24px 24px, 100% 100%, 100% 100%, 100% 28px !important;
+}
+
+/* ============================================================
+   ESTILO EDITORIAL SCRAPBOOK & PAPEL CORTADO (CUT PAPER)
+   - Divisores rasgados, bordes irregulares y texturas craft
+============================================================ */
+
+/* Divisor de costura entre secciones (Seam Divider) */
+.v-seam-divider {
+  position: relative;
+  width: 100%;
+  height: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Borde de papel rasgado en la unión de secciones */
+.torn-paper-edge-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -16px;
+  height: 32px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 32' preserveAspectRatio='none'%3E%3Cpath d='M0,16 Q25,2 50,16 T100,16 T150,6 T200,20 T250,12 T300,24 T350,8 T400,18 T450,10 T500,26 T550,14 T600,22 T650,8 T700,20 T750,12 T800,24 T850,10 T900,18 T950,6 T1000,22 T1050,14 T1100,24 T1150,8 L1200,16 L1200,32 L0,32 Z' fill='%23FAF6ED'/%3E%3Cpath d='M0,16 Q25,2 50,16 T100,16 T150,6 T200,20 T250,12 T300,24 T350,8 T400,18 T450,10 T500,26 T550,14 T600,22 T650,8 T700,20 T750,12 T800,24 T850,10 T900,18 T950,6 T1000,22 T1050,14 T1100,24 T1150,8 L1200,16' fill='none' stroke='%230C0D14' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 32px;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(12,13,20,0.10));
+  z-index: 10;
+}
+.torn-paper-edge-bar.dark-fill {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 32' preserveAspectRatio='none'%3E%3Cpath d='M0,16 Q25,2 50,16 T100,16 T150,6 T200,20 T250,12 T300,24 T350,8 T400,18 T450,10 T500,26 T550,14 T600,22 T650,8 T700,20 T750,12 T800,24 T850,10 T900,18 T950,6 T1000,22 T1050,14 T1100,24 T1150,8 L1200,16 L1200,32 L0,32 Z' fill='%231834C7'/%3E%3Cpath d='M0,16 Q25,2 50,16 T100,16 T150,6 T200,20 T250,12 T300,24 T350,8 T400,18 T450,10 T500,26 T550,14 T600,22 T650,8 T700,20 T750,12 T800,24 T850,10 T900,18 T950,6 T1000,22 T1050,14 T1100,24 T1150,8 L1200,16' fill='none' stroke='%230C0D14' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* Retazos decorativos de papel kraft cortado */
+.paper-scrap-patch {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(3px 4px 8px rgba(12,13,20,0.08));
+}
+.scrap-hero-top {
+  top: 2rem;
+  left: 3%;
+  width: 140px;
+  height: 110px;
+  background: var(--neo-paper-dark);
+  clip-path: polygon(0% 12%, 88% 0%, 100% 82%, 14% 100%);
+  transform: rotate(-7deg);
+}
+.scrap-servicios-right {
+  top: 5rem;
+  right: 2%;
+  width: 160px;
+  height: 130px;
+  background: var(--neo-lime);
+  clip-path: polygon(10% 0%, 100% 18%, 85% 100%, 0% 82%);
+  opacity: 0.28;
+  transform: rotate(6deg);
+}
+.scrap-paquetes-left {
+  top: 6rem;
+  left: 2%;
+  width: 180px;
+  height: 140px;
+  background: var(--neo-pink);
+  clip-path: polygon(6% 14%, 94% 0%, 100% 88%, 8% 100%);
+  opacity: 0.20;
+  transform: rotate(-5deg);
+}
+
+/* ============================================================
+   SISTEMA DE STICKERS & PEGATINAS NEO-POP (DIE-CUT)
+============================================================ */
+.neo-sticker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 25;
+  user-select: none;
+  border: 3.5px solid #FFFFFF !important;
+  outline: 2.5px solid var(--neo-ink) !important;
+  box-shadow: 4px 5px 0px var(--neo-ink), 0 12px 24px rgba(12, 13, 20, 0.16) !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.neo-sticker:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+  box-shadow: 6px 8px 0px var(--neo-ink), 0 18px 32px rgba(12, 13, 20, 0.24) !important;
+}
+
+/* Sticker Starburst (Estrella Neo-Pop) */
+.sticker-starburst {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  clip-path: polygon(
+    50% 0%, 63% 15%, 82% 7%, 85% 26%, 100% 35%, 92% 50%, 
+    100% 65%, 85% 74%, 82% 93%, 63% 85%, 50% 100%, 37% 85%, 
+    18% 93%, 15% 74%, 0% 65%, 8% 50%, 0% 35%, 15% 26%, 18% 7%, 37% 15%
+  );
+  border: none !important;
+  outline: none !important;
+  filter: drop-shadow(3px 4px 0px var(--neo-ink)) drop-shadow(0 8px 16px rgba(0,0,0,0.18));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.starburst-lime {
+  background: var(--neo-lime);
+  color: var(--neo-ink);
+}
+.starburst-pink {
+  background: var(--neo-pink);
+  color: #FFFFFF;
+}
+.starburst-yellow {
+  background: var(--neo-yellow);
+  color: var(--neo-ink);
+}
+.starburst-orange {
+  background: var(--neo-orange);
+  color: #FFFFFF;
+}
+.sticker-starburst .sb-sm {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.sticker-starburst .sb-lg {
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+/* Sticker Barcode (Etiqueta térmica auténtica) */
+.sticker-barcode-badge {
+  background: #FFFFFF !important;
+  padding: 0.6rem 1.1rem 0.5rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.barcode-svg {
+  width: 120px;
+  height: 28px;
+  display: block;
+}
+.sticker-barcode-badge .bc-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--neo-ink);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Sticker Stamp Circular */
+.sticker-stamp-circular {
+  width: 96px;
+  height: 96px;
+  border-radius: 50% !important;
+  border: 3px dashed var(--neo-ink) !important;
+  background: var(--neo-yellow) !important;
+  color: var(--neo-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.4rem;
+  box-shadow: 4px 4px 0px var(--neo-ink);
+}
+.stamp-center-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.stamp-txt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+
+/* Washi Tape (Cintas adhesivas) */
+.washi-tape-strip {
+  position: absolute;
+  height: 22px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+  z-index: 22;
+  pointer-events: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neo-ink);
+  text-transform: uppercase;
+  padding: 0 1rem;
+}
+.washi-lime {
+  background: rgba(204, 255, 0, 0.88);
+  border-left: 3px dashed rgba(0,0,0,0.3);
+  border-right: 3px dashed rgba(0,0,0,0.3);
+}
+.washi-orange {
+  background: rgba(255, 70, 0, 0.88);
+  color: #fff;
+  border-left: 3px dashed rgba(255,255,255,0.4);
+  border-right: 3px dashed rgba(255,255,255,0.4);
+}
+.washi-pink {
+  background: rgba(255, 38, 136, 0.88);
+  color: #fff;
+  border-left: 3px dashed rgba(255,255,255,0.4);
+  border-right: 3px dashed rgba(255,255,255,0.4);
+}
+.washi-stripes {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(204, 255, 0, 0.85),
+    rgba(204, 255, 0, 0.85) 10px,
+    rgba(254, 225, 34, 0.85) 10px,
+    rgba(254, 225, 34, 0.85) 20px
+  );
+  border-left: 3px dashed rgba(0,0,0,0.3);
+  border-right: 3px dashed rgba(0,0,0,0.3);
+}
+
+/* Sticker Capsule */
+.sticker-capsule {
+  border-radius: 50px !important;
+  padding: 0.55rem 1.4rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  gap: 8px;
+}
+.sticker-capsule-lime {
+  background: var(--neo-lime);
+  color: var(--neo-ink);
+}
+.sticker-capsule-pink {
+  background: var(--neo-pink);
+  color: #FFFFFF;
+}
+
+/* ============================================================
+   CARRUSEL CONTINUO VERTICAL (INTERCONEXIÓN ENTRE SECCIONES)
+   - Inspirado en los carruseles continuos panorámicos de Instagram
+   - Conectores físicos que cruzan de arriba a abajo entre secciones
+============================================================ */
+
+/* Conector Puente Central */
+.v-seam-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v-continuous-ribbon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--neo-lime);
+  color: var(--neo-ink);
+  border: 3px solid var(--neo-ink);
+  padding: 0.65rem 1.6rem;
+  border-radius: 40px;
+  box-shadow: 4px 5px 0px var(--neo-ink), 0 12px 24px rgba(0,0,0,0.18);
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  font-size: 0.82rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.v-continuous-ribbon:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 6px 7px 0px var(--neo-ink), 0 16px 30px rgba(0,0,0,0.22);
+  color: var(--neo-ink);
+}
+.v-continuous-ribbon .ribbon-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--neo-ink);
+  color: var(--neo-lime);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  animation: bounceDown 1.8s infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* Conectores laterales de frontera */
+.v-seam-side {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 34;
+}
+.v-seam-side.left { left: 4%; }
+.v-seam-side.right { right: 4%; }
+
+/* Cinta Neo-Pop Diagonal de Peligro / Continuidad */
+.v-caution-tape {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  height: 34px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--neo-yellow),
+    var(--neo-yellow) 18px,
+    var(--neo-ink) 18px,
+    var(--neo-ink) 36px
+  );
+  border-top: 2.5px solid var(--neo-ink);
+  border-bottom: 2.5px solid var(--neo-ink);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.16);
+  transform: rotate(-1.5deg);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.v-caution-tape .tape-content {
+  background: var(--neo-ink);
+  color: var(--neo-lime);
+  padding: 0.2rem 1.4rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Ticket VIP Pass (Puente entre Paquetes y Curso IA) */
+.v-ticket-stub-bridge {
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%) rotate(3deg);
+  background: #FFFFFF;
+  border: 3px solid var(--neo-ink);
+  border-radius: 12px;
+  padding: 0.65rem 1.4rem;
+  box-shadow: 5px 5px 0px var(--neo-ink);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 36;
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  color: var(--neo-ink);
+}
+.v-ticket-stub-bridge:hover {
+  transform: translateY(-50%) rotate(0deg) scale(1.05);
+  color: var(--neo-ink);
+}
+.v-ticket-stub-bridge .ticket-notch {
+  width: 12px;
+  height: 12px;
+  background: var(--neo-paper);
+  border-radius: 50%;
+  border: 2px solid var(--neo-ink);
+}
+.v-ticket-stub-bridge .ticket-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  font-size: 0.84rem;
+}
+.v-ticket-stub-bridge .ticket-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--neo-orange);
+}
+
+/* Cupón Perforado (Puente entre Curso IA y Contacto) */
+.v-coupon-bridge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--neo-paper-cream);
+  border: 2px dashed var(--neo-ink);
+  border-radius: 10px;
+  padding: 0.6rem 2rem;
+  box-shadow: 4px 4px 0px var(--neo-ink);
+  z-index: 36;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--neo-ink);
+  white-space: nowrap;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.v-coupon-bridge:hover {
+  transform: translate(-50%, -50%) scale(1.04);
+  color: var(--neo-ink);
+}
+.v-coupon-bridge .coupon-scissors {
+  color: var(--neo-orange);
+  font-size: 1rem;
+}
+
+/* Elemento Polaroid recortado que cabalga entre dos secciones */
+.v-straddle-polaroid {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%) rotate(-4deg);
+  background: #FFFFFF;
+  border: 3px solid var(--neo-ink);
+  padding: 8px 8px 16px;
+  border-radius: 4px;
+  box-shadow: 4px 5px 0px var(--neo-ink);
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+.v-straddle-polaroid:hover {
+  transform: translateY(-50%) rotate(0deg) scale(1.05);
+}
+.v-straddle-polaroid .polaroid-thumb {
+  width: 100px;
+  height: 65px;
+  background: var(--neo-paper-dark);
+  border: 1.5px solid var(--neo-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--neo-ink);
+}
+.v-straddle-polaroid .polaroid-caption {
+  font-family: 'Caveat', cursive;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--neo-ink);
+  margin-top: 4px;
 }
 
 /* Ocultar elementos espaciales antiguos */
@@ -4007,14 +4416,18 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #FFFFFF;
-  border: 5px solid #FFFFFF;
-  border-radius: 16px;
-  box-shadow: var(--neo-sticker-sh);
-  overflow: hidden;
+  background: #FFFFFF !important;
+  border: 4px solid #FFFFFF !important;
+  border-radius: 14px !important;
+  box-shadow: var(--neo-sticker-sh) !important;
+  overflow: hidden !important;
   transform: rotate(-1.5deg);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
   cursor: pointer;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px !important;
 }
 .panoramic-slide:nth-child(even) .pan-cutout-frame {
   transform: rotate(1.5deg);
@@ -4024,11 +4437,14 @@ body {
   box-shadow: 0 16px 36px rgba(17,17,19,0.22), 6px 6px 0px var(--neo-ink) !important;
 }
 .pan-cutout-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 8px !important;
+  display: block !important;
+  margin: auto !important;
 }
 
 /* Pie de la lámina: Metadata y Botón */
@@ -4504,13 +4920,14 @@ footer {
 }
 
 #popupMSI,
+#popupMSI > div,
 #ofertaPopup > div,
-#logoNegocioPremiumPopup > .welcome-modal-box,
-#premiumLogoWelcomeModal > .welcome-modal-box,
-#contratarModal > .modal-box,
-#ejemplosModal > .modal-box,
-#cotizarModal > .modal-box,
-#webQuoteModal > .modal-box,
+#logoNegocioPremiumPopup .welcome-modal-box,
+#premiumLogoWelcomeModal .welcome-modal-box,
+#contratarModal .modal-box,
+#ejemplosModal .modal-box,
+#cotizarModal .modal-box,
+#webQuoteModal .modal-box,
 .modal-box,
 .welcome-modal-box {
   background: var(--neo-paper-card) !important;
@@ -4520,27 +4937,131 @@ footer {
   box-shadow: 10px 10px 0px var(--neo-ink), 0 25px 60px rgba(0,0,0,0.3) !important;
 }
 
+/* Todos los textos dentro de modales y popups en tinta oscura 100% nítida */
 #popupMSI *,
-#ofertaPopup > div *:not(.btn):not(.welcome-cta):not(.modal-close),
-#logoNegocioPremiumPopup > .welcome-modal-box *:not(.welcome-badge):not(.welcome-cta):not(.welcome-secondary-btn):not(.btn),
-#premiumLogoWelcomeModal > .welcome-modal-box *:not(.welcome-badge):not(.welcome-cta):not(.welcome-secondary-btn):not(.btn),
-#contratarModal > .modal-box *:not(.btn):not(.submit-btn),
-#ejemplosModal > .modal-box *:not(.modal-close):not(.modal-arrow):not(.modal-counter),
-#cotizarModal > .modal-box *:not(.btn):not(.submit-btn),
-#webQuoteModal > .modal-box *:not(.btn):not(.submit-btn) {
-  color: var(--neo-ink);
+#ofertaPopup > div *,
+#logoNegocioPremiumPopup .welcome-modal-box *,
+#premiumLogoWelcomeModal .welcome-modal-box *,
+#contratarModal .modal-box *,
+#ejemplosModal .modal-box *,
+#cotizarModal .modal-box *,
+#webQuoteModal .modal-box * {
+  color: var(--neo-ink) !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
+  text-shadow: none !important;
 }
 
 .modal-title, .welcome-title,
-#ofertaPopup h2, #logoNegocioPremiumPopup h2, #premiumLogoWelcomeModal h2, #popupMSI h4 {
+#ofertaPopup h2, #logoNegocioPremiumPopup h2, #premiumLogoWelcomeModal h2, #popupMSI h4, #cModal-title {
   font-family: 'Syne', sans-serif !important;
   font-weight: 900 !important;
   color: var(--neo-ink) !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
+  background: none !important;
+}
+
+.welcome-price {
+  font-family: 'Syne', sans-serif !important;
+  color: var(--neo-orange) !important;
+  -webkit-text-fill-color: var(--neo-orange) !important;
+  font-weight: 900 !important;
+  font-size: 2.2rem !important;
+}
+
+.welcome-desc, .welcome-feats li {
+  color: var(--neo-ink-sub) !important;
+  -webkit-text-fill-color: var(--neo-ink-sub) !important;
+}
+
+.welcome-feats li i {
+  color: #16a34a !important;
+  -webkit-text-fill-color: #16a34a !important;
+}
+
+.welcome-badge {
+  background: var(--neo-yellow) !important;
+  color: var(--neo-ink) !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 6px !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  font-weight: 900 !important;
+}
+
+.welcome-skip {
+  color: var(--neo-ink-muted) !important;
+  -webkit-text-fill-color: var(--neo-ink-muted) !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+  font-weight: 700 !important;
+  margin-top: 0.6rem !important;
+}
+
+/* Botones de acción en modales */
+.welcome-cta, #ofertaPopup button, .cta-btn, .submit-btn {
+  background: #16a34a !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--neo-shadow) !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+.welcome-cta *, #ofertaPopup button *, .submit-btn * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+.welcome-secondary-btn {
+  background: var(--neo-blue) !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--neo-shadow) !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+}
+.welcome-secondary-btn * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+#ofertaPopup a {
+  background: #16a34a !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--neo-shadow) !important;
+  font-weight: 800 !important;
+}
+#ofertaPopup a * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+.modal-close, .welcome-modal-close {
+  background: var(--neo-paper-cream) !important;
+  color: var(--neo-ink) !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
+  border: 2px solid var(--neo-ink) !important;
+  border-radius: 50% !important;
+  box-shadow: var(--neo-shadow-sm) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+.modal-close:hover, .welcome-modal-close:hover {
+  background: #ef4444 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  transform: translate(-1px, -1px);
 }
 
 .modal-counter {
   background: var(--neo-yellow) !important;
   color: var(--neo-ink) !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
   border: 2px solid var(--neo-ink) !important;
   font-family: 'IBM Plex Mono', monospace !important;
   font-weight: 800 !important;
@@ -4548,71 +5069,59 @@ footer {
   border-radius: 20px !important;
 }
 
-.modal-arrow {
+.modal-arrow, .welcome-carousel-arrow {
   background: var(--neo-paper-cream) !important;
   color: var(--neo-ink) !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
   border: 2px solid var(--neo-ink) !important;
   border-radius: 50% !important;
   box-shadow: var(--neo-shadow-sm) !important;
   transition: all 0.2s ease !important;
 }
-.modal-arrow:hover:not(:disabled) {
+.modal-arrow:hover:not(:disabled), .welcome-carousel-arrow:hover {
   background: var(--neo-yellow) !important;
   transform: scale(1.08) !important;
   box-shadow: var(--neo-shadow) !important;
+}
+
+.welcome-modal-visual {
+  background: #FFFFFF !important;
+  border-left: 2px solid var(--neo-ink) !important;
+}
+.welcome-carousel-slide img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  border: 3px solid #FFFFFF !important;
+  box-shadow: var(--neo-sticker-sh) !important;
+}
+.welcome-carousel-dot.active {
+  background: var(--neo-orange) !important;
 }
 
 .modal-slide img {
   border: 4px solid #FFFFFF !important;
   border-radius: 12px !important;
   box-shadow: var(--neo-sticker-sh) !important;
+  max-width: 100% !important;
+  max-height: 420px !important;
+  object-fit: contain !important;
 }
 
-.modal-close, .welcome-modal-close {
-  background: var(--neo-paper-cream) !important;
+/* Opciones de pago y campos de formulario en modales */
+.pago-opt, .mes-opt {
   color: var(--neo-ink) !important;
-  border: 2px solid var(--neo-ink) !important;
-  border-radius: 50% !important;
-  box-shadow: var(--neo-shadow-sm) !important;
-  transition: all 0.2s ease !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
+  font-weight: 700 !important;
 }
-.modal-close:hover, .welcome-modal-close:hover {
-  background: #ef4444 !important;
-  color: #fff !important;
-  transform: translate(-1px, -1px);
+.pago-opt:hover, .mes-opt:hover {
+  background: rgba(234, 88, 12, 0.12) !important;
 }
-
-.welcome-desc, .welcome-feats li {
-  color: var(--neo-ink-sub) !important;
-}
-.welcome-badge {
-  background: var(--neo-yellow) !important;
+.inp, .sel, .ta, .cert-input {
+  background: #FFFFFF !important;
   color: var(--neo-ink) !important;
+  -webkit-text-fill-color: var(--neo-ink) !important;
   border: 2px solid var(--neo-ink) !important;
-  border-radius: 4px !important;
-  box-shadow: var(--neo-shadow-sm) !important;
-  font-weight: 900 !important;
-}
-.welcome-price {
-  font-family: 'Syne', sans-serif !important;
-  color: var(--neo-ink) !important;
-  font-weight: 900 !important;
-}
-.welcome-cta {
-  background: #16a34a !important;
-  color: #fff !important;
-  border: 2px solid var(--neo-ink) !important;
-  border-radius: 12px !important;
-  box-shadow: var(--neo-shadow) !important;
-  font-weight: 800 !important;
-}
-.welcome-secondary-btn {
-  background: var(--neo-blue) !important;
-  color: #fff !important;
-  border: 2px solid var(--neo-ink) !important;
-  border-radius: 12px !important;
-  box-shadow: var(--neo-shadow) !important;
-  font-weight: 800 !important;
 }
 
 /* Floating AI & WhatsApp */
@@ -4730,6 +5239,23 @@ footer {
   <div class="reg-cross reg-bottom-left">+</div>
   <div class="reg-cross reg-bottom-right">+</div>
 
+  <!-- Retazos de papel cortado en el fondo (Collage Scrapbook) -->
+  <div class="paper-scrap-patch scrap-hero-top"></div>
+
+  <!-- STICKERS DIE-CUT EDITORIALES EN HERO -->
+  <div class="neo-sticker sticker-starburst starburst-lime" style="top:3.5rem; right:3.5rem; transform: rotate(12deg);" title="100% Garantía de Diseño">
+    <span class="sb-sm">✦ ORION ✦</span>
+    <span class="sb-lg">DISEÑO TOP</span>
+    <span class="sb-sm">100% PRO</span>
+  </div>
+
+  <div class="neo-sticker sticker-barcode-badge" style="top:4rem; left:2.5rem; transform: rotate(-8deg);">
+    <svg class="barcode-svg" viewBox="0 0 100 24" fill="#0C0D14">
+      <rect x="0" y="0" width="3" height="24"/><rect x="5" y="0" width="1.5" height="24"/><rect x="8" y="0" width="4" height="24"/><rect x="14" y="0" width="2" height="24"/><rect x="18" y="0" width="3" height="24"/><rect x="23" y="0" width="1" height="24"/><rect x="26" y="0" width="4" height="24"/><rect x="32" y="0" width="2" height="24"/><rect x="36" y="0" width="3.5" height="24"/><rect x="42" y="0" width="1" height="24"/><rect x="45" y="0" width="5" height="24"/><rect x="52" y="0" width="2" height="24"/><rect x="56" y="0" width="3" height="24"/><rect x="61" y="0" width="1.5" height="24"/><rect x="64" y="0" width="4" height="24"/><rect x="70" y="0" width="2" height="24"/><rect x="74" y="0" width="3" height="24"/><rect x="79" y="0" width="1" height="24"/><rect x="82" y="0" width="4.5" height="24"/><rect x="89" y="0" width="2" height="24"/><rect x="93" y="0" width="3" height="24"/><rect x="98" y="0" width="2" height="24"/>
+    </svg>
+    <div class="bc-sub"><span>REF//2025</span><span>ORION-MX</span></div>
+  </div>
+
   <!-- Formas orgánicas de papel de color y tramas halftone -->
   <div class="hero-torn-shape-orange"></div>
   <div class="hero-torn-shape-blue"></div>
@@ -4756,9 +5282,10 @@ footer {
       <span class="ed-sec-bar"></span>
     </div>
 
-    <!-- Logo Sticker Frame -->
+    <!-- Logo Sticker Frame con Washi Tape -->
     <div class="hero-logo-sticker-container">
       <span class="sticker-pin">ORION STUDIO · EST. 2025</span>
+      <div class="washi-tape-strip washi-lime" style="top:-12px; right:15px; transform: rotate(4deg);">★ ORIGINAL ★</div>
       <img src="logo.png" alt="ORION Creative Studio" class="hero-logo" width="3005" height="955" loading="eager" onerror="this.style.display='none'">
       <div class="reg-cross" style="top:4px;left:8px;font-size:1rem;color:#fff;opacity:0.4;">+</div>
       <div class="reg-cross" style="bottom:4px;right:8px;font-size:1rem;color:#fff;opacity:0.4;">+</div>
@@ -4834,6 +5361,38 @@ footer {
 </section>
 
 <!-- ================================================================
+     SEAM CONNECTOR 01 ➔ 02 (INICIO A PORTAFOLIO)
+     Carrusel Continuo Vertical Estilo Instagram
+================================================================ -->
+<div class="v-seam-divider" id="seam-01-02">
+  <div class="torn-paper-edge-bar"></div>
+  
+  <!-- Elemento polaroid recortado que cabalga entre ambas láminas -->
+  <div class="v-straddle-polaroid">
+    <div class="polaroid-thumb">✦ PREVIEW ✦</div>
+    <div class="polaroid-caption">Lámina 01 // 02</div>
+  </div>
+
+  <!-- Conector central dinámico de carrusel continuo -->
+  <div class="v-seam-badge">
+    <a href="#portafolio" class="v-continuous-ribbon nav-scroll">
+      <span class="ribbon-arrow"><i class="fas fa-arrow-down"></i></span>
+      <span>CARRUSEL CONTINUO // 01 ➔ 02 VER PORTAFOLIO</span>
+      <span style="font-size:1.1rem; color:var(--neo-orange);">✦</span>
+    </a>
+  </div>
+
+  <!-- Sticker lateral en la costura -->
+  <div class="v-seam-side right">
+    <div class="neo-sticker sticker-starburst starburst-pink" style="transform: rotate(-10deg);">
+      <span class="sb-sm">✦ SCRAPBOOK ✦</span>
+      <span class="sb-lg">PANORÁMICO</span>
+      <span class="sb-sm">SEAMLESS</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
      PORTAFOLIO: CARRUSEL PANORÁMICO CONTINUO (COLLAGE EDITORIAL)
 ================================================================ -->
 <section id="portafolio" class="panoramic-portfolio-sec">
@@ -4893,9 +5452,45 @@ footer {
 </section>
 
 <!-- ================================================================
+     SEAM CONNECTOR 02 ➔ 03 (PORTAFOLIO A SERVICIOS)
+     Carrusel Continuo Vertical Estilo Instagram
+================================================================ -->
+<div class="v-seam-divider" id="seam-02-03">
+  <div class="torn-paper-edge-bar"></div>
+
+  <!-- Conector central dinámico -->
+  <div class="v-seam-badge">
+    <a href="#servicios" class="v-continuous-ribbon nav-scroll" style="background:var(--neo-orange); color:#fff;">
+      <span class="ribbon-arrow" style="background:#fff; color:var(--neo-orange);"><i class="fas fa-arrow-down"></i></span>
+      <span>CONTINUAR CARRUSEL // 02 ➔ 03 NUESTROS SERVICIOS</span>
+      <span style="font-size:1.1rem; color:var(--neo-yellow);">✦</span>
+    </a>
+  </div>
+
+  <!-- Sticker lateral de sello de calidad editorial -->
+  <div class="v-seam-side left">
+    <div class="neo-sticker sticker-stamp-circular" style="transform: rotate(8deg); background:var(--neo-yellow);">
+      <div class="stamp-center-icon"><i class="fas fa-magic"></i></div>
+      <div class="stamp-txt">DE LA IDEA<br>A LA ACCIÓN</div>
+    </div>
+  </div>
+
+  <div class="v-seam-side right">
+    <div class="neo-sticker sticker-barcode-badge" style="transform: rotate(6deg);">
+      <svg class="barcode-svg" viewBox="0 0 100 24" fill="#0C0D14">
+        <rect x="0" y="0" width="3" height="24"/><rect x="5" y="0" width="2" height="24"/><rect x="9" y="0" width="4" height="24"/><rect x="15" y="0" width="1.5" height="24"/><rect x="19" y="0" width="3" height="24"/><rect x="24" y="0" width="4" height="24"/><rect x="30" y="0" width="2" height="24"/><rect x="34" y="0" width="3" height="24"/><rect x="39" y="0" width="1" height="24"/><rect x="43" y="0" width="5" height="24"/><rect x="50" y="0" width="2" height="24"/><rect x="54" y="0" width="3" height="24"/><rect x="59" y="0" width="1.5" height="24"/><rect x="63" y="0" width="4" height="24"/><rect x="70" y="0" width="2.5" height="24"/><rect x="75" y="0" width="3" height="24"/><rect x="80" y="0" width="1.5" height="24"/><rect x="84" y="0" width="4" height="24"/><rect x="91" y="0" width="2" height="24"/><rect x="95" y="0" width="4" height="24"/>
+      </svg>
+      <div class="bc-sub"><span>FLOW // 02-03</span><span>SERVICIOS</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
      SERVICIOS
 ================================================================ -->
 <section id="servicios">
+  <!-- Retazo de papel cortado en el fondo -->
+  <div class="paper-scrap-patch scrap-servicios-right"></div>
   <div class="inner">
     <div class="sec-head reveal">
       <div class="editorial-sec-index">
@@ -5119,9 +5714,41 @@ footer {
 </section>
 
 <!-- ================================================================
+     SEAM CONNECTOR 03 ➔ 04 (SERVICIOS A PAQUETES)
+     Carrusel Continuo Vertical Estilo Instagram
+================================================================ -->
+<div class="v-seam-divider" id="seam-03-04">
+  <div class="torn-paper-edge-bar"></div>
+
+  <!-- Cinta Neo-Pop Diagonal de Continuidad cruzando de lado a lado -->
+  <div class="v-caution-tape">
+    <span class="tape-content">✦ WORKFLOW CONTINUO ➔ ARMA TU PAQUETE INTEGRAL // 03 ➔ 04 ✦</span>
+  </div>
+
+  <!-- Conector central dinámico -->
+  <div class="v-seam-badge" style="margin-top: 26px;">
+    <a href="#paquetes" class="v-continuous-ribbon nav-scroll" style="background:var(--neo-yellow); color:var(--neo-ink);">
+      <span class="ribbon-arrow"><i class="fas fa-arrow-down"></i></span>
+      <span>DESLIZAR A PAQUETES COMPLETOS // 03 ➔ 04</span>
+      <span style="font-size:1.1rem; color:var(--neo-orange);">★</span>
+    </a>
+  </div>
+
+  <div class="v-seam-side left" style="margin-top: 26px;">
+    <div class="neo-sticker sticker-starburst starburst-lime" style="transform: rotate(-12deg);">
+      <span class="sb-sm">✦ PAQUETES ✦</span>
+      <span class="sb-lg">TODO EN 1</span>
+      <span class="sb-sm">AHORRA $$</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
      PAQUETES
 ================================================================ -->
 <section id="paquetes">
+  <!-- Retazo de papel cortado en el fondo -->
+  <div class="paper-scrap-patch scrap-paquetes-left"></div>
   <div class="sec-head reveal">
     <div class="editorial-sec-index">
       <span class="ed-sec-num">04</span>
@@ -5179,7 +5806,13 @@ footer {
       </button>
     </div>
 
-    <div class="pkg featured reveal">
+    <div class="pkg featured reveal" style="position:relative; overflow:visible;">
+      <div class="washi-tape-strip washi-stripes" style="top:-12px; left:25px; transform: rotate(-4deg);">★ RECOMENDADO ★</div>
+      <div class="neo-sticker sticker-starburst starburst-yellow" style="top:-28px; right:-18px; transform: rotate(14deg);">
+        <span class="sb-sm">✦ FULL ✦</span>
+        <span class="sb-lg">ALL IN</span>
+        <span class="sb-sm">PRO</span>
+      </div>
       <div class="pkg-crown"><i class="fas fa-crown" style="font-size:0.85em; margin-right:3px;"></i> TOP</div>
       <div class="pkg-name">Paquete Completo TOP</div>
       <div class="pkg-tag">Todo lo que necesitas para despegar</div>
@@ -5202,6 +5835,40 @@ footer {
 
   </div>
 </section>
+
+<!-- ================================================================
+     SEAM CONNECTOR 04 ➔ 05 (PAQUETES A CURSO IA)
+     Carrusel Continuo Vertical Estilo Instagram
+================================================================ -->
+<div class="v-seam-divider" id="seam-04-05">
+  <div class="torn-paper-edge-bar dark-fill"></div>
+
+  <!-- Ticket VIP Pass que cabalga físicamente entre ambas láminas -->
+  <a href="#curso" class="v-ticket-stub-bridge nav-scroll">
+    <div class="ticket-notch"></div>
+    <div>
+      <div class="ticket-title"><i class="fas fa-robot" style="color:var(--neo-blue);"></i> VIP PASS · CURSO DE IA</div>
+      <div class="ticket-meta">ACCESO DIRECTO // 04 ➔ 05</div>
+    </div>
+    <div class="ticket-notch"></div>
+  </a>
+
+  <!-- Conector central dinámico -->
+  <div class="v-seam-badge">
+    <a href="#curso" class="v-continuous-ribbon nav-scroll" style="background:var(--neo-lime); color:var(--neo-ink);">
+      <span class="ribbon-arrow"><i class="fas fa-arrow-down"></i></span>
+      <span>04 ➔ 05 APRENDE IA PARA TU NEGOCIO</span>
+      <span style="font-size:1.1rem; color:var(--neo-blue);">✦</span>
+    </a>
+  </div>
+
+  <div class="v-seam-side left">
+    <div class="neo-sticker sticker-stamp-circular" style="transform: rotate(-6deg); background:#FFFFFF;">
+      <div class="stamp-center-icon"><i class="fas fa-bolt" style="color:var(--neo-orange);"></i></div>
+      <div class="stamp-txt">ORION ACADEMY<br>METODOLOGÍA</div>
+    </div>
+  </div>
+</div>
 
 <!-- ================================================================
      SEPARADOR — CURSO IA
@@ -5281,6 +5948,29 @@ footer {
 </section>
 
 <!-- ================================================================
+     SEAM CONNECTOR 05 ➔ 06 (CURSO IA A CONTACTO)
+     Carrusel Continuo Vertical Estilo Instagram
+================================================================ -->
+<div class="v-seam-divider" id="seam-05-06">
+  <div class="torn-paper-edge-bar"></div>
+
+  <!-- Cupón perforado que cabalga hacia el formulario -->
+  <a href="#contacto" class="v-coupon-bridge nav-scroll">
+    <span class="coupon-scissors"><i class="fas fa-scissors"></i></span>
+    <span>-- - - ✂ CORTAR AQUÍ // INICIAR MI PROYECTO 05 ➔ 06 - - --</span>
+    <span class="ribbon-arrow" style="width:24px; height:24px; font-size:0.75rem;"><i class="fas fa-arrow-down"></i></span>
+  </a>
+
+  <div class="v-seam-side right">
+    <div class="neo-sticker sticker-starburst starburst-yellow" style="transform: rotate(10deg);">
+      <span class="sb-sm">✦ ÚLTIMA LÁMINA ✦</span>
+      <span class="sb-lg">COTIZA HOY</span>
+      <span class="sb-sm">RESPUESTA ~1H</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
      FORMULARIO DE CONTACTO
 ================================================================ -->
 <section id="contacto">
@@ -5295,7 +5985,14 @@ footer {
   </div>
 
   <div class="contact-wrap">
-    <form action="https://api.web3forms.com/submit" method="POST" class="contact-card reveal">
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-card reveal" style="position:relative; overflow:visible;">
+      <!-- Stickers y Washi Tape en el formulario de contacto -->
+      <div class="washi-tape-strip washi-orange" style="top:-10px; right:20px; transform: rotate(-3deg);">★ FORMULARIO OFICIAL ★</div>
+      <div class="neo-sticker sticker-stamp-circular" style="position:absolute; top:-25px; left:20px; transform: rotate(-8deg); background:var(--neo-lime);">
+        <div class="stamp-center-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="stamp-txt">BRIEF<br>DIRECTO</div>
+      </div>
+
       <input type="hidden" name="access_key" value="c0e49a32-18be-459a-80bf-fc60f5003e70">
       <input type="hidden" name="subject" value="🌟 Nueva Consulta — ORION Creative Studio">
       <input type="hidden" name="from_name" value="ORION Creative Studio">
@@ -6391,7 +7088,7 @@ function renderPortfolioCarousel() {
 
       <div class="pan-cutout-container" onclick="openGalleryAt('${item.galleryKey}', ${item.slideIndex})">
         <div class="pan-cutout-frame">
-          <img src="${item.src}" alt="${item.label}" loading="lazy">
+          <img src="${item.src}" alt="${item.label}" loading="eager">
         </div>
       </div>
 
@@ -6490,7 +7187,9 @@ function goToPortfolioSlide(i) {
   if (!wrapper) return;
   const slides = wrapper.querySelectorAll('.panoramic-slide');
   if (slides[i]) {
-    slides[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    // Desplazamiento únicamente horizontal del track interno, sin mover la ventana de la página
+    const targetScroll = slides[i].offsetLeft - (wrapper.clientWidth - slides[i].clientWidth) / 2;
+    wrapper.scrollTo({ left: targetScroll, behavior: 'smooth' });
   }
 
   const curCountEl = document.getElementById('portfolioCurrentCount');
@@ -6503,8 +7202,11 @@ function goToPortfolioSlide(i) {
 }
 
 function restartPortfolioAutoplay() {
-  if (portfolioCarouselTimer) clearInterval(portfolioCarouselTimer);
-  portfolioCarouselTimer = setInterval(advancePortfolioCarousel, 4500);
+  if (portfolioCarouselTimer) {
+    clearInterval(portfolioCarouselTimer);
+    portfolioCarouselTimer = null;
+  }
+  // Se desactiva el autoplay automático para que la web jamás se mueva sola
 }
 
 function initPortfolioFilters() {
