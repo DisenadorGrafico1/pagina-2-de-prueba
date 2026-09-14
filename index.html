@@ -253,10 +253,11 @@ ul{list-style:none;}
   .pkg{padding:1.8rem 1.4rem;}
   .modal-box{width:96%;padding:1.2rem;}
 }
-.hamburger{display:none;align-items:center;gap:.5rem;cursor:pointer;padding:.4rem .3rem;background:none;border:none;}
-.hamburger-label{font-size:.78rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--glow);}
-.hamburger-lines{display:flex;flex-direction:column;gap:5px;}
-.hamburger-lines span{display:block;width:22px;height:2px;background:var(--glow);border-radius:2px;transition:all .3s;}
+.hamburger{display:none;align-items:center;gap:.55rem;cursor:pointer;padding:.45rem .75rem;background:var(--neo-paper-cream);border:2px solid var(--neo-ink);border-radius:10px;box-shadow:2px 2px 0px var(--neo-ink);transition:transform .15s ease,box-shadow .15s ease;}
+.hamburger:active{transform:translate(1px,1px);box-shadow:1px 1px 0px var(--neo-ink);}
+.hamburger-label{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--neo-ink);}
+.hamburger-lines{display:flex;flex-direction:column;gap:4px;}
+.hamburger-lines span{display:block;width:20px;height:2.5px;background:var(--neo-ink);border-radius:2px;transition:all .3s;}
 .nav-inicio-btn{display:none;}
 
 /* ============================================================
@@ -1858,23 +1859,45 @@ button[id="lnp-buy-btn"]:hover, button[id="pnp-buy-btn"]:hover {
   filter: invert(1) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.05)) !important;
 }
 
-/* Responsive Mobile 2-column Grid Overrides */
-@media (max-width: 768px) {
+/* Responsive Mobile Grid Overrides: 2-column for tablet, 1-column for mobile */
+@media (max-width: 768px) and (min-width: 651px) {
   .portfolio-grid, .grid-4, .pkg-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.8rem !important;
+    gap: 0.9rem !important;
   }
-  
   .card {
-    padding: 1rem !important;
+    padding: 1.1rem !important;
     border-radius: 10px !important;
   }
-  
   .pkg {
     padding: 1.4rem 1rem !important;
     border-radius: 14px !important;
   }
-  
+}
+
+@media (max-width: 650px) {
+  .portfolio-grid, .grid-4, .pkg-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.35rem !important;
+    width: 100% !important;
+  }
+  .card {
+    padding: 1.6rem 1.2rem !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .pkg {
+    padding: 1.8rem 1.3rem !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 768px) {
   .card-icon {
     width: 38px !important;
     height: 38px !important;
@@ -1973,42 +1996,12 @@ section {
 /* Mobile Single-Line Horizontal Navigation Menu */
 @media (max-width: 768px) {
   #nav {
+    display: flex !important;
     justify-content: space-between !important;
-    padding: 0.7rem 1.2rem !important;
-    gap: 1rem !important;
-  }
-
-  /* Badge bajo el logo: solo texto, sin recuadro ni estrella, una línea */
-  .hero-badge {
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
-    font-size: 0.62rem !important;
-    letter-spacing: 0.6px !important;
-    white-space: nowrap !important;
-    gap: 0 !important;
-  }
-  .hero-badge i {
-    display: none !important;
-  }
-
-  /* Ver Portafolio + Cotizar mi Logo: más pequeños, uno al lado del otro */
-  .hero-action-row {
-    gap: 0.6rem !important;
-  }
-  .hero-action-row .btn-hero-pair.btn-hero-portfolio {
-    flex: 1 1 0 !important;
-    justify-content: center !important;
-    padding: 0.6rem 0.3rem !important;
-    font-size: 0.62rem !important;
-    gap: 0.3rem !important;
-    white-space: nowrap !important;
-    letter-spacing: 0.3px !important;
-  }
-  /* Cotizar Página Web: siempre debajo, en su propia línea */
-  #btnCotizarWeb {
-    flex: 1 1 100% !important;
-    justify-content: center !important;
+    align-items: center !important;
+    padding: 0.65rem 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .nav-inicio-btn {
@@ -2024,6 +2017,17 @@ section {
   .hamburger {
     display: flex !important;
     flex-shrink: 0 !important;
+    background: var(--neo-paper-cream) !important;
+    border: 2px solid var(--neo-ink) !important;
+    border-radius: 10px !important;
+    box-shadow: 2px 2px 0px var(--neo-ink) !important;
+    padding: 0.45rem 0.75rem !important;
+  }
+  .hamburger-label {
+    color: var(--neo-ink) !important;
+  }
+  .hamburger-lines span {
+    background: var(--neo-ink) !important;
   }
 
   .nav-menu {
@@ -2035,13 +2039,13 @@ section {
     right: 1rem !important;
     left: auto !important;
     width: auto !important;
-    min-width: 190px !important;
-    max-width: 240px !important;
-    background: #ffffff !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    min-width: 200px !important;
+    max-width: 250px !important;
+    background: var(--neo-paper-cream) !important;
+    border: 2.5px solid var(--neo-ink) !important;
     border-radius: 14px !important;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16) !important;
-    padding: 0.5rem !important;
+    box-shadow: 5px 5px 0px var(--neo-ink) !important;
+    padding: 0.6rem !important;
     gap: 0 !important;
   }
 
@@ -2055,15 +2059,21 @@ section {
   }
 
   .nav-menu a {
-    font-size: 0.78rem !important;
-    font-weight: 600 !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 0.84rem !important;
+    font-weight: 700 !important;
     letter-spacing: 0.5px !important;
-    padding: 0.65rem 0.6rem !important;
+    padding: 0.65rem 0.8rem !important;
     width: 100% !important;
     text-align: left !important;
-    color: #16161a !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    color: var(--neo-ink) !important;
+    border-bottom: 1px solid rgba(17, 17, 19, 0.08) !important;
     border-radius: 8px !important;
+    transition: background 0.2s ease, color 0.2s ease !important;
+  }
+  .nav-menu a:hover, .nav-menu a:active {
+    background: #FFE8D6 !important;
+    color: var(--neo-orange) !important;
   }
 
   .nav-menu a:last-of-type {
@@ -3918,6 +3928,19 @@ body {
   pointer-events: none;
 }
 
+.hero-buildings-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('hero-bg-edificios.webp');
+  background-size: cover;
+  background-position: center 50%;
+  opacity: 0.22;
+  z-index: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  filter: grayscale(60%) contrast(115%);
+}
+
 /* Formas orgánicas de papel de color en el Hero */
 .hero-torn-shape-orange {
   position: absolute;
@@ -3977,8 +4000,8 @@ body {
 .hero-logo-sticker-container {
   display: inline-block;
   position: relative;
-  margin: 0 auto 1.8rem;
-  padding: 1.4rem 2.8rem;
+  margin: 0 auto 1.1rem;
+  padding: 1.2rem 2.5rem;
   background: var(--neo-ink);
   border: 3px solid var(--neo-ink);
   border-radius: 18px;
@@ -3992,7 +4015,7 @@ body {
 }
 .hero-logo-sticker-container .hero-logo {
   filter: none !important;
-  max-width: 360px;
+  max-width: 350px;
   margin: 0 !important;
 }
 .hero-logo-sticker-container .sticker-pin {
@@ -4041,7 +4064,10 @@ body {
   color: var(--neo-ink) !important;
   text-transform: uppercase !important;
   letter-spacing: -0.02em !important;
-  margin-bottom: 1.2rem !important;
+  margin: 0 auto 0.9rem !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 960px !important;
   text-shadow: none !important;
 }
 .hero-editorial-title span.hl-orange {
@@ -4060,10 +4086,51 @@ body {
 
 .hero-sub {
   color: var(--neo-ink-sub) !important;
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem) !important;
+  font-size: clamp(1.02rem, 2.1vw, 1.2rem) !important;
   font-weight: 500 !important;
   max-width: 640px !important;
-  line-height: 1.6 !important;
+  line-height: 1.55 !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+/* Hero actions row & pair */
+.hero-action-row {
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  justify-content: center;
+  margin: 1.2rem auto 1.8rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+.hero-action-row-pair {
+  display: flex;
+  gap: 0.85rem;
+  align-items: stretch;
+}
+.hero-action-row-pair .btn-hero-pair {
+  flex: 1 1 0;
+  min-width: 195px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0.75rem 1.4rem !important;
+}
+.btn-hero-main-port {
+  background: var(--neo-blue) !important;
+  color: #fff !important;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.6rem !important;
+  margin: 0 !important;
 }
 
 /* Ticker Marquee: Cinta industrial / editorial impresa */
@@ -4274,295 +4341,215 @@ body {
   transform: translate(-1px, -1px);
 }
 
-/* Viewport y Track Panorámico */
-.panoramic-carousel-container {
+/* ============================================================
+   CARRUSEL 3D DE DESPLAZAMIENTO (COVERFLOW REEL)
+============================================================ */
+.pf-carousel-3d-wrap {
   position: relative;
   width: 100%;
-  max-width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
   overflow: visible;
+  padding: 1.2rem 0 0.5rem;
 }
 
-.panoramic-track-wrapper {
+.pf-carousel-3d-stage {
+  position: relative;
   width: 100%;
-  overflow-x: auto;
-  overflow-y: visible !important;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--neo-orange) var(--neo-paper-dark);
-  padding: 2rem 1rem 2.8rem;
-  cursor: grab;
-}
-.panoramic-track-wrapper:active {
-  cursor: grabbing;
-}
-.panoramic-track-wrapper::-webkit-scrollbar {
-  height: 8px;
-}
-.panoramic-track-wrapper::-webkit-scrollbar-track {
-  background: var(--neo-paper-dark);
-  border-radius: 4px;
-}
-.panoramic-track-wrapper::-webkit-scrollbar-thumb {
-  background: var(--neo-orange);
-  border-radius: 4px;
-  border: 1px solid var(--neo-ink);
-}
-
-.panoramic-track {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 0 !important; /* Continuous seamless edge-to-edge slides */
-  width: max-content;
-  position: relative;
-  padding: 0 1rem;
-}
-
-/* Lámina Panorámica Continua */
-.panoramic-slide {
-  scroll-snap-align: center;
-  position: relative;
-  width: clamp(340px, 85vw, 440px);
-  min-height: 680px;
-  background: var(--neo-paper-cream);
-  border: 2px solid var(--neo-ink);
-  border-right: none; /* Seam connect */
-  padding: 1.8rem 1.4rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: visible !important;
-  box-shadow: 0 12px 30px rgba(17,17,19,0.08);
-  user-select: none;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-.panoramic-slide:last-child {
-  border-right: 2px solid var(--neo-ink);
-}
-
-/* Montaña y Cinta de Papel Rasgado Panorámica Continua */
-.pan-torn-mountain-orange {
-  position: absolute;
-  top: 0; left: 0;
-  width: 58%;
-  height: 145px;
-  background: var(--neo-orange);
-  clip-path: polygon(0 0, 100% 0, 85% 65%, 45% 100%, 0 85%);
-  opacity: 0.95;
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
-  z-index: 0;
-  pointer-events: none;
-}
-.pan-torn-mountain-orange::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(#111 1.8px, transparent 1.8px);
-  background-size: 8px 8px;
-  opacity: 0.16;
-}
-
-.pan-torn-ribbon-blue {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background: var(--neo-blue);
-  clip-path: polygon(0 45%, 35% 25%, 70% 50%, 100% 20%, 100% 100%, 0 100%);
-  opacity: 0.95;
-  filter: drop-shadow(0 -3px 6px rgba(0,0,0,0.15));
-  z-index: 0;
-  pointer-events: none;
-}
-.pan-torn-ribbon-blue::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(#fff 1.8px, transparent 1.8px);
-  background-size: 10px 10px;
-  opacity: 0.15;
-}
-
-/* Continuidad alternada entre láminas contiguas */
-.panoramic-slide:nth-child(even) .pan-torn-mountain-orange {
-  left: auto; right: 0;
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 55% 100%, 15% 65%);
-}
-.panoramic-slide:nth-child(even) .pan-torn-ribbon-blue {
-  clip-path: polygon(0 20%, 30% 50%, 65% 25%, 100% 45%, 100% 100%, 0 100%);
-}
-
-/* Línea de papel rasgado SVG transversal que cruza la lámina */
-.pan-torn-svg-cross {
-  position: absolute;
-  bottom: 15%;
-  left: -20px;
-  right: -20px;
-  height: 45px;
-  background-repeat: repeat-x;
-  background-size: 160px 45px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 45' preserveAspectRatio='none'%3E%3Cpath d='M0,25 Q20,12 40,28 T80,18 T120,30 T160,20 L160,45 L0,45 Z' fill='%230B4FBA' opacity='0.85'/%3E%3Cpath d='M0,22 Q20,10 40,25 T80,15 T120,27 T160,17' fill='none' stroke='%23ffffff' stroke-width='4' filter='drop-shadow(0 2px 3px rgba(0,0,0,0.15))'/%3E%3C/svg%3E");
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Dibujo arquitectónico de fondo (wireframe blueprint) */
-.pan-blueprint-bg {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 170px;
-  height: 170px;
-  opacity: 0.22;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Cabecera de la Lámina: Número grande + Subrayado + Titular */
-.slide-header {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 1.2rem;
-}
-.slide-num-wrap {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 0.2rem;
-}
-.slide-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 3.4rem;
-  font-weight: 900;
-  line-height: 1;
-  color: var(--neo-ink);
-  letter-spacing: -0.04em;
-}
-.slide-line {
-  width: 50px;
-  height: 5px;
-  background: var(--neo-orange);
-  border-radius: 2px;
-  margin-bottom: 0.75rem;
-}
-.slide-headline {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 900;
-  color: var(--neo-ink);
-  line-height: 1.15;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-}
-
-/* Mockup Cut-out fotográfico con borde tipo sticker blanco */
-.pan-cutout-container {
-  position: relative;
-  z-index: 2;
-  margin: 0.6rem auto 1.2rem;
-  width: 100%;
-  max-width: 360px;
-  height: 380px;
+  height: 480px;
+  perspective: 1100px;
+  perspective-origin: 50% 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.pan-cutout-frame {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #FFFFFF !important;
-  border: 4px solid #FFFFFF !important;
-  border-radius: 16px !important;
-  box-shadow: var(--neo-sticker-sh) !important;
-  overflow: hidden !important;
-  transform: rotate(-1.5deg);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-  cursor: pointer;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 8px !important;
-  box-sizing: border-box !important;
-}
-.panoramic-slide:nth-child(even) .pan-cutout-frame {
-  transform: rotate(1.5deg);
-}
-.pan-cutout-frame:hover {
-  transform: rotate(0deg) scale(1.02) !important;
-  box-shadow: 0 16px 36px rgba(17,17,19,0.22), 6px 6px 0px var(--neo-ink) !important;
-}
-.pan-cutout-frame img {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  border-radius: 8px !important;
-  display: block !important;
-  margin: auto !important;
+  margin: 0 auto;
+  user-select: none;
 }
 
-/* Pie de la lámina: Metadata y Botón */
-.slide-footer {
-  position: relative;
-  z-index: 2;
+.pf-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 440px;
+  background: var(--neo-paper-cream);
+  border: 3px solid var(--neo-ink);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0px var(--neo-ink);
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.48s cubic-bezier(0.22, 0.9, 0.3, 1), opacity 0.48s ease, filter 0.48s ease, box-shadow 0.3s ease;
+  transform: translate(-50%, -50%) scale(0.75);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  box-sizing: border-box;
 }
-.slide-meta-row {
+
+.pf-card-prev, .pf-card-next {
+  opacity: 0.55;
+  filter: blur(2px) grayscale(20%);
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.pf-card-prev {
+  transform: translate(calc(-50% - 260px), -50%) scale(0.82) rotate(-3.5deg);
+}
+
+.pf-card-next {
+  transform: translate(calc(-50% + 260px), -50%) scale(0.82) rotate(3.5deg);
+}
+
+.pf-card-current {
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  opacity: 1;
+  filter: none;
+  z-index: 6;
+  pointer-events: auto;
+  box-shadow: 8px 8px 0px var(--neo-ink), 0 20px 40px rgba(17, 17, 19, 0.14);
+}
+
+.pf-card-current:hover {
+  transform: translate(-50%, calc(-50% - 6px)) scale(1.02);
+  box-shadow: 10px 10px 0px var(--neo-orange), 0 24px 44px rgba(17, 17, 19, 0.2);
+}
+
+.pf-card-tape {
+  position: absolute;
+  top: -7px;
+  left: 18px;
+  background: var(--neo-lime);
+  color: var(--neo-ink);
+  border: 1.5px solid var(--neo-ink);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 0.15rem 0.6rem;
+  border-radius: 2px;
+  transform: rotate(-2deg);
+  z-index: 10;
+  box-shadow: 1px 1px 0px var(--neo-ink);
+}
+
+.pf-card-reg-cross {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-family: monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--neo-ink);
+  opacity: 0.35;
+  z-index: 10;
+}
+
+.pf-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  padding: 0.85rem 1rem 0.45rem;
+  background: var(--neo-paper-cream);
+  position: relative;
+  z-index: 5;
 }
-.slide-category-pill {
-  background: var(--neo-ink);
-  color: #fff;
+
+.pf-card-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--neo-ink);
+}
+
+.pf-card-badge {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
-  padding: 0.22rem 0.65rem;
-  border-radius: 4px;
+  background: #FFE8D6;
+  color: var(--neo-orange);
+  border: 1.5px solid var(--neo-ink);
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
 }
-.slide-title-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--neo-ink);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 190px;
-}
-.slide-action-btn {
+
+.pf-card-img-wrap {
+  flex: 1;
+  min-height: 0;
+  background: #FFFFFF !important;
+  margin: 0.2rem 0.8rem;
+  border: 2px solid var(--neo-ink);
+  border-radius: 12px;
+  padding: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.pf-card-img-wrap img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
+  transition: transform 0.3s ease;
+}
+
+.pf-card-current:hover .pf-card-img-wrap img {
+  transform: scale(1.04);
+}
+
+.pf-card-info {
+  padding: 0.7rem 0.9rem 0.8rem;
+  background: var(--neo-paper-cream);
+  border-top: 2px solid var(--neo-ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
-  width: 100%;
+}
+
+.pf-card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: var(--neo-ink);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.pf-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--neo-ink);
+  background: var(--neo-yellow);
+  border: 1.5px solid var(--neo-ink);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  box-shadow: 1.5px 1.5px 0px var(--neo-ink);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.pf-card-current:hover .pf-card-action {
   background: var(--neo-orange);
   color: #fff;
-  border: 2px solid var(--neo-ink);
-  border-radius: 8px;
-  padding: 0.6rem 1rem;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  box-shadow: var(--neo-shadow-sm);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.slide-action-btn:hover {
-  background: var(--neo-orange-dark);
-  transform: translate(-1px, -1px);
-  box-shadow: var(--neo-shadow);
 }
 
 /* Controles de navegación del carrusel */
@@ -4808,7 +4795,40 @@ body {
   -webkit-text-fill-color: #fff !important;
 }
 #curso .sec-desc {
-  color: rgba(255,255,255,0.85) !important;
+  color: #ffffff !important;
+}
+#curso .curso-desc {
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
+  line-height: 1.8 !important;
+}
+#curso .curso-desc strong {
+  color: #FACC15 !important;
+  font-weight: 800 !important;
+}
+#curso .sec-badge {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
+}
+#curso .sec-badge i {
+  color: #FACC15 !important;
+}
+#curso .precio-box {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 2px solid #ffffff !important;
+  border-radius: 16px !important;
+}
+#curso .precio-val {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+#curso .precio-val span {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+#curso .precio-lbl {
+  color: #ffffff !important;
+  font-weight: 600 !important;
 }
 #curso .curso-card {
   background: var(--neo-paper-cream) !important;
@@ -4889,12 +4909,38 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.15) !important;
 }
 
-/* Responsividad móvil del Carrusel Panorámico y Hero */
-@media (max-width: 600px) {
+/* Responsividad móvil del Carrusel 3D, Hero y Secciones */
+@media (max-width: 680px) {
+  #nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0.65rem 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .hamburger {
+    display: flex !important;
+    margin-right: 0.2rem !important;
+  }
+  .nav-inicio-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    font-family: 'Syne', sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 900 !important;
+    color: var(--neo-orange) !important;
+  }
   #inicio {
-    padding: 5.5rem 1.2rem 4rem !important;
+    padding: 4.2rem 1rem 1.6rem !important;
+  }
+  .editorial-sec-index {
+    margin-bottom: 0.4rem !important;
   }
   .ai-tooltip {
+    display: none !important;
+  }
+  .sticker-starburst {
     display: none !important;
   }
   .hero-torn-shape-orange {
@@ -4912,61 +4958,124 @@ footer {
     opacity: 0.8 !important;
   }
   .hero-logo-sticker-container {
-    max-width: 92% !important;
-    padding: 1.1rem 1.3rem !important;
+    max-width: 90% !important;
+    padding: 0.75rem 1.3rem !important;
+    margin: 0 auto 0.7rem !important;
   }
   .hero-logo-sticker-container .hero-logo {
-    max-width: 250px !important;
+    max-width: 210px !important;
   }
   .hero-badge {
-    font-size: 0.68rem !important;
-    padding: 0.35rem 0.9rem !important;
-    max-width: 90% !important;
-    white-space: normal !important;
+    font-size: 0.62rem !important;
+    padding: 0.28rem 0.65rem !important;
+    max-width: 86% !important;
+    margin-bottom: 0.45rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: center !important;
+  }
+  .hero-editorial-title {
+    font-size: clamp(1.35rem, 6vw, 1.78rem) !important;
+    line-height: 1.15 !important;
+    margin: 0 auto 0.55rem !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    padding: 0 0.4rem !important;
+    box-sizing: border-box !important;
+  }
+  .hero-sub {
+    font-size: 0.86rem !important;
+    line-height: 1.45 !important;
+    margin: 0 auto 0.75rem !important;
+    padding: 0 0.5rem !important;
+    max-width: 340px !important;
     text-align: center !important;
   }
   .hero-action-row {
+    display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
     max-width: 320px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    gap: 0.75rem !important;
+    margin: 0.75rem auto 1.1rem !important;
+    gap: 0.55rem !important;
   }
-  .btn-hero-pair, .btn-hero-portfolio {
+  .btn-hero-main-port {
     width: 100% !important;
+    height: 46px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.88rem !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .hero-action-row-pair {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.55rem !important;
+    width: 100% !important;
+  }
+  .hero-action-row-pair .btn-hero-pair {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 46px !important;
+    font-size: 0.86rem !important;
+    padding: 0.7rem 0.5rem !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1.2 !important;
+    display: inline-flex !important;
+    align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
   }
 
-  .panoramic-slide {
-    width: clamp(285px, 86vw, 360px) !important;
-    min-height: 590px !important;
-    padding: 1.4rem 1.1rem 1.2rem !important;
-    overflow: visible !important;
+  /* 3D Carousel Mobile Rules */
+  .pf-carousel-3d-stage {
+    height: 380px !important;
   }
-  .slide-num {
-    font-size: 2.7rem !important;
+  .pf-card {
+    width: 250px !important;
+    height: 340px !important;
+    border-radius: 14px !important;
   }
-  .slide-headline {
-    font-size: 1.05rem !important;
+  .pf-card-prev {
+    transform: translate(calc(-50% - 145px), -50%) scale(0.8) rotate(-3.5deg) !important;
   }
-  .pan-cutout-container {
-    height: 310px !important;
-    max-width: 320px !important;
-    margin: 0.6rem auto 1rem !important;
+  .pf-card-next {
+    transform: translate(calc(-50% + 145px), -50%) scale(0.8) rotate(3.5deg) !important;
   }
-  .slide-action-btn {
-    padding: 0.55rem 0.85rem !important;
+  .pf-card-title {
+    max-width: 125px !important;
     font-size: 0.78rem !important;
+  }
+  .pf-card-action span {
+    display: none !important;
   }
   .panoramic-controls-bar {
     gap: 1rem !important;
+    margin-top: 1.1rem !important;
   }
   .neo-control-btn {
     width: 42px !important;
     height: 42px !important;
     font-size: 0.95rem !important;
+  }
+
+  /* Servicios & Paquetes 100% visibles sin cortes */
+  .grid-4, .pkg-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.35rem !important;
+    width: 100% !important;
+  }
+  .card, .pkg {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
   }
 }
 
@@ -5328,6 +5437,9 @@ footer {
     <span class="sb-sm">100% PRO</span>
   </div>
 
+  <!-- Fondo con foto de edificios en baja opacidad -->
+  <div class="hero-buildings-bg" aria-hidden="true"></div>
+
   <!-- Formas orgánicas de papel de color y tramas halftone -->
   <div class="hero-torn-shape-orange"></div>
   <div class="hero-torn-shape-blue"></div>
@@ -5379,10 +5491,12 @@ footer {
     </p>
 
     <!-- Hero actions row -->
-    <div class="hero-action-row" style="display: flex; gap: 1rem; align-items: center; justify-content: center; margin: 1.5rem auto 2.2rem; flex-wrap: wrap; position: relative; z-index: 10;">
-      <a href="#portafolio" class="btn-hero-portfolio nav-scroll btn-hero-pair" style="margin: 0 !important;"><i class="fas fa-eye"></i> Ver Portafolio Panorámico</a>
-      <a href="#contacto" class="btn-hero-portfolio nav-scroll btn-hero-pair btn-cta-glow" style="margin: 0 !important;"><i class="fas fa-pen-nib"></i> Cotizar mi Logo</a>
-      <button id="btnCotizarWeb" onclick="openWebQuoteModal()" class="btn-hero-portfolio" style="margin: 0 !important; cursor: pointer;"><i class="fas fa-globe"></i> Cotizar Página Web</button>
+    <div class="hero-action-row">
+      <a href="#portafolio" class="btn-hero-portfolio btn-hero-main-port nav-scroll"><i class="fas fa-eye"></i> Ver Portafolio</a>
+      <div class="hero-action-row-pair">
+        <a href="#contacto" class="btn-hero-portfolio btn-hero-pair nav-scroll btn-cta-glow"><i class="fas fa-pen-nib"></i> Cotizar mi Logo</a>
+        <button id="btnCotizarWeb" onclick="openWebQuoteModal()" class="btn-hero-portfolio btn-hero-pair" style="cursor: pointer;"><i class="fas fa-globe"></i> Cotizar Página Web</button>
+      </div>
     </div>
 
     <!-- Ticker Marquee: Cinta impresa continua -->
@@ -5514,16 +5628,14 @@ footer {
       <button class="filter-btn" data-filter="publicidad">PUBLICIDAD & FLYERS</button>
     </div>
 
-    <!-- Contenedor del Carrusel Panorámico -->
-    <div class="panoramic-carousel-container" id="portfolioCarousel">
+    <!-- Contenedor del Carrusel 3D de Desplazamiento -->
+    <div class="pf-carousel-3d-wrap" id="portfolioCarousel">
       
-      <div class="panoramic-track-wrapper" id="panoramicTrackWrapper">
-        <div class="panoramic-track" id="portfolioCarouselTrack">
-          <!-- Las láminas panorámicas se inyectan dinámicamente con JS -->
-        </div>
+      <div class="pf-carousel-3d-stage" id="portfolioCarouselTrack">
+        <!-- Tarjetas 3D dinámicas (prev, current, next) se inyectan con JS -->
       </div>
 
-      <!-- Barra de controles inferior -->
+      <!-- Barra de controles inferior Neo-Pop -->
       <div class="panoramic-controls-bar">
         <button class="neo-control-btn pf-carousel-arrow pf-carousel-prev" onclick="portfolioCarouselPrev()" aria-label="Proyecto anterior">
           <i class="fas fa-arrow-left"></i>
@@ -5532,7 +5644,7 @@ footer {
         <div class="panoramic-counter-badge" id="panoramicCounterBadge">
           <span class="count-current" id="portfolioCurrentCount">01</span>
           <span class="count-divider">/</span>
-          <span class="count-total" id="portfolioTotalCount">16</span>
+          <span class="count-total" id="portfolioTotalCount">77</span>
         </div>
 
         <button class="neo-control-btn pf-carousel-arrow pf-carousel-next" onclick="portfolioCarouselNext()" aria-label="Siguiente proyecto">
@@ -7203,153 +7315,135 @@ function renderPortfolioCarousel() {
   const total = portfolioFilteredItems.length;
   if (total === 0) return;
 
+  if (portfolioCarouselIndex >= total) portfolioCarouselIndex = 0;
+  if (portfolioCarouselIndex < 0) portfolioCarouselIndex = total - 1;
+
   if (totalCountEl) totalCountEl.textContent = String(total).padStart(2, '0');
-  if (curCountEl) curCountEl.textContent = String(Math.min(portfolioCarouselIndex + 1, total)).padStart(2, '0');
+  if (curCountEl) curCountEl.textContent = String(portfolioCarouselIndex + 1).padStart(2, '0');
 
-  portfolioFilteredItems.forEach((item, idx) => {
+  const prevIdx = (portfolioCarouselIndex - 1 + total) % total;
+  const nextIdx = (portfolioCarouselIndex + 1) % total;
+
+  const slots = total === 1
+    ? [{ idx: portfolioCarouselIndex, role: 'current' }]
+    : total === 2
+      ? [{ idx: portfolioCarouselIndex, role: 'current' }, { idx: nextIdx, role: 'next' }]
+      : [
+          { idx: prevIdx, role: 'prev' },
+          { idx: portfolioCarouselIndex, role: 'current' },
+          { idx: nextIdx, role: 'next' }
+        ];
+
+  slots.forEach(({ idx, role }) => {
+    const item = portfolioFilteredItems[idx];
     const formattedNum = String(idx + 1).padStart(2, '0');
-    const headline = editorialHeadlines[idx % editorialHeadlines.length];
-    const waveVariant = (idx % 2 === 0) ? 'wave-variant-a' : 'wave-variant-b';
+    const card = document.createElement('div');
+    card.className = `pf-card pf-card-${role}`;
+    card.setAttribute('data-index', idx);
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', role === 'current' ? '0' : '-1');
+    card.setAttribute('aria-label', `${item.label} (${catLabelFor(item.category)})`);
 
-    const slide = document.createElement('div');
-    slide.className = `panoramic-slide ${waveVariant}`;
-    slide.setAttribute('data-slide-index', idx);
-    slide.innerHTML = `
-      <div class="pan-torn-mountain-orange"></div>
-      <div class="pan-torn-ribbon-blue"></div>
-      <div class="pan-torn-svg-cross"></div>
-      <div class="halftone-screen-orange" style="top:5px;right:5px;width:75px;height:75px;"></div>
-      <svg class="pan-blueprint-bg" viewBox="0 0 160 160" fill="none" stroke="#111113" stroke-width="1" stroke-dasharray="2 2">
-        <rect x="10" y="10" width="140" height="140" />
-        <line x1="10" y1="10" x2="150" y2="150" />
-        <line x1="150" y1="10" x2="10" y2="150" />
-        <circle cx="80" cy="80" r="35" />
-        <circle cx="80" cy="80" r="2.5" fill="#111113" />
-        <text x="18" y="26" font-family="monospace" font-size="8" fill="#111113">REF_${formattedNum} // 3.00m</text>
-      </svg>
-      <div class="reg-cross" style="top:10px;right:12px;font-size:1.1rem;opacity:0.4;">+</div>
+    card.onclick = (e) => {
+      e.stopPropagation();
+      if (role === 'current') {
+        openGalleryAt(item.galleryKey, item.slideIndex);
+      } else {
+        goToPortfolioSlide(idx);
+      }
+    };
 
-      <div class="slide-header">
-        <div class="slide-num-wrap">
-          <span class="slide-num">${formattedNum}</span>
-        </div>
-        <div class="slide-line"></div>
-        <h3 class="slide-headline">${headline}</h3>
+    card.innerHTML = `
+      <div class="pf-card-tape">★ ORION ★</div>
+      <div class="pf-card-reg-cross">+</div>
+      <div class="pf-card-header">
+        <span class="pf-card-num">${formattedNum}</span>
+        <span class="pf-card-badge">${catLabelFor(item.category)}</span>
       </div>
-
-      <div class="pan-cutout-container" onclick="openGalleryAt('${item.galleryKey}', ${item.slideIndex})">
-        <div class="pan-cutout-frame">
-          <img src="${item.src}" alt="${item.label}" loading="eager">
-        </div>
+      <div class="pf-card-img-wrap">
+        <img src="${item.src}" alt="${item.label}" loading="eager" />
       </div>
-
-      <div class="slide-footer">
-        <div class="slide-meta-row">
-          <span class="slide-category-pill">${catLabelFor(item.category)}</span>
-          <span class="slide-title-label" title="${item.label}">${item.label}</span>
+      <div class="pf-card-info">
+        <h4 class="pf-card-title" title="${item.label}">${item.label}</h4>
+        <div class="pf-card-action">
+          <span>Ver Galería</span>
+          <i class="fas fa-arrow-up-right-from-square"></i>
         </div>
-        <button type="button" class="slide-action-btn" onclick="openGalleryAt('${item.galleryKey}', ${item.slideIndex})">
-          <i class="fas fa-search-plus"></i> Ver en Galería ✦
-        </button>
       </div>
     `;
-    track.appendChild(slide);
+    track.appendChild(card);
   });
 
   if (dotsWrap && total > 1) {
-    const dotsCount = Math.min(total, 12);
-    for (let i = 0; i < dotsCount; i++) {
+    const maxDots = Math.min(total, 12);
+    for (let i = 0; i < maxDots; i++) {
       const dot = document.createElement('button');
-      dot.className = 'pf-carousel-dot' + (i === portfolioCarouselIndex ? ' active' : '');
-      dot.setAttribute('aria-label', `Ir a lámina ${i + 1}`);
+      dot.className = 'pf-carousel-dot' + (i === (portfolioCarouselIndex % maxDots) ? ' active' : '');
+      dot.setAttribute('aria-label', `Ir a proyecto ${i + 1}`);
       dot.onclick = () => goToPortfolioSlide(i);
       dotsWrap.appendChild(dot);
     }
   }
 
-  setupPanoramicScrollSync();
+  setupPortfolioSwipe();
 }
 
-function setupPanoramicScrollSync() {
-  const wrapper = document.getElementById('panoramicTrackWrapper');
-  if (!wrapper || wrapper._hasScrollSync) return;
-  wrapper._hasScrollSync = true;
+function setupPortfolioSwipe() {
+  const track = document.getElementById('portfolioCarouselTrack');
+  if (!track || track._hasSwipe) return;
+  track._hasSwipe = true;
 
-  wrapper.addEventListener('scroll', () => {
-    const slides = wrapper.querySelectorAll('.panoramic-slide');
-    if (!slides.length) return;
-    const wrapperLeft = wrapper.getBoundingClientRect().left;
-    let closestIdx = 0;
-    let minDiff = Infinity;
+  let startX = 0;
+  let startY = 0;
+  track.addEventListener('touchstart', e => {
+    if (e.touches && e.touches[0]) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    }
+  }, { passive: true });
 
-    slides.forEach((slide, idx) => {
-      const diff = Math.abs(slide.getBoundingClientRect().left - wrapperLeft);
-      if (diff < minDiff) {
-        minDiff = diff;
-        closestIdx = idx;
+  track.addEventListener('touchend', e => {
+    if (e.changedTouches && e.changedTouches[0]) {
+      const diffX = e.changedTouches[0].clientX - startX;
+      const diffY = e.changedTouches[0].clientY - startY;
+      if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX < 0) {
+          portfolioCarouselNext();
+        } else {
+          portfolioCarouselPrev();
+        }
       }
-    });
-
-    if (portfolioCarouselIndex !== closestIdx) {
-      portfolioCarouselIndex = closestIdx;
-      const curCountEl = document.getElementById('portfolioCurrentCount');
-      if (curCountEl) curCountEl.textContent = String(closestIdx + 1).padStart(2, '0');
-
-      const dots = document.querySelectorAll('.pf-carousel-dot');
-      dots.forEach((dot, dIdx) => {
-        dot.classList.toggle('active', dIdx === (closestIdx % dots.length));
-      });
     }
   }, { passive: true });
 }
 
 function advancePortfolioCarousel() {
-  const wrapper = document.getElementById('panoramicTrackWrapper');
-  const slides = wrapper ? wrapper.querySelectorAll('.panoramic-slide') : [];
-  if (!wrapper || !slides.length) return;
-
-  portfolioCarouselIndex = (portfolioCarouselIndex + 1) % slides.length;
-  goToPortfolioSlide(portfolioCarouselIndex);
+  const total = portfolioFilteredItems.length;
+  if (!total) return;
+  portfolioCarouselIndex = (portfolioCarouselIndex + 1) % total;
+  renderPortfolioCarousel();
 }
 
 function portfolioCarouselNext() {
-  const wrapper = document.getElementById('panoramicTrackWrapper');
-  const slides = wrapper ? wrapper.querySelectorAll('.panoramic-slide') : [];
-  if (!wrapper || !slides.length) return;
-
-  portfolioCarouselIndex = (portfolioCarouselIndex + 1) % slides.length;
-  goToPortfolioSlide(portfolioCarouselIndex);
+  const total = portfolioFilteredItems.length;
+  if (!total) return;
+  portfolioCarouselIndex = (portfolioCarouselIndex + 1) % total;
+  renderPortfolioCarousel();
   restartPortfolioAutoplay();
 }
 
 function portfolioCarouselPrev() {
-  const wrapper = document.getElementById('panoramicTrackWrapper');
-  const slides = wrapper ? wrapper.querySelectorAll('.panoramic-slide') : [];
-  if (!wrapper || !slides.length) return;
-
-  portfolioCarouselIndex = (portfolioCarouselIndex - 1 + slides.length) % slides.length;
-  goToPortfolioSlide(portfolioCarouselIndex);
+  const total = portfolioFilteredItems.length;
+  if (!total) return;
+  portfolioCarouselIndex = (portfolioCarouselIndex - 1 + total) % total;
+  renderPortfolioCarousel();
   restartPortfolioAutoplay();
 }
 
 function goToPortfolioSlide(i) {
   portfolioCarouselIndex = i;
-  const wrapper = document.getElementById('panoramicTrackWrapper');
-  if (!wrapper) return;
-  const slides = wrapper.querySelectorAll('.panoramic-slide');
-  if (slides[i]) {
-    // Desplazamiento únicamente horizontal del track interno, sin mover la ventana de la página
-    const targetScroll = slides[i].offsetLeft - (wrapper.clientWidth - slides[i].clientWidth) / 2;
-    wrapper.scrollTo({ left: targetScroll, behavior: 'smooth' });
-  }
-
-  const curCountEl = document.getElementById('portfolioCurrentCount');
-  if (curCountEl) curCountEl.textContent = String(i + 1).padStart(2, '0');
-
-  const dots = document.querySelectorAll('.pf-carousel-dot');
-  dots.forEach((dot, dIdx) => {
-    dot.classList.toggle('active', dIdx === (i % dots.length));
-  });
+  renderPortfolioCarousel();
+  restartPortfolioAutoplay();
 }
 
 function restartPortfolioAutoplay() {
