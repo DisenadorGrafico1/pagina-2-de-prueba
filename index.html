@@ -4720,8 +4720,9 @@ body {
   border: 2px solid var(--neo-ink) !important;
   border-radius: 20px !important;
   box-shadow: var(--neo-shadow) !important;
-  padding: 3rem 2.4rem !important;
+  padding: 3rem 2.4rem;
   position: relative !important;
+  box-sizing: border-box !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 .pkg.featured {
@@ -4751,6 +4752,20 @@ body {
   letter-spacing: 1px !important;
   padding: 0.3rem 0.8rem !important;
   transform: rotate(3deg) !important;
+}
+.pkg-washi-tape {
+  position: absolute !important;
+  top: -12px !important;
+  left: 25px !important;
+  transform: rotate(-4deg) !important;
+  z-index: 10;
+}
+.pkg-featured-starburst {
+  position: absolute !important;
+  top: -28px !important;
+  right: -18px !important;
+  transform: rotate(14deg) !important;
+  z-index: 20;
 }
 .pkg-name {
   font-family: 'Syne', sans-serif !important;
@@ -5065,17 +5080,86 @@ footer {
     font-size: 0.95rem !important;
   }
 
-  /* Servicios & Paquetes 100% visibles sin cortes */
+  /* Servicios & Paquetes 100% contenidos dentro de pantalla sin cortes */
+  #paquetes, #servicios {
+    padding: 3.2rem 1rem !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  #paquetes .inner, #servicios .inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
   .grid-4, .pkg-grid {
     grid-template-columns: 1fr !important;
-    gap: 1.35rem !important;
+    gap: 1.4rem !important;
     width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
   }
   .card, .pkg {
     width: 100% !important;
     max-width: 100% !important;
+    padding: 1.6rem 1.15rem !important;
+    border-radius: 16px !important;
     box-sizing: border-box !important;
-    overflow: visible !important;
+    box-shadow: 3px 3px 0px var(--neo-ink) !important;
+    overflow: hidden !important;
+    margin: 0 auto !important;
+  }
+  .pkg.featured {
+    box-shadow: 4px 4px 0px var(--neo-ink) !important;
+    border-width: 2.5px !important;
+  }
+  .pkg-crown {
+    top: 10px !important;
+    right: 12px !important;
+    font-size: 0.65rem !important;
+    padding: 0.22rem 0.55rem !important;
+  }
+  .pkg .washi-tape-strip {
+    top: 10px !important;
+    left: 12px !important;
+    font-size: 0.65rem !important;
+    padding: 0.2rem 0.55rem !important;
+  }
+  .pkg-featured-starburst {
+    display: none !important;
+  }
+  .pkg-name {
+    font-size: 1.16rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.35rem !important;
+    word-break: break-word !important;
+  }
+  .pkg-tag {
+    font-size: 0.78rem !important;
+    margin-bottom: 1.1rem !important;
+  }
+  .pkg-price {
+    font-size: 2.15rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+  .pkg-list {
+    margin-bottom: 1.35rem !important;
+  }
+  .pkg-list li {
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+    padding: 0.32rem 0 !important;
+    gap: 0.45rem !important;
+  }
+  .pkg-cta {
+    padding: 0.85rem 1rem !important;
+    font-size: 0.9rem !important;
+    border-radius: 10px !important;
   }
 }
 
@@ -5850,6 +5934,138 @@ footer {
 
     </div>
 
+    <!-- PÁGINAS WEB & TIENDAS ONLINE -->
+    <div id="servicios-web" class="cat-label reveal" style="margin-top:3.5rem"><i class="fas fa-laptop-code" style="color:var(--glow)"></i> Páginas Web & Tiendas Online</div>
+    <div class="grid-4">
+
+      <!-- Web 1: Básica -->
+      <div class="card reveal reveal-d1">
+        <div class="card-icon">💻</div>
+        <h3 class="card-title">Tu Página Web Básica</h3>
+        <p class="card-desc">Moderna, rápida y optimizada para arrancar tu presencia digital con diseño 100% profesional.</p>
+        <ul class="card-feats">
+          <li><i class="fas fa-check-circle"></i> Diseño web responsive (adaptado a celular, tablet y PC)</li>
+          <li><i class="fas fa-check-circle"></i> Hosting incluido</li>
+          <li><i class="fas fa-check-circle"></i> Certificado SSL (HTTPS)</li>
+          <li><i class="fas fa-check-circle"></i> Formulario de contacto con correo</li>
+          <li><i class="fas fa-check-circle"></i> Integración con redes sociales</li>
+          <li><i class="fas fa-check-circle"></i> Diseño 100% personalizado</li>
+        </ul>
+        <div class="price">$99 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
+        <button onclick="openContratarModal('Tu Página Web Básica','$99 USD')" class="cta-btn cta-purple" style="border:none;cursor:pointer;">
+          <i class="fas fa-shopping-cart"></i> Contratar
+        </button>
+      </div>
+
+      <!-- Web 2: Intermedia -->
+      <div class="card gold-card reveal reveal-d2">
+        <div class="card-top-badge">⭐ Más Vendida</div>
+        <div class="card-icon">🚀</div>
+        <h3 class="card-title">Tu Página Web Intermedia</h3>
+        <p class="card-desc">Moderna, rápida, con posicionamiento SEO básico y optimizada para asistentes de Inteligencia Artificial.</p>
+        <div style="display:inline-flex;align-items:center;gap:.4rem;background:#10b981;color:#fff;font-size:.74rem;font-weight:800;padding:.22rem .65rem;border-radius:20px;letter-spacing:.3px;margin-bottom:.8rem;">
+          🎁 +LOGO BÁSICO GRATIS
+        </div>
+        <ul class="card-feats">
+          <li><i class="fas fa-gift" style="color:#10b981;"></i> <strong>Logo básico gratis incluido</strong></li>
+          <li><i class="fas fa-check-circle"></i> Diseño web responsive (celular, tablet y PC)</li>
+          <li><i class="fas fa-check-circle"></i> Hosting incluido</li>
+          <li><i class="fas fa-check-circle"></i> Certificado SSL (HTTPS)</li>
+          <li><i class="fas fa-check-circle"></i> SEO básico (títulos, meta descripciones, velocidad, URLs amigables)</li>
+          <li><i class="fas fa-check-circle"></i> GEO (Generative Engine Optimization para ChatGPT, Gemini y otros)</li>
+          <li><i class="fas fa-check-circle"></i> Optimización de velocidad</li>
+          <li><i class="fas fa-check-circle"></i> Formulario de contacto con correo</li>
+          <li><i class="fas fa-check-circle"></i> Integración con redes sociales</li>
+          <li><i class="fas fa-check-circle"></i> Copias de seguridad (backups)</li>
+          <li><i class="fas fa-check-circle"></i> Protección básica de seguridad</li>
+        </ul>
+        <div class="price">$199 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
+        <button onclick="openContratarModal('Tu Página Web Intermedia','$199 USD')" class="cta-btn cta-gold" style="border:none;cursor:pointer;">
+          <i class="fas fa-crown"></i> Contratar
+        </button>
+      </div>
+
+      <!-- Web 3: Premium -->
+      <div class="card gold-card reveal reveal-d3">
+        <div class="card-top-badge">👑 Top Web</div>
+        <div class="card-icon">✨</div>
+        <h3 class="card-title">Tu Página Web Premium</h3>
+        <p class="card-desc">Presencia corporativa de alto impacto con dominio propio, analítica, SEO, Google Business y soporte integral.</p>
+        <div style="display:inline-flex;align-items:center;gap:.4rem;background:#10b981;color:#fff;font-size:.74rem;font-weight:800;padding:.22rem .65rem;border-radius:20px;letter-spacing:.3px;margin-bottom:.8rem;">
+          🎁 +LOGO BÁSICO GRATIS
+        </div>
+        <ul class="card-feats">
+          <li><i class="fas fa-gift" style="color:#10b981;"></i> <strong>Logo básico gratis incluido</strong></li>
+          <li><i class="fas fa-check-circle"></i> Diseño web responsive (celular, tablet y PC)</li>
+          <li><i class="fas fa-check-circle"></i> Dominio propio (.com por 1 año)</li>
+          <li><i class="fas fa-check-circle"></i> Hosting de alta velocidad</li>
+          <li><i class="fas fa-check-circle"></i> Certificado SSL (HTTPS)</li>
+          <li><i class="fas fa-check-circle"></i> SEO básico (títulos, meta descripciones, velocidad, URLs amigables)</li>
+          <li><i class="fas fa-check-circle"></i> Indexación en Google (alta para aparecer en el buscador)</li>
+          <li><i class="fas fa-check-circle"></i> Perfil de Negocio de Google si es un negocio local</li>
+          <li><i class="fas fa-check-circle"></i> GEO (Generative Engine Optimization para ChatGPT, Gemini y más)</li>
+          <li><i class="fas fa-check-circle"></i> Google Search Console & Google Analytics 4</li>
+          <li><i class="fas fa-check-circle"></i> Optimización avanzada de velocidad</li>
+          <li><i class="fas fa-check-circle"></i> Formulario de contacto con correo</li>
+          <li><i class="fas fa-check-circle"></i> Integración directa con WhatsApp</li>
+          <li><i class="fas fa-check-circle"></i> Redes sociales integradas</li>
+          <li><i class="fas fa-check-circle"></i> Copias de seguridad (backups automáticos)</li>
+          <li><i class="fas fa-check-circle"></i> Protección básica de seguridad</li>
+          <li><i class="fas fa-check-circle"></i> Capacitación para administrar la web o manual de uso</li>
+          <li><i class="fas fa-check-circle"></i> Soporte técnico especializado</li>
+          <li><i class="fas fa-check-circle"></i> Diseño 100% personalizado</li>
+        </ul>
+        <div class="price">$299 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
+        <button onclick="openContratarModal('Tu Página Web Premium','$299 USD')" class="cta-btn cta-gold" style="border:none;cursor:pointer;">
+          <i class="fas fa-crown"></i> Contratar
+        </button>
+      </div>
+
+      <!-- Web 4: Tienda Online -->
+      <div class="card gold-card reveal reveal-d4" style="border-color:var(--neo-blue);">
+        <div class="card-top-badge" style="background:var(--neo-blue);color:#fff;">🛍️ E-Commerce</div>
+        <div class="card-icon">🛒</div>
+        <h3 class="card-title">Tu Tienda Online</h3>
+        <p class="card-desc">Plataforma e-commerce para vender tus productos online con carrito, pagos seguros y catálogo administrable.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.65rem;">
+          <span style="background:rgba(11,79,186,.1);color:var(--neo-blue);font-size:.68rem;font-weight:800;padding:.15rem .45rem;border-radius:12px;border:1px solid rgba(11,79,186,.25);">✓ Compras dentro de la web</span>
+          <span style="background:rgba(11,79,186,.1);color:var(--neo-blue);font-size:.68rem;font-weight:800;padding:.15rem .45rem;border-radius:12px;border:1px solid rgba(11,79,186,.25);">✓ Login seguro</span>
+          <span style="background:rgba(11,79,186,.1);color:var(--neo-blue);font-size:.68rem;font-weight:800;padding:.15rem .45rem;border-radius:12px;border:1px solid rgba(11,79,186,.25);">✓ Administrador de productos</span>
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:.4rem;background:#10b981;color:#fff;font-size:.74rem;font-weight:800;padding:.22rem .65rem;border-radius:20px;letter-spacing:.3px;margin-bottom:.8rem;">
+          🎁 +LOGO PREMIUM GRATIS
+        </div>
+        <ul class="card-feats">
+          <li><i class="fas fa-crown" style="color:#f59e0b;"></i> <strong>Logo PREMIUM gratis incluido</strong></li>
+          <li><i class="fas fa-shopping-cart"></i> Compras dentro de la web con pasarelas de pago</li>
+          <li><i class="fas fa-user-lock"></i> Login seguro para clientes</li>
+          <li><i class="fas fa-boxes"></i> Administrador de productos, catálogo y pedidos</li>
+          <li><i class="fas fa-check-circle"></i> Diseño web responsive (celular, tablet y PC)</li>
+          <li><i class="fas fa-check-circle"></i> Dominio propio (.com por 1 año)</li>
+          <li><i class="fas fa-check-circle"></i> Hosting e-commerce de alto rendimiento</li>
+          <li><i class="fas fa-check-circle"></i> Certificado SSL (HTTPS)</li>
+          <li><i class="fas fa-check-circle"></i> SEO básico (títulos, descripciones, velocidad, URLs)</li>
+          <li><i class="fas fa-check-circle"></i> Indexación en Google (alta en el buscador)</li>
+          <li><i class="fas fa-check-circle"></i> Perfil de Negocio de Google si es un negocio local</li>
+          <li><i class="fas fa-check-circle"></i> GEO (Generative Engine Optimization para ChatGPT, Gemini)</li>
+          <li><i class="fas fa-check-circle"></i> Google Search Console & Google Analytics 4</li>
+          <li><i class="fas fa-check-circle"></i> Optimización de velocidad</li>
+          <li><i class="fas fa-check-circle"></i> Formulario de contacto con correo</li>
+          <li><i class="fas fa-check-circle"></i> Integración con WhatsApp y Redes sociales</li>
+          <li><i class="fas fa-check-circle"></i> Copias de seguridad (backups)</li>
+          <li><i class="fas fa-check-circle"></i> Protección básica de seguridad</li>
+          <li><i class="fas fa-check-circle"></i> Capacitación para administrar la web o manual de uso</li>
+          <li><i class="fas fa-check-circle"></i> Soporte técnico especializado</li>
+          <li><i class="fas fa-check-circle"></i> Diseño 100% personalizado</li>
+        </ul>
+        <div class="price">$499 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
+        <button onclick="openContratarModal('Tu Tienda Online','$499 USD')" class="cta-btn cta-gold" style="border:none;cursor:pointer;">
+          <i class="fas fa-shopping-bag"></i> Contratar Tienda
+        </button>
+      </div>
+
+    </div>
+
     <!-- PUBLICIDAD & DIGITAL -->
     <div class="cat-label reveal" style="margin-top:3.5rem"><i class="fas fa-bullhorn" style="color:var(--glow)"></i> Publicidad & Digital</div>
     <div class="grid-4">
@@ -5901,24 +6117,7 @@ footer {
         </button>
       </div>
 
-      <div class="card gold-card reveal reveal-d4">
-        <div class="card-top-badge">🌐 Web</div>
-        <div class="card-icon">💻</div>
-        <h3 class="card-title">Página Web Profesional</h3>
-        <p class="card-desc">Tu presencia digital completa. Diseño moderno, responsivo y optimizado para buscadores.</p>
-        <ul class="card-feats">
-          <li><i class="fas fa-check-circle"></i> Diseño 100% personalizada</li>
-          <li><i class="fas fa-check-circle"></i> SEO básico incluido</li>
-          <li><i class="fas fa-check-circle"></i> Formulario de contacto</li>
-          <li><i class="fas fa-check-circle"></i> Integración con redes sociales</li>
-        </ul>
-        <div class="price">$150 <span style="font-size:1rem;color:var(--txt3)">USD</span></div>
-        <button onclick="openContratarModal('Página Web Profesional','$150 USD')" class="cta-btn cta-gold" style="border:none;cursor:pointer;">
-          <i class="fas fa-globe"></i> Contratar
-        </button>
-      </div>
-
-      <div class="card reveal reveal-d1">
+      <div class="card reveal reveal-d4">
         <div class="card-icon">📱</div>
         <h3 class="card-title">Manejo de Redes Sociales</h3>
         <p class="card-desc">Gestión mensual profesional de tus redes sociales para atraer y captar más clientes.</p>
@@ -5992,90 +6191,92 @@ footer {
       <polygon points="5,10 48,22 42,38 0,26" fill="#FACC15" opacity="0.75" />
     </svg>
   </div>
-  <div class="sec-head reveal">
-    <div class="editorial-sec-index">
-      <span class="ed-sec-num">04</span>
-      <span class="ed-sec-bar"></span>
-    </div>
-    <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-box-open"></i> Paquetes</div>
-    <h2 class="sec-title title-paquetes">Paquetes Completos</h2>
-    <p class="sec-desc">La solución integral para llevar tu negocio al siguiente nivel — todo en un solo paquete.</p>
-  </div>
-
-  <div class="pkg-grid">
-
-    <div class="pkg reveal" style="border-color:#ef4444;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444,#f97316);"></div>
-      <div style="display:inline-flex;align-items:center;gap:.4rem;background:#ef4444;color:#fff;font-size:.72rem;font-weight:700;padding:.2rem .7rem;border-radius:20px;letter-spacing:.5px;margin-bottom:.8rem;">🔥 OFERTA ESPECIAL</div>
-      <div class="pkg-name">Paquete Básico Emprendedor</div>
-      <div class="pkg-tag">Logo · Publicidad · Asesoría IA</div>
-      <div id="pbe-price-block" style="margin-bottom:1.5rem;">
-        <div style="display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:.3rem;">
-          <span style="font-size:1.15rem;color:var(--txt3);text-decoration:line-through;font-weight:600;">$199 USD</span>
-        </div>
-        <div class="pkg-price c-purple" style="margin-bottom:.3rem;color:#ef4444 !important;"><sup style="color:#ef4444;">$</sup>99 <span style="font-size:1.2rem;font-weight:400;color:#ef4444 !important;">USD</span></div>
-        <div style="display:flex;align-items:center;gap:.5rem;">
-          <i class="fas fa-clock" style="color:#ef4444;font-size:.9rem;"></i>
-          <span style="font-size:.85rem;color:#ef4444;font-weight:700;">Oferta termina en: <span id="pbe-countdown">10:00</span></span>
-        </div>
+  <div class="inner">
+    <div class="sec-head reveal">
+      <div class="editorial-sec-index">
+        <span class="ed-sec-num">04</span>
+        <span class="ed-sec-bar"></span>
       </div>
-      <ul class="pkg-list">
-        <li><i class="fas fa-check"></i> Logo para Negocio Pro</li>
-        <li><i class="fas fa-check"></i> Flyer de producto</li>
-        <li><i class="fas fa-check"></i> Tarjeta de presentación</li>
-        <li><i class="fas fa-check"></i> Asesoría de redes sociales usando inteligencia artificial como herramienta</li>
-      </ul>
-      <button onclick="openContratarModal('Paquete Básico Emprendedor','$99 USD')" class="pkg-cta cta-purple" style="border:none;cursor:pointer;">
-        <i class="fas fa-rocket"></i> Contratar Paquete
-      </button>
-      <button onclick="openOfferModalPBE()" style="width:100%;margin-top:.8rem;padding:.75rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(239,68,68,.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(239,68,68,.55)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(239,68,68,.4)'">
-        🔥 ¡Comprar Ahora — $99!
-      </button>
+      <div class="sec-badge" style="border-color:#0b1f4d;"><i class="fas fa-box-open"></i> Paquetes</div>
+      <h2 class="sec-title title-paquetes">Paquetes Completos</h2>
+      <p class="sec-desc">La solución integral para llevar tu negocio al siguiente nivel — todo en un solo paquete.</p>
     </div>
 
-    <div class="pkg reveal">
-      <div class="pkg-name">Paquete Completo</div>
-      <div class="pkg-tag">Identidad · Publicidad · Movimiento</div>
-      <div class="pkg-price c-purple"><sup>$</sup>299 <span style="font-size:1.2rem;font-weight:400;color:var(--txt3)">USD</span></div>
-      <ul class="pkg-list">
-        <li><i class="fas fa-check"></i> Logo Premium para Negocio (JPG, PNG, SVG, PDF)</li>
-        <li><i class="fas fa-check"></i> Publicidad completa (flyer, banner, post, carrusel)</li>
-        <li><i class="fas fa-check"></i> Tarjeta de Presentación</li>
-        <li><i class="fas fa-check"></i> Animación de Logo</li>
-        <li><i class="fas fa-check"></i> Entrega en 5-7 días hábiles</li>
-      </ul>
-      <button onclick="openContratarModal('Paquete Completo','$299 USD')" class="pkg-cta cta-purple" style="border:none;cursor:pointer;">
-        <i class="fas fa-rocket"></i> Contratar Paquete
-      </button>
-    </div>
+    <div class="pkg-grid">
 
-    <div class="pkg featured reveal" style="position:relative; overflow:visible;">
-      <div class="washi-tape-strip washi-stripes" style="top:-12px; left:25px; transform: rotate(-4deg);">★ RECOMENDADO ★</div>
-      <div class="neo-sticker sticker-starburst starburst-yellow" style="top:-28px; right:-18px; transform: rotate(14deg);">
-        <span class="sb-sm">✦ FULL ✦</span>
-        <span class="sb-lg">ALL IN</span>
-        <span class="sb-sm">PRO</span>
+      <div class="pkg reveal" style="border-color:#ef4444;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444,#f97316);"></div>
+        <div style="display:inline-flex;align-items:center;gap:.4rem;background:#ef4444;color:#fff;font-size:.72rem;font-weight:700;padding:.2rem .7rem;border-radius:20px;letter-spacing:.5px;margin-bottom:.8rem;">🔥 OFERTA ESPECIAL</div>
+        <div class="pkg-name">Paquete Básico Emprendedor</div>
+        <div class="pkg-tag">Logo · Publicidad · Asesoría IA</div>
+        <div id="pbe-price-block" style="margin-bottom:1.5rem;">
+          <div style="display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-bottom:.3rem;">
+            <span style="font-size:1.15rem;color:var(--txt3);text-decoration:line-through;font-weight:600;">$199 USD</span>
+          </div>
+          <div class="pkg-price c-purple" style="margin-bottom:.3rem;color:#ef4444 !important;"><sup style="color:#ef4444;">$</sup>99 <span style="font-size:1.2rem;font-weight:400;color:#ef4444 !important;">USD</span></div>
+          <div style="display:flex;align-items:center;gap:.5rem;">
+            <i class="fas fa-clock" style="color:#ef4444;font-size:.9rem;"></i>
+            <span style="font-size:.85rem;color:#ef4444;font-weight:700;">Oferta termina en: <span id="pbe-countdown">10:00</span></span>
+          </div>
+        </div>
+        <ul class="pkg-list">
+          <li><i class="fas fa-check"></i> Logo para Negocio Pro</li>
+          <li><i class="fas fa-check"></i> Flyer de producto</li>
+          <li><i class="fas fa-check"></i> Tarjeta de presentación</li>
+          <li><i class="fas fa-check"></i> Asesoría de redes sociales usando inteligencia artificial como herramienta</li>
+        </ul>
+        <button onclick="openContratarModal('Paquete Básico Emprendedor','$99 USD')" class="pkg-cta cta-purple" style="border:none;cursor:pointer;">
+          <i class="fas fa-rocket"></i> Contratar Paquete
+        </button>
+        <button onclick="openOfferModalPBE()" style="width:100%;margin-top:.8rem;padding:.75rem;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;border:none;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;letter-spacing:.5px;box-shadow:0 6px 24px rgba(239,68,68,.4);transition:transform .2s,box-shadow .2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(239,68,68,.55)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(239,68,68,.4)'">
+          🔥 ¡Comprar Ahora — $99!
+        </button>
       </div>
-      <div class="pkg-crown"><i class="fas fa-crown" style="font-size:0.85em; margin-right:3px;"></i> TOP</div>
-      <div class="pkg-name">Paquete Completo TOP</div>
-      <div class="pkg-tag">Todo lo que necesitas para despegar</div>
-      <div class="pkg-price c-gold"><sup>$</sup>1,299 <span style="font-size:1.2rem;font-weight:400;color:var(--txt3)">USD</span></div>
-      <ul class="pkg-list">
-        <li><i class="fas fa-check"></i> Logo Premium para Negocio (todos los formatos)</li>
-        <li><i class="fas fa-check"></i> Publicidad completa</li>
-        <li><i class="fas fa-check"></i> Animación de Logo</li>
-        <li><i class="fas fa-check"></i> Creación de Redes Sociales (Instagram, Facebook, TikTok, WhatsApp Business)</li>
-        <li><i class="fas fa-check"></i> Página Web Profesional</li>
-        <li><i class="fas fa-check"></i> 1 mes de manejo completo de redes</li>
-        <li><i class="fas fa-check"></i> Campaña publicitaria pagada para arranque del negocio</li>
-        <li><i class="fas fa-check"></i> Edición de video publicitario de productos o servicios</li>
-        <li><i class="fas fa-check"></i> Soporte prioritario directo</li>
-      </ul>
-      <button type="button" onclick="openContratarModal('Paquete Completo TOP','$1,299 USD')" class="pkg-cta cta-gold" style="border:none;cursor:pointer;width:100%;">
-        <i class="fas fa-crown"></i> Quiero el Paquete TOP
-      </button>
-    </div>
 
+      <div class="pkg reveal">
+        <div class="pkg-name">Paquete Completo</div>
+        <div class="pkg-tag">Identidad · Publicidad · Movimiento</div>
+        <div class="pkg-price c-purple"><sup>$</sup>299 <span style="font-size:1.2rem;font-weight:400;color:var(--txt3)">USD</span></div>
+        <ul class="pkg-list">
+          <li><i class="fas fa-check"></i> Logo Premium para Negocio (JPG, PNG, SVG, PDF)</li>
+          <li><i class="fas fa-check"></i> Publicidad completa (flyer, banner, post, carrusel)</li>
+          <li><i class="fas fa-check"></i> Tarjeta de Presentación</li>
+          <li><i class="fas fa-check"></i> Animación de Logo</li>
+          <li><i class="fas fa-check"></i> Entrega en 5-7 días hábiles</li>
+        </ul>
+        <button onclick="openContratarModal('Paquete Completo','$299 USD')" class="pkg-cta cta-purple" style="border:none;cursor:pointer;">
+          <i class="fas fa-rocket"></i> Contratar Paquete
+        </button>
+      </div>
+
+      <div class="pkg featured reveal" style="position:relative;">
+        <div class="washi-tape-strip washi-stripes pkg-washi-tape">★ RECOMENDADO ★</div>
+        <div class="neo-sticker sticker-starburst starburst-yellow pkg-featured-starburst">
+          <span class="sb-sm">✦ FULL ✦</span>
+          <span class="sb-lg">ALL IN</span>
+          <span class="sb-sm">PRO</span>
+        </div>
+        <div class="pkg-crown"><i class="fas fa-crown" style="font-size:0.85em; margin-right:3px;"></i> TOP</div>
+        <div class="pkg-name">Paquete Completo TOP</div>
+        <div class="pkg-tag">Todo lo que necesitas para despegar</div>
+        <div class="pkg-price c-gold"><sup>$</sup>1,299 <span style="font-size:1.2rem;font-weight:400;color:var(--txt3)">USD</span></div>
+        <ul class="pkg-list">
+          <li><i class="fas fa-check"></i> Logo Premium para Negocio (todos los formatos)</li>
+          <li><i class="fas fa-check"></i> Publicidad completa</li>
+          <li><i class="fas fa-check"></i> Animación de Logo</li>
+          <li><i class="fas fa-check"></i> Creación de Redes Sociales (Instagram, Facebook, TikTok, WhatsApp Business)</li>
+          <li><i class="fas fa-check"></i> Página Web Profesional</li>
+          <li><i class="fas fa-check"></i> 1 mes de manejo completo de redes</li>
+          <li><i class="fas fa-check"></i> Campaña publicitaria pagada para arranque del negocio</li>
+          <li><i class="fas fa-check"></i> Edición de video publicitario de productos o servicios</li>
+          <li><i class="fas fa-check"></i> Soporte prioritario directo</li>
+        </ul>
+        <button type="button" onclick="openContratarModal('Paquete Completo TOP','$1,299 USD')" class="pkg-cta cta-gold" style="border:none;cursor:pointer;width:100%;">
+          <i class="fas fa-crown"></i> Quiero el Paquete TOP
+        </button>
+      </div>
+
+    </div>
   </div>
 </section>
 
